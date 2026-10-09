@@ -3,360 +3,774 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel | WebsitesDeal</title>
+<meta name="theme-color" content="#6558f5">
+<title>Admin Dashboard | WebsitesDeal</title>
+
 <style>
-:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#697386;--line:#e6eaf0;--accent:#6558f5;--soft:#eeecff}
+:root{
+  --bg:#f4f6fb;--card:#fff;--text:#192238;--muted:#778096;
+  --line:#e7eaf2;--accent:#6558f5;--soft:#efedff;
+  --green:#16a36a;--red:#e34d65;--shadow:0 8px 30px #20294b08;
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
-body.dark{--bg:#111521;--card:#1b2130;--text:#f1f4fb;--muted:#a4adc0;--line:#30394b;--soft:#302b52}
-button,input,textarea{font:inherit}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Arial,sans-serif;background:var(--bg);color:var(--text);font-size:14px}
+body.dark{--bg:#111521;--card:#1b2130;--text:#f2f4fa;--muted:#a3acc0;--line:#30394b;--soft:#302b52;--shadow:0 8px 30px #0002}
+button,input,textarea,select{font:inherit}
 button{cursor:pointer}
-.layout{display:flex;min-height:100vh}
-.sidebar{width:235px;background:var(--card);border-right:1px solid var(--line);padding:24px 16px;flex-shrink:0}
-.brand{font-size:20px;font-weight:800;margin:0 8px 30px}
-.nav a{display:block;color:var(--muted);text-decoration:none;padding:12px;border-radius:10px;margin:5px 0}
+a{color:inherit}
+.app{display:flex;min-height:100vh}
+.sidebar{width:250px;position:fixed;inset:0 auto 0 0;background:var(--card);border-right:1px solid var(--line);padding:22px 15px;display:flex;flex-direction:column;z-index:5}
+.brand{display:flex;align-items:center;gap:11px;padding:4px 8px 25px;font-size:18px;font-weight:850;overflow-wrap:anywhere}
+.brand-icon{width:39px;height:39px;border-radius:12px;background:var(--soft);display:grid;place-items:center;color:var(--accent);font-weight:900;overflow:hidden;flex-shrink:0}
+.brand-icon img{width:100%;height:100%;object-fit:contain}
+.brand small{display:block;font-size:10px;color:var(--muted);font-weight:500;letter-spacing:1.5px;margin-top:4px}
+.nav-label{font-size:10px;color:var(--muted);font-weight:800;letter-spacing:1.5px;padding:13px 12px 7px}
+.nav a{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--muted);padding:12px;border-radius:10px;margin:3px 0;transition:.15s}
 .nav a:hover,.nav a.active{background:var(--soft);color:var(--accent)}
-main{padding:28px;max-width:1200px;width:100%;min-width:0}
-.top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:24px}
-h1{margin:0 0 7px;font-size:26px}h2{margin:0 0 16px;font-size:19px}
-.muted{color:var(--muted);font-size:14px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:22px;margin-bottom:20px}
-.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.nav a span:first-child{width:20px;text-align:center;font-size:17px}
+.sidebar-bottom{margin-top:auto;border-top:1px solid var(--line);padding-top:15px}
+.admin-profile{display:flex;align-items:center;gap:10px;padding:10px}
+.avatar{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:var(--soft);color:var(--accent);font-weight:800}
+.admin-profile strong{display:block;font-size:13px}
+.admin-profile small{color:var(--muted);font-size:11px}
+.main{margin-left:250px;width:calc(100% - 250px);min-width:0;padding:25px 30px 40px;max-width:1700px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:26px}
+.page-title h1{margin:0;font-size:26px;letter-spacing:-.6px}
+.page-title p{margin:7px 0 0;color:var(--muted)}
+.top-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--card);color:var(--text);text-decoration:none;font-weight:650;font-size:12px;transition:.15s}
+.btn:hover{transform:translateY(-1px);filter:brightness(.98)}
+.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn.danger{color:var(--red)}
+.btn.small{padding:7px 10px;font-size:11px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.section{scroll-margin-top:20px;margin-bottom:26px}
+.section-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:15px}
+.section-heading h2{font-size:17px;margin:0}
+.section-heading p{font-size:12px;color:var(--muted);margin:5px 0 0}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:27px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:19px;box-shadow:var(--shadow)}
+.stat-top{display:flex;justify-content:space-between;align-items:center;gap:8px;color:var(--muted);font-size:12px}
+.stat-icon{width:35px;height:35px;border-radius:11px;background:var(--soft);display:grid;place-items:center;font-size:17px}
+.stat strong{display:block;font-size:28px;margin-top:13px;letter-spacing:-.7px}
+.stat small{display:block;color:var(--muted);margin-top:4px;font-size:11px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:22px;box-shadow:var(--shadow)}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{min-width:0;display:flex;flex-direction:column;gap:7px}
 .field.full{grid-column:1/-1}
-label{font-size:13px;font-weight:700}
-input,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--text)}
-textarea{min-height:95px;resize:vertical}
-.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
-.btn{border:1px solid var(--line);background:var(--card);color:var(--text);padding:10px 14px;border-radius:9px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
-.btn.primary{background:var(--accent);color:white;border-color:var(--accent)}
-.btn.danger{color:#d53b50}
-.status{padding:11px 13px;border-radius:9px;background:var(--soft);color:var(--accent);margin-bottom:18px;font-size:13px;line-height:1.5}
-.table-wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;min-width:520px}
-th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);font-size:14px;overflow-wrap:anywhere}
-th{color:var(--muted)}
-td .btn{padding:7px 10px;margin:2px}
-.small{font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px}
-hr{border:0;border-top:1px solid var(--line);margin:20px 0}
-@media(max-width:760px){.layout{display:block}.sidebar{width:100%;padding:14px;border-right:0;border-bottom:1px solid var(--line)}.brand{margin:0 5px 12px}.nav{display:flex;overflow:auto;gap:6px}.nav a{white-space:nowrap}.nav a:first-child{margin-left:0}main{padding:16px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
+label{font-size:12px;font-weight:750}
+input,textarea,select{width:100%;border:1px solid var(--line);border-radius:9px;padding:12px;background:var(--bg);color:var(--text);outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px #6558f51a}
+textarea{resize:vertical;min-height:90px}
+.help{font-size:11px;color:var(--muted);line-height:1.6}
+.form-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.preview{border:1px dashed var(--line);border-radius:12px;padding:16px;margin-top:18px;display:flex;gap:15px;align-items:center;min-height:90px}
+.preview img{width:70px;height:65px;object-fit:contain;border-radius:9px}
+.preview h3{font-size:17px;margin:0 0 5px}
+.preview p{color:var(--muted);margin:0;line-height:1.5;font-size:12px;overflow-wrap:anywhere}
+.table-toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.search{max-width:300px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:11px}
+table{width:100%;border-collapse:collapse;min-width:680px}
+th,td{text-align:left;padding:13px 12px;border-bottom:1px solid var(--line);font-size:12px;vertical-align:middle}
+th{background:var(--bg);font-size:10px;text-transform:uppercase;letter-spacing:.7px;color:var(--muted)}
+tbody tr:last-child td{border-bottom:0}
+td a{color:var(--accent);text-decoration:none;overflow-wrap:anywhere}
+.site-name{font-weight:750}
+.pill{display:inline-flex;align-items:center;border-radius:20px;padding:5px 9px;background:var(--soft);color:var(--accent);font-size:10px;font-weight:750}
+.pill.off{background:#fce9ed;color:var(--red)}
+.row-actions{display:flex;gap:5px;flex-wrap:wrap}
+.empty{text-align:center;padding:30px;color:var(--muted)}
+.prayer-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.prayer-box{background:var(--soft);border-radius:11px;padding:14px 10px;text-align:center}
+.prayer-box strong{display:block;font-size:12px;margin-bottom:10px}
+.prayer-box input{text-align:center;background:var(--card);padding:10px 5px}
+.notice{border-radius:10px;background:var(--soft);padding:13px;color:var(--muted);font-size:12px;line-height:1.7;margin-bottom:16px}
+.toast{position:fixed;right:22px;bottom:22px;z-index:20;max-width:min(390px,calc(100% - 32px));padding:14px 18px;border-radius:12px;background:#20283b;color:#fff;box-shadow:0 10px 35px #0002;opacity:0;transform:translateY(12px);pointer-events:none;transition:.2s}
+.toast.show{opacity:1;transform:translateY(0)}
+.toast.error{background:#a92e43}
+.footer{padding:12px 0;color:var(--muted);font-size:11px;text-align:center}
+.mobile-toggle{display:none}
+@media(max-width:1100px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.main{padding:22px}.prayer-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){
+.sidebar{width:100%;height:auto;position:relative;inset:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}
+.brand{padding:5px 6px 12px}
+.nav{display:flex;overflow-x:auto;gap:4px}
+.nav-label{display:none}
+.nav a{white-space:nowrap;padding:10px;font-size:12px}
+.sidebar-bottom{display:none}
+.app{display:block}
+.main{margin:0;width:100%;padding:17px}
+.page-title h1{font-size:23px}
+.panel{padding:16px}
+}
+@media(max-width:480px){.stats{grid-template-columns:1fr 1fr;gap:9px}.stat{padding:13px}.stat strong{font-size:24px}.stat-top{font-size:11px}.grid2{grid-template-columns:1fr}.field.full{grid-column:auto}.prayer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.topbar{align-items:flex-start}.top-actions{width:100%}.top-actions .btn{flex:1}.search{max-width:100%;width:100%}}
 </style>
 </head>
+
 <body>
-<div class="layout">
-  <aside class="sidebar">
-    <div class="brand">⚙️ WebsitesDeal Admin</div>
-    <nav class="nav">
-      <a class="active" href="#brand">Brand & Logo</a>
-      <a href="#banner">Homepage Banner</a>
-      <a href="#websites">Website Manager</a>
-      <a href="#prayer">Prayer Settings</a>
-      <a href="#appearance">Appearance</a>
-      <a href="dashboard.html">← Dashboard</a>
-    </nav>
-  </aside>
+<div class="app">
 
-  <main>
-    <header class="top">
-      <div><h1>Admin Panel</h1><div class="muted">Manage the content displayed on your dashboard.</div></div>
-      <div class="actions" style="margin-top:0">
-        <button class="btn" id="themeBtn" type="button">Toggle theme</button>
-        <a class="btn primary" href="dashboard.html">View Dashboard ↗</a>
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-icon" id="brandIcon">WD</div>
+    <div><div id="sidebarBrand">WebsitesDeal</div><small>CONTROL CENTER</small></div>
+  </div>
+
+  <nav class="nav">
+    <div class="nav-label">WORKSPACE</div>
+    <a class="active" href="#overview"><span>▦</span> Overview</a>
+    <a href="#brandSettings"><span>◈</span> Brand Settings</a>
+    <a href="#bannerSettings"><span>▧</span> Homepage Banner</a>
+    <a href="#websiteManager"><span>🌐</span> Website Manager</a>
+    <a href="#prayerSettings"><span>◷</span> Prayer Settings</a>
+    <div class="nav-label">SYSTEM</div>
+    <a href="#appearance"><span>◐</span> Appearance</a>
+    <a href="#backup"><span>⇅</span> Backup & Restore</a>
+    <a href="dashboard.html"><span>↗</span> Open Dashboard</a>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <div class="admin-profile">
+      <div class="avatar">A</div>
+      <div><strong>Administrator</strong><small>Local admin interface</small></div>
+    </div>
+  </div>
+</aside>
+
+<main class="main">
+  <header class="topbar">
+    <div class="page-title">
+      <h1>Admin Dashboard</h1>
+      <p>Manage your WebsitesDeal workspace.</p>
+    </div>
+    <div class="top-actions">
+      <button class="btn" id="themeToggle" type="button">🌙 Dark Mode</button>
+      <a class="btn primary" href="dashboard.html">↗ View Dashboard</a>
+    </div>
+  </header>
+
+  <section class="section" id="overview">
+    <div class="stats">
+      <article class="stat">
+        <div class="stat-top"><span>Total Websites</span><span class="stat-icon">🌐</span></div>
+        <strong id="totalSites">0</strong><small>Website entries</small>
+      </article>
+      <article class="stat">
+        <div class="stat-top"><span>Active Websites</span><span class="stat-icon">✓</span></div>
+        <strong id="activeSites">0</strong><small>Marked active</small>
+      </article>
+      <article class="stat">
+        <div class="stat-top"><span>Saved Websites</span><span class="stat-icon">★</span></div>
+        <strong id="savedSites">0</strong><small>Dashboard saved count</small>
+      </article>
+      <article class="stat">
+        <div class="stat-top"><span>Theme</span><span class="stat-icon">◐</span></div>
+        <strong id="themeStatus" style="font-size:22px">Light</strong><small>Shared browser setting</small>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="brandSettings">
+    <div class="section-heading"><div><h2>Brand & Logo</h2><p>Manage your website identity.</p></div><span class="pill">BRANDING</span></div>
+    <div class="panel">
+      <div class="grid2">
+        <div class="field"><label for="brandName">Brand Name *</label><input id="brandName" maxlength="80" placeholder="WebsitesDeal"></div>
+        <div class="field"><label for="logoText">Text Logo / Initials</label><input id="logoText" maxlength="12" placeholder="WD"></div>
+        <div class="field full"><label for="logoUrl">Logo Image URL</label><input id="logoUrl" type="url" placeholder="https://example.com/logo.png"><span class="help">Use a publicly accessible HTTPS image URL. Leave blank to use the text logo.</span></div>
       </div>
-    </header>
-
-    <div class="status" id="status" role="status">Ready. Changes save to this browser and sync to other open tabs on the same origin.</div>
-
-    <section class="panel" id="brand">
-      <h2>Brand & Logo</h2>
-      <div class="form-grid">
-        <div class="field"><label for="brandName">Brand Name</label><input id="brandName" placeholder="WebsitesDeal"></div>
-        <div class="field"><label for="logoText">Logo Text (optional)</label><input id="logoText" placeholder="WD"></div>
-        <div class="field full"><label for="brandLogo">Logo Image URL (optional)</label><input id="brandLogo" type="url" placeholder="https://example.com/logo.png"></div>
+      <div class="preview">
+        <div class="brand-icon" id="logoPreviewIcon">WD</div>
+        <div><h3 id="brandPreviewTitle">WebsitesDeal</h3><p>Live preview of your brand settings.</p></div>
       </div>
-      <div class="actions"><button class="btn primary" id="saveBrand" type="button">Save Brand</button></div>
-    </section>
+      <div class="form-actions"><button class="btn primary" id="saveBrand" type="button">Save Brand Settings</button><button class="btn" id="resetBrand" type="button">Reset Form</button></div>
+    </div>
+  </section>
 
-    <section class="panel" id="banner">
-      <h2>Homepage Banner</h2>
-      <div class="form-grid">
-        <div class="field full"><label for="bannerTitle">Banner Heading</label><input id="bannerTitle" placeholder="Build your digital presence"></div>
-        <div class="field full"><label for="bannerText">Banner Description</label><textarea id="bannerText" placeholder="Write a short description..."></textarea></div>
-        <div class="field full"><label for="bannerImage">Banner Image URL (optional)</label><input id="bannerImage" type="url" placeholder="https://example.com/banner.png"></div>
+  <section class="section" id="bannerSettings">
+    <div class="section-heading"><div><h2>Homepage Banner</h2><p>Update the headline and supporting content.</p></div><span class="pill">CONTENT</span></div>
+    <div class="panel">
+      <div class="grid2">
+        <div class="field full"><label for="bannerTitle">Banner Heading</label><input id="bannerTitle" maxlength="160" placeholder="Build your digital presence"></div>
+        <div class="field full"><label for="bannerText">Banner Description</label><textarea id="bannerText" maxlength="1000" placeholder="Write a clear introduction..."></textarea></div>
+        <div class="field full"><label for="bannerImage">Banner Image URL</label><input id="bannerImage" type="url" placeholder="https://example.com/banner.jpg"></div>
       </div>
-      <div class="actions"><button class="btn primary" id="saveBanner" type="button">Save Banner</button></div>
-    </section>
+      <div class="preview" id="bannerPreview">
+        <img id="bannerPreviewImage" alt="Banner preview" hidden>
+        <div><h3 id="bannerPreviewTitle">Build your digital presence</h3><p id="bannerPreviewText">Your banner description appears here.</p></div>
+      </div>
+      <div class="form-actions"><button class="btn primary" id="saveBanner" type="button">Save Banner</button><button class="btn" id="resetBanner" type="button">Reset Form</button></div>
+    </div>
+  </section>
 
-    <section class="panel" id="websites">
-      <h2>Website Manager</h2>
+  <section class="section" id="websiteManager">
+    <div class="section-heading"><div><h2>Website Manager</h2><p>Add, edit, search, activate or remove website entries.</p></div><span class="pill" id="sitePill">0 ENTRIES</span></div>
+    <div class="panel">
       <input id="editId" type="hidden">
-      <div class="form-grid">
-        <div class="field"><label for="siteName">Website Name</label><input id="siteName" placeholder="My Portfolio"></div>
-        <div class="field"><label for="siteUrl">Website URL</label><input id="siteUrl" type="url" placeholder="https://example.com"></div>
-        <div class="field full"><label for="siteDesc">Description</label><textarea id="siteDesc" placeholder="Describe this website..."></textarea></div>
+      <div class="grid2">
+        <div class="field"><label for="siteName">Website Name *</label><input id="siteName" maxlength="100" placeholder="My Portfolio"></div>
+        <div class="field"><label for="siteUrl">Website URL *</label><input id="siteUrl" type="url" placeholder="https://example.com"></div>
+        <div class="field"><label for="siteCategory">Category</label>
+          <select id="siteCategory">
+            <option value="General">General</option><option value="Business">Business</option><option value="Portfolio">Portfolio</option><option value="Education">Education</option><option value="Tools">Tools</option><option value="News">News</option><option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="field"><label for="siteStatus">Status</label>
+          <select id="siteStatus"><option value="active">Active</option><option value="inactive">Inactive</option></select>
+        </div>
+        <div class="field full"><label for="siteDescription">Description</label><textarea id="siteDescription" maxlength="500" placeholder="Briefly describe this website..."></textarea></div>
       </div>
-      <div class="actions">
-        <button class="btn primary" id="saveSite" type="button">Add Website</button>
-        <button class="btn" id="clearSite" type="button">Clear Form</button>
+      <div class="form-actions">
+        <button class="btn primary" id="saveSite" type="button">＋ Add Website</button>
+        <button class="btn" id="cancelEdit" type="button">Clear Form</button>
       </div>
-      <hr>
+      <hr style="border:0;border-top:1px solid var(--line);margin:24px 0">
+      <div class="table-toolbar">
+        <input class="search" id="siteSearch" type="search" placeholder="Search websites...">
+        <select id="statusFilter" style="max-width:170px"><option value="all">All statuses</option><option value="active">Active only</option><option value="inactive">Inactive only</option></select>
+      </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Name</th><th>URL</th><th>Actions</th></tr></thead>
+          <thead><tr><th>Website</th><th>Category</th><th>Status</th><th>Actions</th></tr></thead>
           <tbody id="siteTable"></tbody>
         </table>
       </div>
-    </section>
+      <p class="help" style="margin-top:12px">Note: the current Dashboard displays entries from the shared local website list. The status field is managed here, but the existing Dashboard does not yet hide inactive entries automatically.</p>
+    </div>
+  </section>
 
-    <section class="panel" id="prayer">
-      <h2>Prayer Time Settings</h2>
-      <div class="muted" style="margin-bottom:16px">Enter verified local prayer times. The Dashboard displays these values; it does not calculate official prayer times automatically.</div>
-      <div class="form-grid">
-        <div class="field"><label for="fajr">Fajr</label><input id="fajr" placeholder="04:45 AM"></div>
-        <div class="field"><label for="dhuhr">Dhuhr</label><input id="dhuhr" placeholder="12:10 PM"></div>
-        <div class="field"><label for="asr">Asr</label><input id="asr" placeholder="04:20 PM"></div>
-        <div class="field"><label for="maghrib">Maghrib</label><input id="maghrib" placeholder="06:00 PM"></div>
-        <div class="field"><label for="isha">Isha</label><input id="isha" placeholder="07:30 PM"></div>
-        <div class="field full"><label for="prayerNote">Prayer Time Note</label><input id="prayerNote" placeholder="Verify local timings before relying on them."></div>
+  <section class="section" id="prayerSettings">
+    <div class="section-heading"><div><h2>Prayer Time Settings</h2><p>Enter locally verified prayer times for display.</p></div><span class="pill">PRAYER</span></div>
+    <div class="panel">
+      <div class="notice">Prayer times are not automatically calculated in this version. Confirm the times for your city and date before publishing them.</div>
+      <div class="prayer-grid">
+        <div class="prayer-box"><strong>Fajr</strong><input id="fajr" placeholder="04:45 AM"></div>
+        <div class="prayer-box"><strong>Dhuhr</strong><input id="dhuhr" placeholder="12:10 PM"></div>
+        <div class="prayer-box"><strong>Asr</strong><input id="asr" placeholder="04:20 PM"></div>
+        <div class="prayer-box"><strong>Maghrib</strong><input id="maghrib" placeholder="06:00 PM"></div>
+        <div class="prayer-box"><strong>Isha</strong><input id="isha" placeholder="07:30 PM"></div>
       </div>
-      <div class="actions"><button class="btn primary" id="savePrayer" type="button">Save Prayer Times</button></div>
-    </section>
+      <div class="field" style="margin-top:17px"><label for="prayerNote">Location / Timing Note</label><input id="prayerNote" maxlength="300" placeholder="Verify local timings before relying on them."></div>
+      <div class="form-actions"><button class="btn primary" id="savePrayer" type="button">Save Prayer Settings</button></div>
+    </div>
+  </section>
 
-    <section class="panel" id="appearance">
-      <h2>Appearance</h2>
-      <div class="muted">The theme is shared with Dashboard in this browser.</div>
-      <div class="actions">
+  <section class="section" id="appearance">
+    <div class="section-heading"><div><h2>Appearance</h2><p>Change the theme for both pages in this browser.</p></div></div>
+    <div class="panel">
+      <div class="form-actions" style="margin-top:0">
         <button class="btn" id="lightTheme" type="button">☀️ Light Mode</button>
         <button class="btn" id="darkTheme" type="button">🌙 Dark Mode</button>
       </div>
-    </section>
+      <p class="help">Theme changes are stored in localStorage and are shared with the compatible Dashboard page.</p>
+    </div>
+  </section>
 
-    <section class="panel">
-      <h2>Backup & Restore</h2>
-      <div class="muted">Export or import the configuration and website list as a JSON file.</div>
-      <div class="actions">
-        <button class="btn primary" id="exportBtn" type="button">Export Backup</button>
-        <button class="btn" id="importBtn" type="button">Import Backup</button>
-        <input id="importFile" type="file" accept=".json,application/json" hidden>
+  <section class="section" id="backup">
+    <div class="section-heading"><div><h2>Backup & Restore</h2><p>Download a copy of your settings or restore a backup.</p></div></div>
+    <div class="panel">
+      <div class="notice">Backup files contain website entries and configuration values. Store them securely and do not put passwords or secrets into this demo.</div>
+      <div class="form-actions" style="margin-top:0">
+        <button class="btn primary" id="exportBackup" type="button">↓ Export JSON Backup</button>
+        <button class="btn" id="importBackup" type="button">↑ Import JSON Backup</button>
+        <button class="btn danger" id="resetData" type="button">Reset Settings</button>
+        <input id="backupFile" type="file" accept=".json,application/json" hidden>
       </div>
-      <div class="small">Security note: this page is not protected by server-side authentication. Anyone who can access this page on the same browser origin may edit local data. Do not treat this as a production-secure admin panel.</div>
-    </section>
-  </main>
+    </div>
+  </section>
+
+  <footer class="footer">WebsitesDeal Admin · Local configuration panel · <span id="year"></span></footer>
+</main>
 </div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 (() => {
-  "use strict";
-  const KEYS = { brand:"wd_brand", banner:"wd_banner", sites:"wd_sites", prayer:"wd_prayer", theme:"wd_theme", saved:"wd_saved" };
-  const $ = id => document.getElementById(id);
-  const read = (key, fallback) => {
-    try { const value = localStorage.getItem(key); return value ? JSON.parse(value) : fallback; }
-    catch { return fallback; }
-  };
-  const write = (key, value) => localStorage.setItem(key, JSON.stringify(value));
-  const notify = message => {
-    $("status").textContent = message;
-    clearTimeout(notify.timer);
-    notify.timer = setTimeout(() => $("status").textContent = "Ready. Changes save to this browser.", 3500);
-  };
-  const safeUrl = raw => {
-    if (!raw) return "";
-    try {
-      const u = new URL(raw);
-      return ["http:", "https:"].includes(u.protocol) ? u.href : "";
-    } catch { return ""; }
+"use strict";
+
+const K = {
+  brand:"wd_brand",
+  banner:"wd_banner",
+  sites:"wd_sites",
+  prayer:"wd_prayer",
+  theme:"wd_theme",
+  saved:"wd_saved"
+};
+
+const $ = id => document.getElementById(id);
+
+function read(key, fallback) {
+  try {
+    const value = localStorage.getItem(key);
+    return value === null ? fallback : JSON.parse(value);
+  } catch {
+    return fallback;
+  }
+}
+
+function write(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+let toastTimer;
+
+function toast(message, error=false) {
+  const el=$("toast");
+  el.textContent=message;
+  el.classList.toggle("error",error);
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove("show"),3200);
+}
+
+function validUrl(value) {
+  if (!value) return "";
+  try {
+    const u=new URL(value);
+    return ["http:","https:"].includes(u.protocol) ? u.href : "";
+  } catch {
+    return "";
+  }
+}
+
+function makeId() {
+  return window.crypto && crypto.randomUUID
+    ? crypto.randomUUID()
+    : "site-"+Date.now()+"-"+Math.random().toString(36).slice(2,8);
+}
+
+function setImage(container, url, alt) {
+  container.replaceChildren();
+  const safe=validUrl(url);
+  if (!safe) return false;
+  const img=document.createElement("img");
+  img.src=safe;
+  img.alt=alt;
+  img.referrerPolicy="no-referrer";
+  img.onerror=()=>img.remove();
+  container.appendChild(img);
+  return true;
+}
+
+/* BRAND */
+
+function updateBrandPreview() {
+  const name=$("brandName").value.trim() || "WebsitesDeal";
+  const initials=$("logoText").value.trim() || name.slice(0,2).toUpperCase();
+  $("brandPreviewTitle").textContent=name;
+  const url=$("logoUrl").value.trim();
+  const icon=$("logoPreviewIcon");
+  icon.replaceChildren();
+  if (!setImage(icon,url,"Brand logo")) icon.textContent=initials;
+}
+
+function loadBrand() {
+  const b=read(K.brand,{});
+  $("brandName").value=b.name || "WebsitesDeal";
+  $("logoText").value=b.logoText || "";
+  $("logoUrl").value=b.logo || "";
+  updateBrandPreview();
+
+  const name=b.name || "WebsitesDeal";
+  $("sidebarBrand").textContent=name;
+  const icon=$("brandIcon");
+  icon.replaceChildren();
+  if (!setImage(icon,b.logo,"Brand logo")) {
+    icon.textContent=b.logoText || name.slice(0,2).toUpperCase();
+  }
+}
+
+$("brandName").addEventListener("input",updateBrandPreview);
+$("logoText").addEventListener("input",updateBrandPreview);
+$("logoUrl").addEventListener("input",updateBrandPreview);
+
+$("saveBrand").addEventListener("click",()=>{
+  const name=$("brandName").value.trim();
+  const logo=$("logoUrl").value.trim();
+  if (!name) return toast("Please enter a brand name.",true);
+  if (logo && !validUrl(logo)) return toast("Logo URL must use HTTP or HTTPS.",true);
+  write(K.brand,{name,logoText:$("logoText").value.trim(),logo});
+  loadBrand();
+  toast("Brand settings saved.");
+});
+
+$("resetBrand").addEventListener("click",()=>{
+  loadBrand();
+  toast("Brand form restored from saved settings.");
+});
+
+/* BANNER */
+
+function updateBannerPreview() {
+  $("bannerPreviewTitle").textContent=$("bannerTitle").value.trim() || "Build your digital presence";
+  $("bannerPreviewText").textContent=$("bannerText").value.trim() || "Your banner description appears here.";
+  const url=$("bannerImage").value.trim();
+  const img=$("bannerPreviewImage");
+  const safe=validUrl(url);
+  img.hidden=!safe;
+  if (safe) {
+    img.src=safe;
+    img.onerror=()=>{img.hidden=true;};
+  } else img.removeAttribute("src");
+}
+
+function loadBanner() {
+  const b=read(K.banner,{});
+  $("bannerTitle").value=b.title || "";
+  $("bannerText").value=b.text || "";
+  $("bannerImage").value=b.image || "";
+  updateBannerPreview();
+}
+
+["bannerTitle","bannerText","bannerImage"].forEach(id=>{
+  $(id).addEventListener("input",updateBannerPreview);
+});
+
+$("saveBanner").addEventListener("click",()=>{
+  const image=$("bannerImage").value.trim();
+  if (image && !validUrl(image)) return toast("Banner image URL must use HTTP or HTTPS.",true);
+  write(K.banner,{
+    title:$("bannerTitle").value.trim(),
+    text:$("bannerText").value.trim(),
+    image
+  });
+  updateBannerPreview();
+  toast("Banner settings saved.");
+});
+
+$("resetBanner").addEventListener("click",()=>{
+  loadBanner();
+  toast("Banner form restored from saved settings.");
+});
+
+/* WEBSITES */
+
+function getSites() {
+  const sites=read(K.sites,[]);
+  return Array.isArray(sites) ? sites.filter(s=>s && typeof s==="object") : [];
+}
+
+function clearSiteForm() {
+  $("editId").value="";
+  $("siteName").value="";
+  $("siteUrl").value="";
+  $("siteCategory").value="General";
+  $("siteStatus").value="active";
+  $("siteDescription").value="";
+  $("saveSite").textContent="＋ Add Website";
+}
+
+function editSite(site) {
+  $("editId").value=site.id;
+  $("siteName").value=site.name || "";
+  $("siteUrl").value=site.url || "";
+  $("siteCategory").value=site.category || "General";
+  $("siteStatus").value=site.status || "active";
+  $("siteDescription").value=site.description || "";
+  $("saveSite").textContent="Save Changes";
+  $("siteName").focus();
+  $("websiteManager").scrollIntoView({behavior:"smooth"});
+}
+
+function renderSites() {
+  const sites=getSites();
+  const saved=read(K.saved,[]);
+  $("totalSites").textContent=sites.length;
+  $("activeSites").textContent=sites.filter(s=>(s.status || "active")==="active").length;
+  $("savedSites").textContent=Array.isArray(saved)?saved.length:0;
+  $("sitePill").textContent=sites.length+" ENTRIES";
+
+  const query=$("siteSearch").value.trim().toLowerCase();
+  const filter=$("statusFilter").value;
+  const filtered=sites.filter(s=>{
+    const status=s.status || "active";
+    const matches=`${s.name||""} ${s.url||""} ${s.category||""} ${s.description||""}`.toLowerCase().includes(query);
+    return matches && (filter==="all" || filter===status);
+  });
+
+  const tbody=$("siteTable");
+  tbody.replaceChildren();
+
+  if (!filtered.length) {
+    const tr=document.createElement("tr");
+    const td=document.createElement("td");
+    td.colSpan=4;
+    td.className="empty";
+    td.textContent=sites.length ? "No matching websites found." : "No websites yet. Add your first website above.";
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+    return;
+  }
+
+  filtered.forEach(site=>{
+    const tr=document.createElement("tr");
+    const nameCell=document.createElement("td");
+    const strong=document.createElement("div");
+    strong.className="site-name";
+    strong.textContent=site.name || "Untitled website";
+    const link=document.createElement("div");
+    link.style.marginTop="5px";
+    link.style.maxWidth="240px";
+    const url=validUrl(site.url || "");
+    if (url) {
+      const a=document.createElement("a");
+      a.href=url;a.target="_blank";a.rel="noopener noreferrer";
+      a.textContent=site.url;
+      link.appendChild(a);
+    } else link.textContent="Invalid URL";
+    nameCell.append(strong,link);
+
+    const category=document.createElement("td");
+    category.textContent=site.category || "General";
+
+    const statusCell=document.createElement("td");
+    const status=document.createElement("span");
+    const isActive=(site.status || "active")==="active";
+    status.className="pill"+(isActive?"":" off");
+    status.textContent=isActive?"Active":"Inactive";
+    statusCell.appendChild(status);
+
+    const actions=document.createElement("td");
+    const actionWrap=document.createElement("div");
+    actionWrap.className="row-actions";
+
+    const edit=document.createElement("button");
+    edit.type="button";edit.className="btn small";edit.textContent="Edit";
+    edit.addEventListener("click",()=>editSite(site));
+
+    const toggle=document.createElement("button");
+    toggle.type="button";toggle.className="btn small";
+    toggle.textContent=isActive?"Deactivate":"Activate";
+    toggle.addEventListener("click",()=>{
+      const latest=getSites();
+      const next=latest.map(s=>s.id===site.id?{...s,status:isActive?"inactive":"active"}:s);
+      write(K.sites,next);
+      renderSites();
+      toast(isActive?"Website marked inactive.":"Website marked active.");
+    });
+
+    const del=document.createElement("button");
+    del.type="button";del.className="btn small danger";del.textContent="Delete";
+    del.addEventListener("click",()=>{
+      if (!confirm(`Delete "${site.name || "this website"}"? This cannot be undone.`)) return;
+      write(K.sites,getSites().filter(s=>s.id!==site.id));
+      const saved=read(K.saved,[]);
+      if (Array.isArray(saved)) write(K.saved,saved.filter(id=>id!==site.id));
+      clearSiteForm();
+      renderSites();
+      toast("Website deleted.");
+    });
+
+    actionWrap.append(edit,toggle,del);
+    actions.appendChild(actionWrap);
+    tr.append(nameCell,category,statusCell,actions);
+    tbody.appendChild(tr);
+  });
+}
+
+$("saveSite").addEventListener("click",()=>{
+  const name=$("siteName").value.trim();
+  const url=validUrl($("siteUrl").value.trim());
+  if (!name) return toast("Website name is required.",true);
+  if (!url) return toast("Enter a valid URL beginning with http:// or https://.",true);
+
+  const editId=$("editId").value;
+  let sites=getSites();
+  const record={
+    id:editId || makeId(),
+    name,
+    url,
+    category:$("siteCategory").value,
+    status:$("siteStatus").value,
+    description:$("siteDescription").value.trim()
   };
 
-  function applyTheme() {
-    const dark = (localStorage.getItem(KEYS.theme) || "light") === "dark";
-    document.body.classList.toggle("dark", dark);
-    $("themeBtn").textContent = dark ? "☀️ Light theme" : "🌙 Dark theme";
-  }
-  function saveTheme(value) {
-    localStorage.setItem(KEYS.theme, value);
-    applyTheme();
-    notify("Theme saved. Dashboard will use this theme too.");
+  if (editId) {
+    if (!sites.some(s=>s.id===editId)) return toast("Website entry not found. Refresh and try again.",true);
+    sites=sites.map(s=>s.id===editId?record:s);
+  } else {
+    sites.push(record);
   }
 
-  function loadBrand() {
-    const b = read(KEYS.brand, {});
-    $("brandName").value = b.name || "WebsitesDeal";
-    $("logoText").value = b.logoText || "";
-    $("brandLogo").value = b.logo || "";
-  }
-  function loadBanner() {
-    const b = read(KEYS.banner, {});
-    $("bannerTitle").value = b.title || "";
-    $("bannerText").value = b.text || "";
-    $("bannerImage").value = b.image || "";
-  }
-  function loadPrayer() {
-    const p = read(KEYS.prayer, {});
-    ["fajr","dhuhr","asr","maghrib","isha"].forEach(k => $(k).value = p[k] || "");
-    $("prayerNote").value = p.note || "";
-  }
+  write(K.sites,sites);
+  clearSiteForm();
+  renderSites();
+  toast(editId?"Website updated successfully.":"Website added successfully.");
+});
 
-  function renderSites() {
-    let sites = read(KEYS.sites, []);
-    if (!Array.isArray(sites)) sites = [];
-    const tbody = $("siteTable");
-    tbody.replaceChildren();
-    if (!sites.length) {
-      const tr = document.createElement("tr"), td = document.createElement("td");
-      td.colSpan = 3; td.textContent = "No websites added yet."; tr.appendChild(td); tbody.appendChild(tr);
-      return;
+$("cancelEdit").addEventListener("click",clearSiteForm);
+$("siteSearch").addEventListener("input",renderSites);
+$("statusFilter").addEventListener("change",renderSites);
+
+/* PRAYER SETTINGS */
+
+function loadPrayer() {
+  const p=read(K.prayer,{});
+  ["fajr","dhuhr","asr","maghrib","isha"].forEach(key=>$(key).value=p[key] || "");
+  $("prayerNote").value=p.note || "";
+}
+
+$("savePrayer").addEventListener("click",()=>{
+  const prayer={};
+  ["fajr","dhuhr","asr","maghrib","isha"].forEach(key=>{
+    prayer[key]=$(key).value.trim();
+  });
+  prayer.note=$("prayerNote").value.trim();
+  write(K.prayer,prayer);
+  toast("Prayer settings saved.");
+});
+
+/* THEME */
+
+function loadTheme() {
+  const dark=(localStorage.getItem(K.theme)||"light")==="dark";
+  document.body.classList.toggle("dark",dark);
+  $("themeToggle").textContent=dark?"☀️ Light Mode":"🌙 Dark Mode";
+  $("themeStatus").textContent=dark?"Dark":"Light";
+}
+
+function saveTheme(value) {
+  localStorage.setItem(K.theme,value);
+  loadTheme();
+  toast("Theme updated.");
+}
+
+$("themeToggle").addEventListener("click",()=>{
+  saveTheme(document.body.classList.contains("dark")?"light":"dark");
+});
+$("lightTheme").addEventListener("click",()=>saveTheme("light"));
+$("darkTheme").addEventListener("click",()=>saveTheme("dark"));
+
+/* BACKUP & RESTORE */
+
+$("exportBackup").addEventListener("click",()=>{
+  const backup={
+    format:"websitesdeal-backup",
+    version:1,
+    exportedAt:new Date().toISOString(),
+    data:{}
+  };
+  Object.values(K).forEach(key=>{
+    const raw=localStorage.getItem(key);
+    if (raw!==null) {
+      try { backup.data[key]=JSON.parse(raw); }
+      catch { backup.data[key]=raw; }
     }
-    sites.forEach(site => {
-      const tr = document.createElement("tr");
-      const name = document.createElement("td"); name.textContent = site.name || "Untitled";
-      const urlCell = document.createElement("td");
-      const valid = safeUrl(site.url || "");
-      if (valid) {
-        const a = document.createElement("a");
-        a.href = valid; a.target = "_blank"; a.rel = "noopener noreferrer";
-        a.textContent = site.url; a.style.color = "var(--accent)";
-        urlCell.appendChild(a);
-      } else urlCell.textContent = "Invalid URL";
-      const actions = document.createElement("td");
-      const edit = document.createElement("button");
-      edit.className = "btn"; edit.textContent = "Edit";
-      edit.addEventListener("click", () => {
-        $("editId").value = site.id;
-        $("siteName").value = site.name || "";
-        $("siteUrl").value = site.url || "";
-        $("siteDesc").value = site.description || "";
-        $("saveSite").textContent = "Update Website";
-        $("siteName").focus();
-      });
-      const del = document.createElement("button");
-      del.className = "btn danger"; del.textContent = "Delete";
-      del.addEventListener("click", () => {
-        if (!confirm(`Delete "${site.name || "this website"}"?`)) return;
-        write(KEYS.sites, sites.filter(s => s.id !== site.id));
-        const saved = read(KEYS.saved, []);
-        write(KEYS.saved, Array.isArray(saved) ? saved.filter(id => id !== site.id) : []);
-        renderSites();
-        notify("Website deleted.");
-      });
-      actions.append(edit, del);
-      tr.append(name,urlCell,actions);
-      tbody.appendChild(tr);
-    });
-  }
-
-  function clearSiteForm() {
-    $("editId").value = "";
-    $("siteName").value = "";
-    $("siteUrl").value = "";
-    $("siteDesc").value = "";
-    $("saveSite").textContent = "Add Website";
-  }
-
-  $("saveBrand").addEventListener("click", () => {
-    const name = $("brandName").value.trim();
-    const logo = $("brandLogo").value.trim();
-    if (!name) return alert("Please enter a brand name.");
-    if (logo && !safeUrl(logo)) return alert("Logo URL must start with http:// or https://");
-    write(KEYS.brand, {name,logoText:$("logoText").value.trim(),logo});
-    notify("Brand settings saved.");
   });
 
-  $("saveBanner").addEventListener("click", () => {
-    const image = $("bannerImage").value.trim();
-    if (image && !safeUrl(image)) return alert("Banner image URL must start with http:// or https://");
-    write(KEYS.banner, {
-      title:$("bannerTitle").value.trim(),
-      text:$("bannerText").value.trim(),
-      image
-    });
-    notify("Banner settings saved.");
-  });
+  const blob=new Blob([JSON.stringify(backup,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="websitesdeal-backup.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+  toast("Backup exported.");
+});
 
-  $("saveSite").addEventListener("click", () => {
-    const name = $("siteName").value.trim();
-    const rawUrl = $("siteUrl").value.trim();
-    const url = safeUrl(rawUrl);
-    const description = $("siteDesc").value.trim();
-    if (!name) return alert("Please enter a website name.");
-    if (!url) return alert("Enter a valid URL starting with http:// or https://");
-    let sites = read(KEYS.sites, []);
-    if (!Array.isArray(sites)) sites = [];
-    const id = $("editId").value;
-    if (id) {
-      sites = sites.map(s => s.id === id ? {...s,name,url,description} : s);
-    } else {
-      sites.push({id:(crypto.randomUUID ? crypto.randomUUID() : String(Date.now())),name,url,description});
-    }
-    write(KEYS.sites, sites);
-    clearSiteForm();
-    renderSites();
-    notify(id ? "Website updated." : "Website added.");
-  });
-  $("clearSite").addEventListener("click", clearSiteForm);
+$("importBackup").addEventListener("click",()=>$("backupFile").click());
 
-  $("savePrayer").addEventListener("click", () => {
-    write(KEYS.prayer, {
-      fajr:$("fajr").value.trim(),
-      dhuhr:$("dhuhr").value.trim(),
-      asr:$("asr").value.trim(),
-      maghrib:$("maghrib").value.trim(),
-      isha:$("isha").value.trim(),
-      note:$("prayerNote").value.trim()
-    });
-    notify("Prayer times saved.");
-  });
+$("backupFile").addEventListener("change",async event=>{
+  const file=event.target.files && event.target.files[0];
+  if (!file) return;
 
-  $("themeBtn").addEventListener("click", () => saveTheme(document.body.classList.contains("dark") ? "light" : "dark"));
-  $("lightTheme").addEventListener("click", () => saveTheme("light"));
-  $("darkTheme").addEventListener("click", () => saveTheme("dark"));
+  try {
+    if (file.size>2*1024*1024) throw new Error("Backup file is too large (maximum 2 MB).");
+    const parsed=JSON.parse(await file.text());
+    const data=parsed && parsed.format==="websitesdeal-backup" ? parsed.data : parsed;
 
-  $("exportBtn").addEventListener("click", () => {
-    const backup = {};
-    Object.entries(KEYS).forEach(([name,key]) => {
-      const value = localStorage.getItem(key);
-      if (value !== null) backup[key] = value;
-    });
-    const blob = new Blob([JSON.stringify(backup,null,2)], {type:"application/json"});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url; a.download = "websitesdeal-backup.json"; a.click();
-    URL.revokeObjectURL(url);
-    notify("Backup exported.");
-  });
+    if (!data || typeof data!=="object" || Array.isArray(data)) throw new Error("Invalid backup format.");
 
-  $("importBtn").addEventListener("click", () => $("importFile").click());
-  $("importFile").addEventListener("change", async e => {
-    const file = e.target.files && e.target.files[0];
-    if (!file) return;
-    try {
-      const data = JSON.parse(await file.text());
-      const allowed = Object.values(KEYS);
-      if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error("Invalid backup format.");
-      for (const key of Object.keys(data)) {
-        if (!allowed.includes(key)) continue;
-        if (typeof data[key] !== "string") throw new Error("Invalid setting value.");
-        JSON.parse(data[key]);
+    const allowed=Object.values(K);
+    const validated={};
+
+    for (const key of allowed) {
+      if (!(key in data)) continue;
+      const value=data[key];
+
+      if (key===K.brand) {
+        if (!value || typeof value!=="object" || Array.isArray(value)) throw new Error("Invalid brand settings.");
+        validated[key]={name:String(value.name||"WebsitesDeal"),logoText:String(value.logoText||""),logo:String(value.logo||"")};
+      } else if (key===K.banner) {
+        if (!value || typeof value!=="object" || Array.isArray(value)) throw new Error("Invalid banner settings.");
+        validated[key]={title:String(value.title||""),text:String(value.text||""),image:String(value.image||"")};
+      } else if (key===K.sites) {
+        if (!Array.isArray(value)) throw new Error("Website list must be an array.");
+        validated[key]=value.map(s=>{
+          if (!s || typeof s!=="object") throw new Error("Invalid website entry.");
+          return {
+            id:String(s.id||makeId()),
+            name:String(s.name||"Untitled"),
+            url:String(s.url||""),
+            category:String(s.category||"General"),
+            status:s.status==="inactive"?"inactive":"active",
+            description:String(s.description||"")
+          };
+        });
+      } else if (key===K.prayer) {
+        if (!value || typeof value!=="object" || Array.isArray(value)) throw new Error("Invalid prayer settings.");
+        validated[key]={
+          fajr:String(value.fajr||""),dhuhr:String(value.dhuhr||""),
+          asr:String(value.asr||""),maghrib:String(value.maghrib||""),
+          isha:String(value.isha||""),note:String(value.note||"")
+        };
+      } else if (key===K.theme) {
+        if (!["light","dark"].includes(value)) throw new Error("Theme must be light or dark.");
+        validated[key]=value;
+      } else if (key===K.saved) {
+        if (!Array.isArray(value)) throw new Error("Saved website list must be an array.");
+        validated[key]=value;
       }
-      if (!confirm("Import backup? Existing settings may be overwritten.")) return;
-      for (const key of Object.keys(data)) {
-        if (allowed.includes(key)) localStorage.setItem(key, data[key]);
-      }
-      loadAll();
-      notify("Backup imported.");
-    } catch (err) {
-      alert("Could not import backup: " + err.message);
-    } finally {
-      e.target.value = "";
     }
-  });
 
-  function loadAll() {
-    loadBrand(); loadBanner(); loadPrayer(); renderSites(); applyTheme();
+    if (!Object.keys(validated).length) throw new Error("No recognized settings were found.");
+    if (!confirm("Import this backup and overwrite matching settings? Export your current settings first if needed.")) return;
+
+    Object.entries(validated).forEach(([key,value])=>{
+      if (key===K.theme) localStorage.setItem(key,value);
+      else write(key,value);
+    });
+
+    loadAll();
+    toast("Backup imported successfully.");
+  } catch(error) {
+    toast(error.message || "Could not import backup.",true);
+  } finally {
+    event.target.value="";
   }
-  window.addEventListener("storage", e => {
-    if (Object.values(KEYS).includes(e.key) || e.key === null) loadAll();
-  });
+});
+
+$("resetData").addEventListener("click",()=>{
+  if (!confirm("Reset all WebsitesDeal settings, website entries and saved counts in this browser? Export a backup first if needed.")) return;
+  if (!confirm("Final confirmation: this removes the selected WebsitesDeal local settings.")) return;
+
+  Object.values(K).forEach(key=>localStorage.removeItem(key));
+  clearSiteForm();
   loadAll();
+  toast("Local settings reset. Default values are now displayed.");
+});
+
+/* CROSS-TAB UPDATES */
+
+function loadAll() {
+  loadBrand();
+  loadBanner();
+  loadPrayer();
+  renderSites();
+  loadTheme();
+  $("year").textContent=new Date().getFullYear();
+}
+
+window.addEventListener("storage",event=>{
+  if (event.key===null || Object.values(K).includes(event.key)) {
+    loadAll();
+  }
+});
+
+loadAll();
 })();
 </script>
 </body>
