@@ -2,482 +2,1111 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#08110c">
-<title>WebsitesDeal — Premium Website Marketplace</title>
-<meta name="description" content="বাংলাদেশে প্রিমিয়াম রেডিমেড ওয়েবসাইট কিনুন। আপনার অর্ডার ট্র্যাক করুন।">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- LOGO, FAVICON & SOCIAL PREVIEW -->
+<title>WebsitesDeal Bangladesh — Premium Website Marketplace</title>
+<meta name="description" content="বাংলাদেশের জন্য রেডিমেড ওয়েবসাইট কিনুন। Business, ecommerce, restaurant ও portfolio website, monthly subscription এবং WhatsApp support।">
+<meta name="theme-color" content="#07110d">
+
 <link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg">
 <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg">
-<meta property="og:title" content="WebsitesDeal — Premium Website Marketplace">
-<meta property="og:description" content="আপনার অনলাইন ব্যবসার জন্য রেডিমেড ওয়েবসাইট।">
+<meta property="og:title" content="WebsitesDeal Bangladesh">
+<meta property="og:description" content="Buy ready-made websites. Launch faster.">
 <meta property="og:image" content="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg">
 
 <style>
 :root{
-  --bg:#07100b;--panel:#0e1b13;--panel2:#15251a;
-  --line:#293b2d;--text:#f0f7ef;--muted:#a0b1a1;
-  --green:#b7f34a;--green2:#8ed52e;--danger:#ff7777;
-  --shadow:0 20px 60px #0004;
-}
-body.light{
-  --bg:#f5f8f3;--panel:#fff;--panel2:#edf4e9;
-  --line:#dce6d8;--text:#17231a;--muted:#657365;
-  --shadow:0 20px 60px #263d2510;
+  --bg:#07110d;
+  --bg2:#0a1510;
+  --panel:#0d1a14;
+  --panel2:#112119;
+  --line:#23372a;
+  --text:#f1f7f0;
+  --muted:#99ab9e;
+  --accent:#b7f34a;
+  --accent2:#8ed52e;
+  --radius:18px;
+  --shadow:0 18px 55px rgba(0,0,0,.24);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--bg);color:var(--text);
-font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
-transition:background .25s,color .25s}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  line-height:1.6;transition:background .2s,color .2s
+}
+body.light{
+  --bg:#f5f8f4;--bg2:#edf3ec;--panel:#fff;--panel2:#f2f7f0;
+  --line:#dce6dc;--text:#17251a;--muted:#647367;
+  --shadow:0 15px 40px rgba(29,56,34,.08)
+}
 a{color:inherit;text-decoration:none}
 button,input,select{font:inherit}
 button{cursor:pointer}
-button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--green2);outline-offset:3px}
-.container{width:min(1190px,92%);margin:auto}
-.topbar{background:var(--green);color:#14200d;padding:9px 12px;
-text-align:center;font-size:12px;font-weight:850}
-header{position:sticky;top:0;z-index:20;background:var(--bg);
-border-bottom:1px solid var(--line)}
-.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.logo{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:950;letter-spacing:-.7px}
-.brand-logo{width:42px;height:42px;object-fit:contain;border-radius:11px;flex-shrink:0}
-.logo-name span{color:var(--green2)}
-.navlinks{display:flex;align-items:center;gap:22px;color:var(--muted);font-size:13px}
-.navlinks a:hover{color:var(--green2)}
-.actions{display:flex;align-items:center;gap:8px}
-.small-btn,.icon-btn{background:var(--panel);color:var(--text);
-border:1px solid var(--line);padding:10px 12px;border-radius:11px}
-.primary{background:var(--green);color:#17220e;border:1px solid var(--green);
-padding:12px 17px;border-radius:12px;font-weight:900;transition:.2s}
-.primary:hover{background:var(--green2);transform:translateY(-2px)}
-.secondary{background:var(--panel2);color:var(--text);
-border:1px solid var(--line);padding:11px 14px;border-radius:12px}
-.hero{padding:76px 0 52px;overflow:hidden;position:relative}
-.hero:before{content:"";position:absolute;right:-130px;top:-180px;width:440px;height:440px;
-background:#b7f34a1c;filter:blur(100px);border-radius:50%;pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center;position:relative}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;
-border:1px solid var(--line);background:var(--panel);border-radius:30px;
-color:var(--green2);font-size:11px;font-weight:900;letter-spacing:.6px}
-h1{font-size:clamp(38px,5.2vw,64px);line-height:1.08;letter-spacing:-2.5px;margin:22px 0}
-h1 em{font-style:normal;color:var(--green2)}
-.lead{max-width:590px;color:var(--muted);font-size:16px;line-height:1.9}
-.searchbar{display:flex;gap:8px;padding:8px;border:1px solid var(--line);
-background:var(--panel);border-radius:15px;margin-top:24px;max-width:580px}
-.searchbar input{min-width:0;flex:1;background:transparent;border:0;outline:0;
-color:var(--text);padding:8px}
-.stats{display:flex;flex-wrap:wrap;gap:27px;margin-top:29px}
-.stat strong{display:block;font-size:20px}.stat span{font-size:11px;color:var(--muted)}
-.preview{padding:17px;border:1px solid var(--line);background:var(--panel);
-border-radius:23px;box-shadow:var(--shadow);animation:float 5s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.preview-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:13px;border-bottom:1px solid var(--line)}
-.dots{display:flex;gap:5px}.dots i{width:8px;height:8px;background:var(--green2);border-radius:50%}
-.preview-hero{min-height:205px;margin-top:15px;padding:23px;border-radius:16px;
-background:linear-gradient(135deg,#23472b,#0a140e);color:white;
-display:flex;flex-direction:column;justify-content:end}
-.preview-hero small{color:var(--green)}.preview-hero h3{font-size:27px;margin:8px 0}
-.preview-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:11px}
-.preview-card{height:65px;border:1px solid var(--line);border-radius:11px;background:var(--panel2)}
-.section{padding:62px 0}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:24px}
-.section-head h2{font-size:clamp(25px,3vw,36px);letter-spacing:-1px;margin:0 0 8px}
-.section-head p{margin:0;color:var(--muted);line-height:1.7}
-.pill{display:inline-block;padding:7px 11px;border:1px solid var(--line);
-background:var(--panel);border-radius:30px;color:var(--muted);font-size:11px}
-.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
-.category{display:block;border:1px solid var(--line);background:var(--panel);
-padding:19px;border-radius:16px;transition:.2s}
-.category:hover,.product:hover{border-color:var(--green2);transform:translateY(-3px)}
-.category .emoji{font-size:26px}.category h3{font-size:15px;margin:12px 0 5px}
-.category p{font-size:12px;color:var(--muted);margin:0}
-.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
-.filter{border:1px solid var(--line);background:var(--panel);color:var(--muted);
-border-radius:30px;padding:9px 14px}
-.filter.active{background:var(--green);border-color:var(--green);color:#14200d;font-weight:850}
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.product{border:1px solid var(--line);background:var(--panel);
-border-radius:18px;overflow:hidden;transition:.22s}
-.product-art{height:165px;display:grid;place-items:center;position:relative;overflow:hidden}
-.product-art:after{content:"";position:absolute;width:145px;height:145px;border-radius:50%;
-border:1px solid #ffffff30;box-shadow:0 0 0 24px #ffffff08,0 0 0 48px #ffffff05}
-.art1{background:linear-gradient(135deg,#17432b,#09140d)}
-.art2{background:linear-gradient(135deg,#39224d,#151020)}
-.art3{background:linear-gradient(135deg,#16444a,#0b191c)}
-.art4{background:linear-gradient(135deg,#593725,#1b110c)}
-.art5{background:linear-gradient(135deg,#293860,#11172c)}
-.art6{background:linear-gradient(135deg,#3a441d,#11180c)}
-.mock-browser{position:relative;z-index:1;width:70%;min-height:92px;background:#f4f7f1;
-border-radius:9px;padding:11px;color:#243426;box-shadow:0 12px 35px #0004;font-size:12px}
-.mock-lines{height:6px;width:65%;background:#cbd8c9;border-radius:5px;margin:8px 0}
-.mock-block{height:29px;background:#d9efc7;border-radius:5px;margin-top:8px}
-.product-body{padding:17px}
-.product-meta{display:flex;justify-content:space-between;align-items:center;gap:9px;flex-wrap:wrap}
-.product h3{font-size:18px;margin:13px 0 7px}
-.product p{font-size:13px;line-height:1.7;color:var(--muted);min-height:44px}
-.price{font-size:22px;font-weight:950}.price small{font-size:10px;color:var(--muted);font-weight:500}
-.product-actions{display:flex;gap:8px;margin-top:14px}
-.product-actions button{flex:1}
-.empty{grid-column:1/-1;text-align:center;padding:35px;border:1px dashed var(--line);
-border-radius:15px;color:var(--muted)}
-/* ORDER TRACKING */
-.tracking-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:32px;
-padding:clamp(20px,4vw,40px);border:1px solid var(--line);border-radius:24px;
-background:linear-gradient(135deg,var(--panel),var(--panel2))}
-.tracking-intro h2{font-size:clamp(29px,3vw,37px);line-height:1.15;letter-spacing:-1.2px;margin:15px 0}
-.tracking-intro p{font-size:14px;line-height:1.9;color:var(--muted)}
-.track-form{display:flex;gap:8px;margin:20px 0 10px}
-.track-form input{min-width:0;flex:1;background:var(--bg);border:1px solid var(--line);
-border-radius:12px;padding:13px;color:var(--text)}
-.hint,.notice{font-size:12px;line-height:1.8;color:var(--muted)}
-.track-result{display:none;background:var(--bg);border:1px solid var(--line);
-border-radius:16px;padding:18px;margin-top:17px}
-.track-result.show{display:block;animation:appear .3s ease}
-@keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
-.result-head{display:flex;justify-content:space-between;align-items:center;gap:10px;
-flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:15px}
-.status{background:var(--green);color:#17220e;padding:6px 10px;border-radius:30px;font-size:11px;font-weight:900}
-.timeline{margin-top:20px}
-.step{display:flex;gap:12px;position:relative;padding-bottom:21px}
-.step:last-child{padding-bottom:0}
-.step:not(:last-child):before{content:"";position:absolute;left:13px;top:28px;bottom:0;width:2px;background:var(--line)}
-.step.done:not(:last-child):before{background:var(--green2)}
-.step-icon{z-index:1;flex-shrink:0;width:28px;height:28px;border:1px solid var(--line);
-border-radius:50%;display:grid;place-items:center;background:var(--panel);font-size:12px;color:var(--muted)}
-.step.done .step-icon{background:var(--green);border-color:var(--green);color:#17220e}
-.step strong{display:block;font-size:13px;margin:4px 0}
-.step small{font-size:11px;color:var(--muted)}
-.track-error{display:none;color:var(--danger);background:#ff777712;border:1px solid #ff777744;
-border-radius:11px;padding:12px;margin-top:14px;font-size:13px}
-.track-error.show{display:block}
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.plan{padding:23px;border:1px solid var(--line);background:var(--panel);border-radius:18px}
-.plan.featured{border-color:var(--green2);box-shadow:0 0 0 1px #b7f34a22}
-.plan h3{margin:14px 0 5px}.plan p,.plan li{color:var(--muted);font-size:13px;line-height:1.8}
-.plan .price{font-size:29px;margin:20px 0}
-.plan ul{padding-left:19px;min-height:90px}
-.plan button{width:100%}
-.cta{background:var(--green);color:#16220e;padding:32px;border-radius:22px;
-display:flex;align-items:center;justify-content:space-between;gap:20px}
-.cta h2{font-size:29px;margin:0 0 8px}.cta p{margin:0;opacity:.8}
-.cta .primary{background:#17220e;color:white;border-color:#17220e}
-footer{margin-top:55px;padding:29px 0;border-top:1px solid var(--line)}
-.footer-row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:12px}
-.wa-float{position:fixed;right:19px;bottom:19px;z-index:15;background:var(--green);
-color:#17220e;padding:13px 17px;border-radius:50px;font-size:13px;font-weight:950;box-shadow:var(--shadow)}
-.toast{position:fixed;z-index:40;left:50%;bottom:82px;transform:translateX(-50%);
-display:none;background:var(--green);color:#17220e;padding:12px 17px;border-radius:12px;font-weight:850;font-size:12px;max-width:90%;text-align:center}
-.toast.show{display:block}
-@media(max-width:850px){
- .navlinks{display:none}.hero-grid,.tracking-wrap{grid-template-columns:1fr}
- .preview{max-width:560px;width:100%;margin:auto}
- .categories{grid-template-columns:repeat(2,1fr)}
- .products{grid-template-columns:repeat(2,1fr)}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--accent);outline-offset:3px
 }
-@media(max-width:560px){
- .hero{padding-top:45px}.products,.plans{grid-template-columns:1fr}
- .section{padding:43px 0}.section-head{align-items:start;flex-direction:column}
- .actions{gap:5px}.actions .small-btn,.actions .icon-btn{padding:9px}
- .actions .primary{padding:10px;font-size:12px}
- .track-form{flex-direction:column}.stats{gap:17px}
- .cta{align-items:start;flex-direction:column}
- h1{letter-spacing:-1.5px}
- .brand-logo{width:35px;height:35px}.logo{font-size:18px}
+img{max-width:100%}
+.container{width:min(1320px,calc(100% - 40px));margin:auto}
+.top-strip{
+  background:#101d14;border-bottom:1px solid #233629;
+  color:#d4e5d3;font-size:12px;padding:8px 0
+}
+.top-inner{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.top-note{display:flex;gap:9px;align-items:center}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block}
+.top-right{display:flex;gap:16px;align-items:center}
+header{
+  position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);
+  backdrop-filter:blur(18px);border-bottom:1px solid var(--line)
+}
+.nav{
+  min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px
+}
+.brand{display:flex;align-items:center;gap:11px;min-width:max-content}
+.brand-logo{
+  width:43px;height:43px;object-fit:cover;border-radius:12px;
+  border:1px solid var(--line);background:#fff
+}
+.brand-name{font-weight:850;font-size:20px;letter-spacing:-.8px;line-height:1.15}
+.brand-name span{color:var(--accent)}
+.brand-sub{font-size:10px;color:var(--muted);letter-spacing:1.3px;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:23px;font-size:13px;color:var(--muted)}
+.nav-links a:hover{color:var(--accent)}
+.nav-actions{display:flex;align-items:center;gap:9px}
+.icon-btn,.menu-btn{
+  width:41px;height:41px;display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--text);
+  position:relative
+}
+.count{
+  position:absolute;right:-5px;top:-5px;min-width:18px;height:18px;border-radius:99px;
+  background:var(--accent);color:#14200d;font-size:10px;font-weight:900;
+  display:flex;align-items:center;justify-content:center;padding:0 4px
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border:1px solid transparent;border-radius:12px;padding:11px 16px;
+  font-weight:750;font-size:13px;transition:.2s
+}
+.btn-primary{background:var(--accent);color:#15210d}
+.btn-primary:hover{background:#cbff77;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--text);border-color:var(--line)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.btn-small{padding:8px 12px;font-size:12px}
+.menu-btn{display:none}
+.hero{padding:65px 0 42px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border:1px solid #35482b;
+  background:rgba(183,243,74,.07);color:var(--accent);border-radius:99px;
+  font-size:11px;font-weight:800;letter-spacing:.5px
+}
+h1{font-size:clamp(38px,5.3vw,68px);line-height:1.08;letter-spacing:-2.8px;margin:20px 0}
+h1 em{font-style:normal;color:var(--accent)}
+.hero-copy{color:var(--muted);font-size:16px;max-width:560px}
+.hero-buttons{display:flex;gap:11px;flex-wrap:wrap;margin:25px 0 30px}
+.stats{display:flex;gap:32px;flex-wrap:wrap}
+.stat strong{display:block;font-size:22px;letter-spacing:-.6px}
+.stat span{font-size:11px;color:var(--muted)}
+.hero-visual{
+  position:relative;border:1px solid var(--line);border-radius:24px;
+  padding:15px;background:linear-gradient(140deg,var(--panel2),var(--panel));
+  box-shadow:var(--shadow);min-width:0
+}
+.browser-bar{display:flex;align-items:center;gap:6px;padding:3px 3px 14px}
+.browser-dot{width:8px;height:8px;border-radius:50%;background:#536455}
+.browser-url{
+  flex:1;margin-left:8px;background:var(--bg);border:1px solid var(--line);
+  border-radius:8px;padding:5px 10px;color:var(--muted);font-size:10px
+}
+.preview-art{
+  min-height:330px;border-radius:15px;overflow:hidden;position:relative;
+  background:radial-gradient(circle at 80% 20%,#5b852c 0,transparent 32%),
+  linear-gradient(135deg,#203d27,#08150e 72%);padding:27px;display:flex;flex-direction:column;justify-content:space-between
+}
+.art-label{font-size:10px;color:#d5edc8;letter-spacing:2px}
+.art-heading{font-size:clamp(25px,3.2vw,40px);font-weight:900;line-height:1.08;letter-spacing:-1px;max-width:280px}
+.art-heading span{color:var(--accent)}
+.art-bottom{display:flex;align-items:end;justify-content:space-between;gap:10px}
+.art-price{background:var(--accent);color:#14200d;border-radius:9px;padding:9px 12px;font-size:11px;font-weight:900}
+.art-card{
+  width:128px;height:100px;border:1px solid #63805a;border-radius:12px;
+  background:linear-gradient(145deg,#52773c,#142a1a);padding:10px;
+  display:flex;flex-direction:column;justify-content:space-between;transform:rotate(4deg)
+}
+.art-card div{height:5px;border-radius:9px;background:#c1e99b;width:80%}
+.art-card div:nth-child(2){width:56%;background:#829c72}
+.art-card div:nth-child(3){width:68%}
+.floating-note{
+  position:absolute;right:-13px;bottom:36px;background:var(--panel);border:1px solid var(--line);
+  padding:13px 16px;border-radius:13px;box-shadow:var(--shadow);font-size:12px
+}
+.floating-note strong{display:block;color:var(--accent);font-size:16px}
+.trust-bar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.trust-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:20px 0}
+.trust-item{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:9px}
+.trust-item b{color:var(--text)}
+.section{padding:66px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:26px}
+.kicker{font-size:11px;color:var(--accent);font-weight:850;letter-spacing:1.5px;text-transform:uppercase}
+h2{font-size:clamp(26px,3.4vw,38px);line-height:1.18;letter-spacing:-1.2px;margin:8px 0}
+.section-desc{color:var(--muted);font-size:13px;max-width:560px;margin:8px 0 0}
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}
+.category{
+  text-align:left;padding:19px;border:1px solid var(--line);background:var(--panel);
+  color:var(--text);border-radius:16px;transition:.2s;min-height:130px
+}
+.category:hover,.category.active{border-color:var(--accent);transform:translateY(-3px);background:var(--panel2)}
+.category-icon{font-size:25px;display:block;margin-bottom:14px}
+.category strong{font-size:13px;display:block}
+.category span:last-child{font-size:11px;color:var(--muted)}
+.catalog{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+.search-wrap{position:relative;flex:1;min-width:220px}
+.search-wrap span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted)}
+.search-wrap input,.toolbar select{
+  width:100%;min-height:46px;border:1px solid var(--line);border-radius:12px;
+  background:var(--panel);color:var(--text);padding:10px 13px
+}
+.search-wrap input{padding-left:40px}
+.toolbar select{width:auto;min-width:155px}
+.toolbar input::placeholder{color:var(--muted)}
+.result-line{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:15px 0;color:var(--muted);font-size:12px}
+.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.product{
+  min-width:0;overflow:hidden;border:1px solid var(--line);border-radius:17px;
+  background:var(--panel);transition:.2s
+}
+.product:hover{transform:translateY(-4px);border-color:#516d42;box-shadow:var(--shadow)}
+.product-image{
+  min-height:205px;position:relative;overflow:hidden;padding:15px;
+  display:flex;align-items:center;justify-content:center
+}
+.product-image::before{
+  content:"";position:absolute;width:220px;height:220px;border-radius:50%;
+  background:rgba(255,255,255,.08);top:-90px;right:-45px
+}
+.product-image::after{
+  content:"";position:absolute;width:180px;height:180px;border-radius:50%;
+  background:rgba(0,0,0,.12);bottom:-130px;left:-40px
+}
+.theme-business{background:linear-gradient(140deg,#315c3b,#101f15)}
+.theme-shop{background:linear-gradient(140deg,#7a5b35,#282016)}
+.theme-food{background:linear-gradient(140deg,#9a4936,#351a17)}
+.theme-portfolio{background:linear-gradient(140deg,#354b7a,#111c35)}
+.theme-agency{background:linear-gradient(140deg,#5b4580,#20162f)}
+.theme-realestate{background:linear-gradient(140deg,#387b78,#102b2b)}
+.mock-window{
+  z-index:1;width:90%;max-width:315px;background:#f8faf6;color:#1b2a1c;
+  border-radius:8px;overflow:hidden;box-shadow:0 15px 32px #0005;transform:rotate(-1deg)
+}
+.mock-nav{display:flex;justify-content:space-between;align-items:center;padding:10px 11px;font-size:8px;font-weight:900}
+.mock-nav span{color:#4d872c}
+.mock-body{padding:14px 13px 12px;min-height:102px}
+.mock-body small{font-size:7px;color:#6d806c}
+.mock-body h3{font-size:19px;line-height:1.1;letter-spacing:-.5px;margin:6px 0}
+.mock-body p{font-size:7px;color:#667466;margin:0 0 9px}
+.mock-button{display:inline-block;background:#b7f34a;padding:5px 8px;border-radius:4px;font-size:7px;font-weight:900}
+.mock-blocks{display:flex;gap:5px;margin-top:12px}
+.mock-blocks i{height:29px;flex:1;border-radius:3px;background:#e1ebdc}
+.product-tag{
+  position:absolute;z-index:2;left:13px;top:13px;padding:5px 8px;border-radius:6px;
+  background:var(--accent);color:#14200d;font-size:9px;font-weight:900
+}
+.product-wish{
+  position:absolute;z-index:2;right:13px;top:12px;width:34px;height:34px;
+  display:flex;align-items:center;justify-content:center;border-radius:50%;
+  background:#07110dc9;border:1px solid #ffffff30;color:white;font-size:17px
+}
+.product-wish.saved{background:var(--accent);color:#15210d}
+.product-body{padding:17px}
+.product-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:10px;color:var(--muted)}
+.product-body h3{font-size:17px;margin:9px 0 6px;letter-spacing:-.4px}
+.product-description{font-size:12px;color:var(--muted);min-height:39px;margin:0 0 15px}
+.product-foot{display:flex;align-items:end;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding-top:14px}
+.price{font-size:22px;font-weight:900;letter-spacing:-.7px}
+.price small{font-size:10px;color:var(--muted);font-weight:500;letter-spacing:0}
+.product-actions{display:flex;gap:7px;align-items:center}
+.empty-state{grid-column:1/-1;text-align:center;padding:45px 15px;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
+.wishlist-section{padding-top:55px}
+.wishlist-section[hidden]{display:none}
+.wishlist-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
+.plan{padding:25px;border:1px solid var(--line);border-radius:18px;background:var(--panel);position:relative}
+.plan.featured{border-color:var(--accent);box-shadow:0 0 0 1px #b7f34218}
+.plan-label{font-size:10px;color:var(--accent);font-weight:900;letter-spacing:1px}
+.plan h3{font-size:19px;margin:12px 0 5px}
+.plan-price{font-size:32px;font-weight:900;letter-spacing:-1px;margin:10px 0}
+.plan-price small{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0}
+.plan p,.plan li{font-size:12px;color:var(--muted)}
+.plan ul{padding-left:18px;margin:18px 0 23px}
+.plan li{margin:8px 0}
+.plan .btn{width:100%}
+.tracking{background:var(--bg2);border-block:1px solid var(--line)}
+.tracking-box{
+  display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;padding:30px;
+  border:1px solid var(--line);border-radius:20px;background:var(--panel)
+}
+.tracking-form{display:flex;gap:8px;margin-top:20px}
+.tracking-form input{
+  width:100%;min-width:0;background:var(--bg);color:var(--text);
+  border:1px solid var(--line);border-radius:10px;padding:12px
+}
+.tracking-result{padding:18px;border-radius:13px;background:var(--bg2);border:1px solid var(--line)}
+.tracking-result h3{margin:0 0 8px;font-size:16px}
+.tracking-result p{margin:5px 0;color:var(--muted);font-size:12px}
+.status{display:inline-block;background:rgba(183,243,74,.12);color:var(--accent);border-radius:99px;padding:5px 10px;font-size:11px;font-weight:800}
+.steps{display:flex;gap:8px;margin-top:20px}
+.step{height:4px;flex:1;border-radius:10px;background:var(--line)}
+.step.done{background:var(--accent)}
+.help-box{
+  display:flex;align-items:center;justify-content:space-between;gap:25px;
+  padding:30px;border:1px solid var(--line);border-radius:20px;
+  background:linear-gradient(120deg,var(--panel2),var(--panel))
+}
+.help-box p{color:var(--muted);font-size:13px;margin:6px 0 0}
+footer{border-top:1px solid var(--line);padding:42px 0 22px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px}
+.footer-brand p{font-size:12px;color:var(--muted);max-width:300px}
+.footer-col strong{display:block;font-size:12px;margin-bottom:13px}
+.footer-col a{display:block;color:var(--muted);font-size:12px;margin:9px 0}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:19px;margin-top:28px;color:var(--muted);font-size:11px}
+.footer-bottom img{width:17px;height:17px;object-fit:cover;vertical-align:middle;border-radius:4px}
+.whatsapp-float{
+  position:fixed;right:20px;bottom:20px;z-index:45;width:55px;height:55px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:#25d366;color:#fff;font-size:25px;box-shadow:0 8px 30px #0005
+}
+.modal-backdrop{
+  display:none;position:fixed;inset:0;background:#000b;z-index:100;
+  align-items:center;justify-content:center;padding:18px
+}
+.modal-backdrop.open{display:flex}
+.modal{
+  width:min(700px,100%);max-height:90vh;overflow:auto;background:var(--panel);
+  border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)
+}
+.modal-head{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:20px;border-bottom:1px solid var(--line)}
+.modal-head h3{margin:0;font-size:19px}
+.modal-close{width:36px;height:36px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text)}
+.modal-content{padding:22px}
+.modal-preview{
+  padding:25px;border-radius:14px;min-height:205px;display:flex;flex-direction:column;
+  justify-content:center;background:linear-gradient(135deg,#25492d,#09140d);color:#f5fff0
+}
+.modal-preview h2{font-size:34px;max-width:420px;color:#fff}
+.modal-preview h2 span{color:var(--accent)}
+.modal-preview p{font-size:12px;color:#d3e0d1;max-width:400px}
+.modal-info{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.info-box{padding:13px;border:1px solid var(--line);border-radius:12px}
+.info-box small{display:block;color:var(--muted);font-size:10px}
+.info-box strong{font-size:13px}
+.modal-actions{display:flex;gap:10px;flex-wrap:wrap}
+.toast{
+  position:fixed;z-index:150;left:50%;bottom:24px;transform:translate(-50%,20px);
+  background:var(--accent);color:#14200d;padding:12px 18px;border-radius:12px;
+  box-shadow:var(--shadow);font-size:12px;font-weight:850;opacity:0;pointer-events:none;transition:.25s;
+  max-width:calc(100% - 30px);text-align:center
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.mobile-only{display:none}
+@media(max-width:1050px){
+  .nav-links{gap:13px}.hero-grid{gap:28px}.categories{grid-template-columns:repeat(3,1fr)}
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .container{width:min(100% - 28px,1320px)}
+  .top-right{display:none}.nav{min-height:67px}.brand-logo{width:38px;height:38px}
+  .brand-name{font-size:17px}.brand-sub{font-size:9px}
+  .nav-links{
+    display:none;position:absolute;top:100%;left:0;right:0;padding:18px;
+    background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch
+  }
+  .nav-links.open{display:flex}
+  .menu-btn{display:inline-flex}
+  .nav-actions .header-order{display:none}
+  .hero{padding:45px 0 35px}.hero-grid{grid-template-columns:1fr}
+  h1{letter-spacing:-1.7px}.hero-visual{max-width:570px;width:100%;margin:auto}
+  .preview-art{min-height:285px}.floating-note{right:5px}
+  .section{padding:48px 0}.categories{grid-template-columns:repeat(2,1fr);gap:10px}
+  .category{padding:14px;min-height:118px}
+  .section-head{align-items:start;flex-direction:column}
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+  .product-image{min-height:155px;padding:10px}.product-body{padding:12px}
+  .product-body h3{font-size:14px}.product-description{font-size:11px;min-height:50px}
+  .product-foot{align-items:start;flex-direction:column}.product-actions{width:100%}
+  .product-actions .btn{flex:1}.price{font-size:20px}
+  .plans{grid-template-columns:1fr}.tracking-box{grid-template-columns:1fr;padding:20px}
+  .help-box{align-items:start;flex-direction:column;padding:22px}
+  .footer-grid{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}
+}
+@media(max-width:420px){
+  .brand-sub{display:none}.nav-actions{gap:5px}.icon-btn,.menu-btn{width:36px;height:36px}
+  .hero-buttons .btn{padding:10px 12px}.stats{gap:20px}
+  .product-grid{grid-template-columns:1fr}
+  .product-image{min-height:205px}
+  .product-foot{flex-direction:row;align-items:end}
+  .product-actions .btn{flex:none;padding:8px 10px}
+  .tracking-form{flex-direction:column}
+  .footer-grid{gap:20px}.modal-info{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
-<div class="topbar" id="topNotice">আপনার অনলাইন ব্যবসা শুরু হোক আজই — প্রিমিয়াম রেডিমেড ওয়েবসাইট</div>
+<div class="top-strip">
+  <div class="container top-inner">
+    <div class="top-note"><span class="live-dot"></span><span data-i18n="topNote">বাংলাদেশের জন্য রেডিমেড ওয়েবসাইট মার্কেটপ্লেস</span></div>
+    <div class="top-right">
+      <span>BDT ৳</span>
+      <span data-i18n="secureNote">সহজ অর্ডার · WhatsApp Support</span>
+    </div>
+  </div>
+</div>
 
 <header>
- <div class="container nav">
-  <a class="logo" href="#" aria-label="WebsitesDeal Home">
-   <img class="brand-logo" src="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg" alt="WebsitesDeal Logo">
-   <span class="logo-name">Websites<span>Deal</span></span>
-  </a>
-  <nav class="navlinks">
-   <a href="#market" data-bn="ওয়েবসাইট" data-en="Websites">ওয়েবসাইট</a>
-   <a href="#categories" data-bn="ক্যাটাগরি" data-en="Categories">ক্যাটাগরি</a>
-   <a href="#tracking" data-bn="অর্ডার ট্র্যাক" data-en="Track Order">অর্ডার ট্র্যাক</a>
-   <a href="#plans" data-bn="সাবস্ক্রিপশন" data-en="Subscriptions">সাবস্ক্রিপশন</a>
-  </nav>
-  <div class="actions">
-   <button class="small-btn" id="langBtn" type="button">EN</button>
-   <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☼</button>
-   <a class="primary" href="#market" data-bn="ওয়েবসাইট কিনুন" data-en="Explore Sites">ওয়েবসাইট কিনুন</a>
+  <div class="container nav">
+    <a class="brand" href="#" aria-label="WebsitesDeal Home">
+      <img class="brand-logo" src="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg" alt="WebsitesDeal logo">
+      <div>
+        <div class="brand-name">Websites<span>Deal</span></div>
+        <div class="brand-sub">WEBSITES. READY. BUSINESS.</div>
+      </div>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" data-i18n="navHome">হোম</a>
+      <a href="#categories" data-i18n="navCategories">ক্যাটাগরি</a>
+      <a href="#marketplace" data-i18n="navMarket">ওয়েবসাইট</a>
+      <a href="#plans" data-i18n="navPlans">সাবস্ক্রিপশন</a>
+      <a href="#tracking" data-i18n="navTracking">অর্ডার ট্র্যাকিং</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="languageBtn" aria-label="Change language" title="বাংলা / English">EN</button>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme" title="Light/Dark mode">☼</button>
+      <button class="icon-btn" id="wishlistNav" aria-label="View wishlist" title="Wishlist">♡<span class="count" id="wishCount">0</span></button>
+      <a class="btn btn-primary header-order" href="https://wa.me/8801705633700" target="_blank" rel="noopener" data-i18n="navOrder">অর্ডার করুন ↗</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
+    </div>
   </div>
- </div>
 </header>
 
 <main>
-<section class="hero">
- <div class="container hero-grid">
-  <div>
-   <span class="eyebrow">✦ PREMIUM WEBSITE MARKETPLACE</span>
-   <h1 data-bn="আপনার পরবর্তী ব্যবসা শুরু করুন <em>সঠিক ওয়েবসাইটে</em>" data-en="Launch Your Next Business With The <em>Right Website</em>">আপনার পরবর্তী ব্যবসা শুরু করুন <em>সঠিক ওয়েবসাইটে</em></h1>
-   <p class="lead" data-bn="রেডিমেড বিজনেস, ই-কমার্স, রেস্টুরেন্ট ও আরও অনেক ওয়েবসাইট বেছে নিন। সময় বাঁচান, দ্রুত অনলাইনে এগিয়ে যান।" data-en="Explore ready-made business, ecommerce, restaurant and more websites. Save time and get online faster.">রেডিমেড বিজনেস, ই-কমার্স, রেস্টুরেন্ট ও আরও অনেক ওয়েবসাইট বেছে নিন। সময় বাঁচান, দ্রুত অনলাইনে এগিয়ে যান।</p>
-   <div class="searchbar">
-    <input id="searchInput" type="search" placeholder="ওয়েবসাইট খুঁজুন..." aria-label="Search websites">
-    <button class="primary" id="searchBtn" type="button">খুঁজুন ↗</button>
-   </div>
-   <div class="stats">
-    <div class="stat"><strong>Ready-made</strong><span data-bn="ব্যবহার উপযোগী ডিজাইন" data-en="Ready-to-customize designs">ব্যবহার উপযোগী ডিজাইন</span></div>
-    <div class="stat"><strong>24/7</strong><span data-bn="অনলাইন অর্ডার" data-en="Online ordering">অনলাইন অর্ডার</span></div>
-    <div class="stat"><strong>৳ BDT</strong><span data-bn="বাংলাদেশি মূল্য" data-en="Bangladesh pricing">বাংলাদেশি মূল্য</span></div>
-   </div>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow"><span class="live-dot"></span><span data-i18n="heroEyebrow">BANGLADESH WEBSITE MARKETPLACE</span></div>
+      <h1 data-i18n="heroTitle">আপনার পরবর্তী ব্যবসা শুরু হোক <em>একটি ওয়েবসাইট</em> দিয়ে।</h1>
+      <p class="hero-copy" data-i18n="heroCopy">শূন্য থেকে শুরু করার দরকার নেই। আপনার ব্যবসার জন্য রেডিমেড ওয়েবসাইট বেছে নিন, পছন্দের প্ল্যান দেখুন এবং সরাসরি আমাদের সঙ্গে যোগাযোগ করুন।</p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="#marketplace" data-i18n="browseBtn">ওয়েবসাইট দেখুন ↗</a>
+        <a class="btn btn-outline" href="#plans" data-i18n="plansBtn">মাসিক প্ল্যান দেখুন</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>৳ BDT</strong><span data-i18n="statCurrency">বাংলাদেশি মূল্য</span></div>
+        <div class="stat"><strong>6+</strong><span data-i18n="statTypes">ডেমো ক্যাটাগরি</span></div>
+        <div class="stat"><strong>1:1</strong><span data-i18n="statSupport">সরাসরি যোগাযোগ</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="browser-bar">
+        <i class="browser-dot"></i><i class="browser-dot"></i><i class="browser-dot"></i>
+        <div class="browser-url">websitesdeal.com / marketplace</div>
+      </div>
+      <div class="preview-art">
+        <div class="art-label">YOUR NEXT BUSINESS STARTS HERE</div>
+        <div>
+          <div class="art-heading">Build your<br><span>digital future.</span></div>
+          <p style="font-size:11px;color:#d2e1d0">Ready-made websites for ambitious businesses.</p>
+        </div>
+        <div class="art-bottom">
+          <div class="art-price">READY TO LAUNCH ↗</div>
+          <div class="art-card"><div></div><div></div><div></div><small style="font-size:8px;color:#e4f4dd">YOUR WEBSITE</small></div>
+        </div>
+      </div>
+      <div class="floating-note"><strong>৳ BDT</strong><span data-i18n="floatingNote">বাংলাদেশের জন্য তৈরি</span></div>
+    </div>
   </div>
-  <div class="preview">
-   <div class="preview-top"><strong>Website Studio</strong><div class="dots"><i></i><i></i><i></i></div></div>
-   <div class="preview-hero"><small>DESIGN YOUR FUTURE</small><h3>Build. Launch. Grow.</h3><span style="font-size:12px;color:#d5e6d7">A better way to start online.</span></div>
-   <div class="preview-cards"><div class="preview-card"></div><div class="preview-card"></div><div class="preview-card"></div></div>
-  </div>
- </div>
 </section>
+
+<div class="trust-bar">
+  <div class="container trust-inner">
+    <div class="trust-item">✦ <b data-i18n="trust1">রেডিমেড ডিজাইন</b></div>
+    <div class="trust-item">⌕ <b data-i18n="trust2">সহজে খুঁজুন</b></div>
+    <div class="trust-item">♡ <b data-i18n="trust3">উইশলিস্টে সেভ</b></div>
+    <div class="trust-item">↗ <b data-i18n="trust4">WhatsApp যোগাযোগ</b></div>
+  </div>
+</div>
 
 <section class="section" id="categories">
- <div class="container">
-  <div class="section-head"><div><h2 data-bn="আপনার প্রয়োজনীয় ক্যাটাগরি" data-en="Explore Categories">আপনার প্রয়োজনীয় ক্যাটাগরি</h2><p data-bn="আপনার ব্যবসার জন্য উপযুক্ত ওয়েবসাইট খুঁজে নিন।" data-en="Find the right website for your business.">আপনার ব্যবসার জন্য উপযুক্ত ওয়েবসাইট খুঁজে নিন।</p></div></div>
-  <div class="categories">
-   <a href="#market" class="category" data-category="Business"><span class="emoji">🏢</span><h3 data-bn="বিজনেস" data-en="Business">বিজনেস</h3><p data-bn="কোম্পানি ও সার্ভিস" data-en="Company & service">কোম্পানি ও সার্ভিস</p></a>
-   <a href="#market" class="category" data-category="Ecommerce"><span class="emoji">🛍️</span><h3 data-bn="ই-কমার্স" data-en="Ecommerce">ই-কমার্স</h3><p data-bn="অনলাইন স্টোর" data-en="Online stores">অনলাইন স্টোর</p></a>
-   <a href="#market" class="category" data-category="Restaurant"><span class="emoji">🍽️</span><h3 data-bn="রেস্টুরেন্ট" data-en="Restaurant">রেস্টুরেন্ট</h3><p data-bn="ফুড ও রেস্টুরেন্ট" data-en="Food & restaurant">ফুড ও রেস্টুরেন্ট</p></a>
-   <a href="#market" class="category" data-category="Portfolio"><span class="emoji">✦</span><h3 data-bn="পোর্টফোলিও" data-en="Portfolio">পোর্টফোলিও</h3><p data-bn="ক্রিয়েটিভ ও পার্সোনাল" data-en="Creative & personal">ক্রিয়েটিভ ও পার্সোনাল</p></a>
-  </div>
- </div>
-</section>
-
-<section class="section" id="market">
- <div class="container">
-  <div class="section-head"><div><h2 data-bn="ফিচার্ড ওয়েবসাইট" data-en="Featured Websites">ফিচার্ড ওয়েবসাইট</h2><p data-bn="আপনার পছন্দের ডিজাইন বেছে নিন।" data-en="Choose a design that fits your business.">আপনার পছন্দের ডিজাইন বেছে নিন।</p></div><span class="pill">WEBSITE COLLECTION</span></div>
-  <div class="filters" id="filters">
-   <button class="filter active" data-filter="All" data-bn="সব" data-en="All">সব</button>
-   <button class="filter" data-filter="Business" data-bn="বিজনেস" data-en="Business">বিজনেস</button>
-   <button class="filter" data-filter="Ecommerce" data-bn="ই-কমার্স" data-en="Ecommerce">ই-কমার্স</button>
-   <button class="filter" data-filter="Restaurant" data-bn="রেস্টুরেন্ট" data-en="Restaurant">রেস্টুরেন্ট</button>
-   <button class="filter" data-filter="Portfolio" data-bn="পোর্টফোলিও" data-en="Portfolio">পোর্টফোলিও</button>
-  </div>
-  <div class="products" id="productGrid"></div>
-  <p class="notice" data-bn="দ্রষ্টব্য: এই পণ্যের নাম, মূল্য ও প্রিভিউ ডেমো। প্রকাশের আগে প্রকৃত পণ্যের তথ্য ও Preview URL বসান।" data-en="Note: Product names, prices and previews are demos. Add your real product information and preview URLs before launch.">দ্রষ্টব্য: এই পণ্যের নাম, মূল্য ও প্রিভিউ ডেমো। প্রকাশের আগে প্রকৃত পণ্যের তথ্য ও Preview URL বসান।</p>
- </div>
-</section>
-
-<section class="section" id="tracking">
- <div class="container">
-  <div class="tracking-wrap">
-   <div class="tracking-intro">
-    <span class="eyebrow">ORDER TRACKING</span>
-    <h2 data-bn="আপনার অর্ডার কোথায়?" data-en="Where Is Your Order?">আপনার অর্ডার কোথায়?</h2>
-    <p data-bn="আপনার Order ID লিখে অর্ডারের অবস্থা দেখুন। অর্ডার নিয়ে সাহায্যের জন্য WhatsApp-এ যোগাযোগ করুন।" data-en="Enter your Order ID to check its status. Contact us on WhatsApp if you need help.">আপনার Order ID লিখে অর্ডারের অবস্থা দেখুন। অর্ডার নিয়ে সাহায্যের জন্য WhatsApp-এ যোগাযোগ করুন।</p>
-    <span class="pill">🔒 ORDER ID LOOKUP</span>
-   </div>
-   <div>
-    <form id="trackForm" class="track-form">
-     <input id="orderId" type="text" placeholder="যেমন: WD-1001" autocomplete="off" required aria-label="Order ID">
-     <button class="primary" type="submit" data-bn="অর্ডার খুঁজুন ↗" data-en="Track Order ↗">অর্ডার খুঁজুন ↗</button>
-    </form>
-    <div class="hint" data-bn="ডেমো দেখতে WD-1001, WD-1002 অথবা WD-1003 লিখুন।" data-en="Try WD-1001, WD-1002 or WD-1003 to see the demo.">ডেমো দেখতে WD-1001, WD-1002 অথবা WD-1003 লিখুন।</div>
-    <div id="trackError" class="track-error" role="alert">এই Order ID পাওয়া যায়নি। ID যাচাই করে আবার চেষ্টা করুন।</div>
-    <div id="trackResult" class="track-result" aria-live="polite">
-     <div class="result-head">
-      <div><small style="color:var(--muted)">ORDER ID</small><h3 id="resultId" style="margin:5px 0"></h3><small id="resultProduct"></small></div>
-      <span id="resultStatus" class="status"></span>
-     </div>
-     <div id="timeline" class="timeline"></div>
-     <p class="notice" id="resultNote"></p>
-     <button id="trackWhatsApp" class="secondary" type="button">WhatsApp Support ↗</button>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker" data-i18n="categoryKicker">EXPLORE CATEGORIES</div>
+        <h2 data-i18n="categoryTitle">আপনার ব্যবসার ক্যাটাগরি বেছে নিন</h2>
+        <p class="section-desc" data-i18n="categoryDesc">আপনার প্রয়োজন অনুযায়ী ডিজাইন খুঁজুন। ক্যাটাগরিতে ক্লিক করলে সংশ্লিষ্ট ওয়েবসাইট দেখাবে।</p>
+      </div>
+      <button class="btn btn-outline" id="allCategories" data-i18n="viewAll">সব ওয়েবসাইট দেখুন ↗</button>
     </div>
-    <p class="notice" data-bn="গুরুত্বপূর্ণ: ট্র্যাকিং এখন নমুনা ডেটা দিয়ে চলে। বাস্তব অর্ডার ও Admin থেকে স্ট্যাটাস আপডেটের জন্য পরে ডেটাবেস সংযোগ করতে হবে।" data-en="Important: Tracking currently uses sample data. A database connection is needed later for real orders and admin status updates.">গুরুত্বপূর্ণ: ট্র্যাকিং এখন নমুনা ডেটা দিয়ে চলে। বাস্তব অর্ডার ও Admin থেকে স্ট্যাটাস আপডেটের জন্য পরে ডেটাবেস সংযোগ করতে হবে।</p>
-   </div>
+    <div class="categories" id="categoryGrid">
+      <button class="category" data-category="Business"><span class="category-icon">▦</span><strong data-i18n="catBusiness">বিজনেস</strong><span data-i18n="catBusinessSub">প্রতিষ্ঠান ও সার্ভিস</span></button>
+      <button class="category" data-category="Ecommerce"><span class="category-icon">🛍</span><strong data-i18n="catEcommerce">ই-কমার্স</strong><span data-i18n="catEcommerceSub">অনলাইন স্টোর</span></button>
+      <button class="category" data-category="Restaurant"><span class="category-icon">☕</span><strong data-i18n="catRestaurant">রেস্টুরেন্ট</strong><span data-i18n="catRestaurantSub">ফুড ও ক্যাফে</span></button>
+      <button class="category" data-category="Portfolio"><span class="category-icon">✳</span><strong data-i18n="catPortfolio">পোর্টফোলিও</strong><span data-i18n="catPortfolioSub">ব্যক্তিগত ও ক্রিয়েটিভ</span></button>
+      <button class="category" data-category="Agency"><span class="category-icon">◈</span><strong data-i18n="catAgency">এজেন্সি</strong><span data-i18n="catAgencySub">ডিজিটাল সার্ভিস</span></button>
+    </div>
   </div>
- </div>
+</section>
+
+<section class="section catalog" id="marketplace">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker" data-i18n="marketKicker">THE MARKETPLACE</div>
+        <h2 data-i18n="marketTitle">আপনার পছন্দের ওয়েবসাইট</h2>
+        <p class="section-desc" data-i18n="marketDesc">ডেমো ডিজাইনগুলো দেখুন, পছন্দের তালিকায় রাখুন এবং অর্ডারের জন্য যোগাযোগ করুন।</p>
+      </div>
+    </div>
+
+    <div class="toolbar">
+      <div class="search-wrap"><span>⌕</span><input type="search" id="searchInput" placeholder="ওয়েবসাইটের নাম বা ক্যাটাগরি খুঁজুন..." data-i18n-placeholder="searchPlaceholder"></div>
+      <select id="categoryFilter" aria-label="Filter by category">
+        <option value="All" data-i18n="allCategoriesOption">সব ক্যাটাগরি</option>
+        <option value="Business">Business</option>
+        <option value="Ecommerce">Ecommerce</option>
+        <option value="Restaurant">Restaurant</option>
+        <option value="Portfolio">Portfolio</option>
+        <option value="Agency">Agency</option>
+        <option value="Real Estate">Real Estate</option>
+      </select>
+      <select id="sortFilter" aria-label="Sort websites">
+        <option value="featured" data-i18n="sortFeatured">ফিচার্ড</option>
+        <option value="low" data-i18n="sortLow">কম দাম আগে</option>
+        <option value="high" data-i18n="sortHigh">বেশি দাম আগে</option>
+        <option value="az" data-i18n="sortAZ">নাম অনুযায়ী</option>
+      </select>
+    </div>
+
+    <div class="result-line">
+      <span id="resultCount">6টি ওয়েবসাইট</span>
+      <span data-i18n="demoLabel">ডেমো ক্যাটালগ · নমুনা মূল্য</span>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+
+    <section class="wishlist-section" id="wishlistSection" hidden>
+      <div class="wishlist-title">
+        <div><div class="kicker" data-i18n="wishlistKicker">SAVED COLLECTION</div><h2 data-i18n="wishlistTitle">আপনার Wishlist</h2></div>
+        <button class="btn btn-outline btn-small" id="closeWishlist" data-i18n="closeWishlist">বন্ধ করুন ✕</button>
+      </div>
+      <div class="product-grid" id="wishlistGrid"></div>
+    </section>
+  </div>
 </section>
 
 <section class="section" id="plans">
- <div class="container">
-  <div class="section-head"><div><h2 data-bn="মাসিক সাবস্ক্রিপশন প্ল্যান" data-en="Monthly Subscription Plans">মাসিক সাবস্ক্রিপশন প্ল্যান</h2><p data-bn="আপনার প্রয়োজন অনুযায়ী প্ল্যান বেছে নিন।" data-en="Choose a plan that fits your needs.">আপনার প্রয়োজন অনুযায়ী প্ল্যান বেছে নিন।</p></div></div>
-  <div class="plans">
-   <div class="plan"><span class="pill">STARTER</span><h3 data-bn="স্টার্টার" data-en="Starter">স্টার্টার</h3><div class="price">৳549<small>/মাস</small></div><p data-bn="নতুন ব্যবসার জন্য" data-en="For new businesses">নতুন ব্যবসার জন্য</p><ul><li data-bn="বেসিক ওয়েবসাইট প্ল্যান" data-en="Basic website plan">বেসিক ওয়েবসাইট প্ল্যান</li><li data-bn="বেসিক সাপোর্ট" data-en="Basic support">বেসিক সাপোর্ট</li><li data-bn="মাসিক সাবস্ক্রিপশন" data-en="Monthly subscription">মাসিক সাবস্ক্রিপশন</li></ul><button class="secondary planOrder" data-plan="Starter — ৳549/month" type="button">প্ল্যান সম্পর্কে জানুন</button></div>
-   <div class="plan featured"><span class="pill">POPULAR</span><h3 data-bn="বিজনেস" data-en="Business">বিজনেস</h3><div class="price">৳999<small>/মাস</small></div><p data-bn="বাড়ন্ত ব্যবসার জন্য" data-en="For growing businesses">বাড়ন্ত ব্যবসার জন্য</p><ul><li data-bn="বিজনেস ওয়েবসাইট প্ল্যান" data-en="Business website plan">বিজনেস ওয়েবসাইট প্ল্যান</li><li data-bn="অগ্রাধিকার সাপোর্ট" data-en="Priority support">অগ্রাধিকার সাপোর্ট</li><li data-bn="মাসিক সাবস্ক্রিপশন" data-en="Monthly subscription">মাসিক সাবস্ক্রিপশন</li></ul><button class="primary planOrder" data-plan="Business — ৳999/month" type="button">প্ল্যান সম্পর্কে জানুন</button></div>
-   <div class="plan"><span class="pill">PRO</span><h3 data-bn="প্রফেশনাল" data-en="Professional">প্রফেশনাল</h3><div class="price">৳1,999<small>/মাস</small></div><p data-bn="প্রফেশনাল প্রয়োজনের জন্য" data-en="For professional needs">প্রফেশনাল প্রয়োজনের জন্য</p><ul><li data-bn="প্রিমিয়াম ওয়েবসাইট প্ল্যান" data-en="Premium website plan">প্রিমিয়াম ওয়েবসাইট প্ল্যান</li><li data-bn="প্রায়োরিটি সাপোর্ট" data-en="Priority support">প্রায়োরিটি সাপোর্ট</li><li data-bn="মাসিক সাবস্ক্রিপশন" data-en="Monthly subscription">মাসিক সাবস্ক্রিপশন</li></ul><button class="secondary planOrder" data-plan="Professional — ৳1999/month" type="button">প্ল্যান সম্পর্কে জানুন</button></div>
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="kicker" data-i18n="plansKicker">MONTHLY SUBSCRIPTION</div>
+        <h2 data-i18n="plansTitle">আপনার বাজেট অনুযায়ী প্ল্যান</h2>
+        <p class="section-desc" data-i18n="plansDesc">নিচের প্ল্যানগুলো প্রস্তাবিত নমুনা। কী কী অন্তর্ভুক্ত হবে, মেয়াদ ও শর্ত WhatsApp-এ নিশ্চিত করুন।</p>
+      </div>
+    </div>
+    <div class="plans">
+      <article class="plan">
+        <div class="plan-label" data-i18n="starterLabel">STARTER</div>
+        <h3 data-i18n="starterName">স্টার্টার</h3>
+        <div class="plan-price">৳549 <small data-i18n="perMonth">/ মাস</small></div>
+        <p data-i18n="starterDesc">ছোট ব্যবসার জন্য প্রাথমিক প্যাকেজ।</p>
+        <ul><li data-i18n="starterFeature1">রেডিমেড ডিজাইন নির্বাচন</li><li data-i18n="starterFeature2">প্রাথমিক সেটআপ আলোচনা</li><li data-i18n="starterFeature3">WhatsApp সাপোর্ট</li></ul>
+        <button class="btn btn-outline plan-order" data-plan="Starter — ৳549/month" data-i18n="choosePlan">প্ল্যান সম্পর্কে জানুন ↗</button>
+      </article>
+      <article class="plan featured">
+        <div class="plan-label" data-i18n="popularLabel">★ POPULAR</div>
+        <h3 data-i18n="growthName">গ্রোথ</h3>
+        <div class="plan-price">৳999 <small data-i18n="perMonth">/ মাস</small></div>
+        <p data-i18n="growthDesc">বাড়তে থাকা ব্যবসার জন্য প্রস্তাবিত প্ল্যান।</p>
+        <ul><li data-i18n="growthFeature1">রেডিমেড ওয়েবসাইট নির্বাচন</li><li data-i18n="growthFeature2">ফিচার ও সেটআপ আলোচনা</li><li data-i18n="growthFeature3">সরাসরি সাপোর্ট</li></ul>
+        <button class="btn btn-primary plan-order" data-plan="Growth — ৳999/month" data-i18n="choosePlan">প্ল্যান সম্পর্কে জানুন ↗</button>
+      </article>
+      <article class="plan">
+        <div class="plan-label" data-i18n="businessLabel">BUSINESS</div>
+        <h3 data-i18n="businessPlanName">বিজনেস প্রো</h3>
+        <div class="plan-price">৳1,999 <small data-i18n="perMonth">/ মাস</small></div>
+        <p data-i18n="businessPlanDesc">বড় প্রয়োজন ও কাস্টম আলোচনার জন্য।</p>
+        <ul><li data-i18n="businessFeature1">প্রিমিয়াম অপশন নিয়ে আলোচনা</li><li data-i18n="businessFeature2">কাস্টম প্রয়োজন পর্যালোচনা</li><li data-i18n="businessFeature3">সাপোর্ট ও ডেলিভারি আলোচনা</li></ul>
+        <button class="btn btn-outline plan-order" data-plan="Business Pro — ৳1999/month" data-i18n="choosePlan">প্ল্যান সম্পর্কে জানুন ↗</button>
+      </article>
+    </div>
   </div>
-  <p class="notice" data-bn="প্ল্যানের মূল্য ও সুবিধা ডেমো। অনলাইন পেমেন্ট এখনো যুক্ত করা হয়নি।" data-en="Plan pricing and features are demos. Online payment has not been connected yet.">প্ল্যানের মূল্য ও সুবিধা ডেমো। অনলাইন পেমেন্ট এখনো যুক্ত করা হয়নি।</p>
- </div>
 </section>
 
-<section class="container">
- <div class="cta">
-  <div><h2 data-bn="আপনার আইডিয়াকে অনলাইনে আনুন" data-en="Bring Your Idea Online">আপনার আইডিয়াকে অনলাইনে আনুন</h2><p data-bn="সঠিক ওয়েবসাইট খুঁজতে সাহায্য প্রয়োজন?" data-en="Need help finding the right website?">সঠিক ওয়েবসাইট খুঁজতে সাহায্য প্রয়োজন?</p></div>
-  <a class="primary" href="https://wa.me/8801705633700" target="_blank" rel="noopener">WhatsApp ↗</a>
- </div>
+<section class="section tracking" id="tracking">
+  <div class="container">
+    <div class="tracking-box">
+      <div>
+        <div class="kicker" data-i18n="trackingKicker">ORDER TRACKING</div>
+        <h2 data-i18n="trackingTitle">আপনার অর্ডার কোথায়?</h2>
+        <p class="section-desc" data-i18n="trackingDesc">আপনার Order ID লিখে নমুনা ট্র্যাকিং স্ট্যাটাস দেখুন। এই সংস্করণে ডেটা ডেমো হিসেবে দেওয়া আছে।</p>
+        <form class="tracking-form" id="trackingForm">
+          <input id="orderIdInput" placeholder="যেমন: WD-1001" aria-label="Order ID" required>
+          <button class="btn btn-primary" type="submit" data-i18n="trackBtn">ট্র্যাক করুন</button>
+        </form>
+      </div>
+      <div class="tracking-result" id="trackingResult" aria-live="polite">
+        <h3 data-i18n="trackingReady">ট্র্যাকিংয়ের জন্য প্রস্তুত</h3>
+        <p data-i18n="trackingReadyDesc">আপনার Order ID লিখে ট্র্যাক করুন।</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="help-box">
+      <div>
+        <div class="kicker" data-i18n="helpKicker">NEED HELP?</div>
+        <h2 data-i18n="helpTitle">কোন ওয়েবসাইটটি আপনার জন্য উপযুক্ত?</h2>
+        <p data-i18n="helpDesc">আপনার ব্যবসার ধরন ও বাজেট জানিয়ে আমাদের সঙ্গে কথা বলুন।</p>
+      </div>
+      <a class="btn btn-primary" href="https://wa.me/8801705633700" target="_blank" rel="noopener" data-i18n="helpBtn">WhatsApp-এ কথা বলুন ↗</a>
+    </div>
+  </div>
 </section>
 </main>
 
 <footer>
- <div class="container footer-row">
-  <a class="logo" href="#" aria-label="WebsitesDeal Home">
-   <img class="brand-logo" src="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg" alt="WebsitesDeal Logo">
-   <span class="logo-name">Websites<span>Deal</span></span>
-  </a>
-  <span>© <span id="year"></span> WebsitesDeal</span>
-  <span data-bn="বাংলাদেশের জন্য তৈরি" data-en="Made for Bangladesh">বাংলাদেশের জন্য তৈরি</span>
- </div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="#">
+          <img class="brand-logo" src="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg" alt="WebsitesDeal logo">
+          <div><div class="brand-name">Websites<span>Deal</span></div><div class="brand-sub">WEBSITES. READY. BUSINESS.</div></div>
+        </a>
+        <p data-i18n="footerDesc">বাংলাদেশের ব্যবসার জন্য রেডিমেড ওয়েবসাইট খুঁজুন। ক্যাটালগ, মূল্য ও অর্ডারের তথ্য আগে নিশ্চিত করুন।</p>
+      </div>
+      <div class="footer-col"><strong data-i18n="footerExplore">এক্সপ্লোর</strong><a href="#marketplace" data-i18n="navMarket">ওয়েবসাইট</a><a href="#categories" data-i18n="navCategories">ক্যাটাগরি</a><a href="#plans" data-i18n="navPlans">সাবস্ক্রিপশন</a></div>
+      <div class="footer-col"><strong data-i18n="footerSupport">সাপোর্ট</strong><a href="#tracking" data-i18n="navTracking">অর্ডার ট্র্যাকিং</a><a href="https://wa.me/8801705633700" target="_blank" rel="noopener">WhatsApp</a><a href="#help" id="footerHelp" data-i18n="navHelp">যোগাযোগ</a></div>
+      <div class="footer-col"><strong data-i18n="footerInfo">গুরুত্বপূর্ণ</strong><a href="#plans" data-i18n="footerPricing">প্ল্যান ও মূল্য</a><a href="#marketplace" data-i18n="footerDemo">ডেমো ক্যাটালগ</a><a href="#tracking" data-i18n="footerTracking">ট্র্যাকিং তথ্য</a></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> WebsitesDeal Bangladesh. <span data-i18n="rights">সর্বস্বত্ব সংরক্ষিত।</span></span>
+      <span><img src="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg" alt=""> <span data-i18n="footerTag">Built for business. Ready for growth.</span></span>
+    </div>
+  </div>
 </footer>
 
-<a class="wa-float" href="https://wa.me/8801705633700" target="_blank" rel="noopener">☏ WhatsApp</a>
-<div id="toast" class="toast" role="status"></div>
+<a class="whatsapp-float" href="https://wa.me/8801705633700" target="_blank" rel="noopener" aria-label="Contact WebsitesDeal on WhatsApp">◉</a>
+
+<div class="modal-backdrop" id="previewModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="modalTitle">Website Preview</h3>
+      <button class="modal-close" id="modalClose" aria-label="Close preview">✕</button>
+    </div>
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 "use strict";
 
-const WHATSAPP = "8801705633700";
-const DEMO_ORDERS = {
- "WD-1001":{
-  product:"Business Website Template",status:"Confirmed",current:1,
-  note:"ডেমো অর্ডার: আপনার অর্ডার নিশ্চিত হয়েছে।",
-  steps:["অর্ডার গ্রহণ","অর্ডার নিশ্চিত","কাজ শুরু","ডেলিভারি সম্পন্ন"]
- },
- "WD-1002":{
-  product:"Ecommerce Website Template",status:"In Progress",current:2,
-  note:"ডেমো অর্ডার: ওয়েবসাইট প্রস্তুতের কাজ চলছে।",
-  steps:["অর্ডার গ্রহণ","অর্ডার নিশ্চিত","কাজ শুরু","ডেলিভারি সম্পন্ন"]
- },
- "WD-1003":{
-  product:"Restaurant Website Template",status:"Delivered",current:3,
-  note:"ডেমো অর্ডার: ডেলিভারি সম্পন্ন হয়েছে।",
-  steps:["অর্ডার গ্রহণ","অর্ডার নিশ্চিত","কাজ শুরু","ডেলিভারি সম্পন্ন"]
- }
-};
+/* =========================================================
+   WebsitesDeal Bangladesh — Single-file demo
+   All CSS and JavaScript are contained in index.html.
+   ========================================================= */
+
+const WHATSAPP_NUMBER = "8801705633700";
+const LOGO_URL = "https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg";
+const WISHLIST_KEY = "websitesDealBDWishlistV1";
+const THEME_KEY = "websitesDealBDThemeV1";
+const LANG_KEY = "websitesDealBDLangV1";
 
 const products = [
- {id:1,name:"Business Pro",category:"Business",price:2499,art:"art1",emoji:"🏢",desc:"আধুনিক কোম্পানি ও সার্ভিস ওয়েবসাইট।"},
- {id:2,name:"ShopNova Ecommerce",category:"Ecommerce",price:3499,art:"art2",emoji:"🛍️",desc:"অনলাইন স্টোরের জন্য স্টাইলিশ ডিজাইন।"},
- {id:3,name:"FoodCraft Restaurant",category:"Restaurant",price:1999,art:"art3",emoji:"🍽️",desc:"রেস্টুরেন্ট ও ফুড ব্র্যান্ডের ওয়েবসাইট।"},
- {id:4,name:"Creative Portfolio",category:"Portfolio",price:1499,art:"art4",emoji:"✦",desc:"ডিজাইনার ও ক্রিয়েটিভ পেশাজীবীদের জন্য।"},
- {id:5,name:"AgencyFlow",category:"Business",price:2999,art:"art5",emoji:"◈",desc:"ডিজিটাল এজেন্সির জন্য প্রফেশনাল লেআউট।"},
- {id:6,name:"FreshCart Store",category:"Ecommerce",price:2799,art:"art6",emoji:"🛒",desc:"পণ্য প্রদর্শনের জন্য পরিচ্ছন্ন অনলাইন স্টোর।"}
+  {
+    id:"WD-BD-001",name:"Nova Business",category:"Business",price:2499,
+    tag:"POPULAR",theme:"theme-business",
+    description:"Professional website concept for service businesses and consultants.",
+    bnDescription:"সার্ভিস ব্যবসা ও কনসালট্যান্টদের জন্য প্রফেশনাল ওয়েবসাইট কনসেপ্ট।",
+    features:["Responsive layout","Service sections","Contact section"],
+    featuresBn:["রেসপনসিভ লেআউট","সার্ভিস সেকশন","যোগাযোগ সেকশন"]
+  },
+  {
+    id:"WD-BD-002",name:"Cartly Store",category:"Ecommerce",price:3999,
+    tag:"STORE",theme:"theme-shop",
+    description:"Modern online shop concept for products and small retailers.",
+    bnDescription:"পণ্য ও ছোট রিটেইল ব্যবসার জন্য আধুনিক অনলাইন শপ কনসেপ্ট।",
+    features:["Product grid","Shopping layout","Store information"],
+    featuresBn:["প্রোডাক্ট গ্রিড","শপিং লেআউট","স্টোর তথ্য"]
+  },
+  {
+    id:"WD-BD-003",name:"Urban Bistro",category:"Restaurant",price:1999,
+    tag:"FOOD",theme:"theme-food",
+    description:"Restaurant and cafe concept with menu and reservation sections.",
+    bnDescription:"মেনু ও রিজার্ভেশন সেকশনসহ রেস্টুরেন্ট এবং ক্যাফে কনসেপ্ট।",
+    features:["Menu presentation","Location section","Contact details"],
+    featuresBn:["মেনু উপস্থাপনা","লোকেশন সেকশন","যোগাযোগের তথ্য"]
+  },
+  {
+    id:"WD-BD-004",name:"Mono Portfolio",category:"Portfolio",price:1499,
+    tag:"CREATIVE",theme:"theme-portfolio",
+    description:"Clean portfolio concept for designers, freelancers and creators.",
+    bnDescription:"ডিজাইনার, ফ্রিল্যান্সার ও ক্রিয়েটরদের জন্য পরিচ্ছন্ন পোর্টফোলিও কনসেপ্ট।",
+    features:["Project showcase","About section","Contact area"],
+    featuresBn:["প্রজেক্ট শোকেস","নিজের পরিচিতি","যোগাযোগের অংশ"]
+  },
+  {
+    id:"WD-BD-005",name:"Pixel Agency",category:"Agency",price:2999,
+    tag:"AGENCY",theme:"theme-agency",
+    description:"A bold agency concept for marketing, creative and IT services.",
+    bnDescription:"মার্কেটিং, ক্রিয়েটিভ ও আইটি সার্ভিসের জন্য আকর্ষণীয় এজেন্সি কনসেপ্ট।",
+    features:["Service showcase","Team section","Lead contact area"],
+    featuresBn:["সার্ভিস শোকেস","টিম সেকশন","ক্লায়েন্ট যোগাযোগ"]
+  },
+  {
+    id:"WD-BD-006",name:"Estate View",category:"Real Estate",price:3499,
+    tag:"PROPERTY",theme:"theme-realestate",
+    description:"Property listing concept for real estate agencies and brokers.",
+    bnDescription:"রিয়েল এস্টেট এজেন্সি ও ব্রোকারদের জন্য প্রপার্টি লিস্টিং কনসেপ্ট।",
+    features:["Property cards","Listing layout","Inquiry section"],
+    featuresBn:["প্রপার্টি কার্ড","লিস্টিং লেআউট","অনুসন্ধান সেকশন"]
+  }
 ];
 
-let currentLang="bn";
-let activeFilter="All";
-let lastOrder=null;
-const $=id=>document.getElementById(id);
+const translations = {
+  bn:{
+    topNote:"বাংলাদেশের জন্য রেডিমেড ওয়েবসাইট মার্কেটপ্লেস",secureNote:"সহজ অর্ডার · WhatsApp Support",
+    navHome:"হোম",navCategories:"ক্যাটাগরি",navMarket:"ওয়েবসাইট",navPlans:"সাবস্ক্রিপশন",navTracking:"অর্ডার ট্র্যাকিং",navOrder:"অর্ডার করুন ↗",navHelp:"যোগাযোগ",
+    heroEyebrow:"BANGLADESH WEBSITE MARKETPLACE",
+    heroTitle:'আপনার পরবর্তী ব্যবসা শুরু হোক <em>একটি ওয়েবসাইট</em> দিয়ে।',
+    heroCopy:"শূন্য থেকে শুরু করার দরকার নেই। আপনার ব্যবসার জন্য রেডিমেড ওয়েবসাইট বেছে নিন, পছন্দের প্ল্যান দেখুন এবং সরাসরি আমাদের সঙ্গে যোগাযোগ করুন।",
+    browseBtn:"ওয়েবসাইট দেখুন ↗",plansBtn:"মাসিক প্ল্যান দেখুন",statCurrency:"বাংলাদেশি মূল্য",statTypes:"ডেমো ক্যাটাগরি",statSupport:"সরাসরি যোগাযোগ",floatingNote:"বাংলাদেশের জন্য তৈরি",
+    trust1:"রেডিমেড ডিজাইন",trust2:"সহজে খুঁজুন",trust3:"উইশলিস্টে সেভ",trust4:"WhatsApp যোগাযোগ",
+    categoryKicker:"EXPLORE CATEGORIES",categoryTitle:"আপনার ব্যবসার ক্যাটাগরি বেছে নিন",categoryDesc:"আপনার প্রয়োজন অনুযায়ী ডিজাইন খুঁজুন। ক্যাটাগরিতে ক্লিক করলে সংশ্লিষ্ট ওয়েবসাইট দেখাবে।",
+    viewAll:"সব ওয়েবসাইট দেখুন ↗",catBusiness:"বিজনেস",catBusinessSub:"প্রতিষ্ঠান ও সার্ভিস",catEcommerce:"ই-কমার্স",catEcommerceSub:"অনলাইন স্টোর",catRestaurant:"রেস্টুরেন্ট",catRestaurantSub:"ফুড ও ক্যাফে",catPortfolio:"পোর্টফোলিও",catPortfolioSub:"ব্যক্তিগত ও ক্রিয়েটিভ",catAgency:"এজেন্সি",catAgencySub:"ডিজিটাল সার্ভিস",
+    marketKicker:"THE MARKETPLACE",marketTitle:"আপনার পছন্দের ওয়েবসাইট",marketDesc:"ডেমো ডিজাইনগুলো দেখুন, পছন্দের তালিকায় রাখুন এবং অর্ডারের জন্য যোগাযোগ করুন।",
+    searchPlaceholder:"ওয়েবসাইটের নাম বা ক্যাটাগরি খুঁজুন...",allCategoriesOption:"সব ক্যাটাগরি",sortFeatured:"ফিচার্ড",sortLow:"কম দাম আগে",sortHigh:"বেশি দাম আগে",sortAZ:"নাম অনুযায়ী",demoLabel:"ডেমো ক্যাটালগ · নমুনা মূল্য",
+    wishlistKicker:"SAVED COLLECTION",wishlistTitle:"আপনার Wishlist",closeWishlist:"বন্ধ করুন ✕",
+    plansKicker:"MONTHLY SUBSCRIPTION",plansTitle:"আপনার বাজেট অনুযায়ী প্ল্যান",plansDesc:"নিচের প্ল্যানগুলো প্রস্তাবিত নমুনা। কী কী অন্তর্ভুক্ত হবে, মেয়াদ ও শর্ত WhatsApp-এ নিশ্চিত করুন।",
+    starterLabel:"STARTER",starterName:"স্টার্টার",perMonth:"/ মাস",starterDesc:"ছোট ব্যবসার জন্য প্রাথমিক প্যাকেজ।",starterFeature1:"রেডিমেড ডিজাইন নির্বাচন",starterFeature2:"প্রাথমিক সেটআপ আলোচনা",starterFeature3:"WhatsApp সাপোর্ট",
+    popularLabel:"★ POPULAR",growthName:"গ্রোথ",growthDesc:"বাড়তে থাকা ব্যবসার জন্য প্রস্তাবিত প্ল্যান।",growthFeature1:"রেডিমেড ওয়েবসাইট নির্বাচন",growthFeature2:"ফিচার ও সেটআপ আলোচনা",growthFeature3:"সরাসরি সাপোর্ট",
+    businessLabel:"BUSINESS",businessPlanName:"বিজনেস প্রো",businessPlanDesc:"বড় প্রয়োজন ও কাস্টম আলোচনার জন্য।",businessFeature1:"প্রিমিয়াম অপশন নিয়ে আলোচনা",businessFeature2:"কাস্টম প্রয়োজন পর্যালোচনা",businessFeature3:"সাপোর্ট ও ডেলিভারি আলোচনা",choosePlan:"প্ল্যান সম্পর্কে জানুন ↗",
+    trackingKicker:"ORDER TRACKING",trackingTitle:"আপনার অর্ডার কোথায়?",trackingDesc:"আপনার Order ID লিখে নমুনা ট্র্যাকিং স্ট্যাটাস দেখুন। এই সংস্করণে ডেটা ডেমো হিসেবে দেওয়া আছে।",trackBtn:"ট্র্যাক করুন",trackingReady:"ট্র্যাকিংয়ের জন্য প্রস্তুত",trackingReadyDesc:"আপনার Order ID লিখে ট্র্যাক করুন।",
+    helpKicker:"NEED HELP?",helpTitle:"কোন ওয়েবসাইটটি আপনার জন্য উপযুক্ত?",helpDesc:"আপনার ব্যবসার ধরন ও বাজেট জানিয়ে আমাদের সঙ্গে কথা বলুন।",helpBtn:"WhatsApp-এ কথা বলুন ↗",
+    footerDesc:"বাংলাদেশের ব্যবসার জন্য রেডিমেড ওয়েবসাইট খুঁজুন। ক্যাটালগ, মূল্য ও অর্ডারের তথ্য আগে নিশ্চিত করুন।",footerExplore:"এক্সপ্লোর",footerSupport:"সাপোর্ট",footerInfo:"গুরুত্বপূর্ণ",footerPricing:"প্ল্যান ও মূল্য",footerDemo:"ডেমো ক্যাটালগ",footerTracking:"ট্র্যাকিং তথ্য",rights:"সর্বস্বত্ব সংরক্ষিত।",footerTag:"Built for business. Ready for growth.",
+    preview:"প্রিভিউ দেখুন",share:"শেয়ার",order:"অর্ডার জিজ্ঞাসা",saved:"সেভ হয়েছে",save:"Wishlist-এ রাখুন",priceLabel:"নমুনা মূল্য",categoryLabel:"ক্যাটাগরি",idLabel:"ডেমো ID",featuresLabel:"ডেমো ফিচার",previewDisclaimer:"এটি একটি ডিজাইন প্রিভিউ কনসেপ্ট। লাইভ ওয়েবসাইটের আসল URL এখনো সংযুক্ত করা হয়নি।",previewUnavailable:"আসল লাইভ ডেমো লিংক এখনো যোগ করা হয়নি।",
+    searchCount:"টি ওয়েবসাইট",emptyResults:"কোনো ওয়েবসাইট পাওয়া যায়নি। অন্য শব্দ বা ক্যাটাগরি দিয়ে খুঁজুন।",emptyWishlist:"এখনো Wishlist-এ কিছু নেই।",wishlistEmptyToast:"আপনার Wishlist এখনো খালি।",
+    shareCopied:"শেয়ার লিংক কপি হয়েছে।",shareFailed:"শেয়ার করা যায়নি। লিংকটি কপি করে চেষ্টা করুন।",savedToast:"Wishlist-এ যোগ করা হয়েছে।",removedToast:"Wishlist থেকে সরানো হয়েছে।",linkCopied:"লিংক কপি হয়েছে।",
+    trackingNotFound:"এই Order ID পাওয়া যায়নি।",trackingDemoNote:"এটি নমুনা ট্র্যাকিং ডেটা; আপনার আসল অর্ডারের অবস্থা নিশ্চিত করতে WhatsApp-এ যোগাযোগ করুন।",
+    confirmed:"নিশ্চিত হয়েছে",progress:"কাজ চলছে",delivered:"ডেলিভারি সম্পন্ন",trackLabel:"অর্ডারের অবস্থা",trackDate:"সর্বশেষ আপডেট: ডেমো",steps1:"অর্ডার",steps2:"প্রস্তুতি",steps3:"ডেলিভারি",
+    planMessage:"আমি WebsitesDeal-এর এই সাবস্ক্রিপশন প্ল্যান সম্পর্কে জানতে চাই: ",productMessage:"আমি এই ওয়েবসাইটটি সম্পর্কে জানতে চাই: ",idCopy:"Website ID",
+    languageChanged:"Language changed",lightTheme:"Light theme",darkTheme:"Dark theme"
+  },
+  en:{
+    topNote:"Ready-made website marketplace for Bangladesh",secureNote:"Easy ordering · WhatsApp Support",
+    navHome:"Home",navCategories:"Categories",navMarket:"Websites",navPlans:"Subscriptions",navTracking:"Order Tracking",navOrder:"Order Now ↗",navHelp:"Contact",
+    heroEyebrow:"BANGLADESH WEBSITE MARKETPLACE",
+    heroTitle:'Start your next business with <em>a website.</em>',
+    heroCopy:"You don't have to start from scratch. Explore ready-made website concepts for your business, review plans, and contact us directly.",
+    browseBtn:"Explore Websites ↗",plansBtn:"View Monthly Plans",statCurrency:"Prices in BDT",statTypes:"Demo categories",statSupport:"Direct contact",floatingNote:"Made for Bangladesh",
+    trust1:"Ready-made designs",trust2:"Easy discovery",trust3:"Save to wishlist",trust4:"WhatsApp contact",
+    categoryKicker:"EXPLORE CATEGORIES",categoryTitle:"Choose your business category",categoryDesc:"Find a concept that fits your needs. Select a category to filter the catalogue.",
+    viewAll:"View All Websites ↗",catBusiness:"Business",catBusinessSub:"Company & services",catEcommerce:"Ecommerce",catEcommerceSub:"Online stores",catRestaurant:"Restaurant",catRestaurantSub:"Food & cafe",catPortfolio:"Portfolio",catPortfolioSub:"Personal & creative",catAgency:"Agency",catAgencySub:"Digital services",
+    marketKicker:"THE MARKETPLACE",marketTitle:"Explore ready-made websites",marketDesc:"Explore demo concepts, save favourites, and contact us to discuss an order.",
+    searchPlaceholder:"Search by website name or category...",allCategoriesOption:"All categories",sortFeatured:"Featured",sortLow:"Price: Low to High",sortHigh:"Price: High to Low",sortAZ:"Name: A–Z",demoLabel:"Demo catalogue · Sample prices",
+    wishlistKicker:"SAVED COLLECTION",wishlistTitle:"Your Wishlist",closeWishlist:"Close ✕",
+    plansKicker:"MONTHLY SUBSCRIPTION",plansTitle:"Plans for your budget",plansDesc:"These are example plan proposals. Confirm inclusions, duration, and terms with us on WhatsApp.",
+    starterLabel:"STARTER",starterName:"Starter",perMonth:"/ month",starterDesc:"An introductory package for small businesses.",starterFeature1:"Choose a ready-made design",starterFeature2:"Discuss initial setup",starterFeature3:"WhatsApp support",
+    popularLabel:"★ POPULAR",growthName:"Growth",growthDesc:"A proposed plan for growing businesses.",growthFeature1:"Choose a ready-made website",growthFeature2:"Discuss features and setup",growthFeature3:"Direct support",
+    businessLabel:"BUSINESS",businessPlanName:"Business Pro",businessPlanDesc:"For broader requirements and custom discussions.",businessFeature1:"Discuss premium options",businessFeature2:"Review custom requirements",businessFeature3:"Discuss support and delivery",
+    choosePlan:"Ask About This Plan ↗",trackingKicker:"ORDER TRACKING",trackingTitle:"Where is your order?",trackingDesc:"Enter an Order ID to see a sample tracking status. This version uses demo data.",trackBtn:"Track Order",trackingReady:"Ready to track",trackingReadyDesc:"Enter your Order ID to check the sample status.",
+    helpKicker:"NEED HELP?",helpTitle:"Which website is right for you?",helpDesc:"Tell us about your business and budget. We can discuss suitable options.",helpBtn:"Chat on WhatsApp ↗",
+    footerDesc:"Explore ready-made website concepts for businesses in Bangladesh. Confirm catalogue, pricing, and order details before proceeding.",footerExplore:"Explore",footerSupport:"Support",footerInfo:"Information",footerPricing:"Plans & pricing",footerDemo:"Demo catalogue",footerTracking:"Tracking information",rights:"All rights reserved.",footerTag:"Built for business. Ready for growth.",
+    preview:"View Preview",share:"Share",order:"Ask About Order",saved:"Saved",save:"Add to Wishlist",priceLabel:"Sample price",categoryLabel:"Category",idLabel:"Demo ID",featuresLabel:"Demo features",previewDisclaimer:"This is a design preview concept. An actual live website URL has not been connected yet.",previewUnavailable:"An actual live demo link has not been added yet.",
+    searchCount:" websites",emptyResults:"No websites found. Try another search term or category.",emptyWishlist:"Your wishlist is empty for now.",wishlistEmptyToast:"Your wishlist is empty.",
+    shareCopied:"Share link copied.",shareFailed:"Could not share. Try copying the link.",savedToast:"Added to wishlist.",removedToast:"Removed from wishlist.",linkCopied:"Link copied.",
+    trackingNotFound:"This Order ID was not found.",trackingDemoNote:"This is sample tracking data. Contact us on WhatsApp to confirm your actual order status.",
+    confirmed:"Confirmed",progress:"In progress",delivered:"Delivered",trackLabel:"Order status",trackDate:"Last update: demo",steps1:"Order",steps2:"Preparation",steps3:"Delivery",
+    planMessage:"I would like to know more about this WebsitesDeal subscription plan: ",productMessage:"I would like to ask about this website: ",idCopy:"Website ID",
+    languageChanged:"Language changed",lightTheme:"Light theme",darkTheme:"Dark theme"
+  }
+};
 
-function showToast(message){
- $("toast").textContent=message;
- $("toast").classList.add("show");
- clearTimeout(showToast.timer);
- showToast.timer=setTimeout(()=>$("toast").classList.remove("show"),2600);
+const demoOrders = {
+  "WD-1001":{status:"confirmed",progress:1,product:"Nova Business"},
+  "WD-1002":{status:"progress",progress:2,product:"Cartly Store"},
+  "WD-1003":{status:"delivered",progress:3,product:"Urban Bistro"}
+};
+
+let language = localStorage.getItem(LANG_KEY) || "bn";
+if(!translations[language]) language="bn";
+
+let wishlist = [];
+try{
+  const stored = JSON.parse(localStorage.getItem(WISHLIST_KEY) || "[]");
+  wishlist = Array.isArray(stored) ? stored.filter(id=>products.some(p=>p.id===id)) : [];
+}catch(e){ wishlist=[]; }
+
+let activeCategory = "All";
+let currentPreviewId = null;
+let toastTimer = null;
+
+const $ = selector => document.querySelector(selector);
+const $$ = selector => [...document.querySelectorAll(selector)];
+const t = key => translations[language][key] || translations.en[key] || key;
+const productById = id => products.find(p=>p.id===id);
+
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g,char=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[char]));
 }
-function money(amount){
- return "৳"+amount.toLocaleString("en-US");
+function formatPrice(price){
+  return "৳"+Number(price).toLocaleString("en-BD");
+}
+function productName(p){
+  return p.name;
+}
+function productDescription(p){
+  return language==="bn" ? p.bnDescription : p.description;
+}
+function persistWishlist(){
+  try{localStorage.setItem(WISHLIST_KEY,JSON.stringify(wishlist));}
+  catch(e){showToast("Browser storage unavailable.");}
+  updateWishlistCount();
+}
+function showToast(message){
+  const el=$("#toast");
+  el.textContent=message;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove("show"),2600);
+}
+function updateWishlistCount(){
+  $("#wishCount").textContent=wishlist.length;
+}
+function setLanguage(next){
+  language=next;
+  localStorage.setItem(LANG_KEY,language);
+  document.documentElement.lang=language==="bn"?"bn":"en";
+  $("#languageBtn").textContent=language==="bn"?"EN":"বাং";
+
+  $$("[data-i18n]").forEach(el=>{
+    const key=el.dataset.i18n;
+    if(translations[language][key]!==undefined) el.innerHTML=translations[language][key];
+  });
+  $$("[data-i18n-placeholder]").forEach(el=>{
+    el.placeholder=t(el.dataset.i18nPlaceholder);
+  });
+
+  renderProducts();
+  if(!$("#wishlistSection").hidden) renderWishlist();
+  if(currentPreviewId) openPreview(currentPreviewId,false);
+
+  const trackingInput=$("#orderIdInput").value.trim().toUpperCase();
+  if(trackingInput && demoOrders[trackingInput]) showTrackingResult(trackingInput);
+}
+function toggleTheme(){
+  const isLight=document.body.classList.toggle("light");
+  localStorage.setItem(THEME_KEY,isLight?"light":"dark");
+  $("#themeBtn").textContent=isLight?"☾":"☼";
+  $("#themeBtn").title=isLight?t("darkTheme"):t("lightTheme");
+}
+function categoryLabel(category){
+  const map={
+    Business:"catBusiness",Ecommerce:"catEcommerce",Restaurant:"catRestaurant",
+    Portfolio:"catPortfolio",Agency:"catAgency"
+  };
+  return map[category] ? t(map[category]) : category;
+}
+function productCard(p){
+  const isSaved=wishlist.includes(p.id);
+  const mockHeading={
+    Business:language==="bn"?"আপনার ব্যবসা":"Your Business",
+    Ecommerce:language==="bn"?"অনলাইন শপ":"Online Store",
+    Restaurant:language==="bn"?"সুস্বাদু মুহূর্ত":"Taste the Moment",
+    Portfolio:language==="bn"?"আপনার কাজ":"Your Work",
+    Agency:language==="bn"?"আইডিয়া থেকে ফলাফল":"Ideas to Impact",
+    "Real Estate":language==="bn"?"আপনার নতুন ঠিকানা":"Find Your Place"
+  }[p.category] || p.name;
+
+  return `
+  <article class="product">
+    <div class="product-image ${p.theme}">
+      <span class="product-tag">${escapeHTML(p.tag)}</span>
+      <button class="product-wish ${isSaved?"saved":""}" data-wish="${p.id}" aria-label="${isSaved?t("saved"):t("save")}" aria-pressed="${isSaved}">${isSaved?"♥":"♡"}</button>
+      <div class="mock-window">
+        <div class="mock-nav"><span>${escapeHTML(p.name.toUpperCase())}</span><span>HOME　ABOUT　CONTACT</span></div>
+        <div class="mock-body">
+          <small>WELCOME TO OUR WEBSITE</small>
+          <h3>${escapeHTML(mockHeading)}</h3>
+          <p>Simple. Modern. Made for your next step.</p>
+          <span class="mock-button">DISCOVER MORE ↗</span>
+          <div class="mock-blocks"><i></i><i></i><i></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-body">
+      <div class="product-meta"><span>${escapeHTML(categoryLabel(p.category))}</span><span>${escapeHTML(p.id)}</span></div>
+      <h3>${escapeHTML(productName(p))}</h3>
+      <p class="product-description">${escapeHTML(productDescription(p))}</p>
+      <div class="product-foot">
+        <div class="price">${formatPrice(p.price)} <small>${language==="bn"?"নমুনা মূল্য":"sample"}</small></div>
+        <div class="product-actions">
+          <button class="btn btn-outline btn-small" data-preview="${p.id}">${t("preview")}</button>
+          <button class="btn btn-primary btn-small" data-order="${p.id}">${language==="bn"?"যোগাযোগ":"Ask"} ↗</button>
+        </div>
+      </div>
+    </div>
+  </article>`;
+}
+function getFilteredProducts(){
+  const query=$("#searchInput").value.trim().toLowerCase();
+  let result=products.filter(p=>{
+    const categoryMatches=activeCategory==="All"||p.category===activeCategory;
+    const filter=$("#categoryFilter").value;
+    const selectMatches=filter==="All"||p.category===filter;
+    const searchable=[p.name,p.category,p.id,p.description,p.bnDescription].join(" ").toLowerCase();
+    return categoryMatches&&selectMatches&&searchable.includes(query);
+  });
+
+  const sort=$("#sortFilter").value;
+  if(sort==="low") result.sort((a,b)=>a.price-b.price);
+  else if(sort==="high") result.sort((a,b)=>b.price-a.price);
+  else if(sort==="az") result.sort((a,b)=>a.name.localeCompare(b.name));
+
+  return result;
 }
 function renderProducts(){
- const query=$("searchInput").value.trim().toLowerCase();
- const list=products.filter(p=>{
-  const categoryMatch=activeFilter==="All"||p.category===activeFilter;
-  const searchMatch=(p.name+" "+p.category+" "+p.desc).toLowerCase().includes(query);
-  return categoryMatch&&searchMatch;
- });
- $("productGrid").innerHTML=list.length?list.map(p=>`
-  <article class="product">
-   <div class="product-art ${p.art}">
-    <div class="mock-browser"><strong>${p.emoji} ${p.name}</strong><div class="mock-lines"></div><div class="mock-block"></div></div>
-   </div>
-   <div class="product-body">
-    <div class="product-meta"><span class="pill">${p.category}</span><span style="color:var(--green2)">★ Premium</span></div>
-    <h3>${p.name}</h3><p>${p.desc}</p>
-    <div class="price">${money(p.price)} <small>demo price</small></div>
-    <div class="product-actions">
-     <button class="secondary" type="button" data-preview="${p.id}">${currentLang==="bn"?"প্রিভিউ":"Preview"}</button>
-     <button class="primary" type="button" data-order="${p.id}">${currentLang==="bn"?"অর্ডার ↗":"Order ↗"}</button>
+  const result=getFilteredProducts();
+  $("#productGrid").innerHTML=result.length
+    ? result.map(productCard).join("")
+    : `<div class="empty-state">${t("emptyResults")}</div>`;
+  $("#resultCount").textContent=result.length+t("searchCount");
+  $$(".category").forEach(btn=>{
+    const isActive=btn.dataset.category===activeCategory;
+    btn.classList.toggle("active",isActive);
+    btn.setAttribute("aria-pressed",String(isActive));
+  });
+  updateWishlistCount();
+}
+function renderWishlist(){
+  const saved=wishlist.map(productById).filter(Boolean);
+  $("#wishlistGrid").innerHTML=saved.length
+    ? saved.map(productCard).join("")
+    : `<div class="empty-state">${t("emptyWishlist")}</div>`;
+}
+function toggleWishlist(id){
+  if(!productById(id)) return;
+  if(wishlist.includes(id)){
+    wishlist=wishlist.filter(item=>item!==id);
+    showToast(t("removedToast"));
+  }else{
+    wishlist.push(id);
+    showToast(t("savedToast"));
+  }
+  persistWishlist();
+  renderProducts();
+  if(!$("#wishlistSection").hidden) renderWishlist();
+}
+function showWishlist(){
+  if(!wishlist.length) showToast(t("wishlistEmptyToast"));
+  $("#wishlistSection").hidden=false;
+  renderWishlist();
+  $("#wishlistSection").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function closeWishlist(){
+  $("#wishlistSection").hidden=true;
+}
+function openPreview(id,show=true){
+  const p=productById(id);
+  if(!p) return;
+  currentPreviewId=id;
+  const features=language==="bn"?p.featuresBn:p.features;
+  $("#modalTitle").textContent=p.name;
+  $("#modalContent").innerHTML=`
+    <div class="modal-preview">
+      <small style="letter-spacing:2px;color:#d8e9d0">${escapeHTML(p.category.toUpperCase())} WEBSITE CONCEPT</small>
+      <h2>${escapeHTML(p.name)}<br><span>${language==="bn"?"আপনার ব্যবসার পরবর্তী ধাপ":"Your next digital step."}</span></h2>
+      <p>${escapeHTML(productDescription(p))}</p>
+      <div><span class="mock-button">${language==="bn"?"ডেমো ডিজাইন":"DESIGN CONCEPT"}</span></div>
     </div>
-   </div>
-  </article>`).join(""):`<div class="empty">${currentLang==="bn"?"কোনো ওয়েবসাইট পাওয়া যায়নি। অন্য শব্দ দিয়ে খুঁজুন।":"No websites found. Try another search."}</div>`;
+    <div class="modal-info">
+      <div class="info-box"><small>${t("priceLabel")}</small><strong>${formatPrice(p.price)}</strong></div>
+      <div class="info-box"><small>${t("categoryLabel")}</small><strong>${escapeHTML(categoryLabel(p.category))}</strong></div>
+      <div class="info-box"><small>${t("idLabel")}</small><strong>${escapeHTML(p.id)}</strong></div>
+      <div class="info-box"><small>${t("featuresLabel")}</small><strong>${features.length} ${language==="bn"?"টি":"items"}</strong></div>
+    </div>
+    <h4 style="margin:0 0 8px">${t("featuresLabel")}</h4>
+    <ul style="font-size:13px;color:var(--muted);padding-left:20px">
+      ${features.map(feature=>`<li>${escapeHTML(feature)}</li>`).join("")}
+    </ul>
+    <p style="font-size:11px;color:var(--muted)">${t("previewDisclaimer")}</p>
+    <div class="modal-actions">
+      <button class="btn btn-primary" data-modal-order="${p.id}">${t("order")} ↗</button>
+      <button class="btn btn-outline" data-modal-share="${p.id}">${t("share")} ↗</button>
+      <button class="btn btn-outline" data-modal-wish="${p.id}">${wishlist.includes(p.id)?"♥ "+t("saved"):"♡ "+t("save")}</button>
+    </div>`;
+  if(show) $("#previewModal").classList.add("open");
+}
+function closePreview(){
+  $("#previewModal").classList.remove("open");
+  currentPreviewId=null;
+}
+function whatsappUrl(message){
+  return "https://wa.me/"+WHATSAPP_NUMBER+"?text="+encodeURIComponent(message);
+}
+function orderProduct(id){
+  const p=productById(id);
+  if(!p) return;
+  const message=t("productMessage")+p.name+" ("+p.id+"), "+formatPrice(p.price)+". "+t("previewUnavailable");
+  window.open(whatsappUrl(message),"_blank","noopener,noreferrer");
+}
+async function shareProduct(id){
+  const p=productById(id);
+  if(!p) return;
+  const url=location.href.split("#")[0]+"#marketplace";
+  const shareData={title:"WebsitesDeal — "+p.name,text:p.name+" | "+categoryLabel(p.category)+" | "+formatPrice(p.price),url};
+  try{
+    if(navigator.share){
+      await navigator.share(shareData);
+    }else if(navigator.clipboard && window.isSecureContext){
+      await navigator.clipboard.writeText(shareData.text+" — "+url);
+      showToast(t("shareCopied"));
+    }else{
+      fallbackCopy(shareData.text+" — "+url);
+    }
+  }catch(error){
+    if(error && error.name==="AbortError") return;
+    fallbackCopy(shareData.text+" — "+url);
+  }
+}
+function fallbackCopy(text){
+  const area=document.createElement("textarea");
+  area.value=text;
+  area.style.position="fixed";area.style.opacity="0";
+  document.body.appendChild(area);area.select();
+  let success=false;
+  try{success=document.execCommand("copy");}catch(e){}
+  area.remove();
+  showToast(success?t("shareCopied"):t("shareFailed"));
+}
+function showTrackingResult(orderId){
+  const order=demoOrders[orderId];
+  if(!order){
+    $("#trackingResult").innerHTML=`<h3>${t("trackingNotFound")}</h3><p>${t("trackingDemoNote")}</p>`;
+    return;
+  }
+  const statusText=t(order.status);
+  $("#trackingResult").innerHTML=`
+    <div style="display:flex;justify-content:space-between;gap:12px;align-items:start;flex-wrap:wrap">
+      <div><h3>${escapeHTML(orderId)}</h3><p>${escapeHTML(order.product)}</p></div>
+      <span class="status">${statusText}</span>
+    </div>
+    <p>${t("trackLabel")}: <strong>${statusText}</strong></p>
+    <p>${t("trackDate")}</p>
+    <div class="steps">
+      <div class="step ${order.progress>=1?"done":""}"></div>
+      <div class="step ${order.progress>=2?"done":""}"></div>
+      <div class="step ${order.progress>=3?"done":""}"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;gap:8px;margin-top:8px;color:var(--muted);font-size:10px">
+      <span>${t("steps1")}</span><span>${t("steps2")}</span><span>${t("steps3")}</span>
+    </div>
+    <p style="margin-top:15px">${t("trackingDemoNote")}</p>`;
+}
 
- $("productGrid").querySelectorAll("[data-preview]").forEach(btn=>btn.addEventListener("click",()=>{
-  const p=products.find(item=>item.id===Number(btn.dataset.preview));
-  showToast((currentLang==="bn"?"ডেমো প্রিভিউ: ":"Demo preview: ")+p.name+". "+(currentLang==="bn"?"প্রকৃত Preview URL পরে যুক্ত হবে।":"Actual preview URL will be added later."));
- }));
- $("productGrid").querySelectorAll("[data-order]").forEach(btn=>btn.addEventListener("click",()=>{
-  const p=products.find(item=>item.id===Number(btn.dataset.order));
-  const msg=`Hello WebsitesDeal, I am interested in ${p.name}. Displayed demo price: ${money(p.price)}. Please confirm the final price and availability.`;
-  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank","noopener");
- }));
+/* Events */
+$("#languageBtn").addEventListener("click",()=>setLanguage(language==="bn"?"en":"bn"));
+$("#themeBtn").addEventListener("click",toggleTheme);
+$("#menuBtn").addEventListener("click",()=>$("#navLinks").classList.toggle("open"));
+$("#navLinks").addEventListener("click",event=>{
+  if(event.target.closest("a")) $("#navLinks").classList.remove("open");
+});
+
+$("#searchInput").addEventListener("input",renderProducts);
+$("#categoryFilter").addEventListener("change",()=>{
+  activeCategory="All";
+  renderProducts();
+});
+$("#sortFilter").addEventListener("change",renderProducts);
+
+$("#categoryGrid").addEventListener("click",event=>{
+  const btn=event.target.closest("[data-category]");
+  if(!btn) return;
+  activeCategory=activeCategory===btn.dataset.category?"All":btn.dataset.category;
+  $("#categoryFilter").value="All";
+  renderProducts();
+  $("#marketplace").scrollIntoView({behavior:"smooth"});
+});
+$("#allCategories").addEventListener("click",()=>{
+  activeCategory="All";
+  $("#categoryFilter").value="All";
+  $("#searchInput").value="";
+  renderProducts();
+  $("#marketplace").scrollIntoView({behavior:"smooth"});
+});
+$("#productGrid").addEventListener("click",event=>handleProductAction(event));
+$("#wishlistGrid").addEventListener("click",event=>handleProductAction(event));
+
+function handleProductAction(event){
+  const wish=event.target.closest("[data-wish]");
+  const preview=event.target.closest("[data-preview]");
+  const order=event.target.closest("[data-order]");
+  if(wish){toggleWishlist(wish.dataset.wish);return;}
+  if(preview){openPreview(preview.dataset.preview);return;}
+  if(order){orderProduct(order.dataset.order);return;}
 }
-function trackOrder(event){
- event.preventDefault();
- const id=$("orderId").value.trim().toUpperCase();
- const order=DEMO_ORDERS[id];
- $("trackError").classList.remove("show");
- $("trackResult").classList.remove("show");
- if(!order){
-  $("trackError").textContent=currentLang==="bn"?"এই Order ID পাওয়া যায়নি। ডেমো দেখতে WD-1001, WD-1002 বা WD-1003 ব্যবহার করুন।":"Order ID not found. Try WD-1001, WD-1002 or WD-1003 for the demo.";
-  $("trackError").classList.add("show");
-  return;
- }
- lastOrder={id,...order};
- $("resultId").textContent=id;
- $("resultProduct").textContent=order.product;
- $("resultStatus").textContent=order.status;
- $("resultNote").textContent=order.note;
- $("timeline").innerHTML=order.steps.map((label,index)=>`
-  <div class="step ${index<=order.current?"done":""}">
-   <div class="step-icon">${index<=order.current?"✓":index+1}</div>
-   <div><strong>${label}</strong><small>${index<order.current?(currentLang==="bn"?"সম্পন্ন":"Completed"):index===order.current?(currentLang==="bn"?"বর্তমান ধাপ":"Current step"):(currentLang==="bn"?"অপেক্ষমাণ":"Pending")}</small></div>
-  </div>`).join("");
- $("trackResult").classList.add("show");
-}
-$("trackForm").addEventListener("submit",trackOrder);
-$("trackWhatsApp").addEventListener("click",()=>{
- if(!lastOrder)return;
- const message=`Hello WebsitesDeal, please help me with Order ID ${lastOrder.id} (${lastOrder.product}).`;
- window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener");
+$("#wishlistNav").addEventListener("click",showWishlist);
+$("#closeWishlist").addEventListener("click",closeWishlist);
+$("#modalClose").addEventListener("click",closePreview);
+$("#previewModal").addEventListener("click",event=>{
+  if(event.target===$("#previewModal")) closePreview();
 });
-$("searchInput").addEventListener("input",renderProducts);
-$("searchBtn").addEventListener("click",()=>{
- renderProducts();
- $("market").scrollIntoView({behavior:"smooth"});
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape") closePreview();
 });
-document.querySelectorAll(".filter").forEach(button=>button.addEventListener("click",()=>{
- activeFilter=button.dataset.filter;
- document.querySelectorAll(".filter").forEach(item=>item.classList.toggle("active",item===button));
- renderProducts();
-}));
-document.querySelectorAll(".category").forEach(card=>card.addEventListener("click",()=>{
- activeFilter=card.dataset.category;
- document.querySelectorAll(".filter").forEach(item=>item.classList.toggle("active",item.dataset.filter===activeFilter));
- renderProducts();
-}));
-$("themeBtn").addEventListener("click",()=>{
- document.body.classList.toggle("light");
- const isLight=document.body.classList.contains("light");
- $("themeBtn").textContent=isLight?"☾":"☼";
- $("themeBtn").setAttribute("aria-label",isLight?"Switch to dark mode":"Switch to light mode");
+$("#modalContent").addEventListener("click",event=>{
+  const order=event.target.closest("[data-modal-order]");
+  const share=event.target.closest("[data-modal-share]");
+  const wish=event.target.closest("[data-modal-wish]");
+  if(order) orderProduct(order.dataset.modalOrder);
+  if(share) shareProduct(share.dataset.modalShare);
+  if(wish) toggleWishlist(wish.dataset.modalWish);
+  if(wish && currentPreviewId) openPreview(currentPreviewId,false);
 });
-function applyLanguage(){
- document.documentElement.lang=currentLang==="bn"?"bn":"en";
- document.querySelectorAll("[data-bn][data-en]").forEach(el=>{
-  el.innerHTML=el.dataset[currentLang];
- });
- $("langBtn").textContent=currentLang==="bn"?"EN":"বাংলা";
- $("searchInput").placeholder=currentLang==="bn"?"ওয়েবসাইট খুঁজুন...":"Search websites...";
- $("orderId").placeholder=currentLang==="bn"?"যেমন: WD-1001":"Example: WD-1001";
- $("searchBtn").textContent=currentLang==="bn"?"খুঁজুন ↗":"Search ↗";
- renderProducts();
-}
-$("langBtn").addEventListener("click",()=>{
- currentLang=currentLang==="bn"?"en":"bn";
- applyLanguage();
+$$(".plan-order").forEach(button=>{
+  button.addEventListener("click",()=>{
+    const message=t("planMessage")+button.dataset.plan;
+    window.open(whatsappUrl(message),"_blank","noopener,noreferrer");
+  });
 });
-document.querySelectorAll(".planOrder").forEach(button=>button.addEventListener("click",()=>{
- const msg=`Hello WebsitesDeal, I am interested in the ${button.dataset.plan} subscription. Please confirm the plan details and terms.`;
- window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank","noopener");
-}));
-$("year").textContent=new Date().getFullYear();
-renderProducts();
+$("#trackingForm").addEventListener("submit",event=>{
+  event.preventDefault();
+  const id=$("#orderIdInput").value.trim().toUpperCase();
+  if(id) showTrackingResult(id);
+});
+$("#footerHelp").addEventListener("click",event=>{
+  event.preventDefault();
+  document.querySelector(".help-box").scrollIntoView({behavior:"smooth"});
+});
+
+/* Initial setup */
+(function init(){
+  $("#year").textContent=new Date().getFullYear();
+  const savedTheme=localStorage.getItem(THEME_KEY);
+  if(savedTheme==="light"){
+    document.body.classList.add("light");
+    $("#themeBtn").textContent="☾";
+  }
+  setLanguage(language);
+  renderProducts();
+})();
 </script>
 </body>
 </html>
