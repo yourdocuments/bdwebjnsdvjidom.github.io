@@ -1,1201 +1,302 @@
+```html
 <!DOCTYPE html>
-<html lang="bn" data-theme="light">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f3f6f1">
-<title>WebsitesDeal — Dashboard</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard | WebsitesDeal</title>
 <style>
-:root {
-  --bg:#f3f6f1;
-  --panel:#ffffff;
-  --text:#16251b;
-  --muted:#738075;
-  --line:#e0e7df;
-  --accent:#b8f34a;
-  --green:#78b32a;
-  --soft:#edf6e7;
-  --shadow:0 12px 35px rgba(20,40,20,.05);
-}
-
-[data-theme="dark"] {
-  --bg:#08110c;
-  --panel:#101d15;
-  --text:#eef6ef;
-  --muted:#9aada0;
-  --line:#293c2e;
-  --soft:#1b3020;
-  --shadow:0 12px 35px rgba(0,0,0,.12);
-}
-
-* { box-sizing:border-box; }
-
-html { scroll-behavior:smooth; }
-
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--text);
-  font-family:"Inter","Hind Siliguri",sans-serif;
-  transition:background .2s,color .2s;
-}
-
-button,input { font:inherit; }
-button,a { -webkit-tap-highlight-color:transparent; }
-a { color:inherit; }
-
-.wrap {
-  max-width:1200px;
-  margin:auto;
-  padding:24px;
-}
-
-/* HEADER */
-
-.top {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap:wrap;
-}
-
-.brand {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
-  font-size:18px;
-  font-weight:900;
-}
-
-.logo {
-  display:grid;
-  place-items:center;
-  width:39px;
-  height:39px;
-  border-radius:12px;
-  background:var(--accent);
-  color:#102018;
-  overflow:hidden;
-  font-weight:900;
-}
-
-.logo img {
-  width:100%;
-  height:100%;
-  object-fit:contain;
-}
-
-.brand-name { line-height:1.3; }
-
-.brand-name small {
-  display:block;
-  font-size:10px;
-  color:var(--muted);
-  font-weight:600;
-}
-
-.top-actions {
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-}
-
-.btn {
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  gap:7px;
-  border:1px solid var(--line);
-  background:var(--panel);
-  color:var(--text);
-  border-radius:11px;
-  padding:11px 14px;
-  font-size:12px;
-  font-weight:800;
-  text-decoration:none;
-  cursor:pointer;
-  transition:transform .2s,border-color .2s;
-}
-
-.btn:hover {
-  transform:translateY(-1px);
-  border-color:var(--green);
-}
-
-.btn.primary {
-  background:var(--accent);
-  color:#102018;
-  border-color:var(--accent);
-}
-
-.btn.full { width:100%; }
-
-/* HERO */
-
-.hero {
-  margin:28px 0 18px;
-  padding:clamp(24px,5vw,42px);
-  border-radius:24px;
-  background:linear-gradient(120deg,#102018,#234327);
-  color:#f2f8ef;
-  position:relative;
-  overflow:hidden;
-}
-
-.hero:after {
-  content:"";
-  position:absolute;
-  width:300px;
-  height:300px;
-  border-radius:50%;
-  background:#b8f34a1c;
-  right:-70px;
-  top:-120px;
-  pointer-events:none;
-}
-
-.hero-content {
-  position:relative;
-  z-index:1;
-  max-width:650px;
-}
-
-.eyebrow {
-  color:var(--accent);
-  font-size:10px;
-  font-weight:900;
-  letter-spacing:1.8px;
-}
-
-.hero h1 {
-  font-size:clamp(27px,4vw,43px);
-  letter-spacing:-1.5px;
-  line-height:1.3;
-  margin:14px 0;
-}
-
-.hero p {
-  color:#c1d0c2;
-  font-size:13px;
-  line-height:1.9;
-  max-width:540px;
-}
-
-.hero-actions {
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:20px;
-}
-
-.hero .btn:not(.primary) {
-  background:#ffffff12;
-  border-color:#ffffff35;
-  color:white;
-}
-
-/* PRAYER TIMES */
-
-.prayer-panel {
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:20px;
-  margin:18px 0;
-  box-shadow:var(--shadow);
-}
-
-.section-head {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
-  margin-bottom:17px;
-}
-
-.section-head h2 {
-  font-size:16px;
-  margin:0 0 5px;
-}
-
-.section-head p {
-  margin:0;
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.7;
-}
-
-.prayer-grid {
-  display:grid;
-  grid-template-columns:repeat(5,minmax(0,1fr));
-  gap:10px;
-}
-
-.prayer-item {
-  text-align:center;
-  border:1px solid var(--line);
-  background:var(--bg);
-  border-radius:13px;
-  padding:15px 8px;
-}
-
-.prayer-item.next {
-  border-color:#a7d95a;
-  background:var(--soft);
-}
-
-.prayer-icon {
-  font-size:20px;
-  margin-bottom:9px;
-}
-
-.prayer-item strong {
-  display:block;
-  font-size:12px;
-}
-
-.prayer-item time {
-  display:block;
-  font-size:15px;
-  font-weight:900;
-  margin-top:8px;
-}
-
-.prayer-item small {
-  display:block;
-  color:var(--muted);
-  font-size:9px;
-  margin-top:6px;
-}
-
-.prayer-note {
-  color:var(--muted);
-  font-size:10px;
-  line-height:1.8;
-  margin:14px 0 0;
-}
-
-/* STATS */
-
-.stats {
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:13px;
-  margin:18px 0;
-}
-
-.stat,.panel {
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:17px;
-  padding:20px;
-  box-shadow:var(--shadow);
-}
-
-.stat small {
-  display:block;
-  color:var(--muted);
-  font-size:11px;
-}
-
-.stat strong {
-  display:block;
-  font-size:28px;
-  letter-spacing:-1px;
-  margin:12px 0 5px;
-}
-
-.stat span {
-  color:var(--green);
-  font-size:10px;
-}
-
-/* MAIN GRID */
-
-.grid {
-  display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:16px;
-  margin-top:16px;
-}
-
-.panel h2 {
-  font-size:16px;
-  margin:0 0 5px;
-}
-
-.panel-desc {
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.8;
-  margin:0;
-}
-
-.listing {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  padding:15px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.listing:last-child { border-bottom:0; }
-
-.listing strong {
-  display:block;
-  font-size:12px;
-  overflow-wrap:anywhere;
-}
-
-.listing small {
-  display:block;
-  color:var(--muted);
-  font-size:10px;
-  margin-top:6px;
-}
-
-.price {
-  font-size:13px;
-  font-weight:900;
-  white-space:nowrap;
-}
-
-.empty {
-  color:var(--muted);
-  font-size:12px;
-  padding:20px 0;
-}
-
-.plan {
-  padding:16px;
-  border:1px solid var(--line);
-  border-radius:13px;
-  margin-top:12px;
-}
-
-.plan.recommended { border-color:#a7d95a; }
-
-.plan strong { font-size:13px; }
-
-.plan .price {
-  font-size:24px;
-  margin:12px 0;
-}
-
-.plan p {
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.8;
-}
-
-.recommend {
-  color:var(--green);
-  font-size:10px;
-}
-
-.progress {
-  height:6px;
-  background:var(--line);
-  border-radius:99px;
-  overflow:hidden;
-  margin-top:12px;
-}
-
-.progress i {
-  display:block;
-  height:100%;
-  background:#8bcf37;
-  border-radius:99px;
-}
-
-/* QUICK ACTIONS */
-
-.quick-grid {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:12px;
-  margin-top:16px;
-}
-
-.quick-card {
-  display:block;
-  text-decoration:none;
-  background:var(--panel);
-  border:1px solid var(--line);
-  border-radius:15px;
-  padding:18px;
-  transition:transform .2s,border-color .2s;
-}
-
-.quick-card:hover {
-  transform:translateY(-2px);
-  border-color:var(--green);
-}
-
-.quick-card .icon {
-  font-size:22px;
-  margin-bottom:12px;
-}
-
-.quick-card strong {
-  display:block;
-  font-size:12px;
-}
-
-.quick-card p {
-  color:var(--muted);
-  font-size:10px;
-  line-height:1.7;
-  margin-bottom:0;
-}
-
-/* FOOTER */
-
-.notice {
-  margin-top:18px;
-  padding:15px;
-  border:1px dashed var(--line);
-  border-radius:13px;
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.9;
-}
-
-footer {
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  flex-wrap:wrap;
-  padding:25px 0 8px;
-  color:var(--muted);
-  font-size:10px;
-}
-
-/* LOGIN MODAL */
-
-.modal {
-  display:none;
-  position:fixed;
-  inset:0;
-  z-index:100;
-  background:#061009bb;
-  padding:18px;
-  align-items:center;
-  justify-content:center;
-  overflow-y:auto;
-}
-
-.modal.open { display:flex; }
-
-.modal-card {
-  width:100%;
-  max-width:410px;
-  background:var(--panel);
-  color:var(--text);
-  border:1px solid var(--line);
-  border-radius:20px;
-  padding:25px;
-  position:relative;
-  box-shadow:0 25px 80px #0004;
-}
-
-.modal-close {
-  position:absolute;
-  top:12px;
-  right:12px;
-  border:1px solid var(--line);
-  border-radius:9px;
-  background:var(--bg);
-  color:var(--text);
-  width:34px;
-  height:34px;
-  cursor:pointer;
-}
-
-.modal-card h2 {
-  font-size:22px;
-  margin:8px 0;
-}
-
-.modal-card > p {
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.8;
-}
-
-.tabs {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6px;
-  padding:5px;
-  border-radius:11px;
-  background:var(--bg);
-  margin:20px 0;
-}
-
-.tab {
-  border:0;
-  border-radius:8px;
-  padding:11px;
-  background:transparent;
-  color:var(--muted);
-  font-weight:800;
-  font-size:12px;
-  cursor:pointer;
-}
-
-.tab.active {
-  background:var(--accent);
-  color:#102018;
-}
-
-.field { margin:13px 0; }
-
-.field label {
-  display:block;
-  font-size:11px;
-  font-weight:700;
-  margin-bottom:7px;
-}
-
-.field input {
-  width:100%;
-  padding:13px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  outline:none;
-  background:var(--bg);
-  color:var(--text);
-  font-size:12px;
-}
-
-.field input:focus { border-color:var(--green); }
-
-.form-message {
-  font-size:11px;
-  line-height:1.8;
-  margin-top:12px;
-  color:var(--muted);
-}
-
-@media(max-width:800px) {
-  .stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .grid { grid-template-columns:1fr; }
-  .prayer-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
-}
-
-@media(max-width:520px) {
-  .wrap { padding:14px; }
-  .top { align-items:flex-start; }
-  .brand { font-size:15px; }
-  .top-actions { width:100%; }
-  .top-actions .btn { flex:1; padding:10px 8px; }
-  .hero { margin-top:20px; padding:24px 19px; }
-  .hero h1 { font-size:28px; }
-  .stat,.panel { padding:15px; }
-  .stat strong { font-size:23px; }
-  .prayer-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
-  .quick-grid { grid-template-columns:1fr; }
-}
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#697386;--line:#e6eaf0;--accent:#6558f5;--soft:#eeecff;--shadow:0 8px 28px #1b25400a}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);transition:.2s}
+body.dark{--bg:#111521;--card:#1b2130;--text:#f1f4fb;--muted:#a4adc0;--line:#30394b;--soft:#302b52;--shadow:0 8px 28px #0002}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:245px;background:var(--card);border-right:1px solid var(--line);padding:24px 16px;flex-shrink:0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;margin:0 8px 34px;overflow-wrap:anywhere}
+.brand img{width:38px;height:38px;object-fit:contain;border-radius:9px}
+.nav a{display:block;color:var(--muted);text-decoration:none;padding:12px 14px;border-radius:10px;margin:4px 0}
+.nav a.active,.nav a:hover{background:var(--soft);color:var(--accent)}
+.main{flex:1;min-width:0;padding:28px;max-width:1500px;margin:auto;width:100%}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+h1{font-size:26px;margin:0 0 7px}h2{font-size:18px;margin:0 0 15px}
+p{line-height:1.6}.muted{color:var(--muted);font-size:14px}
+.actions{display:flex;gap:9px;flex-wrap:wrap}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--text);padding:10px 14px;border-radius:10px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn.primary{background:var(--accent);color:white;border-color:var(--accent)}
+.btn.danger{color:#d53b50}
+.hero{border-radius:18px;background:linear-gradient(120deg,#6558f5,#9279ff);color:white;padding:28px;display:flex;gap:24px;align-items:center;justify-content:space-between;margin-bottom:22px;overflow:hidden}
+.hero h2{font-size:clamp(23px,3vw,34px);margin:0 0 10px}.hero p{max-width:650px;margin:0 0 18px;color:#f2efff}
+.hero img{max-width:30%;max-height:160px;object-fit:contain;border-radius:12px}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:20px;box-shadow:var(--shadow);min-width:0}
+.stat-number{font-size:28px;font-weight:800;margin-top:8px}
+.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:26px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.site-card{display:flex;flex-direction:column;gap:10px}
+.site-card h3{margin:0;font-size:17px;overflow-wrap:anywhere}
+.site-card p{margin:0;color:var(--muted);font-size:14px;flex:1;overflow-wrap:anywhere}
+.site-icon{width:44px;height:44px;border-radius:12px;background:var(--soft);display:grid;place-items:center;font-weight:800;color:var(--accent);overflow:hidden}
+.site-icon img{width:100%;height:100%;object-fit:contain}
+.site-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.prayers{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.prayer{background:var(--soft);padding:14px 10px;border-radius:12px;text-align:center}
+.prayer strong{display:block;margin-top:8px;color:var(--accent)}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:26px}
+.footer{margin:32px 0 8px;text-align:center;color:var(--muted);font-size:13px}
+.modal-backdrop{position:fixed;inset:0;background:#10152599;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}
+.modal{width:min(440px,100%);background:var(--card);color:var(--text);padding:24px;border-radius:18px}
+.modal input{width:100%;padding:12px;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:9px;margin:7px 0 13px}
+.notice{font-size:12px;color:var(--muted);margin-top:12px;line-height:1.6}
+@media(max-width:1050px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.prayers{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.layout{display:block}.sidebar{width:100%;padding:14px;border-right:0;border-bottom:1px solid var(--line)}.brand{margin:0 5px 12px}.nav{display:flex;gap:6px;overflow:auto}.nav a{white-space:nowrap;margin:0}.main{padding:18px}.stats{grid-template-columns:1fr}.hero{padding:22px}.hero img{max-width:32%}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.prayers{grid-template-columns:repeat(2,minmax(0,1fr))}.hero img{display:none}.main{padding:14px}h1{font-size:23px}}
 </style>
 </head>
-
 <body>
-<div class="wrap">
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand"><img id="brandLogo" alt="Brand logo" hidden><span id="brandName">WebsitesDeal</span></div>
+    <nav class="nav">
+      <a href="#overview" class="active">🏠 Overview</a>
+      <a href="#websites">🌐 My Websites</a>
+      <a href="#prayer">🕌 Prayer Times</a>
+      <a href="admin.html">⚙️ Admin Panel</a>
+    </nav>
+  </aside>
 
-  <!-- HEADER -->
-  <header class="top">
-    <a class="brand" href="index.html">
-      <span class="logo" id="brandLogo">W</span>
-      <span class="brand-name">
-        <span id="brandName">WebsitesDeal</span>
-        <small>YOUR DIGITAL WORKSPACE</small>
-      </span>
-    </a>
-
-    <div class="top-actions">
-      <button class="btn" id="themeBtn" type="button">☾ Dark</button>
-      <button class="btn" type="button" onclick="openAuth('login')">Login</button>
-      <button class="btn primary" type="button" onclick="openAuth('register')">Register</button>
-      <a class="btn" href="index.html">← Storefront</a>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="eyebrow">YOUR WORKSPACE / 01</div>
-      <h1>আপনার ডিজিটাল ব্যবসার কেন্দ্র</h1>
-      <p>
-        ওয়েবসাইট আবিষ্কার করুন, নতুন প্রজেক্টের আইডিয়া খুঁজুন
-        এবং আপনার পছন্দের ওয়েবসাইট টেমপ্লেট দেখুন।
-      </p>
-      <div class="hero-actions">
-        <a class="btn primary" href="index.html">Explore Websites ↗</a>
-        <button class="btn" type="button" onclick="openAuth('register')">
-          Create Account
-        </button>
+  <main class="main">
+    <header class="topbar">
+      <div><h1>Dashboard</h1><div class="muted">Manage your websites and settings in one place.</div></div>
+      <div class="actions">
+        <button class="btn" id="themeBtn" type="button">🌙 Toggle theme</button>
+        <button class="btn primary" id="addSiteBtn" type="button">+ Add website</button>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- PRAYER TIMES -->
-  <section class="prayer-panel">
-    <div class="section-head">
+    <section class="hero" id="hero">
       <div>
-        <h2>🕌 আজকের সালাতের সময়</h2>
-        <p id="prayerDate">দৈনিক নামাজের সময়সূচি</p>
+        <h2 id="bannerTitle">Build your digital presence</h2>
+        <p id="bannerText">Organize your favorite websites and manage your digital workspace.</p>
+        <a class="btn" href="#websites" style="background:white;color:#5546d8;border-color:white">Explore websites →</a>
       </div>
-      <button class="btn" id="alarmBtn" type="button">🔔 Alarm: Off</button>
-    </div>
-
-    <div class="prayer-grid" id="prayerGrid">
-      <div class="prayer-item">
-        <div class="prayer-icon">🌅</div>
-        <strong>ফজর</strong>
-        <time>04:45 AM</time>
-        <small>নমুনা সময়</small>
-      </div>
-      <div class="prayer-item">
-        <div class="prayer-icon">☀️</div>
-        <strong>যোহর</strong>
-        <time>12:00 PM</time>
-        <small>নমুনা সময়</small>
-      </div>
-      <div class="prayer-item">
-        <div class="prayer-icon">🌤️</div>
-        <strong>আসর</strong>
-        <time>04:15 PM</time>
-        <small>নমুনা সময়</small>
-      </div>
-      <div class="prayer-item">
-        <div class="prayer-icon">🌇</div>
-        <strong>মাগরিব</strong>
-        <time>05:50 PM</time>
-        <small>নমুনা সময়</small>
-      </div>
-      <div class="prayer-item">
-        <div class="prayer-icon">🌙</div>
-        <strong>এশা</strong>
-        <time>07:10 PM</time>
-        <small>নমুনা সময়</small>
-      </div>
-    </div>
-
-    <p class="prayer-note">
-      গুরুত্বপূর্ণ: এখানে নমুনা সময় দেখানো হয়েছে, লাইভ বা যাচাইকৃত
-      নামাজের সময় নয়। আপনার এলাকার নির্ভুল সময় বসিয়ে নিন।
-      অ্যালার্ম চালাতে ব্রাউজার খোলা থাকতে হবে।
-    </p>
-  </section>
-
-  <!-- STATISTICS -->
-  <section class="stats">
-    <div class="stat">
-      <small>Website Listings</small>
-      <strong id="siteCount">06</strong>
-      <span>Marketplace inventory</span>
-    </div>
-    <div class="stat">
-      <small>Subscription Plans</small>
-      <strong>03</strong>
-      <span>Available plan examples</span>
-    </div>
-    <div class="stat">
-      <small>Saved Websites</small>
-      <strong id="savedCount">00</strong>
-      <span>Your saved list on this device</span>
-    </div>
-    <div class="stat">
-      <small>Account Status</small>
-      <strong id="accountStatus" style="font-size:19px">Guest</strong>
-      <span id="accountHint">Sign in to your account</span>
-    </div>
-  </section>
-
-  <!-- INVENTORY + PLANS -->
-  <div class="grid">
-    <section class="panel">
-      <div class="section-head">
-        <div>
-          <h2>ওয়েবসাইট ইনভেন্টরি</h2>
-          <p class="panel-desc">সর্বশেষ তালিকা ও মূল্য</p>
-        </div>
-        <span class="eyebrow">WEBSITES</span>
-      </div>
-
-      <div id="listings">
-        <div class="listing">
-          <div><strong>Nexa Business Pro</strong><small>Business · Ready-made website</small></div>
-          <div class="price">৳2,490</div>
-        </div>
-      </div>
-
-      <div style="margin-top:15px">
-        <a class="btn" href="index.html">Browse Marketplace ↗</a>
-      </div>
+      <img id="bannerImage" alt="Banner artwork" hidden>
     </section>
 
-    <section class="panel">
-      <h2>মাসিক সাবস্ক্রিপশন</h2>
-      <p class="panel-desc">আপনার ব্যবসার জন্য উপযুক্ত প্যাকেজ</p>
-
-      <div class="plan">
-        <strong>Starter</strong>
-        <div class="price">৳990 <span style="font-size:10px;color:var(--muted)">/ মাস</span></div>
-        <p>১টি টেমপ্লেট · বেসিক কাস্টমাইজেশন</p>
-        <div class="progress"><i style="width:30%"></i></div>
-      </div>
-
-      <div class="plan recommended">
-        <strong>Growth <span class="recommend">· Recommended</span></strong>
-        <div class="price">৳2,490 <span style="font-size:10px;color:var(--muted)">/ মাস</span></div>
-        <p>৫টি প্রিমিয়াম ওয়েবসাইট · অগ্রাধিকার সাপোর্ট</p>
-        <div class="progress"><i style="width:68%"></i></div>
-      </div>
-
-      <div class="plan">
-        <strong>Business+</strong>
-        <div class="price">৳4,990 <span style="font-size:10px;color:var(--muted)">/ মাস</span></div>
-        <p>আনলিমিটেড প্রিভিউ · ক্লায়েন্ট প্রজেক্ট টুলস</p>
-        <div class="progress"><i style="width:90%"></i></div>
-      </div>
-
-      <button class="btn primary full" style="margin-top:15px" onclick="openAuth('register')">
-        Choose a Plan
-      </button>
+    <section class="stats" id="overview">
+      <div class="card"><div class="muted">Total Websites</div><div class="stat-number" id="siteCount">0</div></div>
+      <div class="card"><div class="muted">Saved Websites</div><div class="stat-number" id="savedCount">0</div></div>
+      <div class="card"><div class="muted">Workspace</div><div class="stat-number" style="font-size:22px">Active</div><div class="muted">Local browser storage</div></div>
     </section>
-  </div>
 
-  <!-- QUICK ACTIONS -->
-  <section class="quick-grid">
-    <a class="quick-card" href="index.html">
-      <div class="icon">🌐</div>
-      <strong>Explore Websites</strong>
-      <p>সব ওয়েবসাইট টেমপ্লেট দেখুন।</p>
-    </a>
+    <div class="section-head" id="websites">
+      <div><h2>My Websites</h2><div class="muted">Website links managed from Admin Panel.</div></div>
+      <input id="search" aria-label="Search websites" placeholder="Search websites..." style="padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text);max-width:100%">
+    </div>
+    <section class="grid" id="siteGrid"></section>
 
-    <a class="quick-card" href="index.html#contact">
-      <div class="icon">💬</div>
-      <strong>Contact Support</strong>
-      <p>সহায়তার জন্য আমাদের সঙ্গে যোগাযোগ করুন।</p>
-    </a>
+    <div class="section-head" id="prayer"><div><h2>Prayer Times</h2><div class="muted">Times configured in Admin Panel.</div></div><span class="muted" id="prayerDate"></span></div>
+    <section class="card">
+      <div class="prayers" id="prayerGrid"></div>
+      <div class="notice" id="prayerNote">Prayer times must be entered and verified for your location in Admin Panel.</div>
+    </section>
 
-    <button class="quick-card" style="text-align:left;color:var(--text);font-family:inherit;cursor:pointer" onclick="openAuth('login')">
-      <div class="icon">👤</div>
-      <strong>Account Access</strong>
-      <p>আপনার অ্যাকাউন্টে প্রবেশ করুন।</p>
-    </button>
-  </section>
-
-  <div class="notice">
-    এটি একটি front-end demo dashboard। Website listing একই ব্রাউজারের
-    localStorage থেকে পড়া হয়। নিচের Login/Register অংশটি শুধু demo
-    UI; এটি নিরাপদ user authentication নয়। বাস্তব customer account,
-    payment, subscription billing এবং সব ডিভাইসে data sync চালু করতে
-    secure backend/database ও payment gateway সংযোগ করতে হবে।
-  </div>
-
-  <footer>
-    <span>© <span id="year"></span> <span id="footerBrand">WebsitesDeal</span></span>
-    <span>Built for your digital journey.</span>
-  </footer>
-
+    <div class="footer">© <span id="year"></span> <span id="footerBrand">WebsitesDeal</span>. All rights reserved.</div>
+  </main>
 </div>
 
-<!-- LOGIN / REGISTER MODAL -->
-<div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
-  <div class="modal-card">
-    <button class="modal-close" type="button" aria-label="Close" onclick="closeAuth()">✕</button>
-    <div class="eyebrow">YOUR ACCOUNT</div>
-    <h2 id="authTitle">Welcome back</h2>
-    <p id="authDescription">আপনার ডেমো অ্যাকাউন্টে প্রবেশ করুন।</p>
-
-    <div class="tabs">
-      <button class="tab active" id="loginTab" type="button" onclick="setAuthMode('login')">Login</button>
-      <button class="tab" id="registerTab" type="button" onclick="setAuthMode('register')">Register</button>
+<div class="modal-backdrop" id="siteModal">
+  <div class="modal">
+    <h2 id="modalTitle">Add website</h2>
+    <label for="siteName">Website name</label>
+    <input id="siteName" placeholder="Example: My Portfolio">
+    <label for="siteUrl">Website URL</label>
+    <input id="siteUrl" type="url" placeholder="https://example.com">
+    <label for="siteDesc">Description</label>
+    <input id="siteDesc" placeholder="Short description">
+    <div class="actions">
+      <button class="btn primary" id="saveSiteBtn" type="button">Save website</button>
+      <button class="btn" id="cancelSiteBtn" type="button">Cancel</button>
     </div>
-
-    <form id="authForm">
-      <div class="field" id="nameField" hidden>
-        <label for="authName">আপনার নাম</label>
-        <input id="authName" type="text" autocomplete="name" placeholder="আপনার নাম">
-      </div>
-
-      <div class="field">
-        <label for="authEmail">ইমেইল</label>
-        <input id="authEmail" type="email" autocomplete="email" required placeholder="you@example.com">
-      </div>
-
-      <div class="field">
-        <label for="authPassword">পাসওয়ার্ড</label>
-        <input id="authPassword" type="password" autocomplete="current-password" required minlength="6" placeholder="কমপক্ষে ৬ অক্ষর">
-      </div>
-
-      <button class="btn primary full" id="authSubmit" type="submit">Login</button>
-      <div class="form-message" id="authMessage" role="status"></div>
-    </form>
+    <div class="notice">This demo stores data only in this browser. Do not enter passwords or sensitive information.</div>
   </div>
 </div>
 
 <script>
-"use strict";
-
-/* ---------------------------------------
-   WEBSITE LISTINGS
---------------------------------------- */
-
-const seedSites = [
-  {id:1,title:"Nexa Business Pro",category:"Business",price:2490},
-  {id:2,title:"Mori E-commerce",category:"Ecommerce",price:3490},
-  {id:3,title:"Saffron Restaurant",category:"Restaurant",price:1990},
-  {id:4,title:"Orbit Creative Agency",category:"Agency",price:2790},
-  {id:5,title:"Mono Personal Portfolio",category:"Portfolio",price:1490},
-  {id:6,title:"Haven Real Estate",category:"Real Estate",price:2990}
-];
-
-function getSites() {
-  try {
-    const data = JSON.parse(localStorage.getItem("wd_sites"));
-    return Array.isArray(data) ? data : seedSites;
-  } catch {
-    return seedSites;
-  }
-}
-
-function renderSites() {
-  const sites = getSites();
-  document.getElementById("siteCount").textContent =
-    String(sites.length).padStart(2,"0");
-
-  const container = document.getElementById("listings");
-
-  if (!sites.length) {
-    container.innerHTML = '<div class="empty">কোনো ওয়েবসাইট নেই। পরে নতুন তালিকা যোগ করুন।</div>';
-    return;
-  }
-
-  container.innerHTML = sites.slice(0,6).map(site => {
-    const title = escapeHTML(site.title || "Untitled website");
-    const category = escapeHTML(site.category || "Website");
-    const price = Number(site.price) || 0;
-
-    return `
-      <div class="listing">
-        <div>
-          <strong>${title}</strong>
-          <small>${category} · Ready-made website</small>
-        </div>
-        <div class="price">৳${price.toLocaleString("en-US")}</div>
-      </div>`;
-  }).join("");
-}
-
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  })[char]);
-}
-
-/* ---------------------------------------
-   LIGHT / DARK THEME
---------------------------------------- */
-
-let theme = localStorage.getItem("wd_theme") || "light";
-
-function setTheme() {
-  document.documentElement.dataset.theme = theme;
-  document.getElementById("themeBtn").textContent =
-    theme === "dark" ? "☀ Light" : "☾ Dark";
-}
-
-document.getElementById("themeBtn").addEventListener("click", () => {
-  theme = theme === "dark" ? "light" : "dark";
-  localStorage.setItem("wd_theme",theme);
-  setTheme();
-});
-
-/* ---------------------------------------
-   BRAND SETTINGS
-   Uses wd_brand if saved by another page.
---------------------------------------- */
-
-function loadBrand() {
-  try {
-    const brand = JSON.parse(localStorage.getItem("wd_brand") || "null");
-    if (!brand) return;
-
-    const name = typeof brand.name === "string" && brand.name.trim()
-      ? brand.name.trim()
-      : "WebsitesDeal";
-
-    document.getElementById("brandName").textContent = name;
-    document.getElementById("footerBrand").textContent = name;
-
-    const logo = document.getElementById("brandLogo");
-
-    if (typeof brand.logo === "string" && /^https?:\/\//i.test(brand.logo)) {
-      const img = document.createElement("img");
-      img.src = brand.logo;
-      img.alt = name + " logo";
-      img.onerror = () => { logo.textContent = "W"; };
-      logo.textContent = "";
-      logo.appendChild(img);
-    } else if (typeof brand.logoText === "string" && brand.logoText.trim()) {
-      logo.textContent = brand.logoText.trim().slice(0,3);
-    }
-  } catch(error) {
-    console.warn("Brand settings could not be loaded.");
-  }
-}
-
-/* ---------------------------------------
-   SAVED WEBSITES COUNTER
---------------------------------------- */
-
-function renderSavedCount() {
-  try {
-    const saved = JSON.parse(localStorage.getItem("wd_saved") || "[]");
-    document.getElementById("savedCount").textContent =
-      String(Array.isArray(saved) ? saved.length : 0).padStart(2,"0");
-  } catch {
-    document.getElementById("savedCount").textContent = "00";
-  }
-}
-
-/* ---------------------------------------
-   DEMO LOGIN / REGISTER
-   NOT secure authentication.
-   Do not store real passwords here.
---------------------------------------- */
-
-let authMode = "login";
-
-function openAuth(mode) {
-  setAuthMode(mode || "login");
-  document.getElementById("authModal").classList.add("open");
-  document.body.style.overflow = "hidden";
-}
-
-function closeAuth() {
-  document.getElementById("authModal").classList.remove("open");
-  document.body.style.overflow = "";
-}
-
-function setAuthMode(mode) {
-  authMode = mode === "register" ? "register" : "login";
-
-  const registering = authMode === "register";
-
-  document.getElementById("authTitle").textContent =
-    registering ? "Create your account" : "Welcome back";
-
-  document.getElementById("authDescription").textContent =
-    registering
-      ? "এটি একটি ডেমো ফর্ম। বাস্তব অ্যাকাউন্ট তৈরি করতে secure authentication লাগবে।"
-      : "এটি ডেমো লগইন। বাস্তব নিরাপদ লগইন এখনো সংযুক্ত নয়।";
-
-  document.getElementById("authSubmit").textContent =
-    registering ? "Create Demo Account" : "Demo Login";
-
-  document.getElementById("nameField").hidden = !registering;
-  document.getElementById("authName").required = registering;
-
-  document.getElementById("authPassword").autocomplete =
-    registering ? "new-password" : "current-password";
-
-  document.getElementById("loginTab").classList.toggle("active",!registering);
-  document.getElementById("registerTab").classList.toggle("active",registering);
-
-  document.getElementById("authMessage").textContent = "";
-}
-
-document.getElementById("authForm").addEventListener("submit",event => {
-  event.preventDefault();
-
-  const email = document.getElementById("authEmail").value.trim();
-  const password = document.getElementById("authPassword").value;
-  const name = document.getElementById("authName").value.trim();
-  const message = document.getElementById("authMessage");
-
-  if (!email || password.length < 6) {
-    message.textContent = "সঠিক ইমেইল ও কমপক্ষে ৬ অক্ষরের পাসওয়ার্ড দিন।";
-    return;
-  }
-
-  /*
-   * Deliberately does not save passwords or claim real authentication.
-   * Connect Firebase Authentication or a secure backend for production.
-   */
-  if (authMode === "register" && !name) {
-    message.textContent = "আপনার নাম লিখুন।";
-    return;
-  }
-
-  const profile = {
-    name: authMode === "register" ? name : (email.split("@")[0] || "User"),
-    email: email,
-    mode: "demo"
+(() => {
+  "use strict";
+  const KEYS = { brand:"wd_brand", banner:"wd_banner", sites:"wd_sites", prayer:"wd_prayer", theme:"wd_theme", saved:"wd_saved" };
+  const $ = id => document.getElementById(id);
+  const read = (key, fallback) => {
+    try { const value = localStorage.getItem(key); return value ? JSON.parse(value) : fallback; }
+    catch { return fallback; }
   };
+  const write = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+  let editingId = null;
 
-  localStorage.setItem("wd_demo_profile",JSON.stringify(profile));
-  renderAccount();
+  function safeUrl(raw) {
+    try {
+      const u = new URL(raw);
+      return ["http:", "https:"].includes(u.protocol) ? u.href : "";
+    } catch { return ""; }
+  }
 
-  message.textContent =
-    "ডেমো UI সম্পন্ন হয়েছে। এটি প্রকৃত অ্যাকাউন্ট যাচাই করে না।";
+  function renderBrand() {
+    const b = read(KEYS.brand, {});
+    const name = typeof b.name === "string" && b.name.trim() ? b.name.trim() : "WebsitesDeal";
+    $("brandName").textContent = name;
+    $("footerBrand").textContent = name;
+    const logo = safeUrl(b.logo || "");
+    $("brandLogo").hidden = !logo;
+    if (logo) $("brandLogo").src = logo;
+  }
 
-  document.getElementById("authPassword").value = "";
-});
+  function renderBanner() {
+    const b = read(KEYS.banner, {});
+    $("bannerTitle").textContent = b.title || "Build your digital presence";
+    $("bannerText").textContent = b.text || "Organize your favorite websites and manage your digital workspace.";
+    const img = safeUrl(b.image || "");
+    $("bannerImage").hidden = !img;
+    if (img) $("bannerImage").src = img;
+  }
 
-function renderAccount() {
-  try {
-    const profile = JSON.parse(localStorage.getItem("wd_demo_profile") || "null");
-    if (!profile) return;
+  function renderSites() {
+    const sites = read(KEYS.sites, []);
+    const validSites = Array.isArray(sites) ? sites : [];
+    const saved = read(KEYS.saved, []);
+    const savedIds = Array.isArray(saved) ? saved : [];
+    const query = $("search").value.trim().toLowerCase();
+    $("siteCount").textContent = validSites.length;
+    $("savedCount").textContent = savedIds.length;
+    const shown = validSites.filter(s => `${s.name || ""} ${s.description || ""} ${s.url || ""}`.toLowerCase().includes(query));
+    const grid = $("siteGrid");
+    grid.replaceChildren();
 
-    document.getElementById("accountStatus").textContent = "Demo";
-    document.getElementById("accountHint").textContent =
-      profile.email || "Demo profile";
-  } catch {}
-}
+    if (!shown.length) {
+      const empty = document.createElement("div");
+      empty.className = "card empty";
+      empty.textContent = query ? "No websites match your search." : "No websites added yet. Use Admin Panel or Add website.";
+      grid.appendChild(empty);
+      return;
+    }
 
-document.getElementById("authModal").addEventListener("click",event => {
-  if (event.target.id === "authModal") closeAuth();
-});
+    shown.forEach(site => {
+      const card = document.createElement("article");
+      card.className = "card site-card";
+      const icon = document.createElement("div");
+      icon.className = "site-icon";
+      const url = safeUrl(site.url || "");
+      icon.textContent = (site.name || "W").trim().charAt(0).toUpperCase() || "W";
 
-document.addEventListener("keydown",event => {
-  if (event.key === "Escape") closeAuth();
-});
+      const title = document.createElement("h3");
+      title.textContent = site.name || "Untitled website";
+      const desc = document.createElement("p");
+      desc.textContent = site.description || "No description added.";
+      const actions = document.createElement("div");
+      actions.className = "site-actions";
 
-/* ---------------------------------------
-   PRAYER TIME DISPLAY + OPTIONAL ALARM
-   Times below are placeholders.
---------------------------------------- */
+      if (url) {
+        const open = document.createElement("a");
+        open.className = "btn primary";
+        open.href = url;
+        open.target = "_blank";
+        open.rel = "noopener noreferrer";
+        open.textContent = "Open website ↗";
+        actions.appendChild(open);
+      }
 
-const prayerTimes = [
-  {name:"ফজর",icon:"🌅",time:"04:45",label:"নমুনা সময়"},
-  {name:"যোহর",icon:"☀️",time:"12:00",label:"নমুনা সময়"},
-  {name:"আসর",icon:"🌤️",time:"16:15",label:"নমুনা সময়"},
-  {name:"মাগরিব",icon:"🌇",time:"17:50",label:"নমুনা সময়"},
-  {name:"এশা",icon:"🌙",time:"19:10",label:"নমুনা সময়"}
-];
-
-let alarmEnabled = false;
-let lastAlarmKey = "";
-
-function displayTime(value) {
-  const parts = value.split(":").map(Number);
-  const date = new Date();
-  date.setHours(parts[0],parts[1],0,0);
-
-  return date.toLocaleTimeString("en-US", {
-    hour:"2-digit",
-    minute:"2-digit",
-    hour12:true
-  });
-}
-
-function renderPrayerTimes() {
-  const now = new Date();
-  document.getElementById("prayerDate").textContent =
-    now.toLocaleDateString("bn-BD", {
-      weekday:"long",
-      year:"numeric",
-      month:"long",
-      day:"numeric"
-    }) + " · আপনার স্থানীয় সময়";
-
-  const currentMinutes = now.getHours()*60 + now.getMinutes();
-
-  let nextIndex = prayerTimes.findIndex(prayer => {
-    const [h,m] = prayer.time.split(":").map(Number);
-    return h*60+m > currentMinutes;
-  });
-
-  document.getElementById("prayerGrid").innerHTML =
-    prayerTimes.map((prayer,index) => {
-      const [h,m] = prayer.time.split(":").map(Number);
-      const isNext = index === nextIndex;
-
-      return `
-        <div class="prayer-item ${isNext ? "next" : ""}">
-          <div class="prayer-icon">${prayer.icon}</div>
-          <strong>${prayer.name}</strong>
-          <time>${displayTime(prayer.time)}</time>
-          <small>${isNext ? "পরবর্তী সালাত" : prayer.label}</small>
-        </div>`;
-    }).join("");
-}
-
-function checkPrayerAlarm() {
-  if (!alarmEnabled) return;
-
-  const now = new Date();
-  const current = String(now.getHours()).padStart(2,"0") + ":" +
-                  String(now.getMinutes()).padStart(2,"0");
-  const key = now.toDateString() + "_" + current;
-
-  const prayer = prayerTimes.find(item => item.time === current);
-
-  if (prayer && lastAlarmKey !== key) {
-    lastAlarmKey = key;
-
-    if ("Notification" in window && Notification.permission === "granted") {
-      new Notification("সালাতের সময়", {
-        body: prayer.name + " এর সময় হয়েছে।",
-        tag:key
+      const save = document.createElement("button");
+      save.className = "btn";
+      const isSaved = savedIds.includes(site.id);
+      save.textContent = isSaved ? "★ Saved" : "☆ Save";
+      save.addEventListener("click", () => {
+        let current = read(KEYS.saved, []);
+        if (!Array.isArray(current)) current = [];
+        current = current.includes(site.id) ? current.filter(id => id !== site.id) : [...current, site.id];
+        write(KEYS.saved, current);
+        renderSites();
       });
+      actions.appendChild(save);
+      card.append(icon, title, desc, actions);
+      grid.appendChild(card);
+    });
+  }
+
+  function renderPrayer() {
+    const p = read(KEYS.prayer, {});
+    const items = [["Fajr","fajr"],["Dhuhr","dhuhr"],["Asr","asr"],["Maghrib","maghrib"],["Isha","isha"]];
+    $("prayerDate").textContent = new Date().toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"});
+    const grid = $("prayerGrid");
+    grid.replaceChildren();
+    items.forEach(([label,key]) => {
+      const box = document.createElement("div");
+      box.className = "prayer";
+      const name = document.createElement("span");
+      name.textContent = label;
+      const time = document.createElement("strong");
+      time.textContent = p[key] || "--:--";
+      box.append(name,time);
+      grid.appendChild(box);
+    });
+    $("prayerNote").textContent = p.note || "Prayer times may vary by location. Verify local timings before relying on them.";
+  }
+
+  function renderTheme() {
+    const theme = localStorage.getItem(KEYS.theme) || "light";
+    document.body.classList.toggle("dark", theme === "dark");
+    $("themeBtn").textContent = theme === "dark" ? "☀️ Light theme" : "🌙 Dark theme";
+  }
+
+  function renderAll() {
+    renderBrand(); renderBanner(); renderSites(); renderPrayer(); renderTheme();
+  }
+
+  function openModal(site = null) {
+    editingId = site ? site.id : null;
+    $("modalTitle").textContent = site ? "Edit website" : "Add website";
+    $("siteName").value = site?.name || "";
+    $("siteUrl").value = site?.url || "";
+    $("siteDesc").value = site?.description || "";
+    $("siteModal").style.display = "flex";
+  }
+  function closeModal() { $("siteModal").style.display = "none"; }
+
+  $("themeBtn").addEventListener("click", () => {
+    const next = document.body.classList.contains("dark") ? "light" : "dark";
+    localStorage.setItem(KEYS.theme, next);
+    renderTheme();
+  });
+  $("search").addEventListener("input", renderSites);
+  $("addSiteBtn").addEventListener("click", () => openModal());
+  $("cancelSiteBtn").addEventListener("click", closeModal);
+  $("siteModal").addEventListener("click", e => { if (e.target === $("siteModal")) closeModal(); });
+
+  $("saveSiteBtn").addEventListener("click", () => {
+    const name = $("siteName").value.trim();
+    const url = safeUrl($("siteUrl").value.trim());
+    const description = $("siteDesc").value.trim();
+    if (!name) return alert("Please enter a website name.");
+    if (!url) return alert("Please enter a valid http:// or https:// URL.");
+    let sites = read(KEYS.sites, []);
+    if (!Array.isArray(sites)) sites = [];
+    if (editingId) {
+      sites = sites.map(s => s.id === editingId ? {...s,name,url,description} : s);
     } else {
-      alert("🕌 " + prayer.name + " এর সময় হয়েছে।");
+      sites.push({id: (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())),name,url,description});
     }
-  }
-}
+    write(KEYS.sites, sites);
+    closeModal();
+    renderSites();
+  });
 
-document.getElementById("alarmBtn").addEventListener("click",async () => {
-  if (!alarmEnabled) {
-    if ("Notification" in window && Notification.permission === "default") {
-      try {
-        await Notification.requestPermission();
-      } catch {}
-    }
-
-    alarmEnabled = true;
-    document.getElementById("alarmBtn").textContent = "🔔 Alarm: On";
-    checkPrayerAlarm();
-  } else {
-    alarmEnabled = false;
-    document.getElementById("alarmBtn").textContent = "🔔 Alarm: Off";
-  }
-});
-
-/* ---------------------------------------
-   INIT
---------------------------------------- */
-
-document.getElementById("year").textContent = new Date().getFullYear();
-
-setTheme();
-loadBrand();
-renderSites();
-renderSavedCount();
-renderAccount();
-renderPrayerTimes();
-
-setInterval(() => {
-  renderPrayerTimes();
-  checkPrayerAlarm();
-},15000);
+  window.addEventListener("storage", e => {
+    if (Object.values(KEYS).includes(e.key) || e.key === null) renderAll();
+  });
+  $("year").textContent = new Date().getFullYear();
+  renderAll();
+})();
 </script>
 </body>
 </html>
+```
