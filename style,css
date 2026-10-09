@@ -2047,4 +2047,3 @@ html[data-theme="light"] .main-footer {
     transform: none;
   }
 }
-```
