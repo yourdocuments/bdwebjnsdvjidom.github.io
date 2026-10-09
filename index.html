@@ -2,187 +2,189 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#08110c">
 <title>WebsitesDeal — Premium Website Marketplace</title>
-<meta name="description" content="প্রিমিয়াম রেডিমেড ওয়েবসাইট কিনুন। অর্ডার করুন এবং Order ID দিয়ে অর্ডারের অবস্থা ট্র্যাক করুন।">
+<meta name="description" content="বাংলাদেশে প্রিমিয়াম রেডিমেড ওয়েবসাইট কিনুন। আপনার অর্ডার ট্র্যাক করুন।">
+
+<!-- LOGO, FAVICON & SOCIAL PREVIEW -->
+<link rel="icon" type="image/jpeg" href="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg">
+<meta property="og:title" content="WebsitesDeal — Premium Website Marketplace">
+<meta property="og:description" content="আপনার অনলাইন ব্যবসার জন্য রেডিমেড ওয়েবসাইট।">
+<meta property="og:image" content="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg">
 
 <style>
 :root{
-  --bg:#07100b;--panel:#0d1a12;--panel2:#122319;
-  --line:#23372a;--text:#eff8f0;--muted:#9cb1a1;
-  --green:#b7f34a;--green2:#8ed52e;--shadow:0 20px 60px #0005;
+  --bg:#07100b;--panel:#0e1b13;--panel2:#15251a;
+  --line:#293b2d;--text:#f0f7ef;--muted:#a0b1a1;
+  --green:#b7f34a;--green2:#8ed52e;--danger:#ff7777;
+  --shadow:0 20px 60px #0004;
 }
 body.light{
-  --bg:#f4f8f3;--panel:#fff;--panel2:#edf5e9;
-  --line:#dce7d9;--text:#17251a;--muted:#647465;
-  --shadow:0 16px 45px #263d2510;
+  --bg:#f5f8f3;--panel:#fff;--panel2:#edf4e9;
+  --line:#dce6d8;--text:#17231a;--muted:#657365;
+  --shadow:0 20px 60px #263d2510;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{margin:0;background:var(--bg);color:var(--text);
 font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
 transition:background .25s,color .25s}
 a{color:inherit;text-decoration:none}
 button,input,select{font:inherit}
 button{cursor:pointer}
-.container{width:min(1200px,92%);margin:auto}
-.topbar{background:var(--green);color:#13200d;text-align:center;
-padding:9px 12px;font-size:13px;font-weight:800}
-header{position:sticky;top:0;z-index:10;background:var(--bg);
-border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--green2);outline-offset:3px}
+.container{width:min(1190px,92%);margin:auto}
+.topbar{background:var(--green);color:#14200d;padding:9px 12px;
+text-align:center;font-size:12px;font-weight:850}
+header{position:sticky;top:0;z-index:20;background:var(--bg);
+border-bottom:1px solid var(--line)}
 .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.logo{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:900;letter-spacing:-.8px}
-.logo-icon{width:39px;height:39px;border-radius:13px;background:var(--green);
-color:#14200d;display:grid;place-items:center;font-size:23px}
-.logo span:last-child{color:var(--green2)}
-.navlinks{display:flex;align-items:center;gap:23px;color:var(--muted);font-size:14px}
+.logo{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:950;letter-spacing:-.7px}
+.brand-logo{width:42px;height:42px;object-fit:contain;border-radius:11px;flex-shrink:0}
+.logo-name span{color:var(--green2)}
+.navlinks{display:flex;align-items:center;gap:22px;color:var(--muted);font-size:13px}
 .navlinks a:hover{color:var(--green2)}
-.actions{display:flex;gap:8px;align-items:center}
-.small-btn,.icon-btn{border:1px solid var(--line);background:var(--panel);
-color:var(--text);padding:10px 13px;border-radius:11px}
-.primary{background:var(--green);border:1px solid var(--green);
-color:#14200d;font-weight:850;padding:12px 18px;border-radius:12px}
-.primary:hover{background:var(--green2);transform:translateY(-1px)}
-.hero{padding:76px 0 48px;position:relative;overflow:hidden}
-.hero:before{content:"";position:absolute;width:430px;height:430px;
-background:#a6ee3620;filter:blur(100px);border-radius:50%;right:-100px;top:-150px}
-.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;position:relative}
-.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);
-background:var(--panel);border-radius:30px;padding:8px 13px;color:var(--green2);
-font-size:12px;font-weight:800}
-h1{font-size:clamp(38px,5.5vw,66px);line-height:1.06;letter-spacing:-2.7px;margin:22px 0}
-h1 em{color:var(--green2);font-style:normal}
-.lead{font-size:17px;line-height:1.8;color:var(--muted);max-width:620px}
-.searchbar{display:flex;gap:9px;background:var(--panel);border:1px solid var(--line);
-padding:8px;border-radius:15px;margin-top:25px;max-width:600px}
-.searchbar input{flex:1;min-width:0;border:0;outline:0;background:transparent;
+.actions{display:flex;align-items:center;gap:8px}
+.small-btn,.icon-btn{background:var(--panel);color:var(--text);
+border:1px solid var(--line);padding:10px 12px;border-radius:11px}
+.primary{background:var(--green);color:#17220e;border:1px solid var(--green);
+padding:12px 17px;border-radius:12px;font-weight:900;transition:.2s}
+.primary:hover{background:var(--green2);transform:translateY(-2px)}
+.secondary{background:var(--panel2);color:var(--text);
+border:1px solid var(--line);padding:11px 14px;border-radius:12px}
+.hero{padding:76px 0 52px;overflow:hidden;position:relative}
+.hero:before{content:"";position:absolute;right:-130px;top:-180px;width:440px;height:440px;
+background:#b7f34a1c;filter:blur(100px);border-radius:50%;pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 13px;
+border:1px solid var(--line);background:var(--panel);border-radius:30px;
+color:var(--green2);font-size:11px;font-weight:900;letter-spacing:.6px}
+h1{font-size:clamp(38px,5.2vw,64px);line-height:1.08;letter-spacing:-2.5px;margin:22px 0}
+h1 em{font-style:normal;color:var(--green2)}
+.lead{max-width:590px;color:var(--muted);font-size:16px;line-height:1.9}
+.searchbar{display:flex;gap:8px;padding:8px;border:1px solid var(--line);
+background:var(--panel);border-radius:15px;margin-top:24px;max-width:580px}
+.searchbar input{min-width:0;flex:1;background:transparent;border:0;outline:0;
 color:var(--text);padding:8px}
-.stats{display:flex;gap:28px;margin-top:30px;flex-wrap:wrap}
-.stat strong{display:block;font-size:21px}
-.stat span{font-size:12px;color:var(--muted)}
-.preview{border:1px solid var(--line);background:var(--panel);border-radius:24px;
-padding:18px;box-shadow:var(--shadow);animation:float 5s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-.preview-top{display:flex;justify-content:space-between;align-items:center;
-border-bottom:1px solid var(--line);padding-bottom:15px}
-.dots{display:flex;gap:5px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--green2)}
-.preview-hero{margin-top:15px;background:linear-gradient(135deg,#233d26,#0d1b12);
-border-radius:17px;padding:24px;color:white;min-height:190px;display:flex;flex-direction:column;justify-content:end}
-.preview-hero small{color:#b7f34a}.preview-hero h3{font-size:27px;margin:8px 0}
-.preview-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
-.preview-card{height:72px;border-radius:12px;background:var(--panel2);border:1px solid var(--line)}
-.section{padding:65px 0}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:25px}
+.stats{display:flex;flex-wrap:wrap;gap:27px;margin-top:29px}
+.stat strong{display:block;font-size:20px}.stat span{font-size:11px;color:var(--muted)}
+.preview{padding:17px;border:1px solid var(--line);background:var(--panel);
+border-radius:23px;box-shadow:var(--shadow);animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.preview-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:13px;border-bottom:1px solid var(--line)}
+.dots{display:flex;gap:5px}.dots i{width:8px;height:8px;background:var(--green2);border-radius:50%}
+.preview-hero{min-height:205px;margin-top:15px;padding:23px;border-radius:16px;
+background:linear-gradient(135deg,#23472b,#0a140e);color:white;
+display:flex;flex-direction:column;justify-content:end}
+.preview-hero small{color:var(--green)}.preview-hero h3{font-size:27px;margin:8px 0}
+.preview-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:11px}
+.preview-card{height:65px;border:1px solid var(--line);border-radius:11px;background:var(--panel2)}
+.section{padding:62px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:24px}
 .section-head h2{font-size:clamp(25px,3vw,36px);letter-spacing:-1px;margin:0 0 8px}
-.section-head p{margin:0;color:var(--muted);line-height:1.6}
-.pill{display:inline-block;border:1px solid var(--line);background:var(--panel);
-border-radius:30px;padding:8px 12px;color:var(--muted);font-size:12px}
+.section-head p{margin:0;color:var(--muted);line-height:1.7}
+.pill{display:inline-block;padding:7px 11px;border:1px solid var(--line);
+background:var(--panel);border-radius:30px;color:var(--muted);font-size:11px}
 .categories{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
-.category{border:1px solid var(--line);background:var(--panel);padding:19px;border-radius:16px;
-transition:.2s}
+.category{display:block;border:1px solid var(--line);background:var(--panel);
+padding:19px;border-radius:16px;transition:.2s}
 .category:hover,.product:hover{border-color:var(--green2);transform:translateY(-3px)}
-.category .emoji{font-size:25px}.category h3{margin:12px 0 5px;font-size:15px}
-.category p{margin:0;color:var(--muted);font-size:12px}
-.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}
+.category .emoji{font-size:26px}.category h3{font-size:15px;margin:12px 0 5px}
+.category p{font-size:12px;color:var(--muted);margin:0}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
 .filter{border:1px solid var(--line);background:var(--panel);color:var(--muted);
-padding:9px 14px;border-radius:30px}
-.filter.active{background:var(--green);border-color:var(--green);color:#14200d;font-weight:800}
+border-radius:30px;padding:9px 14px}
+.filter.active{background:var(--green);border-color:var(--green);color:#14200d;font-weight:850}
 .products{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
-.product{border:1px solid var(--line);border-radius:18px;overflow:hidden;
-background:var(--panel);transition:.22s}
-.product-art{height:170px;display:grid;place-items:center;position:relative;overflow:hidden}
-.product-art:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;
-border:1px solid #ffffff30;box-shadow:0 0 0 25px #ffffff08,0 0 0 50px #ffffff05}
-.art1{background:linear-gradient(135deg,#173d29,#09140d)}
-.art2{background:linear-gradient(135deg,#38234d,#141020)}
-.art3{background:linear-gradient(135deg,#15404a,#0b191c)}
-.art4{background:linear-gradient(135deg,#583525,#1b110c)}
-.art5{background:linear-gradient(135deg,#27335c,#11172c)}
-.art6{background:linear-gradient(135deg,#39411d,#11180c)}
-.mock-browser{z-index:1;width:70%;height:95px;background:#ffffffea;border-radius:9px;
-padding:10px;color:#243426;box-shadow:0 12px 35px #0004}
+.product{border:1px solid var(--line);background:var(--panel);
+border-radius:18px;overflow:hidden;transition:.22s}
+.product-art{height:165px;display:grid;place-items:center;position:relative;overflow:hidden}
+.product-art:after{content:"";position:absolute;width:145px;height:145px;border-radius:50%;
+border:1px solid #ffffff30;box-shadow:0 0 0 24px #ffffff08,0 0 0 48px #ffffff05}
+.art1{background:linear-gradient(135deg,#17432b,#09140d)}
+.art2{background:linear-gradient(135deg,#39224d,#151020)}
+.art3{background:linear-gradient(135deg,#16444a,#0b191c)}
+.art4{background:linear-gradient(135deg,#593725,#1b110c)}
+.art5{background:linear-gradient(135deg,#293860,#11172c)}
+.art6{background:linear-gradient(135deg,#3a441d,#11180c)}
+.mock-browser{position:relative;z-index:1;width:70%;min-height:92px;background:#f4f7f1;
+border-radius:9px;padding:11px;color:#243426;box-shadow:0 12px 35px #0004;font-size:12px}
 .mock-lines{height:6px;width:65%;background:#cbd8c9;border-radius:5px;margin:8px 0}
-.mock-block{height:30px;background:#d9efc7;border-radius:5px;margin-top:8px}
+.mock-block{height:29px;background:#d9efc7;border-radius:5px;margin-top:8px}
 .product-body{padding:17px}
-.product-meta{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.product h3{margin:12px 0 7px;font-size:18px}
-.product p{color:var(--muted);font-size:13px;line-height:1.65;min-height:42px}
-.price{font-size:22px;font-weight:900}
-.price small{font-size:11px;color:var(--muted);font-weight:500}
-.product-actions{display:flex;gap:8px;margin-top:15px}
+.product-meta{display:flex;justify-content:space-between;align-items:center;gap:9px;flex-wrap:wrap}
+.product h3{font-size:18px;margin:13px 0 7px}
+.product p{font-size:13px;line-height:1.7;color:var(--muted);min-height:44px}
+.price{font-size:22px;font-weight:950}.price small{font-size:10px;color:var(--muted);font-weight:500}
+.product-actions{display:flex;gap:8px;margin-top:14px}
 .product-actions button{flex:1}
-.secondary{border:1px solid var(--line);background:var(--panel2);color:var(--text);
-padding:11px;border-radius:11px}
-.empty{grid-column:1/-1;border:1px dashed var(--line);padding:35px;text-align:center;
-border-radius:16px;color:var(--muted)}
+.empty{grid-column:1/-1;text-align:center;padding:35px;border:1px dashed var(--line);
+border-radius:15px;color:var(--muted)}
 /* ORDER TRACKING */
-.tracking-wrap{background:linear-gradient(135deg,var(--panel),var(--panel2));
-border:1px solid var(--line);border-radius:25px;padding:clamp(20px,4vw,42px);
-display:grid;grid-template-columns:.8fr 1.2fr;gap:35px}
-.tracking-intro h2{font-size:34px;line-height:1.15;letter-spacing:-1.2px;margin:14px 0}
-.tracking-intro p{color:var(--muted);line-height:1.8}
-.track-form{display:flex;gap:9px;margin:22px 0 12px}
+.tracking-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:32px;
+padding:clamp(20px,4vw,40px);border:1px solid var(--line);border-radius:24px;
+background:linear-gradient(135deg,var(--panel),var(--panel2))}
+.tracking-intro h2{font-size:clamp(29px,3vw,37px);line-height:1.15;letter-spacing:-1.2px;margin:15px 0}
+.tracking-intro p{font-size:14px;line-height:1.9;color:var(--muted)}
+.track-form{display:flex;gap:8px;margin:20px 0 10px}
 .track-form input{min-width:0;flex:1;background:var(--bg);border:1px solid var(--line);
-border-radius:12px;padding:13px;color:var(--text);outline:none}
-.hint{font-size:12px;color:var(--muted);line-height:1.6}
-.track-result{margin-top:18px;border:1px solid var(--line);background:var(--bg);
-border-radius:17px;padding:20px;display:none}
-.track-result.show{display:block;animation:appear .35s ease}
-@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.result-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
-border-bottom:1px solid var(--line);padding-bottom:15px}
-.status{font-size:12px;font-weight:800;color:#17250f;background:var(--green);
-padding:6px 10px;border-radius:30px}
+border-radius:12px;padding:13px;color:var(--text)}
+.hint,.notice{font-size:12px;line-height:1.8;color:var(--muted)}
+.track-result{display:none;background:var(--bg);border:1px solid var(--line);
+border-radius:16px;padding:18px;margin-top:17px}
+.track-result.show{display:block;animation:appear .3s ease}
+@keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.result-head{display:flex;justify-content:space-between;align-items:center;gap:10px;
+flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:15px}
+.status{background:var(--green);color:#17220e;padding:6px 10px;border-radius:30px;font-size:11px;font-weight:900}
 .timeline{margin-top:20px}
-.step{display:flex;gap:13px;position:relative;padding-bottom:21px}
+.step{display:flex;gap:12px;position:relative;padding-bottom:21px}
 .step:last-child{padding-bottom:0}
-.step:not(:last-child):before{content:"";position:absolute;left:13px;top:28px;bottom:0;
-width:2px;background:var(--line)}
+.step:not(:last-child):before{content:"";position:absolute;left:13px;top:28px;bottom:0;width:2px;background:var(--line)}
 .step.done:not(:last-child):before{background:var(--green2)}
-.step-icon{z-index:1;width:28px;height:28px;flex-shrink:0;border-radius:50%;
-border:1px solid var(--line);display:grid;place-items:center;background:var(--panel);
-color:var(--muted);font-size:12px}
-.step.done .step-icon{background:var(--green);border-color:var(--green);color:#17250f}
-.step strong{display:block;font-size:14px;margin:3px 0 5px}
-.step small{font-size:12px;color:var(--muted)}
-.track-error{display:none;margin-top:15px;padding:13px;border:1px solid #a84d4d;
-background:#a84d4d18;color:#e9a0a0;border-radius:12px;font-size:13px}
+.step-icon{z-index:1;flex-shrink:0;width:28px;height:28px;border:1px solid var(--line);
+border-radius:50%;display:grid;place-items:center;background:var(--panel);font-size:12px;color:var(--muted)}
+.step.done .step-icon{background:var(--green);border-color:var(--green);color:#17220e}
+.step strong{display:block;font-size:13px;margin:4px 0}
+.step small{font-size:11px;color:var(--muted)}
+.track-error{display:none;color:var(--danger);background:#ff777712;border:1px solid #ff777744;
+border-radius:11px;padding:12px;margin-top:14px;font-size:13px}
 .track-error.show{display:block}
-.notice{margin-top:13px;font-size:12px;color:var(--muted);line-height:1.7}
 .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.plan{padding:24px;border:1px solid var(--line);background:var(--panel);border-radius:19px}
-.plan.featured{border-color:var(--green2);box-shadow:0 0 0 1px #b7f34a25}
-.plan h3{margin:0 0 8px}.plan p,.plan li{color:var(--muted);font-size:13px;line-height:1.8}
+.plan{padding:23px;border:1px solid var(--line);background:var(--panel);border-radius:18px}
+.plan.featured{border-color:var(--green2);box-shadow:0 0 0 1px #b7f34a22}
+.plan h3{margin:14px 0 5px}.plan p,.plan li{color:var(--muted);font-size:13px;line-height:1.8}
 .plan .price{font-size:29px;margin:20px 0}
-.plan ul{padding-left:18px;min-height:90px}
+.plan ul{padding-left:19px;min-height:90px}
 .plan button{width:100%}
-.cta{border-radius:22px;background:var(--green);color:#17250f;padding:35px;
-display:flex;justify-content:space-between;align-items:center;gap:20px}
-.cta h2{font-size:30px;margin:0 0 8px}.cta p{margin:0;opacity:.8}
-.cta .primary{background:#17250f;color:white;border-color:#17250f}
-footer{border-top:1px solid var(--line);padding:30px 0;margin-top:55px}
-.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13px}
-.wa-float{position:fixed;right:20px;bottom:20px;z-index:9;background:var(--green);
-color:#17250f;border-radius:50px;padding:14px 18px;font-weight:900;box-shadow:var(--shadow)}
-.toast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);
-z-index:30;background:var(--green);color:#17250f;padding:12px 18px;
-border-radius:12px;font-weight:800;font-size:13px;display:none}
+.cta{background:var(--green);color:#16220e;padding:32px;border-radius:22px;
+display:flex;align-items:center;justify-content:space-between;gap:20px}
+.cta h2{font-size:29px;margin:0 0 8px}.cta p{margin:0;opacity:.8}
+.cta .primary{background:#17220e;color:white;border-color:#17220e}
+footer{margin-top:55px;padding:29px 0;border-top:1px solid var(--line)}
+.footer-row{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:12px}
+.wa-float{position:fixed;right:19px;bottom:19px;z-index:15;background:var(--green);
+color:#17220e;padding:13px 17px;border-radius:50px;font-size:13px;font-weight:950;box-shadow:var(--shadow)}
+.toast{position:fixed;z-index:40;left:50%;bottom:82px;transform:translateX(-50%);
+display:none;background:var(--green);color:#17220e;padding:12px 17px;border-radius:12px;font-weight:850;font-size:12px;max-width:90%;text-align:center}
 .toast.show{display:block}
 @media(max-width:850px){
  .navlinks{display:none}.hero-grid,.tracking-wrap{grid-template-columns:1fr}
- .preview{max-width:540px;width:100%;margin:auto}
+ .preview{max-width:560px;width:100%;margin:auto}
  .categories{grid-template-columns:repeat(2,1fr)}
  .products{grid-template-columns:repeat(2,1fr)}
- .tracking-wrap{gap:15px}
 }
 @media(max-width:560px){
  .hero{padding-top:45px}.products,.plans{grid-template-columns:1fr}
- .section{padding:45px 0}.section-head{align-items:start;flex-direction:column}
- .actions .small-btn{padding:9px}.actions .primary{padding:10px}
- .track-form{flex-direction:column}.track-form button{width:100%}
- .stats{gap:18px}.cta{align-items:start;flex-direction:column}
+ .section{padding:43px 0}.section-head{align-items:start;flex-direction:column}
+ .actions{gap:5px}.actions .small-btn,.actions .icon-btn{padding:9px}
+ .actions .primary{padding:10px;font-size:12px}
+ .track-form{flex-direction:column}.stats{gap:17px}
+ .cta{align-items:start;flex-direction:column}
  h1{letter-spacing:-1.5px}
+ .brand-logo{width:35px;height:35px}.logo{font-size:18px}
 }
 </style>
 </head>
@@ -191,23 +193,23 @@ border-radius:12px;font-weight:800;font-size:13px;display:none}
 <div class="topbar" id="topNotice">আপনার অনলাইন ব্যবসা শুরু হোক আজই — প্রিমিয়াম রেডিমেড ওয়েবসাইট</div>
 
 <header>
-  <div class="container nav">
-    <a class="logo" href="#">
-      <span class="logo-icon">W</span>
-      <span>Websites<span>Deal</span></span>
-    </a>
-    <nav class="navlinks">
-      <a href="#market" data-bn="ওয়েবসাইট" data-en="Websites">ওয়েবসাইট</a>
-      <a href="#categories" data-bn="ক্যাটাগরি" data-en="Categories">ক্যাটাগরি</a>
-      <a href="#tracking" data-bn="অর্ডার ট্র্যাক" data-en="Track Order">অর্ডার ট্র্যাক</a>
-      <a href="#plans" data-bn="সাবস্ক্রিপশন" data-en="Plans">সাবস্ক্রিপশন</a>
-    </nav>
-    <div class="actions">
-      <button class="small-btn" id="langBtn" aria-label="Change language">EN</button>
-      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☼</button>
-      <a class="primary" href="#market" data-bn="ওয়েবসাইট কিনুন" data-en="Explore Sites">ওয়েবসাইট কিনুন</a>
-    </div>
+ <div class="container nav">
+  <a class="logo" href="#" aria-label="WebsitesDeal Home">
+   <img class="brand-logo" src="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg" alt="WebsitesDeal Logo">
+   <span class="logo-name">Websites<span>Deal</span></span>
+  </a>
+  <nav class="navlinks">
+   <a href="#market" data-bn="ওয়েবসাইট" data-en="Websites">ওয়েবসাইট</a>
+   <a href="#categories" data-bn="ক্যাটাগরি" data-en="Categories">ক্যাটাগরি</a>
+   <a href="#tracking" data-bn="অর্ডার ট্র্যাক" data-en="Track Order">অর্ডার ট্র্যাক</a>
+   <a href="#plans" data-bn="সাবস্ক্রিপশন" data-en="Subscriptions">সাবস্ক্রিপশন</a>
+  </nav>
+  <div class="actions">
+   <button class="small-btn" id="langBtn" type="button">EN</button>
+   <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme">☼</button>
+   <a class="primary" href="#market" data-bn="ওয়েবসাইট কিনুন" data-en="Explore Sites">ওয়েবসাইট কিনুন</a>
   </div>
+ </div>
 </header>
 
 <main>
@@ -219,7 +221,7 @@ border-radius:12px;font-weight:800;font-size:13px;display:none}
    <p class="lead" data-bn="রেডিমেড বিজনেস, ই-কমার্স, রেস্টুরেন্ট ও আরও অনেক ওয়েবসাইট বেছে নিন। সময় বাঁচান, দ্রুত অনলাইনে এগিয়ে যান।" data-en="Explore ready-made business, ecommerce, restaurant and more websites. Save time and get online faster.">রেডিমেড বিজনেস, ই-কমার্স, রেস্টুরেন্ট ও আরও অনেক ওয়েবসাইট বেছে নিন। সময় বাঁচান, দ্রুত অনলাইনে এগিয়ে যান।</p>
    <div class="searchbar">
     <input id="searchInput" type="search" placeholder="ওয়েবসাইট খুঁজুন..." aria-label="Search websites">
-    <button class="primary" id="searchBtn">খুঁজুন ↗</button>
+    <button class="primary" id="searchBtn" type="button">খুঁজুন ↗</button>
    </div>
    <div class="stats">
     <div class="stat"><strong>Ready-made</strong><span data-bn="ব্যবহার উপযোগী ডিজাইন" data-en="Ready-to-customize designs">ব্যবহার উপযোগী ডিজাইন</span></div>
@@ -227,7 +229,7 @@ border-radius:12px;font-weight:800;font-size:13px;display:none}
     <div class="stat"><strong>৳ BDT</strong><span data-bn="বাংলাদেশি মূল্য" data-en="Bangladesh pricing">বাংলাদেশি মূল্য</span></div>
    </div>
   </div>
-  <div class="preview" aria-label="Website design preview">
+  <div class="preview">
    <div class="preview-top"><strong>Website Studio</strong><div class="dots"><i></i><i></i><i></i></div></div>
    <div class="preview-hero"><small>DESIGN YOUR FUTURE</small><h3>Build. Launch. Grow.</h3><span style="font-size:12px;color:#d5e6d7">A better way to start online.</span></div>
    <div class="preview-cards"><div class="preview-card"></div><div class="preview-card"></div><div class="preview-card"></div></div>
@@ -249,7 +251,7 @@ border-radius:12px;font-weight:800;font-size:13px;display:none}
 
 <section class="section" id="market">
  <div class="container">
-  <div class="section-head"><div><h2 data-bn="ফিচার্ড ওয়েবসাইট" data-en="Featured Websites">ফিচার্ড ওয়েবসাইট</h2><p data-bn="আপনার পছন্দের ডিজাইন বেছে নিন।" data-en="Choose a design that fits your business.">আপনার পছন্দের ডিজাইন বেছে নিন।</p></div><span class="pill">DEMO CATALOGUE</span></div>
+  <div class="section-head"><div><h2 data-bn="ফিচার্ড ওয়েবসাইট" data-en="Featured Websites">ফিচার্ড ওয়েবসাইট</h2><p data-bn="আপনার পছন্দের ডিজাইন বেছে নিন।" data-en="Choose a design that fits your business.">আপনার পছন্দের ডিজাইন বেছে নিন।</p></div><span class="pill">WEBSITE COLLECTION</span></div>
   <div class="filters" id="filters">
    <button class="filter active" data-filter="All" data-bn="সব" data-en="All">সব</button>
    <button class="filter" data-filter="Business" data-bn="বিজনেস" data-en="Business">বিজনেস</button>
@@ -258,7 +260,7 @@ border-radius:12px;font-weight:800;font-size:13px;display:none}
    <button class="filter" data-filter="Portfolio" data-bn="পোর্টফোলিও" data-en="Portfolio">পোর্টফোলিও</button>
   </div>
   <div class="products" id="productGrid"></div>
-  <p class="notice" data-bn="দ্রষ্টব্য: এখানে দেখানো পণ্য, মূল্য ও ডিজাইন ডেমো। প্রকৃত বিক্রির আগে সঠিক মূল্য, Preview URL এবং ডেলিভারির শর্ত আপডেট করুন।" data-en="Note: Products, prices and designs shown here are demo content. Update actual prices, preview URLs and delivery terms before launch.">দ্রষ্টব্য: এখানে দেখানো পণ্য, মূল্য ও ডিজাইন ডেমো। প্রকৃত বিক্রির আগে সঠিক মূল্য, Preview URL এবং ডেলিভারির শর্ত আপডেট করুন।</p>
+  <p class="notice" data-bn="দ্রষ্টব্য: এই পণ্যের নাম, মূল্য ও প্রিভিউ ডেমো। প্রকাশের আগে প্রকৃত পণ্যের তথ্য ও Preview URL বসান।" data-en="Note: Product names, prices and previews are demos. Add your real product information and preview URLs before launch.">দ্রষ্টব্য: এই পণ্যের নাম, মূল্য ও প্রিভিউ ডেমো। প্রকাশের আগে প্রকৃত পণ্যের তথ্য ও Preview URL বসান।</p>
  </div>
 </section>
 
@@ -268,15 +270,15 @@ border-radius:12px;font-weight:800;font-size:13px;display:none}
    <div class="tracking-intro">
     <span class="eyebrow">ORDER TRACKING</span>
     <h2 data-bn="আপনার অর্ডার কোথায়?" data-en="Where Is Your Order?">আপনার অর্ডার কোথায়?</h2>
-    <p data-bn="আপনার Order ID লিখে অর্ডারের বর্তমান অবস্থা দেখুন। অর্ডার সম্পর্কে সাহায্যের জন্য আমাদের সঙ্গে যোগাযোগ করুন।" data-en="Enter your Order ID to check its current status. Contact us if you need help with your order.">আপনার Order ID লিখে অর্ডারের বর্তমান অবস্থা দেখুন। অর্ডার সম্পর্কে সাহায্যের জন্য আমাদের সঙ্গে যোগাযোগ করুন।</p>
-    <div class="pill">🔒 Order ID দিয়ে অনুসন্ধান</div>
+    <p data-bn="আপনার Order ID লিখে অর্ডারের অবস্থা দেখুন। অর্ডার নিয়ে সাহায্যের জন্য WhatsApp-এ যোগাযোগ করুন।" data-en="Enter your Order ID to check its status. Contact us on WhatsApp if you need help.">আপনার Order ID লিখে অর্ডারের অবস্থা দেখুন। অর্ডার নিয়ে সাহায্যের জন্য WhatsApp-এ যোগাযোগ করুন।</p>
+    <span class="pill">🔒 ORDER ID LOOKUP</span>
    </div>
    <div>
     <form id="trackForm" class="track-form">
      <input id="orderId" type="text" placeholder="যেমন: WD-1001" autocomplete="off" required aria-label="Order ID">
      <button class="primary" type="submit" data-bn="অর্ডার খুঁজুন ↗" data-en="Track Order ↗">অর্ডার খুঁজুন ↗</button>
     </form>
-    <div class="hint" data-bn="ডেমো পরীক্ষা করতে WD-1001, WD-1002 অথবা WD-1003 লিখুন।" data-en="For demo, try WD-1001, WD-1002 or WD-1003.">ডেমো পরীক্ষা করতে WD-1001, WD-1002 অথবা WD-1003 লিখুন।</div>
+    <div class="hint" data-bn="ডেমো দেখতে WD-1001, WD-1002 অথবা WD-1003 লিখুন।" data-en="Try WD-1001, WD-1002 or WD-1003 to see the demo.">ডেমো দেখতে WD-1001, WD-1002 অথবা WD-1003 লিখুন।</div>
     <div id="trackError" class="track-error" role="alert">এই Order ID পাওয়া যায়নি। ID যাচাই করে আবার চেষ্টা করুন।</div>
     <div id="trackResult" class="track-result" aria-live="polite">
      <div class="result-head">
@@ -287,7 +289,7 @@ border-radius:12px;font-weight:800;font-size:13px;display:none}
      <p class="notice" id="resultNote"></p>
      <button id="trackWhatsApp" class="secondary" type="button">WhatsApp Support ↗</button>
     </div>
-    <p class="notice" data-bn="এই সংস্করণে ট্র্যাকিং নমুনা ডেটা দিয়ে কাজ করে। প্রকৃত অর্ডার এখানে স্বয়ংক্রিয়ভাবে আসবে না; Admin Integration-এর সময় আসল ডেটাবেস যুক্ত করা হবে।" data-en="This version uses sample tracking data. Real orders will not appear automatically until a database is connected during Admin Integration.">এই সংস্করণে ট্র্যাকিং নমুনা ডেটা দিয়ে কাজ করে। প্রকৃত অর্ডার এখানে স্বয়ংক্রিয়ভাবে আসবে না; Admin Integration-এর সময় আসল ডেটাবেস যুক্ত করা হবে।</p>
+    <p class="notice" data-bn="গুরুত্বপূর্ণ: ট্র্যাকিং এখন নমুনা ডেটা দিয়ে চলে। বাস্তব অর্ডার ও Admin থেকে স্ট্যাটাস আপডেটের জন্য পরে ডেটাবেস সংযোগ করতে হবে।" data-en="Important: Tracking currently uses sample data. A database connection is needed later for real orders and admin status updates.">গুরুত্বপূর্ণ: ট্র্যাকিং এখন নমুনা ডেটা দিয়ে চলে। বাস্তব অর্ডার ও Admin থেকে স্ট্যাটাস আপডেটের জন্য পরে ডেটাবেস সংযোগ করতে হবে।</p>
    </div>
   </div>
  </div>
@@ -295,46 +297,58 @@ border-radius:12px;font-weight:800;font-size:13px;display:none}
 
 <section class="section" id="plans">
  <div class="container">
-  <div class="section-head"><div><h2 data-bn="মাসিক সাবস্ক্রিপশন প্ল্যান" data-en="Monthly Subscription Plans">মাসিক সাবস্ক্রিপশন প্ল্যান</h2><p data-bn="আপনার প্রয়োজন অনুযায়ী একটি প্ল্যান বেছে নিন।" data-en="Choose a plan that suits your needs.">আপনার প্রয়োজন অনুযায়ী একটি প্ল্যান বেছে নিন।</p></div></div>
+  <div class="section-head"><div><h2 data-bn="মাসিক সাবস্ক্রিপশন প্ল্যান" data-en="Monthly Subscription Plans">মাসিক সাবস্ক্রিপশন প্ল্যান</h2><p data-bn="আপনার প্রয়োজন অনুযায়ী প্ল্যান বেছে নিন।" data-en="Choose a plan that fits your needs.">আপনার প্রয়োজন অনুযায়ী প্ল্যান বেছে নিন।</p></div></div>
   <div class="plans">
-   <div class="plan"><span class="pill">STARTER</span><h3 data-bn="স্টার্টার" data-en="Starter">স্টার্টার</h3><div class="price">৳549<small>/মাস</small></div><p data-bn="নতুন ব্যবসার জন্য" data-en="For new businesses">নতুন ব্যবসার জন্য</p><ul><li>একটি ওয়েবসাইট প্ল্যান</li><li>বেসিক সাপোর্ট</li><li>মাসিক সাবস্ক্রিপশন</li></ul><button class="secondary planOrder" data-plan="Starter — ৳549/month">প্ল্যান নিন</button></div>
-   <div class="plan featured"><span class="pill">POPULAR</span><h3 data-bn="বিজনেস" data-en="Business">বিজনেস</h3><div class="price">৳999<small>/মাস</small></div><p data-bn="বাড়ন্ত ব্যবসার জন্য" data-en="For growing businesses">বাড়ন্ত ব্যবসার জন্য</p><ul><li>বিজনেস ওয়েবসাইট প্ল্যান</li><li>অগ্রাধিকার সাপোর্ট</li><li>মাসিক সাবস্ক্রিপশন</li></ul><button class="primary planOrder" data-plan="Business — ৳999/month">প্ল্যান নিন</button></div>
-   <div class="plan"><span class="pill">PRO</span><h3 data-bn="প্রফেশনাল" data-en="Professional">প্রফেশনাল</h3><div class="price">৳1,999<small>/মাস</small></div><p data-bn="প্রফেশনাল প্রয়োজনের জন্য" data-en="For professional needs">প্রফেশনাল প্রয়োজনের জন্য</p><ul><li>প্রিমিয়াম ওয়েবসাইট প্ল্যান</li><li>প্রায়োরিটি সাপোর্ট</li><li>মাসিক সাবস্ক্রিপশন</li></ul><button class="secondary planOrder" data-plan="Professional — ৳1999/month">প্ল্যান নিন</button></div>
+   <div class="plan"><span class="pill">STARTER</span><h3 data-bn="স্টার্টার" data-en="Starter">স্টার্টার</h3><div class="price">৳549<small>/মাস</small></div><p data-bn="নতুন ব্যবসার জন্য" data-en="For new businesses">নতুন ব্যবসার জন্য</p><ul><li data-bn="বেসিক ওয়েবসাইট প্ল্যান" data-en="Basic website plan">বেসিক ওয়েবসাইট প্ল্যান</li><li data-bn="বেসিক সাপোর্ট" data-en="Basic support">বেসিক সাপোর্ট</li><li data-bn="মাসিক সাবস্ক্রিপশন" data-en="Monthly subscription">মাসিক সাবস্ক্রিপশন</li></ul><button class="secondary planOrder" data-plan="Starter — ৳549/month" type="button">প্ল্যান সম্পর্কে জানুন</button></div>
+   <div class="plan featured"><span class="pill">POPULAR</span><h3 data-bn="বিজনেস" data-en="Business">বিজনেস</h3><div class="price">৳999<small>/মাস</small></div><p data-bn="বাড়ন্ত ব্যবসার জন্য" data-en="For growing businesses">বাড়ন্ত ব্যবসার জন্য</p><ul><li data-bn="বিজনেস ওয়েবসাইট প্ল্যান" data-en="Business website plan">বিজনেস ওয়েবসাইট প্ল্যান</li><li data-bn="অগ্রাধিকার সাপোর্ট" data-en="Priority support">অগ্রাধিকার সাপোর্ট</li><li data-bn="মাসিক সাবস্ক্রিপশন" data-en="Monthly subscription">মাসিক সাবস্ক্রিপশন</li></ul><button class="primary planOrder" data-plan="Business — ৳999/month" type="button">প্ল্যান সম্পর্কে জানুন</button></div>
+   <div class="plan"><span class="pill">PRO</span><h3 data-bn="প্রফেশনাল" data-en="Professional">প্রফেশনাল</h3><div class="price">৳1,999<small>/মাস</small></div><p data-bn="প্রফেশনাল প্রয়োজনের জন্য" data-en="For professional needs">প্রফেশনাল প্রয়োজনের জন্য</p><ul><li data-bn="প্রিমিয়াম ওয়েবসাইট প্ল্যান" data-en="Premium website plan">প্রিমিয়াম ওয়েবসাইট প্ল্যান</li><li data-bn="প্রায়োরিটি সাপোর্ট" data-en="Priority support">প্রায়োরিটি সাপোর্ট</li><li data-bn="মাসিক সাবস্ক্রিপশন" data-en="Monthly subscription">মাসিক সাবস্ক্রিপশন</li></ul><button class="secondary planOrder" data-plan="Professional — ৳1999/month" type="button">প্ল্যান সম্পর্কে জানুন</button></div>
   </div>
-  <p class="notice">প্ল্যানের মূল্য ও সুবিধা ডেমো। প্রকৃত সাবস্ক্রিপশন চালুর আগে শর্তাবলি নির্ধারণ করুন। অনলাইন পেমেন্ট এখনো যুক্ত করা হয়নি।</p>
+  <p class="notice" data-bn="প্ল্যানের মূল্য ও সুবিধা ডেমো। অনলাইন পেমেন্ট এখনো যুক্ত করা হয়নি।" data-en="Plan pricing and features are demos. Online payment has not been connected yet.">প্ল্যানের মূল্য ও সুবিধা ডেমো। অনলাইন পেমেন্ট এখনো যুক্ত করা হয়নি।</p>
  </div>
 </section>
 
 <section class="container">
- <div class="cta"><div><h2 data-bn="আপনার আইডিয়াকে অনলাইনে আনুন" data-en="Bring Your Idea Online">আপনার আইডিয়াকে অনলাইনে আনুন</h2><p data-bn="সঠিক ওয়েবসাইট খুঁজতে সাহায্য প্রয়োজন?" data-en="Need help finding the right website?">সঠিক ওয়েবসাইট খুঁজতে সাহায্য প্রয়োজন?</p></div><a class="primary" href="https://wa.me/8801705633700" target="_blank" rel="noopener">WhatsApp ↗</a></div>
+ <div class="cta">
+  <div><h2 data-bn="আপনার আইডিয়াকে অনলাইনে আনুন" data-en="Bring Your Idea Online">আপনার আইডিয়াকে অনলাইনে আনুন</h2><p data-bn="সঠিক ওয়েবসাইট খুঁজতে সাহায্য প্রয়োজন?" data-en="Need help finding the right website?">সঠিক ওয়েবসাইট খুঁজতে সাহায্য প্রয়োজন?</p></div>
+  <a class="primary" href="https://wa.me/8801705633700" target="_blank" rel="noopener">WhatsApp ↗</a>
+ </div>
 </section>
 </main>
 
-<footer><div class="container footer-row"><a class="logo" href="#"><span class="logo-icon">W</span><span>Websites<span>Deal</span></span></a><span>© <span id="year"></span> WebsitesDeal. All rights reserved.</span><span>Made for your next big idea.</span></div></footer>
+<footer>
+ <div class="container footer-row">
+  <a class="logo" href="#" aria-label="WebsitesDeal Home">
+   <img class="brand-logo" src="https://raw.githubusercontent.com/yourdocuments/assets/main/wd1.jpg" alt="WebsitesDeal Logo">
+   <span class="logo-name">Websites<span>Deal</span></span>
+  </a>
+  <span>© <span id="year"></span> WebsitesDeal</span>
+  <span data-bn="বাংলাদেশের জন্য তৈরি" data-en="Made for Bangladesh">বাংলাদেশের জন্য তৈরি</span>
+ </div>
+</footer>
+
 <a class="wa-float" href="https://wa.me/8801705633700" target="_blank" rel="noopener">☏ WhatsApp</a>
 <div id="toast" class="toast" role="status"></div>
 
 <script>
+"use strict";
+
 const WHATSAPP = "8801705633700";
 const DEMO_ORDERS = {
-  "WD-1001": {
-    product:"Business Website Template",
-    status:"Confirmed", current:1,
-    note:"Demo order: আপনার অর্ডার নিশ্চিত হয়েছে।",
-    dates:["অর্ডার গ্রহণ","অর্ডার নিশ্চিত","কাজ শুরু","ডেলিভারি সম্পন্ন"]
-  },
-  "WD-1002": {
-    product:"Ecommerce Website Template",
-    status:"In Progress", current:2,
-    note:"Demo order: ওয়েবসাইট প্রস্তুতের কাজ চলছে।",
-    dates:["অর্ডার গ্রহণ","অর্ডার নিশ্চিত","কাজ শুরু","ডেলিভারি সম্পন্ন"]
-  },
-  "WD-1003": {
-    product:"Restaurant Website Template",
-    status:"Delivered", current:3,
-    note:"Demo order: ওয়েবসাইট ডেলিভারি সম্পন্ন হয়েছে।",
-    dates:["অর্ডার গ্রহণ","অর্ডার নিশ্চিত","কাজ শুরু","ডেলিভারি সম্পন্ন"]
-  }
+ "WD-1001":{
+  product:"Business Website Template",status:"Confirmed",current:1,
+  note:"ডেমো অর্ডার: আপনার অর্ডার নিশ্চিত হয়েছে।",
+  steps:["অর্ডার গ্রহণ","অর্ডার নিশ্চিত","কাজ শুরু","ডেলিভারি সম্পন্ন"]
+ },
+ "WD-1002":{
+  product:"Ecommerce Website Template",status:"In Progress",current:2,
+  note:"ডেমো অর্ডার: ওয়েবসাইট প্রস্তুতের কাজ চলছে।",
+  steps:["অর্ডার গ্রহণ","অর্ডার নিশ্চিত","কাজ শুরু","ডেলিভারি সম্পন্ন"]
+ },
+ "WD-1003":{
+  product:"Restaurant Website Template",status:"Delivered",current:3,
+  note:"ডেমো অর্ডার: ডেলিভারি সম্পন্ন হয়েছে।",
+  steps:["অর্ডার গ্রহণ","অর্ডার নিশ্চিত","কাজ শুরু","ডেলিভারি সম্পন্ন"]
+ }
 };
 
 const products = [
@@ -346,116 +360,121 @@ const products = [
  {id:6,name:"FreshCart Store",category:"Ecommerce",price:2799,art:"art6",emoji:"🛒",desc:"পণ্য প্রদর্শনের জন্য পরিচ্ছন্ন অনলাইন স্টোর।"}
 ];
 
-let currentLang = "bn";
-let activeFilter = "All";
-let lastOrder = null;
-
-const $ = id => document.getElementById(id);
-const money = n => "৳" + n.toLocaleString("en-US");
+let currentLang="bn";
+let activeFilter="All";
+let lastOrder=null;
+const $=id=>document.getElementById(id);
 
 function showToast(message){
-  $("toast").textContent = message;
-  $("toast").classList.add("show");
-  clearTimeout(showToast.timer);
-  showToast.timer = setTimeout(()=>$("toast").classList.remove("show"),2400);
+ $("toast").textContent=message;
+ $("toast").classList.add("show");
+ clearTimeout(showToast.timer);
+ showToast.timer=setTimeout(()=>$("toast").classList.remove("show"),2600);
 }
-
+function money(amount){
+ return "৳"+amount.toLocaleString("en-US");
+}
 function renderProducts(){
-  const q = $("searchInput").value.trim().toLowerCase();
-  const filtered = products.filter(p=>{
-    const matchesCategory = activeFilter==="All" || p.category===activeFilter;
-    const matchesSearch = (p.name+" "+p.category+" "+p.desc).toLowerCase().includes(q);
-    return matchesCategory && matchesSearch;
-  });
-  $("productGrid").innerHTML = filtered.length ? filtered.map(p=>`
-    <article class="product">
-      <div class="product-art ${p.art}">
-        <div class="mock-browser"><strong>${p.emoji} ${p.name}</strong>
-          <div class="mock-lines"></div><div class="mock-block"></div>
-        </div>
-      </div>
-      <div class="product-body">
-        <div class="product-meta"><span class="pill">${p.category}</span><span style="color:var(--green2)">★ Premium</span></div>
-        <h3>${p.name}</h3><p>${p.desc}</p>
-        <div class="product-meta"><div class="price">${money(p.price)} <small>one-time*</small></div></div>
-        <div class="product-actions">
-          <button class="secondary" onclick="previewProduct(${p.id})">Preview</button>
-          <button class="primary" onclick="orderProduct(${p.id})">অর্ডার ↗</button>
-        </div>
-      </div>
-    </article>`).join("") : `<div class="empty">কোনো ওয়েবসাইট পাওয়া যায়নি। অন্য শব্দ দিয়ে খুঁজুন।</div>`;
-}
-function previewProduct(id){
-  const p=products.find(x=>x.id===id);
-  showToast("Demo preview: "+p.name+" — আসল Preview URL পরে যুক্ত করুন।");
-}
-function orderProduct(id){
-  const p=products.find(x=>x.id===id);
-  const msg=`Hello WebsitesDeal, I want to order: ${p.name}. Displayed demo price: ${money(p.price)}. Please confirm availability and final price.`;
+ const query=$("searchInput").value.trim().toLowerCase();
+ const list=products.filter(p=>{
+  const categoryMatch=activeFilter==="All"||p.category===activeFilter;
+  const searchMatch=(p.name+" "+p.category+" "+p.desc).toLowerCase().includes(query);
+  return categoryMatch&&searchMatch;
+ });
+ $("productGrid").innerHTML=list.length?list.map(p=>`
+  <article class="product">
+   <div class="product-art ${p.art}">
+    <div class="mock-browser"><strong>${p.emoji} ${p.name}</strong><div class="mock-lines"></div><div class="mock-block"></div></div>
+   </div>
+   <div class="product-body">
+    <div class="product-meta"><span class="pill">${p.category}</span><span style="color:var(--green2)">★ Premium</span></div>
+    <h3>${p.name}</h3><p>${p.desc}</p>
+    <div class="price">${money(p.price)} <small>demo price</small></div>
+    <div class="product-actions">
+     <button class="secondary" type="button" data-preview="${p.id}">${currentLang==="bn"?"প্রিভিউ":"Preview"}</button>
+     <button class="primary" type="button" data-order="${p.id}">${currentLang==="bn"?"অর্ডার ↗":"Order ↗"}</button>
+    </div>
+   </div>
+  </article>`).join(""):`<div class="empty">${currentLang==="bn"?"কোনো ওয়েবসাইট পাওয়া যায়নি। অন্য শব্দ দিয়ে খুঁজুন।":"No websites found. Try another search."}</div>`;
+
+ $("productGrid").querySelectorAll("[data-preview]").forEach(btn=>btn.addEventListener("click",()=>{
+  const p=products.find(item=>item.id===Number(btn.dataset.preview));
+  showToast((currentLang==="bn"?"ডেমো প্রিভিউ: ":"Demo preview: ")+p.name+". "+(currentLang==="bn"?"প্রকৃত Preview URL পরে যুক্ত হবে।":"Actual preview URL will be added later."));
+ }));
+ $("productGrid").querySelectorAll("[data-order]").forEach(btn=>btn.addEventListener("click",()=>{
+  const p=products.find(item=>item.id===Number(btn.dataset.order));
+  const msg=`Hello WebsitesDeal, I am interested in ${p.name}. Displayed demo price: ${money(p.price)}. Please confirm the final price and availability.`;
   window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank","noopener");
+ }));
 }
-function trackOrder(e){
-  e.preventDefault();
-  const id=$("orderId").value.trim().toUpperCase();
-  const order=DEMO_ORDERS[id];
-  $("trackError").classList.remove("show");
-  $("trackResult").classList.remove("show");
-  if(!order){
-    $("trackError").classList.add("show");
-    return;
-  }
-  lastOrder={id,...order};
-  $("resultId").textContent=id;
-  $("resultProduct").textContent=order.product;
-  $("resultStatus").textContent=order.status;
-  $("resultNote").textContent=order.note;
-  $("timeline").innerHTML=order.dates.map((label,i)=>`
-    <div class="step ${i<=order.current?"done":""}">
-      <div class="step-icon">${i<=order.current?"✓":i+1}</div>
-      <div><strong>${label}</strong><small>${i<order.current?"সম্পন্ন":i===order.current?"বর্তমান ধাপ":"অপেক্ষমাণ"}</small></div>
-    </div>`).join("");
-  $("trackResult").classList.add("show");
+function trackOrder(event){
+ event.preventDefault();
+ const id=$("orderId").value.trim().toUpperCase();
+ const order=DEMO_ORDERS[id];
+ $("trackError").classList.remove("show");
+ $("trackResult").classList.remove("show");
+ if(!order){
+  $("trackError").textContent=currentLang==="bn"?"এই Order ID পাওয়া যায়নি। ডেমো দেখতে WD-1001, WD-1002 বা WD-1003 ব্যবহার করুন।":"Order ID not found. Try WD-1001, WD-1002 or WD-1003 for the demo.";
+  $("trackError").classList.add("show");
+  return;
+ }
+ lastOrder={id,...order};
+ $("resultId").textContent=id;
+ $("resultProduct").textContent=order.product;
+ $("resultStatus").textContent=order.status;
+ $("resultNote").textContent=order.note;
+ $("timeline").innerHTML=order.steps.map((label,index)=>`
+  <div class="step ${index<=order.current?"done":""}">
+   <div class="step-icon">${index<=order.current?"✓":index+1}</div>
+   <div><strong>${label}</strong><small>${index<order.current?(currentLang==="bn"?"সম্পন্ন":"Completed"):index===order.current?(currentLang==="bn"?"বর্তমান ধাপ":"Current step"):(currentLang==="bn"?"অপেক্ষমাণ":"Pending")}</small></div>
+  </div>`).join("");
+ $("trackResult").classList.add("show");
 }
 $("trackForm").addEventListener("submit",trackOrder);
 $("trackWhatsApp").addEventListener("click",()=>{
-  if(!lastOrder)return;
-  const msg=`Hello WebsitesDeal, I need help with order ${lastOrder.id} (${lastOrder.product}).`;
-  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank","noopener");
+ if(!lastOrder)return;
+ const message=`Hello WebsitesDeal, please help me with Order ID ${lastOrder.id} (${lastOrder.product}).`;
+ window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message),"_blank","noopener");
 });
-$("searchBtn").addEventListener("click",()=>{renderProducts();$("market").scrollIntoView({behavior:"smooth"});});
 $("searchInput").addEventListener("input",renderProducts);
-document.querySelectorAll(".filter").forEach(btn=>btn.addEventListener("click",()=>{
-  activeFilter=btn.dataset.filter;
-  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===btn));
-  renderProducts();
+$("searchBtn").addEventListener("click",()=>{
+ renderProducts();
+ $("market").scrollIntoView({behavior:"smooth"});
+});
+document.querySelectorAll(".filter").forEach(button=>button.addEventListener("click",()=>{
+ activeFilter=button.dataset.filter;
+ document.querySelectorAll(".filter").forEach(item=>item.classList.toggle("active",item===button));
+ renderProducts();
 }));
 document.querySelectorAll(".category").forEach(card=>card.addEventListener("click",()=>{
-  activeFilter=card.dataset.category;
-  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.filter===activeFilter));
-  renderProducts();
+ activeFilter=card.dataset.category;
+ document.querySelectorAll(".filter").forEach(item=>item.classList.toggle("active",item.dataset.filter===activeFilter));
+ renderProducts();
 }));
 $("themeBtn").addEventListener("click",()=>{
-  document.body.classList.toggle("light");
-  $("themeBtn").textContent=document.body.classList.contains("light")?"☾":"☼";
+ document.body.classList.toggle("light");
+ const isLight=document.body.classList.contains("light");
+ $("themeBtn").textContent=isLight?"☾":"☼";
+ $("themeBtn").setAttribute("aria-label",isLight?"Switch to dark mode":"Switch to light mode");
 });
 function applyLanguage(){
-  document.documentElement.lang=currentLang==="bn"?"bn":"en";
-  document.querySelectorAll("[data-bn][data-en]").forEach(el=>{
-    el.innerHTML=el.dataset[currentLang];
-  });
-  $("langBtn").textContent=currentLang==="bn"?"EN":"বাংলা";
-  $("searchInput").placeholder=currentLang==="bn"?"ওয়েবসাইট খুঁজুন...":"Search websites...";
-  $("orderId").placeholder=currentLang==="bn"?"যেমন: WD-1001":"Example: WD-1001";
-  $("searchBtn").textContent=currentLang==="bn"?"খুঁজুন ↗":"Search ↗";
-  renderProducts();
+ document.documentElement.lang=currentLang==="bn"?"bn":"en";
+ document.querySelectorAll("[data-bn][data-en]").forEach(el=>{
+  el.innerHTML=el.dataset[currentLang];
+ });
+ $("langBtn").textContent=currentLang==="bn"?"EN":"বাংলা";
+ $("searchInput").placeholder=currentLang==="bn"?"ওয়েবসাইট খুঁজুন...":"Search websites...";
+ $("orderId").placeholder=currentLang==="bn"?"যেমন: WD-1001":"Example: WD-1001";
+ $("searchBtn").textContent=currentLang==="bn"?"খুঁজুন ↗":"Search ↗";
+ renderProducts();
 }
 $("langBtn").addEventListener("click",()=>{
-  currentLang=currentLang==="bn"?"en":"bn";
-  applyLanguage();
+ currentLang=currentLang==="bn"?"en":"bn";
+ applyLanguage();
 });
-document.querySelectorAll(".planOrder").forEach(btn=>btn.addEventListener("click",()=>{
-  const msg=`Hello WebsitesDeal, I am interested in the ${btn.dataset.plan} subscription. Please confirm the plan details.`;
-  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank","noopener");
+document.querySelectorAll(".planOrder").forEach(button=>button.addEventListener("click",()=>{
+ const msg=`Hello WebsitesDeal, I am interested in the ${button.dataset.plan} subscription. Please confirm the plan details and terms.`;
+ window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank","noopener");
 }));
 $("year").textContent=new Date().getFullYear();
 renderProducts();
