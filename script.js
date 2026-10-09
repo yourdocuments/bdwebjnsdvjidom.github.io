@@ -1,6 +1,6 @@
 /* =========================================================
    WEBSITESDEAL BANGLADESH
-   Premium Motion & Interaction System
+   Integrated Interaction System
    File: script.js
    ========================================================= */
 
@@ -9,159 +9,106 @@
 
   const doc = document;
   const root = doc.documentElement;
-  const body = doc.body;
-
-  /* ================= PAGE READY ================= */
-
-  const pageReady = () => {
-    root.classList.add("page-ready");
-    root.classList.add("motion-ready");
-    body.classList.add("page-ready");
-  };
-
-  if (doc.readyState === "loading") {
-    doc.addEventListener("DOMContentLoaded", pageReady, { once: true });
-  } else {
-    pageReady();
-  }
-
-  /* ================= SAFE SELECTORS ================= */
-
-  const $ = (selector, scope = doc) => scope.querySelector(selector);
+  const $ = (selector, scope = doc) =>
+    scope.querySelector(selector);
   const $$ = (selector, scope = doc) =>
     Array.from(scope.querySelectorAll(selector));
-
-  /* ================= SCROLL PROGRESS ================= */
-
-  let progressBar = $(
-    "#scrollProgress, .scroll-progress, .scroll-progress-bar"
-  );
-
-  if (!progressBar) {
-    progressBar = doc.createElement("div");
-    progressBar.id = "scrollProgress";
-    progressBar.setAttribute("aria-hidden", "true");
-    body.appendChild(progressBar);
-  }
-
-  progressBar.style.cssText +=
-    ";position:fixed;top:0;left:0;height:3px;width:0;" +
-    "z-index:2000;pointer-events:none;";
-
-  let scrollTicking = false;
-
-  function updateScrollProgress() {
-    const scrollable =
-      root.scrollHeight - root.clientHeight;
-
-    const progress = scrollable > 0
-      ? (root.scrollTop / scrollable) * 100
-      : 0;
-
-    progressBar.style.width = `${Math.min(100, progress)}%`;
-
-    const header = $(
-      "header, .site-header, .navbar, .main-header"
-    );
-
-    if (header) {
-      header.classList.toggle("is-scrolled", root.scrollTop > 20);
-    }
-
-    const backTop = $("#backToTop, .back-to-top");
-
-    if (backTop) {
-      const visible = root.scrollTop > 450;
-
-      backTop.classList.toggle("visible", visible);
-      backTop.classList.toggle("is-visible", visible);
-      backTop.setAttribute("aria-hidden", String(!visible));
-    }
-
-    scrollTicking = false;
-  }
-
-  window.addEventListener("scroll", () => {
-    if (!scrollTicking) {
-      scrollTicking = true;
-      window.requestAnimationFrame(updateScrollProgress);
-    }
-  }, { passive: true });
-
-  updateScrollProgress();
-
-  /* ================= SCROLL REVEAL ================= */
-
-  const revealSelectors = [
-    ".reveal",
-    ".reveal-up",
-    ".fade-in",
-    ".category-card",
-    ".product-card",
-    ".website-card",
-    ".pricing-card",
-    ".feature-card",
-    ".testimonial-card"
-  ];
-
-  const revealElements = $$(revealSelectors.join(","));
-
-  revealElements.forEach((element, index) => {
-    if (!element.hasAttribute("data-reveal-delay")) {
-      const siblings = Array.from(element.parentElement?.children || [])
-        .filter(child => child.matches(revealSelectors.join(",")));
-
-      const siblingIndex = siblings.indexOf(element);
-
-      element.style.setProperty(
-        "--reveal-delay",
-        `${Math.max(0, siblingIndex) * 75}ms`
-      );
-    } else {
-      const delay = Number(element.dataset.revealDelay) || 0;
-      element.style.setProperty("--reveal-delay", `${delay}ms`);
-    }
-
-    element.classList.add("reveal-item");
-  });
 
   const reduceMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
 
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    const revealObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.12,
-      rootMargin: "0px 0px -35px 0px"
-    });
-
-    revealElements.forEach(element => {
-      revealObserver.observe(element);
-    });
-  } else {
-    revealElements.forEach(element => {
-      element.classList.add("is-visible");
-    });
+  /* PAGE READY */
+  function pageReady() {
+    root.classList.add("page-ready", "motion-ready");
+    doc.body.classList.add("page-ready");
   }
 
-  /* ================= MOBILE NAVIGATION ================= */
+  if (doc.readyState === "loading") {
+    doc.addEventListener("DOMContentLoaded", pageReady, {
+      once: true
+    });
+  } else {
+    pageReady();
+  }
 
+  /* CURRENT YEAR */
+  $$("#current-year, #currentYear, .current-year, [data-current-year]")
+    .forEach(element => {
+      element.textContent = String(new Date().getFullYear());
+    });
+
+  /* SCROLL PROGRESS */
+  let progress = $("#scrollProgress");
+
+  if (!progress) {
+    progress = doc.createElement("div");
+    progress.id = "scrollProgress";
+    progress.setAttribute("aria-hidden", "true");
+    doc.body.appendChild(progress);
+  }
+
+  Object.assign(progress.style, {
+    position: "fixed",
+    top: "0",
+    left: "0",
+    height: "3px",
+    width: "0%",
+    zIndex: "2000",
+    pointerEvents: "none",
+    background: "var(--green, #b7f34a)",
+    transition: "width 80ms linear"
+  });
+
+  let scrollPending = false;
+
+  function updateScroll() {
+    const maxScroll =
+      root.scrollHeight - root.clientHeight;
+
+    const percentage = maxScroll > 0
+      ? (root.scrollTop / maxScroll) * 100
+      : 0;
+
+    progress.style.width = `${percentage}%`;
+
+    const header = $(".site-header");
+    if (header) {
+      header.classList.toggle(
+        "is-scrolled",
+        root.scrollTop > 20
+      );
+    }
+
+    const backTop = $("#backToTop, .back-to-top");
+    if (backTop) {
+      const visible = root.scrollTop > 450;
+      backTop.classList.toggle("is-visible", visible);
+      backTop.classList.toggle("visible", visible);
+    }
+
+    scrollPending = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!scrollPending) {
+      scrollPending = true;
+      window.requestAnimationFrame(updateScroll);
+    }
+  }, { passive: true });
+
+  updateScroll();
+
+  /* MOBILE NAVIGATION */
   const menuButton = $(
     "#menuToggle, #mobileMenuToggle, .menu-toggle, .mobile-menu-toggle"
   );
 
   const navMenu = $(
-    "#navLinks, #mobileMenu, .nav-links, .nav-menu"
+    ".main-nav, #navLinks, #mobileMenu, .nav-links, .nav-menu"
   );
 
-  function closeMobileMenu() {
+  function closeMenu() {
     if (!menuButton || !navMenu) return;
 
     navMenu.classList.remove("is-open", "active", "open");
@@ -171,12 +118,11 @@
 
   if (menuButton && navMenu) {
     menuButton.setAttribute("aria-expanded", "false");
-    menuButton.setAttribute("aria-label", "Toggle navigation");
 
     menuButton.addEventListener("click", () => {
       const isOpen = navMenu.classList.contains("is-open");
 
-      closeMobileMenu();
+      closeMenu();
 
       if (!isOpen) {
         navMenu.classList.add("is-open");
@@ -186,7 +132,7 @@
     });
 
     $$("a", navMenu).forEach(link => {
-      link.addEventListener("click", closeMobileMenu);
+      link.addEventListener("click", closeMenu);
     });
 
     doc.addEventListener("click", event => {
@@ -194,33 +140,22 @@
         !navMenu.contains(event.target) &&
         !menuButton.contains(event.target)
       ) {
-        closeMobileMenu();
+        closeMenu();
       }
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 680) {
-        closeMobileMenu();
-      }
+      if (window.innerWidth > 900) closeMenu();
     });
   }
 
-  /* ================= SMOOTH ANCHOR SCROLL ================= */
-
+  /* SMOOTH ANCHOR LINKS */
   $$('a[href^="#"]').forEach(link => {
     link.addEventListener("click", event => {
       const href = link.getAttribute("href");
-
       if (!href || href === "#") return;
 
-      let target;
-
-      try {
-        target = $(href);
-      } catch {
-        return;
-      }
-
+      const target = $(href);
       if (!target) return;
 
       event.preventDefault();
@@ -230,312 +165,268 @@
         block: "start"
       });
 
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState(null, "", href);
+      if (history.replaceState) {
+        history.replaceState(null, "", href);
       }
     });
   });
 
-  /* ================= BACK TO TOP ================= */
+  /* BACK TO TOP */
+  let backTop = $("#backToTop, .back-to-top");
 
-  let backToTop = $("#backToTop, .back-to-top");
-
-  if (!backToTop) {
-    backToTop = doc.createElement("button");
-    backToTop.id = "backToTop";
-    backToTop.type = "button";
-    backToTop.innerHTML = "&#8593;";
-    backToTop.setAttribute("aria-label", "Back to top");
-    backToTop.setAttribute("aria-hidden", "true");
-    body.appendChild(backToTop);
+  if (!backTop) {
+    backTop = doc.createElement("button");
+    backTop.id = "backToTop";
+    backTop.type = "button";
+    backTop.textContent = "↑";
+    backTop.setAttribute("aria-label", "Back to top");
+    doc.body.appendChild(backTop);
   }
 
-  backToTop.addEventListener("click", () => {
+  backTop.addEventListener("click", () => {
     window.scrollTo({
       top: 0,
       behavior: reduceMotion ? "auto" : "smooth"
     });
   });
 
-  /* ================= CARD HOVER ================= */
-
-  const interactiveCards = $$(
-    ".website-card, .product-card, .category-card, " +
-    ".pricing-card, .feature-card, .testimonial-card"
+  /* SCROLL REVEAL */
+  const revealElements = $$(
+    ".reveal, .reveal-up, .fade-in, .category-card, " +
+    ".website-card, .pricing-card, .process-card"
   );
 
-  interactiveCards.forEach(card => {
-    card.addEventListener("pointerenter", () => {
-      card.classList.add("is-hovered");
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -30px 0px"
+      }
+    );
+
+    revealElements.forEach((element, index) => {
+      element.style.setProperty(
+        "--reveal-delay",
+        `${(index % 4) * 70}ms`
+      );
+      revealObserver.observe(element);
+    });
+  } else {
+    revealElements.forEach(element => {
+      element.classList.add("is-visible");
+    });
+  }
+
+  /* WEBSITE CATEGORY FILTER */
+  const filterButtons = $$(".filter-button");
+  const websiteCards = $$(".website-card");
+
+  function filterWebsites(category) {
+    websiteCards.forEach(card => {
+      const matches =
+        category === "all" ||
+        card.dataset.type === category;
+
+      card.hidden = !matches;
+      card.setAttribute("aria-hidden", String(!matches));
+
+      if (matches) {
+        card.classList.remove("is-filtered-out");
+      } else {
+        card.classList.add("is-filtered-out");
+      }
     });
 
-    card.addEventListener("pointerleave", () => {
-      card.classList.remove("is-hovered");
+    filterButtons.forEach(button => {
+      const active = button.dataset.filter === category;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      filterWebsites(button.dataset.filter || "all");
     });
   });
 
-  /* ================= ANIMATED COUNTERS ================= */
+  /* CATEGORY CARDS LINK TO FILTERED WEBSITES */
+  $$(".category-card[data-category]").forEach(card => {
+    card.addEventListener("click", () => {
+      const category = card.dataset.category;
+      const matchingButton = filterButtons.find(
+        button => button.dataset.filter === category
+      );
 
-  const counters = $$(
-    "[data-count], [data-counter], .counter"
-  );
-
-  function animateCounter(element) {
-    if (element.dataset.countAnimated === "true") return;
-
-    const rawValue =
-      element.dataset.count ??
-      element.dataset.counter ??
-      element.textContent.trim();
-
-    const target = Number(String(rawValue).replace(/,/g, ""));
-
-    if (!Number.isFinite(target)) return;
-
-    element.dataset.countAnimated = "true";
-
-    const duration = reduceMotion
-      ? 0
-      : Number(element.dataset.duration) || 1400;
-
-    const originalText = element.textContent.trim();
-    const prefix = element.dataset.prefix || "";
-    const suffix = element.dataset.suffix || "";
-
-    const useGrouping = element.dataset.grouping !== "false";
-    const decimals = Number(element.dataset.decimals) || 0;
-
-    const formatNumber = value => {
-      const formatted = value.toLocaleString("en-US", {
-        minimumFractionDigits: decimals,
-        maximumFractionDigits: decimals,
-        useGrouping
-      });
-
-      return `${prefix}${formatted}${suffix}`;
-    };
-
-    if (duration === 0) {
-      element.textContent = formatNumber(target);
-      return;
-    }
-
-    const startTime = performance.now();
-
-    function frame(now) {
-      const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 4);
-      const current = target * eased;
-
-      element.textContent = formatNumber(current);
-
-      if (progress < 1) {
-        window.requestAnimationFrame(frame);
-      } else {
-        element.textContent = formatNumber(target);
+      if (matchingButton) {
+        filterWebsites(category);
       }
-    }
-
-    if (
-      !element.dataset.count &&
-      !element.dataset.counter &&
-      !prefix &&
-      !suffix
-    ) {
-      element.dataset.counterOriginal = originalText;
-    }
-
-    window.requestAnimationFrame(frame);
-  }
-
-  if ("IntersectionObserver" in window) {
-    const counterObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    counters.forEach(counter => {
-      counterObserver.observe(counter);
     });
-  } else {
-    counters.forEach(animateCounter);
+  });
+
+  /* THEME TOGGLE */
+  const themeButton = $(".theme-toggle");
+
+  function applyTheme(theme, save = true) {
+    const selected = theme === "light" ? "light" : "dark";
+
+    root.dataset.theme = selected;
+    root.style.colorScheme = selected;
+
+    if (themeButton) {
+      themeButton.textContent =
+        selected === "dark" ? "☼" : "◐";
+
+      themeButton.setAttribute(
+        "aria-label",
+        selected === "dark"
+          ? "Switch to light theme"
+          : "Switch to dark theme"
+      );
+
+      themeButton.setAttribute(
+        "aria-pressed",
+        String(selected === "light")
+      );
+    }
+
+    if (save) {
+      try {
+        localStorage.setItem("wd-theme", selected);
+      } catch (_) {}
+    }
   }
 
-  /* ================= PRICING BILLING TOGGLE ================= */
+  let savedTheme = "dark";
 
-  const billingToggle = $(
-    "#billingToggle, [data-billing-toggle]"
-  );
+  try {
+    savedTheme = localStorage.getItem("wd-theme") || "dark";
+  } catch (_) {}
 
-  function updateBillingPrices(isYearly) {
-    $$("[data-monthly], [data-yearly]").forEach(priceElement => {
-      const newPrice = isYearly
-        ? priceElement.dataset.yearly
-        : priceElement.dataset.monthly;
+  applyTheme(savedTheme, false);
 
-      if (newPrice !== undefined) {
-        priceElement.textContent = newPrice;
+  if (themeButton) {
+    themeButton.addEventListener("click", () => {
+      applyTheme(
+        root.dataset.theme === "light" ? "dark" : "light"
+      );
+    });
+  }
+
+  /* LANGUAGE SWITCH FOUNDATION
+     HTML will receive data-i18n attributes in the next step.
+  */
+  const languageButton = $(".language-toggle");
+
+  function applyLanguage(language, save = true) {
+    const selected = language === "en" ? "en" : "bn";
+
+    root.lang = selected;
+    root.dataset.language = selected;
+
+    $$("[data-i18n]").forEach(element => {
+      const key = element.dataset.i18n;
+      const translated = element.dataset[selected];
+
+      if (translated !== undefined) {
+        element.textContent = translated;
       }
     });
 
-    $$("[data-billing-label]").forEach(label => {
-      label.classList.toggle("active", label.dataset.billingLabel === (
-        isYearly ? "yearly" : "monthly"
-      ));
+    $$("[data-i18n-html]").forEach(element => {
+      const translated = element.dataset[selected];
+
+      if (translated !== undefined) {
+        element.innerHTML = translated;
+      }
     });
 
-    $$("[data-billing-period]").forEach(period => {
-      period.textContent = isYearly ? "year" : "month";
-    });
+    if (languageButton) {
+      languageButton.innerHTML =
+        selected === "bn" ? 'EN <span>⌄</span>' :
+        'বাংলা <span>⌄</span>';
 
-    doc.dispatchEvent(new CustomEvent("billingchange", {
-      detail: { billing: isYearly ? "yearly" : "monthly" }
-    }));
-  }
+      languageButton.setAttribute(
+        "aria-label",
+        selected === "bn"
+          ? "Switch language to English"
+          : "ভাষা বাংলায় পরিবর্তন করুন"
+      );
+    }
 
-  if (billingToggle) {
-    const isCheckbox =
-      billingToggle instanceof HTMLInputElement &&
-      ["checkbox", "radio"].includes(billingToggle.type);
-
-    const initialYearly = isCheckbox
-      ? billingToggle.checked
-      : billingToggle.getAttribute("aria-pressed") === "true";
-
-    updateBillingPrices(initialYearly);
-
-    billingToggle.addEventListener("change", () => {
-      const yearly = isCheckbox
-        ? billingToggle.checked
-        : billingToggle.classList.contains("active");
-
-      updateBillingPrices(yearly);
-    });
-
-    if (!isCheckbox) {
-      billingToggle.addEventListener("click", () => {
-        const yearly =
-          billingToggle.getAttribute("aria-pressed") !== "true";
-
-        billingToggle.setAttribute("aria-pressed", String(yearly));
-        billingToggle.classList.toggle("active", yearly);
-
-        updateBillingPrices(yearly);
-      });
+    if (save) {
+      try {
+        localStorage.setItem("wd-language", selected);
+      } catch (_) {}
     }
   }
 
-  /* ================= HERO PARALLAX ================= */
+  let savedLanguage = "bn";
 
-  if (!reduceMotion && window.matchMedia("(min-width: 900px)").matches) {
-    const heroVisuals = $$(
-      ".hero-visual, .hero-image, .hero-dashboard, .hero-preview"
-    );
+  try {
+    savedLanguage =
+      localStorage.getItem("wd-language") || "bn";
+  } catch (_) {}
 
-    heroVisuals.forEach(visual => {
-      visual.addEventListener("pointermove", event => {
-        const rect = visual.getBoundingClientRect();
+  applyLanguage(savedLanguage, false);
 
-        const x = (event.clientX - rect.left) / rect.width - 0.5;
-        const y = (event.clientY - rect.top) / rect.height - 0.5;
-
-        visual.style.transform =
-          `perspective(900px) rotateY(${x * 3}deg) rotateX(${-y * 3}deg)`;
-      });
-
-      visual.addEventListener("pointerleave", () => {
-        visual.style.transform = "";
-      });
+  if (languageButton) {
+    languageButton.addEventListener("click", () => {
+      applyLanguage(
+        root.dataset.language === "bn" ? "en" : "bn"
+      );
     });
   }
 
-  /* ================= IMAGE LAZY LOADING ================= */
-
+  /* IMAGE LOADING */
   $$("img").forEach(img => {
-    if (!img.hasAttribute("loading") && !img.closest(".hero")) {
-      img.loading = "lazy";
-    }
-
     if (!img.hasAttribute("decoding")) {
       img.decoding = "async";
     }
-  });
 
-  /* ================= CURRENT YEAR ================= */
-
-  $$("[data-current-year], #currentYear, .current-year").forEach(element => {
-    element.textContent = String(new Date().getFullYear());
-  });
-
-  /* ================= NEWSLETTER FORM ================= */
-
-  $$("[data-newsletter-form], .newsletter-form").forEach(form => {
-    form.addEventListener("submit", event => {
-      event.preventDefault();
-
-      const emailInput = $('input[type="email"]', form);
-      const message = $(
-        "[data-newsletter-message], .newsletter-message, .form-message"
-      );
-
-      if (!emailInput || !emailInput.checkValidity()) {
-        if (emailInput) {
-          emailInput.reportValidity();
-        }
-        return;
-      }
-
-      if (message) {
-        message.textContent =
-          "ধন্যবাদ! ফর্মটি প্রস্তুত। ইমেইল সাবস্ক্রিপশন চালু করতে সার্ভার সংযোগ প্রয়োজন।";
-
-        message.setAttribute("role", "status");
-      }
-
-      form.dispatchEvent(new CustomEvent("newsletter:submitted", {
-        bubbles: true,
-        detail: { email: emailInput.value.trim() }
-      }));
-    });
-  });
-
-  /* ================= FAQ ACCORDION ================= */
-
-  $$("[data-faq-question], .faq-question").forEach(question => {
-    question.addEventListener("click", () => {
-      const item = question.closest(".faq-item") || question.parentElement;
-      const answer = item?.querySelector(
-        "[data-faq-answer], .faq-answer"
-      );
-
-      if (!answer) return;
-
-      const isOpen = question.getAttribute("aria-expanded") === "true";
-
-      question.setAttribute("aria-expanded", String(!isOpen));
-      answer.hidden = isOpen;
-      item.classList.toggle("is-open", !isOpen);
-    });
-  });
-
-  /* ================= ESCAPE KEY ================= */
-
-  doc.addEventListener("keydown", event => {
-    if (event.key === "Escape") {
-      closeMobileMenu();
+    if (!img.hasAttribute("loading") && !img.closest(".hero")) {
+      img.loading = "lazy";
     }
   });
 
-  /* ================= DEBUG ================= */
+  /* PRICING BUTTON FEEDBACK */
+  $$(".plan-button[data-plan]").forEach(button => {
+    button.addEventListener("click", () => {
+      const plan = button.dataset.plan;
 
-  console.info(
-    "%c WebsitesDeal Bangladesh ",
-    "background:#b7f34a;color:#07110d;padding:5px 9px;border-radius:5px;font-weight:bold;",
-    "Premium UI initialized."
-  );
+      try {
+        sessionStorage.setItem("wd-selected-plan", plan);
+      } catch (_) {}
+
+      /* The page currently has no checkout backend.
+         Keep the existing contact-section navigation. */
+    });
+  });
+
+  /* FAQ ACCORDION SUPPORT */
+  $$("[data-faq-question], .faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+      const expanded =
+        button.getAttribute("aria-expanded") === "true";
+
+      button.setAttribute("aria-expanded", String(!expanded));
+
+      const answer = button.nextElementSibling;
+      if (answer) answer.hidden = expanded;
+    });
+  });
+
+  /* REDUCED MOTION SUPPORT */
+  if (reduceMotion) {
+    root.classList.add("reduce-motion");
+  }
 
 })();
