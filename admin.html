@@ -1,810 +1,363 @@
 <!DOCTYPE html>
-<html lang="bn" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#08110c">
-<title>WebsitesDeal — Studio</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel | WebsitesDeal</title>
 <style>
-:root{
- --bg:#08110c;
- --panel:#101d15;
- --panel2:#17271c;
- --text:#eef6ef;
- --muted:#9aada0;
- --line:#293c2e;
- --accent:#b8f34a;
- --danger:#ff7777;
- --green:#8bcf37;
- --shadow:0 12px 35px #0002;
-}
-[data-theme="light"]{
- --bg:#f3f6f1;
- --panel:#fff;
- --panel2:#edf4e9;
- --text:#16251b;
- --muted:#738075;
- --line:#e0e7df;
- --shadow:0 12px 35px #14281408;
-}
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#697386;--line:#e6eaf0;--accent:#6558f5;--soft:#eeecff}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Hind Siliguri",sans-serif;transition:background .2s,color .2s}
-button,input,select,textarea{font:inherit}
-button,a{-webkit-tap-highlight-color:transparent}
-.app{display:grid;grid-template-columns:245px minmax(0,1fr);min-height:100vh}
-.side{padding:24px 16px;border-right:1px solid var(--line);background:var(--panel);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;overflow-y:auto}
-.brand{display:flex;gap:10px;align-items:center;font-weight:900;font-size:16px;margin-bottom:28px;overflow-wrap:anywhere}
-.logo{width:38px;height:38px;flex-shrink:0;background:var(--accent);color:#102018;border-radius:12px;display:grid;place-items:center;overflow:hidden;font-weight:900}
-.logo img{width:100%;height:100%;object-fit:contain}
-.brand-text{min-width:0}
-.brand-text small{display:block;color:var(--muted);font-size:9px;margin-top:3px;font-weight:600}
-.label{font-size:10px;color:var(--muted);font-weight:900;letter-spacing:1.5px;margin:20px 10px 9px}
-.nav{display:flex;align-items:center;gap:9px;padding:12px;border-radius:10px;color:var(--muted);text-decoration:none;font-size:12px;font-weight:750;margin:2px 0;transition:.2s}
-.nav:hover,.nav.active{background:var(--panel2);color:var(--green)}
-.sidebottom{margin-top:auto;padding-top:25px;font-size:10px;line-height:1.8;color:var(--muted)}
-main{padding:30px clamp(16px,3.5vw,45px);max-width:1500px;width:100%;margin:0 auto}
-.top{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap;margin-bottom:25px}
-.eyebrow{color:var(--green);font-size:10px;letter-spacing:1.6px;font-weight:900;text-transform:uppercase}
-h1{font-size:clamp(25px,3vw,32px);letter-spacing:-1px;margin:8px 0}
-p{color:var(--muted);font-size:12px;line-height:1.8}
-.btn{display:inline-flex;justify-content:center;align-items:center;gap:7px;border:1px solid var(--line);border-radius:10px;padding:11px 14px;color:var(--text);background:var(--panel2);font-weight:800;font-size:11px;cursor:pointer;text-decoration:none;transition:.2s}
-.btn:hover{border-color:var(--green);transform:translateY(-1px)}
-.btn.primary{background:var(--accent);color:#102018;border-color:var(--accent)}
-.btn.danger{color:var(--danger)}
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:20px}
-.stat,.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:19px;box-shadow:var(--shadow)}
-.stat small{display:block;color:var(--muted);font-size:11px}
-.stat strong{font-size:27px;display:block;margin:12px 0 5px;overflow-wrap:anywhere}
-.stat em{font-style:normal;color:var(--green);font-size:10px}
-.layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
-.panel{min-width:0;scroll-margin-top:20px}
-.panel h2{font-size:15px;margin:0 0 5px}
-.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:17px;flex-wrap:wrap}
-.panelhead p{margin:4px 0 0}
-.field{display:flex;flex-direction:column;gap:7px;margin:13px 0}
-.field label{font-size:11px;color:var(--muted);font-weight:750}
-.field input,.field select,.field textarea{background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:12px;color:var(--text);outline:none;width:100%;font-size:12px;min-width:0}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green)}
-.field textarea{min-height:80px;resize:vertical}
-.field input[type="color"]{height:43px;padding:5px}
-.field input[type="checkbox"]{width:auto}
-.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.banner-preview{background:linear-gradient(120deg,#14271a,#263f20);border:1px solid #355331;border-radius:14px;padding:24px;min-height:160px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;color:#f2f8ef}
-.banner-preview:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-30px;top:-60px;background:#b8f34a22;pointer-events:none}
-.banner-preview>*{position:relative;z-index:1}
-.banner-preview small{color:var(--accent);font-size:9px;letter-spacing:1px;font-weight:900}
-.banner-preview h3{font-size:23px;max-width:390px;margin:10px 0}
-.banner-preview p{margin:0;max-width:360px;color:#c1d0c2}
-.brand-preview{display:flex;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px;overflow-wrap:anywhere}
-.brand-preview .logo{width:48px;height:48px}
-.brand-preview strong{font-size:15px}
-.brand-preview small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
-.brand-preview .logo img{display:block}
-.tablewrap{overflow:auto}
-table{width:100%;border-collapse:collapse;font-size:11px;min-width:580px}
-th{text-align:left;color:var(--muted);font-weight:700;padding:12px 9px;border-bottom:1px solid var(--line)}
-td{padding:13px 9px;border-bottom:1px solid var(--line);vertical-align:middle}
-.status{background:#233b22;color:#b8f34a;padding:5px 8px;border-radius:99px;font-size:9px;white-space:nowrap}
-.actions{display:flex;gap:5px}
-.actions .btn{padding:7px 8px;font-size:10px}
-.note{border:1px dashed var(--line);border-radius:12px;padding:13px;color:var(--muted);font-size:11px;line-height:1.8;margin-top:14px}
-.toast{position:fixed;right:22px;bottom:22px;z-index:150;background:var(--accent);color:#102018;padding:13px 18px;border-radius:12px;font-weight:850;font-size:12px;display:none;box-shadow:0 10px 35px #0004;max-width:calc(100% - 44px)}
-.prayer-settings{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
-.prayer-settings .field{margin:0}
-.checkline{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:11px;margin:12px 0}
-.checkline input{accent-color:var(--green)}
-.bottom-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
-@media(max-width:1050px){
- .app{grid-template-columns:205px minmax(0,1fr)}
- .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
- .layout{grid-template-columns:1fr}
- .prayer-settings{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
-@media(max-width:650px){
- .app{display:block}
- .side{height:auto;position:sticky;top:0;z-index:20;padding:9px 10px;border-right:0;border-bottom:1px solid var(--line);flex-direction:row;align-items:center;gap:5px;overflow-x:auto}
- .brand{margin:0 5px 0 0;flex-shrink:0;font-size:12px}
- .brand .logo{width:31px;height:31px}
- .brand-text small,.label,.sidebottom{display:none}
- .nav{font-size:10px;white-space:nowrap;padding:9px 8px;flex-shrink:0}
- main{padding:20px 13px}
- .top{align-items:flex-start}
- .top .btn{padding:10px}
- .stats{gap:8px}
- .stat{padding:13px}
- .stat strong{font-size:22px}
- .row{grid-template-columns:1fr;gap:0}
- .prayer-settings{grid-template-columns:repeat(2,minmax(0,1fr))}
- .panel{padding:15px}
-}
+body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+body.dark{--bg:#111521;--card:#1b2130;--text:#f1f4fb;--muted:#a4adc0;--line:#30394b;--soft:#302b52}
+button,input,textarea{font:inherit}
+button{cursor:pointer}
+.layout{display:flex;min-height:100vh}
+.sidebar{width:235px;background:var(--card);border-right:1px solid var(--line);padding:24px 16px;flex-shrink:0}
+.brand{font-size:20px;font-weight:800;margin:0 8px 30px}
+.nav a{display:block;color:var(--muted);text-decoration:none;padding:12px;border-radius:10px;margin:5px 0}
+.nav a:hover,.nav a.active{background:var(--soft);color:var(--accent)}
+main{padding:28px;max-width:1200px;width:100%;min-width:0}
+.top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+h1{margin:0 0 7px;font-size:26px}h2{margin:0 0 16px;font-size:19px}
+.muted{color:var(--muted);font-size:14px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:15px;padding:22px;margin-bottom:20px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.field.full{grid-column:1/-1}
+label{font-size:13px;font-weight:700}
+input,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;background:var(--bg);color:var(--text)}
+textarea{min-height:95px;resize:vertical}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--text);padding:10px 14px;border-radius:9px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.btn.primary{background:var(--accent);color:white;border-color:var(--accent)}
+.btn.danger{color:#d53b50}
+.status{padding:11px 13px;border-radius:9px;background:var(--soft);color:var(--accent);margin-bottom:18px;font-size:13px;line-height:1.5}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:520px}
+th,td{text-align:left;padding:12px;border-bottom:1px solid var(--line);font-size:14px;overflow-wrap:anywhere}
+th{color:var(--muted)}
+td .btn{padding:7px 10px;margin:2px}
+.small{font-size:12px;color:var(--muted);line-height:1.6;margin-top:12px}
+hr{border:0;border-top:1px solid var(--line);margin:20px 0}
+@media(max-width:760px){.layout{display:block}.sidebar{width:100%;padding:14px;border-right:0;border-bottom:1px solid var(--line)}.brand{margin:0 5px 12px}.nav{display:flex;overflow:auto;gap:6px}.nav a{white-space:nowrap}.nav a:first-child{margin-left:0}main{padding:16px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}}
 </style>
 </head>
-
 <body>
-<div class="app">
-
-<aside class="side">
-  <div class="brand">
-    <span class="logo" id="sideLogo">W</span>
-    <span class="brand-text">
-      <span id="sideBrandName">WebsitesDeal</span>
-      <small>WEBSITE STUDIO</small>
-    </span>
-  </div>
-
-  <div class="label">WORKSPACE</div>
-  <a class="nav" href="index.html">↗ View Storefront</a>
-  <a class="nav active" href="#overview">▦ Overview</a>
-  <a class="nav" href="#brand">◉ Brand Editor</a>
-  <a class="nav" href="#banner">▧ Banner Editor</a>
-  <a class="nav" href="#websites">◫ Website Listings</a>
-  <a class="nav" href="dashboard.html">⌂ Dashboard Preview</a>
-
-  <div class="label">PREFERENCES</div>
-  <a class="nav" href="#prayer">🕌 Prayer Settings</a>
-  <a class="nav" href="#settings">⚙ Theme & Export</a>
-
-  <div class="sidebottom">
-    WEBSITESDEAL STUDIO<br>
-    Version 2.0 · Front-end build
-  </div>
-</aside>
-
-<main>
-
-<header class="top">
-  <div>
-    <div class="eyebrow">Control Center / 01</div>
-    <h1>Website Studio</h1>
-    <p>আপনার ব্র্যান্ড, ব্যানার ও ওয়েবসাইট লিস্টিং পরিচালনা করুন।</p>
-  </div>
-  <div class="bottom-actions" style="margin:0">
-    <button class="btn" type="button" id="themeBtn">☀ Light Mode</button>
-    <a class="btn primary" href="index.html" target="_blank" rel="noopener">↗ Preview Storefront</a>
-  </div>
-</header>
-
-<section id="overview" class="stats">
-  <div class="stat">
-    <small>Total Website Listings</small>
-    <strong id="countSites">06</strong>
-    <em>Marketplace inventory</em>
-  </div>
-  <div class="stat">
-    <small>Banner Configuration</small>
-    <strong id="bannerStatus">Ready</strong>
-    <em>Local preview</em>
-  </div>
-  <div class="stat">
-    <small>Brand Settings</small>
-    <strong id="brandStatus">Default</strong>
-    <em>Editable identity</em>
-  </div>
-  <div class="stat">
-    <small>Data Mode</small>
-    <strong>Local</strong>
-    <em>Browser storage</em>
-  </div>
-</section>
-
 <div class="layout">
+  <aside class="sidebar">
+    <div class="brand">⚙️ WebsitesDeal Admin</div>
+    <nav class="nav">
+      <a class="active" href="#brand">Brand & Logo</a>
+      <a href="#banner">Homepage Banner</a>
+      <a href="#websites">Website Manager</a>
+      <a href="#prayer">Prayer Settings</a>
+      <a href="#appearance">Appearance</a>
+      <a href="dashboard.html">← Dashboard</a>
+    </nav>
+  </aside>
 
-<!-- BRAND EDITOR -->
-<section class="panel" id="brand">
-  <div class="panelhead">
-    <div>
-      <h2>Brand & Logo Editor</h2>
-      <p>ব্র্যান্ডের নাম, লোগো ও logo text পরিবর্তন করুন।</p>
-    </div>
-    <span class="status">BRAND</span>
-  </div>
+  <main>
+    <header class="top">
+      <div><h1>Admin Panel</h1><div class="muted">Manage the content displayed on your dashboard.</div></div>
+      <div class="actions" style="margin-top:0">
+        <button class="btn" id="themeBtn" type="button">Toggle theme</button>
+        <a class="btn primary" href="dashboard.html">View Dashboard ↗</a>
+      </div>
+    </header>
 
-  <div class="brand-preview">
-    <span class="logo" id="brandPreviewLogo">W</span>
-    <div>
-      <strong id="brandPreviewName">WebsitesDeal</strong>
-      <small>Live local preview</small>
-    </div>
-  </div>
+    <div class="status" id="status" role="status">Ready. Changes save to this browser and sync to other open tabs on the same origin.</div>
 
-  <div class="field">
-    <label for="brandNameInput">Brand name</label>
-    <input id="brandNameInput" maxlength="80" value="WebsitesDeal" placeholder="Your brand name">
-  </div>
+    <section class="panel" id="brand">
+      <h2>Brand & Logo</h2>
+      <div class="form-grid">
+        <div class="field"><label for="brandName">Brand Name</label><input id="brandName" placeholder="WebsitesDeal"></div>
+        <div class="field"><label for="logoText">Logo Text (optional)</label><input id="logoText" placeholder="WD"></div>
+        <div class="field full"><label for="brandLogo">Logo Image URL (optional)</label><input id="brandLogo" type="url" placeholder="https://example.com/logo.png"></div>
+      </div>
+      <div class="actions"><button class="btn primary" id="saveBrand" type="button">Save Brand</button></div>
+    </section>
 
-  <div class="field">
-    <label for="logoTextInput">Logo text (if no image)</label>
-    <input id="logoTextInput" maxlength="4" value="W" placeholder="W">
-  </div>
+    <section class="panel" id="banner">
+      <h2>Homepage Banner</h2>
+      <div class="form-grid">
+        <div class="field full"><label for="bannerTitle">Banner Heading</label><input id="bannerTitle" placeholder="Build your digital presence"></div>
+        <div class="field full"><label for="bannerText">Banner Description</label><textarea id="bannerText" placeholder="Write a short description..."></textarea></div>
+        <div class="field full"><label for="bannerImage">Banner Image URL (optional)</label><input id="bannerImage" type="url" placeholder="https://example.com/banner.png"></div>
+      </div>
+      <div class="actions"><button class="btn primary" id="saveBanner" type="button">Save Banner</button></div>
+    </section>
 
-  <div class="field">
-    <label for="logoUrlInput">Logo image URL (optional)</label>
-    <input id="logoUrlInput" type="url" placeholder="https://example.com/logo.png">
-  </div>
+    <section class="panel" id="websites">
+      <h2>Website Manager</h2>
+      <input id="editId" type="hidden">
+      <div class="form-grid">
+        <div class="field"><label for="siteName">Website Name</label><input id="siteName" placeholder="My Portfolio"></div>
+        <div class="field"><label for="siteUrl">Website URL</label><input id="siteUrl" type="url" placeholder="https://example.com"></div>
+        <div class="field full"><label for="siteDesc">Description</label><textarea id="siteDesc" placeholder="Describe this website..."></textarea></div>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="saveSite" type="button">Add Website</button>
+        <button class="btn" id="clearSite" type="button">Clear Form</button>
+      </div>
+      <hr>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>URL</th><th>Actions</th></tr></thead>
+          <tbody id="siteTable"></tbody>
+        </table>
+      </div>
+    </section>
 
-  <div class="bottom-actions">
-    <button class="btn primary" type="button" onclick="saveBrand()">Save Brand Settings</button>
-    <button class="btn" type="button" onclick="resetBrand()">Reset</button>
-  </div>
+    <section class="panel" id="prayer">
+      <h2>Prayer Time Settings</h2>
+      <div class="muted" style="margin-bottom:16px">Enter verified local prayer times. The Dashboard displays these values; it does not calculate official prayer times automatically.</div>
+      <div class="form-grid">
+        <div class="field"><label for="fajr">Fajr</label><input id="fajr" placeholder="04:45 AM"></div>
+        <div class="field"><label for="dhuhr">Dhuhr</label><input id="dhuhr" placeholder="12:10 PM"></div>
+        <div class="field"><label for="asr">Asr</label><input id="asr" placeholder="04:20 PM"></div>
+        <div class="field"><label for="maghrib">Maghrib</label><input id="maghrib" placeholder="06:00 PM"></div>
+        <div class="field"><label for="isha">Isha</label><input id="isha" placeholder="07:30 PM"></div>
+        <div class="field full"><label for="prayerNote">Prayer Time Note</label><input id="prayerNote" placeholder="Verify local timings before relying on them."></div>
+      </div>
+      <div class="actions"><button class="btn primary" id="savePrayer" type="button">Save Prayer Times</button></div>
+    </section>
 
-  <div class="note">
-    ব্র্যান্ড সেটিংস এই ব্রাউজারে <code>wd_brand</code> নামে সেভ হবে।
-    Dashboard এই সেটিংস পড়তে পারবে। অন্য ডিভাইস বা সব ভিজিটরের জন্য
-    প্রকাশ করতে backend/database integration লাগবে।
-  </div>
-</section>
+    <section class="panel" id="appearance">
+      <h2>Appearance</h2>
+      <div class="muted">The theme is shared with Dashboard in this browser.</div>
+      <div class="actions">
+        <button class="btn" id="lightTheme" type="button">☀️ Light Mode</button>
+        <button class="btn" id="darkTheme" type="button">🌙 Dark Mode</button>
+      </div>
+    </section>
 
-<!-- BANNER EDITOR -->
-<section class="panel" id="banner">
-  <div class="panelhead">
-    <div>
-      <h2>Homepage Banner Editor</h2>
-      <p>হোমপেজ ব্যানারের লেখা পরিবর্তন করুন।</p>
-    </div>
-    <span class="status">LIVE PREVIEW</span>
-  </div>
-
-  <div class="banner-preview">
-    <small>WEBSITESDEAL / FEATURED</small>
-    <h3 id="bannerDemoTitle">Launch your next business today.</h3>
-    <p id="bannerDemoText">Premium ready-made websites for ambitious founders.</p>
-  </div>
-
-  <div class="field">
-    <label for="bannerTitle">Banner headline</label>
-    <input id="bannerTitle" maxlength="180" value="Launch your next business today.">
-  </div>
-
-  <div class="field">
-    <label for="bannerText">Banner description</label>
-    <textarea id="bannerText" maxlength="600">Premium ready-made websites for ambitious founders.</textarea>
-  </div>
-
-  <div class="field">
-    <label for="bannerImage">Banner image URL (optional)</label>
-    <input id="bannerImage" type="url" placeholder="https://example.com/banner.jpg">
-  </div>
-
-  <button class="btn primary" type="button" onclick="saveBanner()">Save Banner Settings</button>
-
-  <div class="note">
-    এই editor ব্যানারের তথ্য localStorage-এ সেভ করে। আপনার
-    <code>index.html</code> ফাইলকে একই key পড়ার জন্য আলাদাভাবে
-    আপডেট করতে হবে। শুধু এখানে Save করলে সব ভিজিটরের সাইট বদলাবে না।
-  </div>
-</section>
-
-<!-- WEBSITE EDITOR -->
-<section class="panel" id="websites">
-  <div class="panelhead">
-    <div>
-      <h2 id="formTitle">Website Listing Editor</h2>
-      <p>Marketplace-এ website যোগ বা সম্পাদনা করুন।</p>
-    </div>
-  </div>
-
-  <input type="hidden" id="editId">
-
-  <div class="field">
-    <label for="siteTitle">Website title</label>
-    <input id="siteTitle" maxlength="120" placeholder="e.g. Nova Business Pro">
-  </div>
-
-  <div class="row">
-    <div class="field">
-      <label for="siteCategory">Category</label>
-      <select id="siteCategory">
-        <option>Business</option>
-        <option>Ecommerce</option>
-        <option>Restaurant</option>
-        <option>Agency</option>
-        <option>Portfolio</option>
-        <option>Real Estate</option>
-        <option>Education</option>
-        <option>Healthcare</option>
-        <option>Landing Page</option>
-        <option>Other</option>
-      </select>
-    </div>
-
-    <div class="field">
-      <label for="sitePrice">Price (BDT)</label>
-      <input id="sitePrice" type="number" min="0" max="100000000" value="2490">
-    </div>
-  </div>
-
-  <div class="field">
-    <label for="siteDesc">Description</label>
-    <textarea id="siteDesc" maxlength="1000" placeholder="Describe this website template"></textarea>
-  </div>
-
-  <div class="field">
-    <label for="siteTags">Feature tags (comma separated)</label>
-    <input id="siteTags" maxlength="300" placeholder="Responsive, SEO Ready, Modern">
-  </div>
-
-  <div class="field">
-    <label for="siteImage">Website thumbnail URL (optional)</label>
-    <input id="siteImage" type="url" placeholder="https://example.com/preview.jpg">
-  </div>
-
-  <div class="bottom-actions">
-    <button class="btn primary" type="button" onclick="saveSite()">Save Website</button>
-    <button class="btn" type="button" onclick="resetForm()">Clear Form</button>
-  </div>
-
-  <div class="note">
-    Listing-গুলো এই ব্রাউজারে <code>wd_sites</code> key-তে সেভ হবে।
-    Storefront-এ সঠিকভাবে দেখাতে আপনার <code>index.html</code> একই
-    data format ব্যবহার করতে হবে।
-  </div>
-</section>
-
-<!-- PRAYER SETTINGS -->
-<section class="panel" id="prayer">
-  <div class="panelhead">
-    <div>
-      <h2>🕌 Prayer Time Settings</h2>
-      <p>Dashboard-এ দেখানোর জন্য নমুনা সময় সম্পাদনা করুন।</p>
-    </div>
-    <span class="status">MANUAL</span>
-  </div>
-
-  <div class="prayer-settings">
-    <div class="field">
-      <label for="fajr">ফজর</label>
-      <input type="time" id="fajr" value="04:45">
-    </div>
-    <div class="field">
-      <label for="dhuhr">যোহর</label>
-      <input type="time" id="dhuhr" value="12:00">
-    </div>
-    <div class="field">
-      <label for="asr">আসর</label>
-      <input type="time" id="asr" value="16:15">
-    </div>
-    <div class="field">
-      <label for="maghrib">মাগরিব</label>
-      <input type="time" id="maghrib" value="17:50">
-    </div>
-    <div class="field">
-      <label for="isha">এশা</label>
-      <input type="time" id="isha" value="19:10">
-    </div>
-  </div>
-
-  <label class="checkline">
-    <input type="checkbox" id="prayerEnabled" checked>
-    Dashboard-এ Prayer Times section চালু রাখুন
-  </label>
-
-  <div class="bottom-actions">
-    <button class="btn primary" type="button" onclick="savePrayer()">Save Prayer Settings</button>
-    <a class="btn" href="dashboard.html" target="_blank" rel="noopener">Preview Dashboard ↗</a>
-  </div>
-
-  <div class="note">
-    এগুলো ম্যানুয়াল সময়; যাচাইকৃত লাইভ সময় নয়। Dashboard-এ এই
-    সেটিংস কার্যকর করতে dashboard-এর JavaScript-কে
-    <code>wd_prayer</code> থেকে সময় পড়তে হবে। Browser বন্ধ থাকলে
-    সাধারণ JavaScript alarm চলবে না।
-  </div>
-</section>
-
-<!-- INVENTORY -->
-<section class="panel" style="grid-column:1/-1">
-  <div class="panelhead">
-    <div>
-      <h2>Website Inventory</h2>
-      <p>বর্তমান লিস্টিং পরিচালনা করুন।</p>
-    </div>
-    <button class="btn" type="button" onclick="exportData()">Export JSON ↗</button>
-  </div>
-
-  <div class="tablewrap">
-    <table>
-      <thead>
-        <tr>
-          <th>WEBSITE</th>
-          <th>CATEGORY</th>
-          <th>PRICE</th>
-          <th>STATUS</th>
-          <th>ACTIONS</th>
-        </tr>
-      </thead>
-      <tbody id="siteRows"></tbody>
-    </table>
-  </div>
-</section>
-
-<!-- SETTINGS -->
-<section class="panel" id="settings" style="grid-column:1/-1">
-  <div class="panelhead">
-    <div>
-      <h2>Theme & Data Settings</h2>
-      <p>Appearance পরিবর্তন ও আপনার content export করুন।</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div>
-      <strong style="font-size:12px">Appearance</strong>
-      <p>Dark / Light theme এই browser-এ সেভ হবে।</p>
-      <button class="btn" type="button" onclick="toggleTheme()">Toggle Theme</button>
-    </div>
-    <div>
-      <strong style="font-size:12px">Data backup</strong>
-      <p>Website, brand, banner ও prayer settings JSON হিসেবে export করুন।</p>
-      <button class="btn primary" type="button" onclick="exportData()">Download JSON Backup</button>
-    </div>
-  </div>
-
-  <div class="note">
-    নিরাপত্তা: এই পেজটি demo content editor; secure administrator
-    authentication নেই। বাস্তব সাইটে প্রকাশের আগে authentication,
-    database access rules এবং server-side validation যোগ করুন।
-  </div>
-</section>
-
-</main>
+    <section class="panel">
+      <h2>Backup & Restore</h2>
+      <div class="muted">Export or import the configuration and website list as a JSON file.</div>
+      <div class="actions">
+        <button class="btn primary" id="exportBtn" type="button">Export Backup</button>
+        <button class="btn" id="importBtn" type="button">Import Backup</button>
+        <input id="importFile" type="file" accept=".json,application/json" hidden>
+      </div>
+      <div class="small">Security note: this page is not protected by server-side authentication. Anyone who can access this page on the same browser origin may edit local data. Do not treat this as a production-secure admin panel.</div>
+    </section>
+  </main>
 </div>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-
 <script>
-"use strict";
+(() => {
+  "use strict";
+  const KEYS = { brand:"wd_brand", banner:"wd_banner", sites:"wd_sites", prayer:"wd_prayer", theme:"wd_theme", saved:"wd_saved" };
+  const $ = id => document.getElementById(id);
+  const read = (key, fallback) => {
+    try { const value = localStorage.getItem(key); return value ? JSON.parse(value) : fallback; }
+    catch { return fallback; }
+  };
+  const write = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+  const notify = message => {
+    $("status").textContent = message;
+    clearTimeout(notify.timer);
+    notify.timer = setTimeout(() => $("status").textContent = "Ready. Changes save to this browser.", 3500);
+  };
+  const safeUrl = raw => {
+    if (!raw) return "";
+    try {
+      const u = new URL(raw);
+      return ["http:", "https:"].includes(u.protocol) ? u.href : "";
+    } catch { return ""; }
+  };
 
-/* -------------------------------
-   DEFAULT WEBSITE DATA
--------------------------------- */
+  function applyTheme() {
+    const dark = (localStorage.getItem(KEYS.theme) || "light") === "dark";
+    document.body.classList.toggle("dark", dark);
+    $("themeBtn").textContent = dark ? "☀️ Light theme" : "🌙 Dark theme";
+  }
+  function saveTheme(value) {
+    localStorage.setItem(KEYS.theme, value);
+    applyTheme();
+    notify("Theme saved. Dashboard will use this theme too.");
+  }
 
-const seed = [
- {id:1,title:"Nexa Business Pro",category:"Business",price:2490,desc:"আধুনিক কোম্পানি ও সার্ভিস ব্র্যান্ডের জন্য।",tags:["Responsive","SEO Ready","5 Pages"],image:"",badge:"BESTSELLER"},
- {id:2,title:"Mori E-commerce",category:"Ecommerce",price:3490,desc:"পণ্য ও অনলাইন স্টোরের জন্য পরিচ্ছন্ন ডিজাইন।",tags:["Shop UI","Product Grid","Mobile"],image:"",badge:"NEW"},
- {id:3,title:"Saffron Restaurant",category:"Restaurant",price:1990,desc:"রেস্টুরেন্ট ও ক্যাফের জন্য আকর্ষণীয় লেআউট।",tags:["Menu","Booking UI","Modern"],image:"",badge:"POPULAR"},
- {id:4,title:"Orbit Creative Agency",category:"Agency",price:2790,desc:"ক্রিয়েটিভ এজেন্সির জন্য আধুনিক পোর্টফোলিও।",tags:["Portfolio","Services","Clean"],image:"",badge:"FEATURED"},
- {id:5,title:"Mono Personal Portfolio",category:"Portfolio",price:1490,desc:"ডিজাইনার ও ডেভেলপারদের জন্য মিনিমাল টেমপ্লেট।",tags:["Minimal","Case Studies","Fast"],image:"",badge:"VALUE"},
- {id:6,title:"Haven Real Estate",category:"Real Estate",price:2990,desc:"প্রপার্টি ও রিয়েল এস্টেট ব্র্যান্ডের জন্য।",tags:["Listings","Agents","Premium"],image:"",badge:"PREMIUM"}
-];
+  function loadBrand() {
+    const b = read(KEYS.brand, {});
+    $("brandName").value = b.name || "WebsitesDeal";
+    $("logoText").value = b.logoText || "";
+    $("brandLogo").value = b.logo || "";
+  }
+  function loadBanner() {
+    const b = read(KEYS.banner, {});
+    $("bannerTitle").value = b.title || "";
+    $("bannerText").value = b.text || "";
+    $("bannerImage").value = b.image || "";
+  }
+  function loadPrayer() {
+    const p = read(KEYS.prayer, {});
+    ["fajr","dhuhr","asr","maghrib","isha"].forEach(k => $(k).value = p[k] || "");
+    $("prayerNote").value = p.note || "";
+  }
 
-function readJSON(key,fallback){
- try{
-  const value=JSON.parse(localStorage.getItem(key));
-  return value===null ? fallback : value;
- }catch{
-  return fallback;
- }
-}
+  function renderSites() {
+    let sites = read(KEYS.sites, []);
+    if (!Array.isArray(sites)) sites = [];
+    const tbody = $("siteTable");
+    tbody.replaceChildren();
+    if (!sites.length) {
+      const tr = document.createElement("tr"), td = document.createElement("td");
+      td.colSpan = 3; td.textContent = "No websites added yet."; tr.appendChild(td); tbody.appendChild(tr);
+      return;
+    }
+    sites.forEach(site => {
+      const tr = document.createElement("tr");
+      const name = document.createElement("td"); name.textContent = site.name || "Untitled";
+      const urlCell = document.createElement("td");
+      const valid = safeUrl(site.url || "");
+      if (valid) {
+        const a = document.createElement("a");
+        a.href = valid; a.target = "_blank"; a.rel = "noopener noreferrer";
+        a.textContent = site.url; a.style.color = "var(--accent)";
+        urlCell.appendChild(a);
+      } else urlCell.textContent = "Invalid URL";
+      const actions = document.createElement("td");
+      const edit = document.createElement("button");
+      edit.className = "btn"; edit.textContent = "Edit";
+      edit.addEventListener("click", () => {
+        $("editId").value = site.id;
+        $("siteName").value = site.name || "";
+        $("siteUrl").value = site.url || "";
+        $("siteDesc").value = site.description || "";
+        $("saveSite").textContent = "Update Website";
+        $("siteName").focus();
+      });
+      const del = document.createElement("button");
+      del.className = "btn danger"; del.textContent = "Delete";
+      del.addEventListener("click", () => {
+        if (!confirm(`Delete "${site.name || "this website"}"?`)) return;
+        write(KEYS.sites, sites.filter(s => s.id !== site.id));
+        const saved = read(KEYS.saved, []);
+        write(KEYS.saved, Array.isArray(saved) ? saved.filter(id => id !== site.id) : []);
+        renderSites();
+        notify("Website deleted.");
+      });
+      actions.append(edit, del);
+      tr.append(name,urlCell,actions);
+      tbody.appendChild(tr);
+    });
+  }
 
-function sites(){
- const data=readJSON("wd_sites",null);
- return Array.isArray(data)?data:seed.map(x=>({...x}));
-}
+  function clearSiteForm() {
+    $("editId").value = "";
+    $("siteName").value = "";
+    $("siteUrl").value = "";
+    $("siteDesc").value = "";
+    $("saveSite").textContent = "Add Website";
+  }
 
-function saveSites(data){
- localStorage.setItem("wd_sites",JSON.stringify(data));
- renderRows();
- updateStats();
-}
+  $("saveBrand").addEventListener("click", () => {
+    const name = $("brandName").value.trim();
+    const logo = $("brandLogo").value.trim();
+    if (!name) return alert("Please enter a brand name.");
+    if (logo && !safeUrl(logo)) return alert("Logo URL must start with http:// or https://");
+    write(KEYS.brand, {name,logoText:$("logoText").value.trim(),logo});
+    notify("Brand settings saved.");
+  });
 
-function toast(message){
- const el=document.getElementById("toast");
- el.textContent=message;
- el.style.display="block";
- clearTimeout(toast.timer);
- toast.timer=setTimeout(()=>el.style.display="none",2600);
-}
+  $("saveBanner").addEventListener("click", () => {
+    const image = $("bannerImage").value.trim();
+    if (image && !safeUrl(image)) return alert("Banner image URL must start with http:// or https://");
+    write(KEYS.banner, {
+      title:$("bannerTitle").value.trim(),
+      text:$("bannerText").value.trim(),
+      image
+    });
+    notify("Banner settings saved.");
+  });
 
-function escapeHTML(value){
- return String(value??"").replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
- })[c]);
-}
+  $("saveSite").addEventListener("click", () => {
+    const name = $("siteName").value.trim();
+    const rawUrl = $("siteUrl").value.trim();
+    const url = safeUrl(rawUrl);
+    const description = $("siteDesc").value.trim();
+    if (!name) return alert("Please enter a website name.");
+    if (!url) return alert("Enter a valid URL starting with http:// or https://");
+    let sites = read(KEYS.sites, []);
+    if (!Array.isArray(sites)) sites = [];
+    const id = $("editId").value;
+    if (id) {
+      sites = sites.map(s => s.id === id ? {...s,name,url,description} : s);
+    } else {
+      sites.push({id:(crypto.randomUUID ? crypto.randomUUID() : String(Date.now())),name,url,description});
+    }
+    write(KEYS.sites, sites);
+    clearSiteForm();
+    renderSites();
+    notify(id ? "Website updated." : "Website added.");
+  });
+  $("clearSite").addEventListener("click", clearSiteForm);
 
-function validHttpUrl(value){
- if(!value)return true;
- try{
-  const url=new URL(value);
-  return url.protocol==="https:"||url.protocol==="http:";
- }catch{return false;}
-}
+  $("savePrayer").addEventListener("click", () => {
+    write(KEYS.prayer, {
+      fajr:$("fajr").value.trim(),
+      dhuhr:$("dhuhr").value.trim(),
+      asr:$("asr").value.trim(),
+      maghrib:$("maghrib").value.trim(),
+      isha:$("isha").value.trim(),
+      note:$("prayerNote").value.trim()
+    });
+    notify("Prayer times saved.");
+  });
 
-/* -------------------------------
-   BRAND EDITOR
--------------------------------- */
+  $("themeBtn").addEventListener("click", () => saveTheme(document.body.classList.contains("dark") ? "light" : "dark"));
+  $("lightTheme").addEventListener("click", () => saveTheme("light"));
+  $("darkTheme").addEventListener("click", () => saveTheme("dark"));
 
-function renderBrand(){
- const brand=readJSON("wd_brand",{name:"WebsitesDeal",logoText:"W",logo:""});
- const name=typeof brand.name==="string"&&brand.name.trim()
-  ?brand.name.trim():"WebsitesDeal";
- const logoText=typeof brand.logoText==="string"&&brand.logoText.trim()
-  ?brand.logoText.trim().slice(0,4):"W";
- const logo=typeof brand.logo==="string"?brand.logo:"";
+  $("exportBtn").addEventListener("click", () => {
+    const backup = {};
+    Object.entries(KEYS).forEach(([name,key]) => {
+      const value = localStorage.getItem(key);
+      if (value !== null) backup[key] = value;
+    });
+    const blob = new Blob([JSON.stringify(backup,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url; a.download = "websitesdeal-backup.json"; a.click();
+    URL.revokeObjectURL(url);
+    notify("Backup exported.");
+  });
 
- document.getElementById("brandNameInput").value=name;
- document.getElementById("logoTextInput").value=logoText;
- document.getElementById("logoUrlInput").value=logo;
+  $("importBtn").addEventListener("click", () => $("importFile").click());
+  $("importFile").addEventListener("change", async e => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    try {
+      const data = JSON.parse(await file.text());
+      const allowed = Object.values(KEYS);
+      if (!data || typeof data !== "object" || Array.isArray(data)) throw new Error("Invalid backup format.");
+      for (const key of Object.keys(data)) {
+        if (!allowed.includes(key)) continue;
+        if (typeof data[key] !== "string") throw new Error("Invalid setting value.");
+        JSON.parse(data[key]);
+      }
+      if (!confirm("Import backup? Existing settings may be overwritten.")) return;
+      for (const key of Object.keys(data)) {
+        if (allowed.includes(key)) localStorage.setItem(key, data[key]);
+      }
+      loadAll();
+      notify("Backup imported.");
+    } catch (err) {
+      alert("Could not import backup: " + err.message);
+    } finally {
+      e.target.value = "";
+    }
+  });
 
- document.getElementById("sideBrandName").textContent=name;
- document.getElementById("brandPreviewName").textContent=name;
- document.getElementById("brandStatus").textContent=
-  name==="WebsitesDeal"&&!logo?"Default":"Custom";
-
- setLogo(document.getElementById("sideLogo"),logo,logoText);
- setLogo(document.getElementById("brandPreviewLogo"),logo,logoText);
-}
-
-function setLogo(element,url,logoText){
- element.replaceChildren();
- if(url&&validHttpUrl(url)){
-  const img=document.createElement("img");
-  img.src=url;
-  img.alt="Brand logo";
-  img.onerror=()=>{element.replaceChildren();element.textContent=logoText||"W";};
-  element.appendChild(img);
- }else{
-  element.textContent=logoText||"W";
- }
-}
-
-function saveBrand(){
- const name=document.getElementById("brandNameInput").value.trim();
- const logoText=document.getElementById("logoTextInput").value.trim()||"W";
- const logo=document.getElementById("logoUrlInput").value.trim();
-
- if(!name){toast("Brand name লিখুন");return}
- if(!validHttpUrl(logo)){toast("সঠিক http/https logo URL দিন");return}
-
- localStorage.setItem("wd_brand",JSON.stringify({name,logoText,logo}));
- renderBrand();
- toast("Brand settings saved");
-}
-
-function resetBrand(){
- localStorage.removeItem("wd_brand");
- renderBrand();
- toast("Brand settings reset");
-}
-
-/* -------------------------------
-   BANNER EDITOR
--------------------------------- */
-
-function loadBanner(){
- const b=readJSON("wd_banner",null);
- if(!b)return;
-
- document.getElementById("bannerTitle").value=b.title||"";
- document.getElementById("bannerText").value=b.text||"";
- document.getElementById("bannerImage").value=b.image||"";
- document.getElementById("bannerDemoTitle").textContent=b.title||"";
- document.getElementById("bannerDemoText").textContent=b.text||"";
- document.getElementById("bannerStatus").textContent="Custom";
-}
-
-function saveBanner(){
- const title=document.getElementById("bannerTitle").value.trim();
- const text=document.getElementById("bannerText").value.trim();
- const image=document.getElementById("bannerImage").value.trim();
-
- if(!title){toast("Banner headline লিখুন");return}
- if(!validHttpUrl(image)){toast("সঠিক banner image URL দিন");return}
-
- const data={title,text,image};
- localStorage.setItem("wd_banner",JSON.stringify(data));
- document.getElementById("bannerDemoTitle").textContent=title;
- document.getElementById("bannerDemoText").textContent=text;
- document.getElementById("bannerStatus").textContent="Custom";
- toast("Banner settings saved");
-}
-
-/* -------------------------------
-   WEBSITE LISTINGS
--------------------------------- */
-
-function renderRows(){
- const list=sites();
- const tbody=document.getElementById("siteRows");
-
- tbody.innerHTML=list.map(site=>`
-  <tr>
-   <td><strong>${escapeHTML(site.title||"Untitled")}</strong></td>
-   <td>${escapeHTML(site.category||"Other")}</td>
-   <td>৳${(Number(site.price)||0).toLocaleString("en-US")}</td>
-   <td><span class="status">ACTIVE</span></td>
-   <td>
-    <div class="actions">
-     <button class="btn" type="button" onclick="editSite(${Number(site.id)})">Edit</button>
-     <button class="btn danger" type="button" onclick="deleteSite(${Number(site.id)})">Delete</button>
-    </div>
-   </td>
-  </tr>
- `).join("");
-
- if(!list.length){
-  tbody.innerHTML='<tr><td colspan="5">কোনো website listing নেই।</td></tr>';
- }
-}
-
-function saveSite(){
- const title=document.getElementById("siteTitle").value.trim();
- const category=document.getElementById("siteCategory").value;
- const priceInput=document.getElementById("sitePrice").value;
- const price=Number(priceInput);
- const desc=document.getElementById("siteDesc").value.trim();
- const tags=document.getElementById("siteTags").value.split(",").map(x=>x.trim()).filter(Boolean);
- const image=document.getElementById("siteImage").value.trim();
- const editId=Number(document.getElementById("editId").value);
-
- if(!title){toast("Website title লিখুন");return}
- if(priceInput===""||!Number.isFinite(price)||price<0||price>100000000){
-  toast("সঠিক website price দিন");return;
- }
- if(!validHttpUrl(image)){toast("সঠিক thumbnail URL দিন");return}
-
- const list=sites();
- const id=editId||Date.now();
- const old=list.find(s=>Number(s.id)===id);
-
- const item={
-  id,title,category,price,desc,tags,image,
-  art:old?.art||"",
-  badge:old?.badge||"FEATURED"
- };
-
- const index=list.findIndex(s=>Number(s.id)===id);
- if(index>=0)list[index]=item;
- else list.unshift(item);
-
- saveSites(list);
- resetForm();
- toast("Website listing saved");
-}
-
-function editSite(id){
- const site=sites().find(s=>Number(s.id)===Number(id));
- if(!site)return;
-
- document.getElementById("editId").value=site.id;
- document.getElementById("siteTitle").value=site.title||"";
- document.getElementById("siteCategory").value=site.category||"Business";
- document.getElementById("sitePrice").value=Number(site.price)||0;
- document.getElementById("siteDesc").value=site.desc||"";
- document.getElementById("siteTags").value=Array.isArray(site.tags)?site.tags.join(", "):"";
- document.getElementById("siteImage").value=site.image||site.art||"";
- document.getElementById("formTitle").textContent="Edit Website Listing";
- document.getElementById("websites").scrollIntoView({behavior:"smooth",block:"start"});
-}
-
-function deleteSite(id){
- if(!confirm("এই website listing মুছে ফেলবেন?"))return;
- saveSites(sites().filter(s=>Number(s.id)!==Number(id)));
- toast("Listing deleted");
-}
-
-function resetForm(){
- ["editId","siteTitle","siteDesc","siteTags","siteImage"].forEach(id=>{
-  document.getElementById(id).value="";
- });
- document.getElementById("sitePrice").value="2490";
- document.getElementById("siteCategory").value="Business";
- document.getElementById("formTitle").textContent="Website Listing Editor";
-}
-
-/* -------------------------------
-   PRAYER SETTINGS
--------------------------------- */
-
-const prayerDefaults={
- fajr:"04:45",
- dhuhr:"12:00",
- asr:"16:15",
- maghrib:"17:50",
- isha:"19:10",
- enabled:true
-};
-
-function loadPrayer(){
- const p={...prayerDefaults,...readJSON("wd_prayer",{})};
-
- ["fajr","dhuhr","asr","maghrib","isha"].forEach(key=>{
-  document.getElementById(key).value=p[key]||prayerDefaults[key];
- });
- document.getElementById("prayerEnabled").checked=p.enabled!==false;
-}
-
-function savePrayer(){
- const p={enabled:document.getElementById("prayerEnabled").checked};
-
- for(const key of ["fajr","dhuhr","asr","maghrib","isha"]){
-  const value=document.getElementById(key).value;
-  if(!value){toast("সব সালাতের সময় পূরণ করুন");return}
-  p[key]=value;
- }
-
- localStorage.setItem("wd_prayer",JSON.stringify(p));
- toast("Prayer settings saved");
-}
-
-/* -------------------------------
-   THEME
--------------------------------- */
-
-let theme=localStorage.getItem("wd_admin_theme")||"dark";
-
-function applyTheme(){
- document.documentElement.dataset.theme=theme;
- document.getElementById("themeBtn").textContent=
-  theme==="dark"?"☀ Light Mode":"☾ Dark Mode";
-}
-
-function toggleTheme(){
- theme=theme==="dark"?"light":"dark";
- localStorage.setItem("wd_admin_theme",theme);
- applyTheme();
-}
-
-/* -------------------------------
-   EXPORT DATA
--------------------------------- */
-
-function exportData(){
- const data={
-  exportedAt:new Date().toISOString(),
-  brand:readJSON("wd_brand",{name:"WebsitesDeal",logoText:"W",logo:""}),
-  banner:readJSON("wd_banner",{}),
-  sites:sites(),
-  prayer:readJSON("wd_prayer",prayerDefaults),
-  theme:localStorage.getItem("wd_admin_theme")||"dark"
- };
-
- const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
- const url=URL.createObjectURL(blob);
- const link=document.createElement("a");
- link.href=url;
- link.download="websitesdeal-backup.json";
- document.body.appendChild(link);
- link.click();
- link.remove();
- setTimeout(()=>URL.revokeObjectURL(url),1000);
- toast("JSON backup exported");
-}
-
-/* -------------------------------
-   DASHBOARD STATS
--------------------------------- */
-
-function updateStats(){
- document.getElementById("countSites").textContent=
-  String(sites().length).padStart(2,"0");
-}
-
-/* -------------------------------
-   INIT
--------------------------------- */
-
-applyTheme();
-renderBrand();
-loadBanner();
-loadPrayer();
-renderRows();
-updateStats();
-
-/* Sync changes from another open tab in the same browser */
-window.addEventListener("storage",event=>{
- if(["wd_brand","wd_banner","wd_sites","wd_prayer"].includes(event.key)){
-  renderBrand();
-  loadBanner();
-  loadPrayer();
-  renderRows();
-  updateStats();
- }
-});
+  function loadAll() {
+    loadBrand(); loadBanner(); loadPrayer(); renderSites(); applyTheme();
+  }
+  window.addEventListener("storage", e => {
+    if (Object.values(KEYS).includes(e.key) || e.key === null) loadAll();
+  });
+  loadAll();
+})();
 </script>
 </body>
 </html>
