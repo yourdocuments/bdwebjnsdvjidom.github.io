@@ -1,534 +1,541 @@
-/* ==========================================================
-   WebsitesDeal Bangladesh — Premium Motion Engine
-   Apollo.io-inspired animations
+/* =========================================================
+   WEBSITESDEAL BANGLADESH
+   Premium Motion & Interaction System
    File: script.js
-   ========================================================== */
+   ========================================================= */
 
 (() => {
   "use strict";
 
-  const $ = (selector, root = document) =>
-    root.querySelector(selector);
+  const doc = document;
+  const root = doc.documentElement;
+  const body = doc.body;
 
-  const $$ = (selector, root = document) =>
-    [...root.querySelectorAll(selector)];
+  /* ================= PAGE READY ================= */
 
-  /* ---------- 1. Page Ready ---------- */
-
-  document.documentElement.classList.add("js-enabled");
-
-  const onReady = (callback) => {
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", callback, {
-        once: true
-      });
-    } else {
-      callback();
-    }
+  const pageReady = () => {
+    root.classList.add("page-ready");
+    root.classList.add("motion-ready");
+    body.classList.add("page-ready");
   };
 
-  onReady(() => {
-    document.body.classList.add("page-ready");
+  if (doc.readyState === "loading") {
+    doc.addEventListener("DOMContentLoaded", pageReady, { once: true });
+  } else {
+    pageReady();
+  }
 
-    /* ---------- 2. Scroll Progress ---------- */
+  /* ================= SAFE SELECTORS ================= */
 
-    let progressBar = $("#scrollProgress");
+  const $ = (selector, scope = doc) => scope.querySelector(selector);
+  const $$ = (selector, scope = doc) =>
+    Array.from(scope.querySelectorAll(selector));
 
-    if (!progressBar) {
-      progressBar = document.createElement("div");
-      progressBar.id = "scrollProgress";
-      progressBar.setAttribute("aria-hidden", "true");
+  /* ================= SCROLL PROGRESS ================= */
 
-      Object.assign(progressBar.style, {
-        position: "fixed",
-        top: "0",
-        left: "0",
-        width: "0%",
-        height: "3px",
-        zIndex: "99999",
-        pointerEvents: "none",
-        background: "linear-gradient(90deg,#8ed52e,#d5ff83)",
-        transition: "width 80ms linear"
-      });
+  let progressBar = $(
+    "#scrollProgress, .scroll-progress, .scroll-progress-bar"
+  );
 
-      document.body.appendChild(progressBar);
-    }
+  if (!progressBar) {
+    progressBar = doc.createElement("div");
+    progressBar.id = "scrollProgress";
+    progressBar.setAttribute("aria-hidden", "true");
+    body.appendChild(progressBar);
+  }
 
-    let scrollTicking = false;
+  progressBar.style.cssText +=
+    ";position:fixed;top:0;left:0;height:3px;width:0;" +
+    "z-index:2000;pointer-events:none;";
 
-    function updateScrollProgress() {
-      const scrollable =
-        document.documentElement.scrollHeight - window.innerHeight;
+  let scrollTicking = false;
 
-      const percentage =
-        scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  function updateScrollProgress() {
+    const scrollable =
+      root.scrollHeight - root.clientHeight;
 
-      progressBar.style.width = `${Math.min(100, percentage)}%`;
-      scrollTicking = false;
-    }
+    const progress = scrollable > 0
+      ? (root.scrollTop / scrollable) * 100
+      : 0;
 
-    window.addEventListener(
-      "scroll",
-      () => {
-        if (!scrollTicking) {
-          window.requestAnimationFrame(updateScrollProgress);
-          scrollTicking = true;
-        }
-      },
-      { passive: true }
+    progressBar.style.width = `${Math.min(100, progress)}%`;
+
+    const header = $(
+      "header, .site-header, .navbar, .main-header"
     );
 
-    updateScrollProgress();
-
-    /* ---------- 3. Sticky Header ---------- */
-
-    const header =
-      $("header") ||
-      $(".site-header") ||
-      $(".navbar") ||
-      $(".main-header");
-
-    function updateHeader() {
-      if (!header) return;
-
-      header.classList.toggle("is-scrolled", window.scrollY > 24);
+    if (header) {
+      header.classList.toggle("is-scrolled", root.scrollTop > 20);
     }
 
-    window.addEventListener("scroll", updateHeader, { passive: true });
-    updateHeader();
+    const backTop = $("#backToTop, .back-to-top");
 
-    /* ---------- 4. Scroll Reveal ---------- */
+    if (backTop) {
+      const visible = root.scrollTop > 450;
 
-    const revealSelectors = [
-      ".reveal",
-      ".reveal-up",
-      ".reveal-left",
-      ".reveal-right",
-      ".fade-in",
-      ".animate-on-scroll",
-      ".section-heading",
-      ".category-card",
-      ".product-card",
-      ".website-card",
-      ".pricing-card",
-      ".feature-card",
-      ".testimonial-card"
-    ];
+      backTop.classList.toggle("visible", visible);
+      backTop.classList.toggle("is-visible", visible);
+      backTop.setAttribute("aria-hidden", String(!visible));
+    }
 
-    const revealElements = [
-      ...new Set(revealSelectors.flatMap((selector) => $$(selector)))
-    ];
+    scrollTicking = false;
+  }
 
-    const reduceMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
+  window.addEventListener("scroll", () => {
+    if (!scrollTicking) {
+      scrollTicking = true;
+      window.requestAnimationFrame(updateScrollProgress);
+    }
+  }, { passive: true });
 
-    if (reduceMotion || !("IntersectionObserver" in window)) {
-      revealElements.forEach((element) => {
-        element.classList.add("is-visible");
-      });
-    } else {
-      revealElements.forEach((element) => {
-        element.classList.add("motion-ready");
-      });
+  updateScrollProgress();
 
-      const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
+  /* ================= SCROLL REVEAL ================= */
 
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          });
-        },
-        {
-          threshold: 0.12,
-          rootMargin: "0px 0px -35px 0px"
-        }
+  const revealSelectors = [
+    ".reveal",
+    ".reveal-up",
+    ".fade-in",
+    ".category-card",
+    ".product-card",
+    ".website-card",
+    ".pricing-card",
+    ".feature-card",
+    ".testimonial-card"
+  ];
+
+  const revealElements = $$(revealSelectors.join(","));
+
+  revealElements.forEach((element, index) => {
+    if (!element.hasAttribute("data-reveal-delay")) {
+      const siblings = Array.from(element.parentElement?.children || [])
+        .filter(child => child.matches(revealSelectors.join(",")));
+
+      const siblingIndex = siblings.indexOf(element);
+
+      element.style.setProperty(
+        "--reveal-delay",
+        `${Math.max(0, siblingIndex) * 75}ms`
       );
-
-      revealElements.forEach((element) => {
-        revealObserver.observe(element);
-      });
+    } else {
+      const delay = Number(element.dataset.revealDelay) || 0;
+      element.style.setProperty("--reveal-delay", `${delay}ms`);
     }
 
-    /* ---------- 5. Staggered Card Animations ---------- */
+    element.classList.add("reveal-item");
+  });
 
-    const staggerGroups = [
-      ".categories-grid",
-      ".category-grid",
-      ".products-grid",
-      ".websites-grid",
-      ".pricing-grid",
-      ".features-grid",
-      ".testimonials-grid"
-    ];
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
-    staggerGroups.forEach((selector) => {
-      $$(selector).forEach((group) => {
-        const cards = $$(
-          ".category-card, .product-card, .website-card, .pricing-card, .feature-card, .testimonial-card",
-          group
-        );
-
-        cards.forEach((card, index) => {
-          card.style.setProperty(
-            "--reveal-delay",
-            `${Math.min(index * 80, 480)}ms`
-          );
-        });
+  if ("IntersectionObserver" in window && !reduceMotion) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
       });
+    }, {
+      threshold: 0.12,
+      rootMargin: "0px 0px -35px 0px"
     });
 
-    /* ---------- 6. Animated Number Counters ---------- */
+    revealElements.forEach(element => {
+      revealObserver.observe(element);
+    });
+  } else {
+    revealElements.forEach(element => {
+      element.classList.add("is-visible");
+    });
+  }
 
-    const counterElements = $$(
-      "[data-count], .counter, [data-counter]"
-    );
+  /* ================= MOBILE NAVIGATION ================= */
 
-    function animateCounter(element) {
-      if (element.dataset.countAnimated === "true") return;
+  const menuButton = $(
+    "#menuToggle, #mobileMenuToggle, .menu-toggle, .mobile-menu-toggle"
+  );
 
-      element.dataset.countAnimated = "true";
+  const navMenu = $(
+    "#navLinks, #mobileMenu, .nav-links, .nav-menu"
+  );
 
-      const rawValue =
-        element.dataset.count ??
-        element.dataset.counter ??
-        element.textContent.trim();
+  function closeMobileMenu() {
+    if (!menuButton || !navMenu) return;
 
-      const numericValue = Number(
-        String(rawValue).replace(/[^\d.-]/g, "")
-      );
+    navMenu.classList.remove("is-open", "active", "open");
+    menuButton.classList.remove("is-open", "active");
+    menuButton.setAttribute("aria-expanded", "false");
+  }
 
-      if (!Number.isFinite(numericValue)) return;
+  if (menuButton && navMenu) {
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.setAttribute("aria-label", "Toggle navigation");
 
-      if (reduceMotion) {
-        element.textContent = formatCounter(
-          numericValue,
-          element.dataset.countSuffix || ""
-        );
+    menuButton.addEventListener("click", () => {
+      const isOpen = navMenu.classList.contains("is-open");
+
+      closeMobileMenu();
+
+      if (!isOpen) {
+        navMenu.classList.add("is-open");
+        menuButton.classList.add("is-open");
+        menuButton.setAttribute("aria-expanded", "true");
+      }
+    });
+
+    $$("a", navMenu).forEach(link => {
+      link.addEventListener("click", closeMobileMenu);
+    });
+
+    doc.addEventListener("click", event => {
+      if (
+        !navMenu.contains(event.target) &&
+        !menuButton.contains(event.target)
+      ) {
+        closeMobileMenu();
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 680) {
+        closeMobileMenu();
+      }
+    });
+  }
+
+  /* ================= SMOOTH ANCHOR SCROLL ================= */
+
+  $$('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", event => {
+      const href = link.getAttribute("href");
+
+      if (!href || href === "#") return;
+
+      let target;
+
+      try {
+        target = $(href);
+      } catch {
         return;
       }
 
-      const duration = 1400;
-      const startTime = performance.now();
+      if (!target) return;
 
-      function frame(now) {
-        const progress = Math.min((now - startTime) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 4);
-        const current = numericValue * eased;
+      event.preventDefault();
 
-        element.textContent = formatCounter(
-          current,
-          element.dataset.countSuffix || ""
-        );
+      target.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "start"
+      });
 
-        if (progress < 1) {
-          requestAnimationFrame(frame);
-        }
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState(null, "", href);
       }
+    });
+  });
 
-      requestAnimationFrame(frame);
-    }
+  /* ================= BACK TO TOP ================= */
 
-    function formatCounter(value, suffix) {
-      const rounded = Math.round(value);
-      return rounded.toLocaleString("en-US") + suffix;
-    }
+  let backToTop = $("#backToTop, .back-to-top");
 
-    if ("IntersectionObserver" in window && !reduceMotion) {
-      const counterObserver = new IntersectionObserver(
-        (entries, observer) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
+  if (!backToTop) {
+    backToTop = doc.createElement("button");
+    backToTop.id = "backToTop";
+    backToTop.type = "button";
+    backToTop.innerHTML = "&#8593;";
+    backToTop.setAttribute("aria-label", "Back to top");
+    backToTop.setAttribute("aria-hidden", "true");
+    body.appendChild(backToTop);
+  }
 
-            animateCounter(entry.target);
-            observer.unobserve(entry.target);
-          });
-        },
-        { threshold: 0.5 }
-      );
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: reduceMotion ? "auto" : "smooth"
+    });
+  });
 
-      counterElements.forEach((counter) => {
-        counterObserver.observe(counter);
-      });
-    } else {
-      counterElements.forEach(animateCounter);
-    }
+  /* ================= CARD HOVER ================= */
 
-    /* ---------- 7. Mobile Navigation ---------- */
+  const interactiveCards = $$(
+    ".website-card, .product-card, .category-card, " +
+    ".pricing-card, .feature-card, .testimonial-card"
+  );
 
-    const menuToggle =
-      $("#menuToggle") ||
-      $("#mobileMenuToggle") ||
-      $(".menu-toggle") ||
-      $(".mobile-menu-toggle");
-
-    const mobileMenu =
-      $("#mobileMenu") ||
-      $(".mobile-menu") ||
-      $(".nav-links");
-
-    if (menuToggle && mobileMenu) {
-      menuToggle.setAttribute("aria-expanded", "false");
-
-      menuToggle.addEventListener("click", () => {
-        const isOpen =
-          menuToggle.getAttribute("aria-expanded") === "true";
-
-        menuToggle.setAttribute("aria-expanded", String(!isOpen));
-        mobileMenu.classList.toggle("is-open", !isOpen);
-        document.body.classList.toggle("menu-open", !isOpen);
-      });
-
-      $$("a", mobileMenu).forEach((link) => {
-        link.addEventListener("click", () => {
-          menuToggle.setAttribute("aria-expanded", "false");
-          mobileMenu.classList.remove("is-open");
-          document.body.classList.remove("menu-open");
-        });
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key !== "Escape") return;
-
-        menuToggle.setAttribute("aria-expanded", "false");
-        mobileMenu.classList.remove("is-open");
-        document.body.classList.remove("menu-open");
-      });
-    }
-
-    /* ---------- 8. Smooth Anchor Scrolling ---------- */
-
-    $$('a[href^="#"]').forEach((link) => {
-      link.addEventListener("click", (event) => {
-        const href = link.getAttribute("href");
-
-        if (!href || href === "#") return;
-
-        let target;
-
-        try {
-          target = $(href);
-        } catch {
-          return;
-        }
-
-        if (!target) return;
-
-        event.preventDefault();
-
-        target.scrollIntoView({
-          behavior: reduceMotion ? "auto" : "smooth",
-          block: "start"
-        });
-
-        if (history.replaceState) {
-          history.replaceState(null, "", href);
-        }
-      });
+  interactiveCards.forEach(card => {
+    card.addEventListener("pointerenter", () => {
+      card.classList.add("is-hovered");
     });
 
-    /* ---------- 9. Premium Card Hover ---------- */
+    card.addEventListener("pointerleave", () => {
+      card.classList.remove("is-hovered");
+    });
+  });
 
-    if (!reduceMotion && window.matchMedia("(hover: hover)").matches) {
-      const interactiveCards = $$(
-        ".product-card, .website-card, .category-card, .feature-card, .pricing-card"
-      );
+  /* ================= ANIMATED COUNTERS ================= */
 
-      interactiveCards.forEach((card) => {
-        card.addEventListener("pointerenter", () => {
-          card.classList.add("is-hovered");
-        });
+  const counters = $$(
+    "[data-count], [data-counter], .counter"
+  );
 
-        card.addEventListener("pointerleave", () => {
-          card.classList.remove("is-hovered");
-        });
+  function animateCounter(element) {
+    if (element.dataset.countAnimated === "true") return;
+
+    const rawValue =
+      element.dataset.count ??
+      element.dataset.counter ??
+      element.textContent.trim();
+
+    const target = Number(String(rawValue).replace(/,/g, ""));
+
+    if (!Number.isFinite(target)) return;
+
+    element.dataset.countAnimated = "true";
+
+    const duration = reduceMotion
+      ? 0
+      : Number(element.dataset.duration) || 1400;
+
+    const originalText = element.textContent.trim();
+    const prefix = element.dataset.prefix || "";
+    const suffix = element.dataset.suffix || "";
+
+    const useGrouping = element.dataset.grouping !== "false";
+    const decimals = Number(element.dataset.decimals) || 0;
+
+    const formatNumber = value => {
+      const formatted = value.toLocaleString("en-US", {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+        useGrouping
       });
+
+      return `${prefix}${formatted}${suffix}`;
+    };
+
+    if (duration === 0) {
+      element.textContent = formatNumber(target);
+      return;
     }
 
-    /* ---------- 10. Hero Parallax ---------- */
+    const startTime = performance.now();
 
-    const heroVisual =
-      $(".hero-visual") ||
-      $(".hero-image") ||
-      $(".hero-dashboard") ||
-      $(".hero-preview");
+    function frame(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 4);
+      const current = target * eased;
+
+      element.textContent = formatNumber(current);
+
+      if (progress < 1) {
+        window.requestAnimationFrame(frame);
+      } else {
+        element.textContent = formatNumber(target);
+      }
+    }
 
     if (
-      heroVisual &&
-      !reduceMotion &&
-      window.matchMedia("(hover: hover) and (min-width: 768px)").matches
+      !element.dataset.count &&
+      !element.dataset.counter &&
+      !prefix &&
+      !suffix
     ) {
-      let pointerFrame = null;
-
-      document.addEventListener("pointermove", (event) => {
-        if (pointerFrame) return;
-
-        pointerFrame = requestAnimationFrame(() => {
-          const x = (event.clientX / window.innerWidth - 0.5) * 8;
-          const y = (event.clientY / window.innerHeight - 0.5) * 8;
-
-          heroVisual.style.setProperty("--pointer-x", `${x}px`);
-          heroVisual.style.setProperty("--pointer-y", `${y}px`);
-
-          pointerFrame = null;
-        });
-      });
+      element.dataset.counterOriginal = originalText;
     }
 
-    /* ---------- 11. Pricing Billing Toggle ---------- */
+    window.requestAnimationFrame(frame);
+  }
 
-    const billingToggle =
-      $("#billingToggle") ||
-      $("[data-billing-toggle]");
-
-    if (billingToggle) {
-      const priceElements = $$("[data-monthly-price]");
-      const isCheckbox = billingToggle.type === "checkbox";
-
-      function updatePricing() {
-        const annual = isCheckbox
-          ? billingToggle.checked
-          : billingToggle.getAttribute("aria-pressed") === "true";
-
-        priceElements.forEach((priceElement) => {
-          const monthly = priceElement.dataset.monthlyPrice;
-          const yearly = priceElement.dataset.yearlyPrice;
-
-          const selectedPrice = annual ? yearly : monthly;
-
-          if (selectedPrice !== undefined) {
-            priceElement.textContent = selectedPrice;
-          }
-        });
-
-        if (!isCheckbox) {
-          billingToggle.setAttribute("aria-pressed", String(!annual));
-        }
-
-        $$("[data-billing-label]").forEach((label) => {
-          label.classList.toggle(
-            "is-active",
-            label.dataset.billingLabel === (annual ? "yearly" : "monthly")
-          );
-        });
-      }
-
-      billingToggle.addEventListener("change", updatePricing);
-
-      if (!isCheckbox) {
-        billingToggle.addEventListener("click", updatePricing);
-      }
-
-      updatePricing();
-    }
-
-    /* ---------- 12. Back To Top ---------- */
-
-    let backToTop = $("#backToTop");
-
-    if (!backToTop) {
-      backToTop = document.createElement("button");
-      backToTop.id = "backToTop";
-      backToTop.type = "button";
-      backToTop.setAttribute("aria-label", "Back to top");
-      backToTop.textContent = "↑";
-
-      Object.assign(backToTop.style, {
-        position: "fixed",
-        right: "22px",
-        bottom: "22px",
-        width: "46px",
-        height: "46px",
-        border: "1px solid rgba(183,243,74,.35)",
-        borderRadius: "50%",
-        background: "#b7f34a",
-        color: "#07110d",
-        fontSize: "23px",
-        fontWeight: "700",
-        cursor: "pointer",
-        zIndex: "999",
-        opacity: "0",
-        visibility: "hidden",
-        transform: "translateY(10px)",
-        transition: "opacity .25s ease, transform .25s ease, visibility .25s",
-        boxShadow: "0 8px 28px rgba(0,0,0,.2)"
-      });
-
-      document.body.appendChild(backToTop);
-    }
-
-    function updateBackToTop() {
-      const visible = window.scrollY > 500;
-
-      backToTop.style.opacity = visible ? "1" : "0";
-      backToTop.style.visibility = visible ? "visible" : "hidden";
-      backToTop.style.transform = visible
-        ? "translateY(0)"
-        : "translateY(10px)";
-    }
-
-    window.addEventListener("scroll", updateBackToTop, {
-      passive: true
-    });
-
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: reduceMotion ? "auto" : "smooth"
-      });
-    });
-
-    updateBackToTop();
-
-    /* ---------- 13. Current Year ---------- */
-
-    $$("[data-current-year]").forEach((element) => {
-      element.textContent = new Date().getFullYear();
-    });
-
-    /* ---------- 14. Newsletter Form Feedback ---------- */
-
-    $$("[data-newsletter-form]").forEach((form) => {
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const emailInput = $('input[type="email"]', form);
-        const message = $("[data-form-message]", form);
-
-        if (!emailInput || !emailInput.checkValidity()) {
-          emailInput?.reportValidity();
-          return;
-        }
-
-        if (message) {
-          message.textContent =
-            "ধন্যবাদ! ফর্মটি প্রস্তুত। সাবস্ক্রিপশন চালু করতে ব্যাকএন্ড সংযোগ প্রয়োজন।";
-          message.setAttribute("role", "status");
+  if ("IntersectionObserver" in window) {
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
         }
       });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => {
+      counterObserver.observe(counter);
     });
+  } else {
+    counters.forEach(animateCounter);
+  }
 
-    /* ---------- 15. Image Loading ---------- */
+  /* ================= PRICING BILLING TOGGLE ================= */
 
-    $$("img").forEach((image) => {
-      if (!image.hasAttribute("loading") && !image.closest(".hero")) {
-        image.loading = "lazy";
+  const billingToggle = $(
+    "#billingToggle, [data-billing-toggle]"
+  );
+
+  function updateBillingPrices(isYearly) {
+    $$("[data-monthly], [data-yearly]").forEach(priceElement => {
+      const newPrice = isYearly
+        ? priceElement.dataset.yearly
+        : priceElement.dataset.monthly;
+
+      if (newPrice !== undefined) {
+        priceElement.textContent = newPrice;
       }
-
-      image.addEventListener("error", () => {
-        image.classList.add("image-load-error");
-      });
     });
 
-    /* ---------- 16. Console Brand ---------- */
+    $$("[data-billing-label]").forEach(label => {
+      label.classList.toggle("active", label.dataset.billingLabel === (
+        isYearly ? "yearly" : "monthly"
+      ));
+    });
 
-    console.info(
-      "%c WebsitesDeal Bangladesh ",
-      "background:#b7f34a;color:#07110d;padding:7px 12px;border-radius:5px;font-weight:bold;"
+    $$("[data-billing-period]").forEach(period => {
+      period.textContent = isYearly ? "year" : "month";
+    });
+
+    doc.dispatchEvent(new CustomEvent("billingchange", {
+      detail: { billing: isYearly ? "yearly" : "monthly" }
+    }));
+  }
+
+  if (billingToggle) {
+    const isCheckbox =
+      billingToggle instanceof HTMLInputElement &&
+      ["checkbox", "radio"].includes(billingToggle.type);
+
+    const initialYearly = isCheckbox
+      ? billingToggle.checked
+      : billingToggle.getAttribute("aria-pressed") === "true";
+
+    updateBillingPrices(initialYearly);
+
+    billingToggle.addEventListener("change", () => {
+      const yearly = isCheckbox
+        ? billingToggle.checked
+        : billingToggle.classList.contains("active");
+
+      updateBillingPrices(yearly);
+    });
+
+    if (!isCheckbox) {
+      billingToggle.addEventListener("click", () => {
+        const yearly =
+          billingToggle.getAttribute("aria-pressed") !== "true";
+
+        billingToggle.setAttribute("aria-pressed", String(yearly));
+        billingToggle.classList.toggle("active", yearly);
+
+        updateBillingPrices(yearly);
+      });
+    }
+  }
+
+  /* ================= HERO PARALLAX ================= */
+
+  if (!reduceMotion && window.matchMedia("(min-width: 900px)").matches) {
+    const heroVisuals = $$(
+      ".hero-visual, .hero-image, .hero-dashboard, .hero-preview"
     );
 
-    console.info("Premium motion engine initialized.");
+    heroVisuals.forEach(visual => {
+      visual.addEventListener("pointermove", event => {
+        const rect = visual.getBoundingClientRect();
+
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+        visual.style.transform =
+          `perspective(900px) rotateY(${x * 3}deg) rotateX(${-y * 3}deg)`;
+      });
+
+      visual.addEventListener("pointerleave", () => {
+        visual.style.transform = "";
+      });
+    });
+  }
+
+  /* ================= IMAGE LAZY LOADING ================= */
+
+  $$("img").forEach(img => {
+    if (!img.hasAttribute("loading") && !img.closest(".hero")) {
+      img.loading = "lazy";
+    }
+
+    if (!img.hasAttribute("decoding")) {
+      img.decoding = "async";
+    }
   });
+
+  /* ================= CURRENT YEAR ================= */
+
+  $$("[data-current-year], #currentYear, .current-year").forEach(element => {
+    element.textContent = String(new Date().getFullYear());
+  });
+
+  /* ================= NEWSLETTER FORM ================= */
+
+  $$("[data-newsletter-form], .newsletter-form").forEach(form => {
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const emailInput = $('input[type="email"]', form);
+      const message = $(
+        "[data-newsletter-message], .newsletter-message, .form-message"
+      );
+
+      if (!emailInput || !emailInput.checkValidity()) {
+        if (emailInput) {
+          emailInput.reportValidity();
+        }
+        return;
+      }
+
+      if (message) {
+        message.textContent =
+          "ধন্যবাদ! ফর্মটি প্রস্তুত। ইমেইল সাবস্ক্রিপশন চালু করতে সার্ভার সংযোগ প্রয়োজন।";
+
+        message.setAttribute("role", "status");
+      }
+
+      form.dispatchEvent(new CustomEvent("newsletter:submitted", {
+        bubbles: true,
+        detail: { email: emailInput.value.trim() }
+      }));
+    });
+  });
+
+  /* ================= FAQ ACCORDION ================= */
+
+  $$("[data-faq-question], .faq-question").forEach(question => {
+    question.addEventListener("click", () => {
+      const item = question.closest(".faq-item") || question.parentElement;
+      const answer = item?.querySelector(
+        "[data-faq-answer], .faq-answer"
+      );
+
+      if (!answer) return;
+
+      const isOpen = question.getAttribute("aria-expanded") === "true";
+
+      question.setAttribute("aria-expanded", String(!isOpen));
+      answer.hidden = isOpen;
+      item.classList.toggle("is-open", !isOpen);
+    });
+  });
+
+  /* ================= ESCAPE KEY ================= */
+
+  doc.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeMobileMenu();
+    }
+  });
+
+  /* ================= DEBUG ================= */
+
+  console.info(
+    "%c WebsitesDeal Bangladesh ",
+    "background:#b7f34a;color:#07110d;padding:5px 9px;border-radius:5px;font-weight:bold;",
+    "Premium UI initialized."
+  );
+
 })();
