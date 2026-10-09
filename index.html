@@ -4,553 +4,461 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#08110c">
-<title>WebsitesDeal Bangladesh — Premium Website Marketplace</title>
-<meta name="description" content="বাংলাদেশের প্রিমিয়াম রেডিমেড ওয়েবসাইট মার্কেটপ্লেস। আপনার ব্যবসার জন্য তৈরি ওয়েবসাইট বেছে নিন।">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>WebsitesDeal — Premium Website Marketplace</title>
+<meta name="description" content="প্রিমিয়াম রেডিমেড ওয়েবসাইট কিনুন। অর্ডার করুন এবং Order ID দিয়ে অর্ডারের অবস্থা ট্র্যাক করুন।">
 
 <style>
 :root{
- --bg:#07100b;--panel:#0e1a12;--panel2:#132219;--border:#23372a;
- --text:#f0f6f0;--muted:#98aa9c;--green:#b7f34a;--green2:#8ed52e;
- --shadow:0 18px 60px #0005;--header:rgba(7,16,11,.86);
- --radius:20px;
+  --bg:#07100b;--panel:#0d1a12;--panel2:#122319;
+  --line:#23372a;--text:#eff8f0;--muted:#9cb1a1;
+  --green:#b7f34a;--green2:#8ed52e;--shadow:0 20px 60px #0005;
 }
 body.light{
- --bg:#f4f8f3;--panel:#fff;--panel2:#edf4e9;--border:#dce7d8;
- --text:#152319;--muted:#617265;--shadow:0 18px 60px #203b2012;
- --header:rgba(244,248,243,.9);
+  --bg:#f4f8f3;--panel:#fff;--panel2:#edf5e9;
+  --line:#dce7d9;--text:#17251a;--muted:#647465;
+  --shadow:0 16px 45px #263d2510;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:100px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:"Hind Siliguri",Inter,sans-serif;transition:background .3s,color .3s;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 75% 0%,#9be83d0c,transparent 38%),radial-gradient(ellipse at 0% 30%,#2e9a5910,transparent 34%)}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);
+font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+transition:background .25s,color .25s}
 a{color:inherit;text-decoration:none}
 button,input,select{font:inherit}
 button{cursor:pointer}
-button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--green);outline-offset:3px}
-img{display:block;max-width:100%}
-.container{width:min(1200px,calc(100% - 36px));margin:auto}
-.muted{color:var(--muted)}
-.green{color:var(--green)}
-.small{font-size:13px}
-.topbar{padding:9px 15px;text-align:center;background:var(--green);color:#10200a;font-size:13px;font-weight:700}
-header{position:sticky;top:0;z-index:50;background:var(--header);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
-.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.brand{display:flex;align-items:center;gap:10px;font:800 22px Inter,sans-serif;letter-spacing:-1px;white-space:nowrap}
-.logo{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--green);color:#14220c;font-weight:900;font-size:22px;box-shadow:0 0 28px #b7f34a25}
-.brand span span{color:var(--green)}
-.navlinks{display:flex;align-items:center;gap:23px;font-size:14px;color:var(--muted)}
-.navlinks a{transition:color .2s}
-.navlinks a:hover{color:var(--green)}
-.actions{display:flex;align-items:center;gap:8px}
-.iconbtn{border:1px solid var(--border);background:var(--panel);color:var(--text);border-radius:12px;padding:10px 12px;transition:.25s}
-.iconbtn:hover{border-color:var(--green);transform:translateY(-2px)}
-.btn{border:0;border-radius:12px;padding:12px 18px;background:var(--green);color:#14210c;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .25s,box-shadow .25s,background .25s}
-.btn:hover{transform:translateY(-3px);box-shadow:0 9px 28px #b7f34a25;background:#c9ff69}
-.btn.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--border)}
-.btn.secondary:hover{border-color:var(--green);box-shadow:none}
-.btn.smallbtn{padding:9px 13px;font-size:13px}
-.mobilemenu{display:none}
-.hero{padding:82px 0 65px;position:relative}
-.heroGrid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-.eyebrow{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--border);background:var(--panel);padding:8px 13px;border-radius:99px;font-size:12px;font-weight:700;color:var(--green);animation:fadeUp .7s both}
-.dot{height:7px;width:7px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
-h1{font-size:clamp(42px,5.5vw,70px);line-height:1.13;letter-spacing:-1.8px;margin:23px 0 20px;font-weight:800;animation:fadeUp .7s .08s both}
-h1 .accent{color:var(--green);display:inline-block}
-.hero p{font-size:17px;line-height:1.9;color:var(--muted);max-width:570px;animation:fadeUp .7s .16s both}
-.heroButtons{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;animation:fadeUp .7s .24s both}
-.stats{display:flex;gap:27px;flex-wrap:wrap;margin-top:36px;animation:fadeUp .7s .3s both}
-.stat strong{font:800 22px Inter,sans-serif;display:block}
+.container{width:min(1200px,92%);margin:auto}
+.topbar{background:var(--green);color:#13200d;text-align:center;
+padding:9px 12px;font-size:13px;font-weight:800}
+header{position:sticky;top:0;z-index:10;background:var(--bg);
+border-bottom:1px solid var(--line);backdrop-filter:blur(16px)}
+.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{display:flex;align-items:center;gap:10px;font-size:21px;font-weight:900;letter-spacing:-.8px}
+.logo-icon{width:39px;height:39px;border-radius:13px;background:var(--green);
+color:#14200d;display:grid;place-items:center;font-size:23px}
+.logo span:last-child{color:var(--green2)}
+.navlinks{display:flex;align-items:center;gap:23px;color:var(--muted);font-size:14px}
+.navlinks a:hover{color:var(--green2)}
+.actions{display:flex;gap:8px;align-items:center}
+.small-btn,.icon-btn{border:1px solid var(--line);background:var(--panel);
+color:var(--text);padding:10px 13px;border-radius:11px}
+.primary{background:var(--green);border:1px solid var(--green);
+color:#14200d;font-weight:850;padding:12px 18px;border-radius:12px}
+.primary:hover{background:var(--green2);transform:translateY(-1px)}
+.hero{padding:76px 0 48px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:430px;height:430px;
+background:#a6ee3620;filter:blur(100px);border-radius:50%;right:-100px;top:-150px}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;position:relative}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--line);
+background:var(--panel);border-radius:30px;padding:8px 13px;color:var(--green2);
+font-size:12px;font-weight:800}
+h1{font-size:clamp(38px,5.5vw,66px);line-height:1.06;letter-spacing:-2.7px;margin:22px 0}
+h1 em{color:var(--green2);font-style:normal}
+.lead{font-size:17px;line-height:1.8;color:var(--muted);max-width:620px}
+.searchbar{display:flex;gap:9px;background:var(--panel);border:1px solid var(--line);
+padding:8px;border-radius:15px;margin-top:25px;max-width:600px}
+.searchbar input{flex:1;min-width:0;border:0;outline:0;background:transparent;
+color:var(--text);padding:8px}
+.stats{display:flex;gap:28px;margin-top:30px;flex-wrap:wrap}
+.stat strong{display:block;font-size:21px}
 .stat span{font-size:12px;color:var(--muted)}
-.heroVisual{position:relative;min-width:0;animation:fadeUp .8s .2s both}
-.glow{position:absolute;width:290px;height:290px;border-radius:50%;background:#b7f34a18;filter:blur(65px);top:10%;left:20%;animation:pulse 5s infinite alternate}
-.browser{position:relative;border:1px solid #354a38;background:#0d1811;border-radius:20px;overflow:hidden;box-shadow:0 35px 100px #0007;transform:perspective(1200px) rotateY(-5deg);animation:float 6s ease-in-out infinite}
-.browserTop{height:43px;border-bottom:1px solid #29382c;display:flex;align-items:center;padding:0 14px;gap:6px}
-.bdot{width:8px;height:8px;border-radius:50%;background:#506250}
-.address{margin-left:12px;background:#15251a;color:#829785;border-radius:6px;padding:5px 12px;font:10px Inter,sans-serif;flex:1}
-.mockHero{padding:24px 23px 26px;background:linear-gradient(130deg,#182b1b,#09110c);min-height:250px;position:relative;overflow:hidden}
-.mockTag{font:10px Inter,sans-serif;letter-spacing:2px;color:#b7f34a}
-.mockTitle{font:800 clamp(24px,3vw,40px) Inter,sans-serif;line-height:1.1;margin:16px 0 10px;max-width:260px}
-.mockDesc{color:#a7b6a7;font-size:11px;max-width:240px;line-height:1.7}
-.mockPill{display:inline-block;margin-top:18px;border-radius:6px;background:var(--green);color:#17230e;font:700 10px Inter,sans-serif;padding:10px 13px}
-.mockArt{position:absolute;right:-10px;bottom:0;width:46%;height:75%;background:linear-gradient(150deg,#b7f34a,#377c30);clip-path:polygon(20% 0,100% 0,100% 100%,0 100%);opacity:.85}
-.mockArt:after{content:"";position:absolute;inset:18% 15% 0 25%;background:linear-gradient(145deg,#f3f7d2,#487d3a);clip-path:polygon(50% 0,100% 100%,0 100%)}
-.mockProducts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px;background:#101c13}
-.mockProduct{height:70px;border-radius:8px;background:linear-gradient(135deg,#243d27,#17241a);border:1px solid #2b402e;position:relative;overflow:hidden}
-.mockProduct:after{content:"";position:absolute;inset:45% 10% 10%;background:#b7f34a30;border-radius:5px}
-.floatBadge{position:absolute;z-index:2;background:var(--panel);border:1px solid var(--border);box-shadow:var(--shadow);padding:13px 16px;border-radius:14px;animation:float 5s ease-in-out infinite}
-.floatBadge.one{right:-20px;top:16%}
-.floatBadge.two{left:-22px;bottom:13%;animation-delay:-2.5s}
-.floatBadge strong{font:800 16px Inter,sans-serif;display:block}
-.floatBadge span{font-size:11px;color:var(--muted)}
-.trust{border-block:1px solid var(--border);padding:20px 0;background:var(--panel);overflow:hidden}
-.trustInner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.trustItem{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
-.trustItem b{color:var(--green);font-size:17px}
-section{padding:76px 0}
-.sectionHead{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:28px}
-.kicker{font:700 11px Inter,sans-serif;letter-spacing:2px;text-transform:uppercase;color:var(--green)}
-h2{font-size:clamp(28px,3.5vw,42px);line-height:1.2;margin:10px 0;font-weight:800;letter-spacing:-.5px}
-.sectionHead p{margin:0;color:var(--muted);line-height:1.8}
-.categories{display:grid;grid-template-columns:repeat(6,1fr);gap:13px}
-.category{border:1px solid var(--border);background:var(--panel);border-radius:16px;padding:20px 13px;text-align:center;transition:.28s;cursor:pointer;color:var(--text)}
-.category:hover,.category.active{border-color:var(--green);background:var(--panel2);transform:translateY(-5px);box-shadow:0 12px 30px #0002}
-.category .emoji{font-size:27px;display:block;margin-bottom:10px;transition:transform .25s}
-.category:hover .emoji{transform:scale(1.15) rotate(-5deg)}
-.category strong{font-size:13px;display:block}
-.category span:last-child{font-size:11px;color:var(--muted)}
-.market{background:var(--panel);border-block:1px solid var(--border)}
-.filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:25px}
-.searchbox{flex:1;min-width:220px;position:relative}
-.searchbox input{width:100%;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);padding:13px 15px 13px 42px;outline:none}
-.searchbox input:focus{border-color:var(--green)}
-.searchIcon{position:absolute;left:15px;top:12px;color:var(--muted)}
-select{border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);padding:12px;max-width:100%}
-.filterChips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
-.chip{border:1px solid var(--border);background:var(--bg);color:var(--muted);padding:8px 14px;border-radius:99px;font-size:12px;transition:.2s}
-.chip:hover,.chip.active{background:var(--green);border-color:var(--green);color:#17230e;font-weight:700}
-.productGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-.product{border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--bg);transition:transform .3s,border-color .3s,box-shadow .3s;animation:fadeUp .5s both;min-width:0}
-.product:hover{transform:translateY(-7px);border-color:#87bb4c;box-shadow:var(--shadow)}
-.productImage{height:205px;position:relative;overflow:hidden;background:#15251a}
-.productImage img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.product:hover .productImage img{transform:scale(1.07)}
-.productImage:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#07100b55,transparent 50%);pointer-events:none}
-.productBadge{position:absolute;z-index:2;top:13px;left:13px;background:var(--green);color:#17230e;border-radius:7px;padding:6px 9px;font-size:10px;font-weight:800}
-.heart{position:absolute;z-index:3;right:12px;top:12px;border:1px solid #ffffff35;background:#07100bbd;color:#fff;border-radius:10px;width:37px;height:37px;font-size:18px;transition:.2s}
-.heart:hover,.heart.saved{background:var(--green);color:#17230e}
-.productBody{padding:17px}
-.productMeta{display:flex;justify-content:space-between;gap:10px;align-items:center;color:var(--muted);font-size:11px}
-.product h3{font-size:19px;margin:12px 0 7px;line-height:1.4}
-.product p{font-size:13px;line-height:1.7;color:var(--muted);margin:0;min-height:44px}
-.productBottom{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--border);margin-top:16px;padding-top:15px}
-.price{font:800 20px Inter,sans-serif;color:var(--green);white-space:nowrap}
-.price small{display:block;font:400 10px "Hind Siliguri",sans-serif;color:var(--muted);margin-top:3px}
-.cardActions{display:flex;gap:7px;flex-wrap:wrap}
-.cardActions .btn{padding:9px 11px;font-size:12px}
-.empty{display:none;text-align:center;padding:50px 15px;color:var(--muted);border:1px dashed var(--border);border-radius:16px}
-.empty b{display:block;font-size:18px;color:var(--text);margin-bottom:7px}
-.center{text-align:center}
-.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-.plan{border:1px solid var(--border);background:var(--panel);border-radius:20px;padding:26px;position:relative;transition:.3s}
-.plan:hover{transform:translateY(-6px);border-color:var(--green)}
-.plan.featured{border-color:var(--green);box-shadow:0 0 0 1px #b7f34a20,0 20px 60px #0002}
-.popular{position:absolute;right:16px;top:16px;background:var(--green);color:#17230e;padding:6px 9px;border-radius:7px;font-size:10px;font-weight:800}
-.plan h3{font-size:21px;margin:0 0 8px}
-.plan p{color:var(--muted);font-size:13px;line-height:1.7}
-.planPrice{font:800 32px Inter,sans-serif;margin:21px 0}
-.planPrice span{font:400 12px "Hind Siliguri",sans-serif;color:var(--muted)}
-.plan ul{list-style:none;margin:22px 0;padding:0}
-.plan li{padding:9px 0;font-size:13px;border-bottom:1px solid var(--border)}
-.plan li:before{content:"✓";color:var(--green);font-weight:900;margin-right:10px}
-.plan .btn{width:100%}
-.processGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-.process{border:1px solid var(--border);border-radius:18px;background:var(--panel);padding:24px;transition:.3s}
-.process:hover{transform:translateY(-5px);border-color:var(--green)}
-.processNum{height:42px;width:42px;display:grid;place-items:center;border-radius:13px;background:#b7f34a18;color:var(--green);font:800 17px Inter,sans-serif}
-.process h3{margin:18px 0 7px}
-.process p{margin:0;font-size:13px;line-height:1.8;color:var(--muted)}
-.cta{padding:0 0 75px}
-.ctaBox{border:1px solid #536f37;border-radius:24px;padding:44px;background:radial-gradient(ellipse at 100% 0%,#b7f34a1b,transparent 45%),var(--panel);display:flex;align-items:center;justify-content:space-between;gap:25px;overflow:hidden}
-.ctaBox h2{max-width:620px}
-.ctaBox p{color:var(--muted);line-height:1.8}
-footer{border-top:1px solid var(--border);padding:40px 0 22px;background:var(--panel)}
-.footerTop{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;padding-bottom:28px}
-.footerBrand{max-width:360px}
-.footerBrand p{font-size:13px;color:var(--muted);line-height:1.9}
-.footerLinks{display:flex;gap:50px;flex-wrap:wrap}
-.footerLinks h4{margin:0 0 14px}
-.footerLinks a{display:block;color:var(--muted);font-size:13px;margin:10px 0}
-.footerLinks a:hover{color:var(--green)}
-.copyright{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:12px}
-.modal{position:fixed;inset:0;z-index:100;background:#000b;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)}
-.modal.open{display:flex;animation:fadeIn .2s}
-.modalBox{width:min(620px,100%);max-height:90vh;overflow:auto;border:1px solid var(--border);background:var(--panel);border-radius:22px;box-shadow:var(--shadow);animation:modalIn .3s}
-.modalHeader{padding:20px 23px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;gap:15px}
-.modalHeader h3{margin:0;font-size:20px}
-.close{font-size:24px;background:none;border:0;color:var(--muted)}
-.modalContent{padding:23px}
-.modalContent img{width:100%;max-height:250px;object-fit:cover;border-radius:13px;margin-bottom:18px}
-.modalContent p{color:var(--muted);line-height:1.8}
-.modalPrice{font:800 27px Inter,sans-serif;color:var(--green);margin:15px 0}
-.modalButtons{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.toast{position:fixed;z-index:150;bottom:22px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--green);color:#17230e;padding:12px 20px;border-radius:12px;font-weight:700;box-shadow:var(--shadow);transition:.3s}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.waFloat{position:fixed;bottom:22px;right:22px;z-index:45;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:#25d366;color:#fff;font-size:25px;box-shadow:0 8px 30px #25d36644;transition:.25s}
-.waFloat:hover{transform:scale(1.1) translateY(-3px)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes modalIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes pulse{from{opacity:.5;transform:scale(.9)}to{opacity:1;transform:scale(1.1)}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
-@media(max-width:1000px){
- .navlinks{gap:12px}.heroGrid{gap:25px}.categories{grid-template-columns:repeat(3,1fr)}.productGrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.preview{border:1px solid var(--line);background:var(--panel);border-radius:24px;
+padding:18px;box-shadow:var(--shadow);animation:float 5s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.preview-top{display:flex;justify-content:space-between;align-items:center;
+border-bottom:1px solid var(--line);padding-bottom:15px}
+.dots{display:flex;gap:5px}.dots i{width:8px;height:8px;border-radius:50%;background:var(--green2)}
+.preview-hero{margin-top:15px;background:linear-gradient(135deg,#233d26,#0d1b12);
+border-radius:17px;padding:24px;color:white;min-height:190px;display:flex;flex-direction:column;justify-content:end}
+.preview-hero small{color:#b7f34a}.preview-hero h3{font-size:27px;margin:8px 0}
+.preview-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+.preview-card{height:72px;border-radius:12px;background:var(--panel2);border:1px solid var(--line)}
+.section{padding:65px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:25px}
+.section-head h2{font-size:clamp(25px,3vw,36px);letter-spacing:-1px;margin:0 0 8px}
+.section-head p{margin:0;color:var(--muted);line-height:1.6}
+.pill{display:inline-block;border:1px solid var(--line);background:var(--panel);
+border-radius:30px;padding:8px 12px;color:var(--muted);font-size:12px}
+.categories{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.category{border:1px solid var(--line);background:var(--panel);padding:19px;border-radius:16px;
+transition:.2s}
+.category:hover,.product:hover{border-color:var(--green2);transform:translateY(-3px)}
+.category .emoji{font-size:25px}.category h3{margin:12px 0 5px;font-size:15px}
+.category p{margin:0;color:var(--muted);font-size:12px}
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}
+.filter{border:1px solid var(--line);background:var(--panel);color:var(--muted);
+padding:9px 14px;border-radius:30px}
+.filter.active{background:var(--green);border-color:var(--green);color:#14200d;font-weight:800}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.product{border:1px solid var(--line);border-radius:18px;overflow:hidden;
+background:var(--panel);transition:.22s}
+.product-art{height:170px;display:grid;place-items:center;position:relative;overflow:hidden}
+.product-art:after{content:"";position:absolute;width:150px;height:150px;border-radius:50%;
+border:1px solid #ffffff30;box-shadow:0 0 0 25px #ffffff08,0 0 0 50px #ffffff05}
+.art1{background:linear-gradient(135deg,#173d29,#09140d)}
+.art2{background:linear-gradient(135deg,#38234d,#141020)}
+.art3{background:linear-gradient(135deg,#15404a,#0b191c)}
+.art4{background:linear-gradient(135deg,#583525,#1b110c)}
+.art5{background:linear-gradient(135deg,#27335c,#11172c)}
+.art6{background:linear-gradient(135deg,#39411d,#11180c)}
+.mock-browser{z-index:1;width:70%;height:95px;background:#ffffffea;border-radius:9px;
+padding:10px;color:#243426;box-shadow:0 12px 35px #0004}
+.mock-lines{height:6px;width:65%;background:#cbd8c9;border-radius:5px;margin:8px 0}
+.mock-block{height:30px;background:#d9efc7;border-radius:5px;margin-top:8px}
+.product-body{padding:17px}
+.product-meta{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.product h3{margin:12px 0 7px;font-size:18px}
+.product p{color:var(--muted);font-size:13px;line-height:1.65;min-height:42px}
+.price{font-size:22px;font-weight:900}
+.price small{font-size:11px;color:var(--muted);font-weight:500}
+.product-actions{display:flex;gap:8px;margin-top:15px}
+.product-actions button{flex:1}
+.secondary{border:1px solid var(--line);background:var(--panel2);color:var(--text);
+padding:11px;border-radius:11px}
+.empty{grid-column:1/-1;border:1px dashed var(--line);padding:35px;text-align:center;
+border-radius:16px;color:var(--muted)}
+/* ORDER TRACKING */
+.tracking-wrap{background:linear-gradient(135deg,var(--panel),var(--panel2));
+border:1px solid var(--line);border-radius:25px;padding:clamp(20px,4vw,42px);
+display:grid;grid-template-columns:.8fr 1.2fr;gap:35px}
+.tracking-intro h2{font-size:34px;line-height:1.15;letter-spacing:-1.2px;margin:14px 0}
+.tracking-intro p{color:var(--muted);line-height:1.8}
+.track-form{display:flex;gap:9px;margin:22px 0 12px}
+.track-form input{min-width:0;flex:1;background:var(--bg);border:1px solid var(--line);
+border-radius:12px;padding:13px;color:var(--text);outline:none}
+.hint{font-size:12px;color:var(--muted);line-height:1.6}
+.track-result{margin-top:18px;border:1px solid var(--line);background:var(--bg);
+border-radius:17px;padding:20px;display:none}
+.track-result.show{display:block;animation:appear .35s ease}
+@keyframes appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.result-head{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;
+border-bottom:1px solid var(--line);padding-bottom:15px}
+.status{font-size:12px;font-weight:800;color:#17250f;background:var(--green);
+padding:6px 10px;border-radius:30px}
+.timeline{margin-top:20px}
+.step{display:flex;gap:13px;position:relative;padding-bottom:21px}
+.step:last-child{padding-bottom:0}
+.step:not(:last-child):before{content:"";position:absolute;left:13px;top:28px;bottom:0;
+width:2px;background:var(--line)}
+.step.done:not(:last-child):before{background:var(--green2)}
+.step-icon{z-index:1;width:28px;height:28px;flex-shrink:0;border-radius:50%;
+border:1px solid var(--line);display:grid;place-items:center;background:var(--panel);
+color:var(--muted);font-size:12px}
+.step.done .step-icon{background:var(--green);border-color:var(--green);color:#17250f}
+.step strong{display:block;font-size:14px;margin:3px 0 5px}
+.step small{font-size:12px;color:var(--muted)}
+.track-error{display:none;margin-top:15px;padding:13px;border:1px solid #a84d4d;
+background:#a84d4d18;color:#e9a0a0;border-radius:12px;font-size:13px}
+.track-error.show{display:block}
+.notice{margin-top:13px;font-size:12px;color:var(--muted);line-height:1.7}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan{padding:24px;border:1px solid var(--line);background:var(--panel);border-radius:19px}
+.plan.featured{border-color:var(--green2);box-shadow:0 0 0 1px #b7f34a25}
+.plan h3{margin:0 0 8px}.plan p,.plan li{color:var(--muted);font-size:13px;line-height:1.8}
+.plan .price{font-size:29px;margin:20px 0}
+.plan ul{padding-left:18px;min-height:90px}
+.plan button{width:100%}
+.cta{border-radius:22px;background:var(--green);color:#17250f;padding:35px;
+display:flex;justify-content:space-between;align-items:center;gap:20px}
+.cta h2{font-size:30px;margin:0 0 8px}.cta p{margin:0;opacity:.8}
+.cta .primary{background:#17250f;color:white;border-color:#17250f}
+footer{border-top:1px solid var(--line);padding:30px 0;margin-top:55px}
+.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:9;background:var(--green);
+color:#17250f;border-radius:50px;padding:14px 18px;font-weight:900;box-shadow:var(--shadow)}
+.toast{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);
+z-index:30;background:var(--green);color:#17250f;padding:12px 18px;
+border-radius:12px;font-weight:800;font-size:13px;display:none}
+.toast.show{display:block}
+@media(max-width:850px){
+ .navlinks{display:none}.hero-grid,.tracking-wrap{grid-template-columns:1fr}
+ .preview{max-width:540px;width:100%;margin:auto}
+ .categories{grid-template-columns:repeat(2,1fr)}
+ .products{grid-template-columns:repeat(2,1fr)}
+ .tracking-wrap{gap:15px}
 }
-@media(max-width:720px){
- .container{width:min(100% - 28px,560px)}.nav{height:67px;gap:10px}.brand{font-size:18px}.logo{width:33px;height:33px}.navlinks{display:none;position:absolute;top:67px;left:0;right:0;padding:18px;background:var(--panel);border-bottom:1px solid var(--border);flex-direction:column;align-items:stretch;gap:0}.navlinks.open{display:flex}.navlinks a{padding:12px}.mobilemenu{display:inline-flex}.actions{gap:5px}.actions .btn{display:none}.iconbtn{padding:9px}.hero{padding:52px 0 45px}.heroGrid{grid-template-columns:1fr}.heroVisual{margin:15px 14px 10px}.browser{transform:none}.floatBadge.one{right:-12px}.floatBadge.two{left:-12px}.sectionHead{align-items:start;flex-direction:column}.categories{grid-template-columns:repeat(2,1fr)}.productGrid{grid-template-columns:1fr}.productImage{height:220px}.pricing,.processGrid{grid-template-columns:1fr}.ctaBox{padding:28px;align-items:flex-start;flex-direction:column}.footerLinks{gap:30px}.stats{gap:20px}section{padding:55px 0}
+@media(max-width:560px){
+ .hero{padding-top:45px}.products,.plans{grid-template-columns:1fr}
+ .section{padding:45px 0}.section-head{align-items:start;flex-direction:column}
+ .actions .small-btn{padding:9px}.actions .primary{padding:10px}
+ .track-form{flex-direction:column}.track-form button{width:100%}
+ .stats{gap:18px}.cta{align-items:start;flex-direction:column}
+ h1{letter-spacing:-1.5px}
 }
 </style>
 </head>
+
 <body>
-<div class="topbar" data-bn="বাংলাদেশের প্রিমিয়াম রেডিমেড ওয়েবসাইট মার্কেটপ্লেস • আপনার ব্যবসা শুরু হোক দ্রুত" data-en="Bangladesh's premium ready-made website marketplace • Launch your business faster">বাংলাদেশের প্রিমিয়াম রেডিমেড ওয়েবসাইট মার্কেটপ্লেস • আপনার ব্যবসা শুরু হোক দ্রুত</div>
+<div class="topbar" id="topNotice">আপনার অনলাইন ব্যবসা শুরু হোক আজই — প্রিমিয়াম রেডিমেড ওয়েবসাইট</div>
 
 <header>
- <div class="container nav">
-  <a class="brand" href="#home" aria-label="WebsitesDeal Home">
-   <span class="logo">W</span><span>Websites<span>Deal</span></span>
-  </a>
-  <nav class="navlinks" id="navlinks">
-   <a href="#home" data-bn="হোম" data-en="Home">হোম</a>
-   <a href="#market" data-bn="ওয়েবসাইট" data-en="Websites">ওয়েবসাইট</a>
-   <a href="#pricing" data-bn="সাবস্ক্রিপশন" data-en="Plans">সাবস্ক্রিপশন</a>
-   <a href="#how" data-bn="কীভাবে কাজ করে" data-en="How It Works">কীভাবে কাজ করে</a>
-   <a href="#contact" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a>
-  </nav>
-  <div class="actions">
-   <button class="iconbtn" id="langBtn" aria-label="Switch language">EN</button>
-   <button class="iconbtn" id="themeBtn" aria-label="Toggle theme">☼</button>
-   <a href="#market" class="btn smallbtn" data-bn="ওয়েবসাইট খুঁজুন ↗" data-en="Explore Websites ↗">ওয়েবসাইট খুঁজুন ↗</a>
-   <button class="iconbtn mobilemenu" id="menuBtn" aria-label="Open menu">☰</button>
+  <div class="container nav">
+    <a class="logo" href="#">
+      <span class="logo-icon">W</span>
+      <span>Websites<span>Deal</span></span>
+    </a>
+    <nav class="navlinks">
+      <a href="#market" data-bn="ওয়েবসাইট" data-en="Websites">ওয়েবসাইট</a>
+      <a href="#categories" data-bn="ক্যাটাগরি" data-en="Categories">ক্যাটাগরি</a>
+      <a href="#tracking" data-bn="অর্ডার ট্র্যাক" data-en="Track Order">অর্ডার ট্র্যাক</a>
+      <a href="#plans" data-bn="সাবস্ক্রিপশন" data-en="Plans">সাবস্ক্রিপশন</a>
+    </nav>
+    <div class="actions">
+      <button class="small-btn" id="langBtn" aria-label="Change language">EN</button>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☼</button>
+      <a class="primary" href="#market" data-bn="ওয়েবসাইট কিনুন" data-en="Explore Sites">ওয়েবসাইট কিনুন</a>
+    </div>
   </div>
- </div>
 </header>
 
 <main>
-<section class="hero" id="home">
- <div class="container heroGrid">
+<section class="hero">
+ <div class="container hero-grid">
   <div>
-   <div class="eyebrow"><span class="dot"></span><span data-bn="আপনার পরবর্তী অনলাইন ব্যবসা এখান থেকেই" data-en="Your next online business starts here">আপনার পরবর্তী অনলাইন ব্যবসা এখান থেকেই</span></div>
-   <h1 data-bn="আইডিয়া থেকে <span class='accent'>অনলাইন ব্যবসা।</span>" data-en="From idea to <span class='accent'>online business.</span>">আইডিয়া থেকে <span class="accent">অনলাইন ব্যবসা।</span></h1>
-   <p data-bn="সময় বাঁচান। নিজের ব্যবসার জন্য বেছে নিন প্রিমিয়াম রেডিমেড ওয়েবসাইট। ই-কমার্স, রেস্টুরেন্ট, এজেন্সি কিংবা আপনার পরবর্তী বড় আইডিয়া—শুরু করুন আত্মবিশ্বাসের সঙ্গে।" data-en="Save time and choose a premium ready-made website for your business. Ecommerce, restaurant, agency, or your next big idea—launch with confidence.">সময় বাঁচান। নিজের ব্যবসার জন্য বেছে নিন প্রিমিয়াম রেডিমেড ওয়েবসাইট। ই-কমার্স, রেস্টুরেন্ট, এজেন্সি কিংবা আপনার পরবর্তী বড় আইডিয়া—শুরু করুন আত্মবিশ্বাসের সঙ্গে।</p>
-   <div class="heroButtons">
-    <a class="btn" href="#market" data-bn="ওয়েবসাইট দেখুন ↗" data-en="Explore Websites ↗">ওয়েবসাইট দেখুন ↗</a>
-    <a class="btn secondary" href="#how" data-bn="কীভাবে কাজ করে?" data-en="How it works?">কীভাবে কাজ করে?</a>
+   <span class="eyebrow">✦ PREMIUM WEBSITE MARKETPLACE</span>
+   <h1 data-bn="আপনার পরবর্তী ব্যবসা শুরু করুন <em>সঠিক ওয়েবসাইটে</em>" data-en="Launch Your Next Business With The <em>Right Website</em>">আপনার পরবর্তী ব্যবসা শুরু করুন <em>সঠিক ওয়েবসাইটে</em></h1>
+   <p class="lead" data-bn="রেডিমেড বিজনেস, ই-কমার্স, রেস্টুরেন্ট ও আরও অনেক ওয়েবসাইট বেছে নিন। সময় বাঁচান, দ্রুত অনলাইনে এগিয়ে যান।" data-en="Explore ready-made business, ecommerce, restaurant and more websites. Save time and get online faster.">রেডিমেড বিজনেস, ই-কমার্স, রেস্টুরেন্ট ও আরও অনেক ওয়েবসাইট বেছে নিন। সময় বাঁচান, দ্রুত অনলাইনে এগিয়ে যান।</p>
+   <div class="searchbar">
+    <input id="searchInput" type="search" placeholder="ওয়েবসাইট খুঁজুন..." aria-label="Search websites">
+    <button class="primary" id="searchBtn">খুঁজুন ↗</button>
    </div>
    <div class="stats">
-    <div class="stat"><strong>Ready-made</strong><span data-bn="দ্রুত শুরু করুন" data-en="Launch faster">দ্রুত শুরু করুন</span></div>
-    <div class="stat"><strong>24/7</strong><span data-bn="অনলাইন অ্যাক্সেস" data-en="Online access">অনলাইন অ্যাক্সেস</span></div>
-    <div class="stat"><strong>BDT ৳</strong><span data-bn="বাংলাদেশি মূল্য" data-en="Bangladesh pricing">বাংলাদেশি মূল্য</span></div>
+    <div class="stat"><strong>Ready-made</strong><span data-bn="ব্যবহার উপযোগী ডিজাইন" data-en="Ready-to-customize designs">ব্যবহার উপযোগী ডিজাইন</span></div>
+    <div class="stat"><strong>24/7</strong><span data-bn="অনলাইন অর্ডার" data-en="Online ordering">অনলাইন অর্ডার</span></div>
+    <div class="stat"><strong>৳ BDT</strong><span data-bn="বাংলাদেশি মূল্য" data-en="Bangladesh pricing">বাংলাদেশি মূল্য</span></div>
    </div>
   </div>
-  <div class="heroVisual">
-   <div class="glow"></div>
-   <div class="browser">
-    <div class="browserTop"><i class="bdot"></i><i class="bdot"></i><i class="bdot"></i><div class="address">yourbusiness.com</div></div>
-    <div class="mockHero">
-     <div class="mockTag">YOUR NEXT BIG IDEA</div>
-     <div class="mockTitle" data-bn="ব্যবসা শুরু করুন। সুন্দরভাবে।" data-en="Build your business. Beautifully.">ব্যবসা শুরু করুন। সুন্দরভাবে।</div>
-     <div class="mockDesc" data-bn="আপনার ব্র্যান্ডের জন্য আধুনিক ডিজাইন, স্মার্ট অভিজ্ঞতা।" data-en="Modern design and a smarter experience for your brand.">আপনার ব্র্যান্ডের জন্য আধুনিক ডিজাইন, স্মার্ট অভিজ্ঞতা।</div>
-     <span class="mockPill">EXPLORE COLLECTION ↗</span><div class="mockArt"></div>
+  <div class="preview" aria-label="Website design preview">
+   <div class="preview-top"><strong>Website Studio</strong><div class="dots"><i></i><i></i><i></i></div></div>
+   <div class="preview-hero"><small>DESIGN YOUR FUTURE</small><h3>Build. Launch. Grow.</h3><span style="font-size:12px;color:#d5e6d7">A better way to start online.</span></div>
+   <div class="preview-cards"><div class="preview-card"></div><div class="preview-card"></div><div class="preview-card"></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="categories">
+ <div class="container">
+  <div class="section-head"><div><h2 data-bn="আপনার প্রয়োজনীয় ক্যাটাগরি" data-en="Explore Categories">আপনার প্রয়োজনীয় ক্যাটাগরি</h2><p data-bn="আপনার ব্যবসার জন্য উপযুক্ত ওয়েবসাইট খুঁজে নিন।" data-en="Find the right website for your business.">আপনার ব্যবসার জন্য উপযুক্ত ওয়েবসাইট খুঁজে নিন।</p></div></div>
+  <div class="categories">
+   <a href="#market" class="category" data-category="Business"><span class="emoji">🏢</span><h3 data-bn="বিজনেস" data-en="Business">বিজনেস</h3><p data-bn="কোম্পানি ও সার্ভিস" data-en="Company & service">কোম্পানি ও সার্ভিস</p></a>
+   <a href="#market" class="category" data-category="Ecommerce"><span class="emoji">🛍️</span><h3 data-bn="ই-কমার্স" data-en="Ecommerce">ই-কমার্স</h3><p data-bn="অনলাইন স্টোর" data-en="Online stores">অনলাইন স্টোর</p></a>
+   <a href="#market" class="category" data-category="Restaurant"><span class="emoji">🍽️</span><h3 data-bn="রেস্টুরেন্ট" data-en="Restaurant">রেস্টুরেন্ট</h3><p data-bn="ফুড ও রেস্টুরেন্ট" data-en="Food & restaurant">ফুড ও রেস্টুরেন্ট</p></a>
+   <a href="#market" class="category" data-category="Portfolio"><span class="emoji">✦</span><h3 data-bn="পোর্টফোলিও" data-en="Portfolio">পোর্টফোলিও</h3><p data-bn="ক্রিয়েটিভ ও পার্সোনাল" data-en="Creative & personal">ক্রিয়েটিভ ও পার্সোনাল</p></a>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="market">
+ <div class="container">
+  <div class="section-head"><div><h2 data-bn="ফিচার্ড ওয়েবসাইট" data-en="Featured Websites">ফিচার্ড ওয়েবসাইট</h2><p data-bn="আপনার পছন্দের ডিজাইন বেছে নিন।" data-en="Choose a design that fits your business.">আপনার পছন্দের ডিজাইন বেছে নিন।</p></div><span class="pill">DEMO CATALOGUE</span></div>
+  <div class="filters" id="filters">
+   <button class="filter active" data-filter="All" data-bn="সব" data-en="All">সব</button>
+   <button class="filter" data-filter="Business" data-bn="বিজনেস" data-en="Business">বিজনেস</button>
+   <button class="filter" data-filter="Ecommerce" data-bn="ই-কমার্স" data-en="Ecommerce">ই-কমার্স</button>
+   <button class="filter" data-filter="Restaurant" data-bn="রেস্টুরেন্ট" data-en="Restaurant">রেস্টুরেন্ট</button>
+   <button class="filter" data-filter="Portfolio" data-bn="পোর্টফোলিও" data-en="Portfolio">পোর্টফোলিও</button>
+  </div>
+  <div class="products" id="productGrid"></div>
+  <p class="notice" data-bn="দ্রষ্টব্য: এখানে দেখানো পণ্য, মূল্য ও ডিজাইন ডেমো। প্রকৃত বিক্রির আগে সঠিক মূল্য, Preview URL এবং ডেলিভারির শর্ত আপডেট করুন।" data-en="Note: Products, prices and designs shown here are demo content. Update actual prices, preview URLs and delivery terms before launch.">দ্রষ্টব্য: এখানে দেখানো পণ্য, মূল্য ও ডিজাইন ডেমো। প্রকৃত বিক্রির আগে সঠিক মূল্য, Preview URL এবং ডেলিভারির শর্ত আপডেট করুন।</p>
+ </div>
+</section>
+
+<section class="section" id="tracking">
+ <div class="container">
+  <div class="tracking-wrap">
+   <div class="tracking-intro">
+    <span class="eyebrow">ORDER TRACKING</span>
+    <h2 data-bn="আপনার অর্ডার কোথায়?" data-en="Where Is Your Order?">আপনার অর্ডার কোথায়?</h2>
+    <p data-bn="আপনার Order ID লিখে অর্ডারের বর্তমান অবস্থা দেখুন। অর্ডার সম্পর্কে সাহায্যের জন্য আমাদের সঙ্গে যোগাযোগ করুন।" data-en="Enter your Order ID to check its current status. Contact us if you need help with your order.">আপনার Order ID লিখে অর্ডারের বর্তমান অবস্থা দেখুন। অর্ডার সম্পর্কে সাহায্যের জন্য আমাদের সঙ্গে যোগাযোগ করুন।</p>
+    <div class="pill">🔒 Order ID দিয়ে অনুসন্ধান</div>
+   </div>
+   <div>
+    <form id="trackForm" class="track-form">
+     <input id="orderId" type="text" placeholder="যেমন: WD-1001" autocomplete="off" required aria-label="Order ID">
+     <button class="primary" type="submit" data-bn="অর্ডার খুঁজুন ↗" data-en="Track Order ↗">অর্ডার খুঁজুন ↗</button>
+    </form>
+    <div class="hint" data-bn="ডেমো পরীক্ষা করতে WD-1001, WD-1002 অথবা WD-1003 লিখুন।" data-en="For demo, try WD-1001, WD-1002 or WD-1003.">ডেমো পরীক্ষা করতে WD-1001, WD-1002 অথবা WD-1003 লিখুন।</div>
+    <div id="trackError" class="track-error" role="alert">এই Order ID পাওয়া যায়নি। ID যাচাই করে আবার চেষ্টা করুন।</div>
+    <div id="trackResult" class="track-result" aria-live="polite">
+     <div class="result-head">
+      <div><small style="color:var(--muted)">ORDER ID</small><h3 id="resultId" style="margin:5px 0"></h3><small id="resultProduct"></small></div>
+      <span id="resultStatus" class="status"></span>
+     </div>
+     <div id="timeline" class="timeline"></div>
+     <p class="notice" id="resultNote"></p>
+     <button id="trackWhatsApp" class="secondary" type="button">WhatsApp Support ↗</button>
     </div>
-    <div class="mockProducts"><div class="mockProduct"></div><div class="mockProduct"></div><div class="mockProduct"></div></div>
+    <p class="notice" data-bn="এই সংস্করণে ট্র্যাকিং নমুনা ডেটা দিয়ে কাজ করে। প্রকৃত অর্ডার এখানে স্বয়ংক্রিয়ভাবে আসবে না; Admin Integration-এর সময় আসল ডেটাবেস যুক্ত করা হবে।" data-en="This version uses sample tracking data. Real orders will not appear automatically until a database is connected during Admin Integration.">এই সংস্করণে ট্র্যাকিং নমুনা ডেটা দিয়ে কাজ করে। প্রকৃত অর্ডার এখানে স্বয়ংক্রিয়ভাবে আসবে না; Admin Integration-এর সময় আসল ডেটাবেস যুক্ত করা হবে।</p>
    </div>
-   <div class="floatBadge one"><strong>✦ Premium</strong><span data-bn="স্মার্ট ডিজাইন" data-en="Modern design">স্মার্ট ডিজাইন</span></div>
-   <div class="floatBadge two"><strong class="green">৳ 4,999+</strong><span data-bn="শুরু মূল্য" data-en="Starting price">শুরু মূল্য</span></div>
   </div>
  </div>
 </section>
 
-<div class="trust"><div class="container trustInner">
- <div class="trustItem"><b>✦</b><span data-bn="আধুনিক ডিজাইন" data-en="Modern designs">আধুনিক ডিজাইন</span></div>
- <div class="trustItem"><b>↗</b><span data-bn="দ্রুত ব্যবসা শুরু" data-en="Launch faster">দ্রুত ব্যবসা শুরু</span></div>
- <div class="trustItem"><b>⌘</b><span data-bn="বিভিন্ন ক্যাটাগরি" data-en="Multiple categories">বিভিন্ন ক্যাটাগরি</span></div>
- <div class="trustItem"><b>♡</b><span data-bn="আপনার পছন্দের সংগ্রহ" data-en="Save your favourites">আপনার পছন্দের সংগ্রহ</span></div>
-</div></div>
-
-<section id="categories">
- <div class="container reveal">
-  <div class="sectionHead"><div><div class="kicker" data-bn="ক্যাটাগরি এক্সপ্লোর করুন" data-en="Explore Categories">ক্যাটাগরি এক্সপ্লোর করুন</div><h2 data-bn="আপনার ব্যবসার জন্য সঠিক <span class='green'>ওয়েবসাইট</span>" data-en="The right <span class='green'>website</span> for your business">আপনার ব্যবসার জন্য সঠিক <span class="green">ওয়েবসাইট</span></h2><p data-bn="আপনার প্রয়োজন অনুযায়ী ক্যাটাগরি বেছে নিন।" data-en="Choose a category that fits your needs.">আপনার প্রয়োজন অনুযায়ী ক্যাটাগরি বেছে নিন।</p></div></div>
-  <div class="categories" id="categoryCards">
-   <button class="category" data-category="Ecommerce"><span class="emoji">🛍️</span><strong data-bn="ই-কমার্স" data-en="Ecommerce">ই-কমার্স</strong><span data-bn="অনলাইন শপ" data-en="Online stores">অনলাইন শপ</span></button>
-   <button class="category" data-category="Business"><span class="emoji">🏢</span><strong data-bn="বিজনেস" data-en="Business">বিজনেস</strong><span data-bn="কর্পোরেট সাইট" data-en="Corporate sites">কর্পোরেট সাইট</span></button>
-   <button class="category" data-category="Restaurant"><span class="emoji">🍽️</span><strong data-bn="রেস্টুরেন্ট" data-en="Restaurant">রেস্টুরেন্ট</strong><span data-bn="ফুড ও ক্যাফে" data-en="Food & cafe">ফুড ও ক্যাফে</span></button>
-   <button class="category" data-category="Portfolio"><span class="emoji">🎨</span><strong data-bn="পোর্টফোলিও" data-en="Portfolio">পোর্টফোলিও</strong><span data-bn="নিজেকে তুলে ধরুন" data-en="Show your work">নিজেকে তুলে ধরুন</span></button>
-   <button class="category" data-category="Agency"><span class="emoji">🚀</span><strong data-bn="এজেন্সি" data-en="Agency">এজেন্সি</strong><span data-bn="সার্ভিস ওয়েবসাইট" data-en="Service websites">সার্ভিস ওয়েবসাইট</span></button>
-   <button class="category" data-category="Real Estate"><span class="emoji">🏡</span><strong data-bn="রিয়েল এস্টেট" data-en="Real Estate">রিয়েল এস্টেট</strong><span data-bn="প্রপার্টি লিস্টিং" data-en="Property listings">প্রপার্টি লিস্টিং</span></button>
+<section class="section" id="plans">
+ <div class="container">
+  <div class="section-head"><div><h2 data-bn="মাসিক সাবস্ক্রিপশন প্ল্যান" data-en="Monthly Subscription Plans">মাসিক সাবস্ক্রিপশন প্ল্যান</h2><p data-bn="আপনার প্রয়োজন অনুযায়ী একটি প্ল্যান বেছে নিন।" data-en="Choose a plan that suits your needs.">আপনার প্রয়োজন অনুযায়ী একটি প্ল্যান বেছে নিন।</p></div></div>
+  <div class="plans">
+   <div class="plan"><span class="pill">STARTER</span><h3 data-bn="স্টার্টার" data-en="Starter">স্টার্টার</h3><div class="price">৳549<small>/মাস</small></div><p data-bn="নতুন ব্যবসার জন্য" data-en="For new businesses">নতুন ব্যবসার জন্য</p><ul><li>একটি ওয়েবসাইট প্ল্যান</li><li>বেসিক সাপোর্ট</li><li>মাসিক সাবস্ক্রিপশন</li></ul><button class="secondary planOrder" data-plan="Starter — ৳549/month">প্ল্যান নিন</button></div>
+   <div class="plan featured"><span class="pill">POPULAR</span><h3 data-bn="বিজনেস" data-en="Business">বিজনেস</h3><div class="price">৳999<small>/মাস</small></div><p data-bn="বাড়ন্ত ব্যবসার জন্য" data-en="For growing businesses">বাড়ন্ত ব্যবসার জন্য</p><ul><li>বিজনেস ওয়েবসাইট প্ল্যান</li><li>অগ্রাধিকার সাপোর্ট</li><li>মাসিক সাবস্ক্রিপশন</li></ul><button class="primary planOrder" data-plan="Business — ৳999/month">প্ল্যান নিন</button></div>
+   <div class="plan"><span class="pill">PRO</span><h3 data-bn="প্রফেশনাল" data-en="Professional">প্রফেশনাল</h3><div class="price">৳1,999<small>/মাস</small></div><p data-bn="প্রফেশনাল প্রয়োজনের জন্য" data-en="For professional needs">প্রফেশনাল প্রয়োজনের জন্য</p><ul><li>প্রিমিয়াম ওয়েবসাইট প্ল্যান</li><li>প্রায়োরিটি সাপোর্ট</li><li>মাসিক সাবস্ক্রিপশন</li></ul><button class="secondary planOrder" data-plan="Professional — ৳1999/month">প্ল্যান নিন</button></div>
   </div>
+  <p class="notice">প্ল্যানের মূল্য ও সুবিধা ডেমো। প্রকৃত সাবস্ক্রিপশন চালুর আগে শর্তাবলি নির্ধারণ করুন। অনলাইন পেমেন্ট এখনো যুক্ত করা হয়নি।</p>
  </div>
 </section>
 
-<section class="market" id="market">
- <div class="container reveal">
-  <div class="sectionHead">
-   <div><div class="kicker" data-bn="কিউরেটেড কালেকশন" data-en="Curated Collection">কিউরেটেড কালেকশন</div><h2 data-bn="পছন্দ করুন। <span class='green'>শুরু করুন।</span>" data-en="Choose it. <span class='green'>Launch it.</span>">পছন্দ করুন। <span class="green">শুরু করুন।</span></h2><p data-bn="আপনার ব্যবসার জন্য তৈরি ডিজাইনের সংগ্রহ।" data-en="A collection of designs for your business.">আপনার ব্যবসার জন্য তৈরি ডিজাইনের সংগ্রহ।</p></div>
-   <a class="btn secondary smallbtn" href="#contact" data-bn="কাস্টম ওয়েবসাইট ↗" data-en="Custom Website ↗">কাস্টম ওয়েবসাইট ↗</a>
-  </div>
-  <div class="filters">
-   <label class="searchbox"><span class="searchIcon">⌕</span><input id="searchInput" type="search" placeholder="ওয়েবসাইট খুঁজুন..." aria-label="Search websites"></label>
-   <select id="sortSelect" aria-label="Sort websites"><option value="featured">Featured</option><option value="low">Price: Low to High</option><option value="high">Price: High to Low</option></select>
-   <button class="iconbtn" id="wishlistFilter">♡ <span data-bn="আমার পছন্দ" data-en="Wishlist">আমার পছন্দ</span> <span id="wishCount">0</span></button>
-  </div>
-  <div class="filterChips" id="filterChips">
-   <button class="chip active" data-category="All" data-bn="সব ওয়েবসাইট" data-en="All Websites">সব ওয়েবসাইট</button>
-   <button class="chip" data-category="Ecommerce">Ecommerce</button>
-   <button class="chip" data-category="Business">Business</button>
-   <button class="chip" data-category="Restaurant">Restaurant</button>
-   <button class="chip" data-category="Portfolio">Portfolio</button>
-   <button class="chip" data-category="Agency">Agency</button>
-   <button class="chip" data-category="Real Estate">Real Estate</button>
-  </div>
-  <div class="productGrid" id="productGrid"></div>
-  <div class="empty" id="emptyState"><b data-bn="কোনো ওয়েবসাইট পাওয়া যায়নি" data-en="No websites found">কোনো ওয়েবসাইট পাওয়া যায়নি</b><span data-bn="অন্য শব্দ বা ক্যাটাগরি দিয়ে খুঁজুন।" data-en="Try another search or category.">অন্য শব্দ বা ক্যাটাগরি দিয়ে খুঁজুন।</span></div>
-  <p class="small muted" style="margin-top:20px" data-bn="নোট: এখানে প্রদর্শিত ওয়েবসাইট, মূল্য ও ছবিগুলো ডেমো। প্রকাশের আগে আপনার আসল পণ্য ও মূল্য দিয়ে আপডেট করুন।" data-en="Note: Website listings, prices and images shown here are demo content. Replace them with your actual products before launch.">নোট: এখানে প্রদর্শিত ওয়েবসাইট, মূল্য ও ছবিগুলো ডেমো। প্রকাশের আগে আপনার আসল পণ্য ও মূল্য দিয়ে আপডেট করুন।</p>
- </div>
-</section>
-
-<section id="pricing">
- <div class="container reveal">
-  <div class="center"><div class="kicker" data-bn="মাসিক সাবস্ক্রিপশন" data-en="Monthly Subscription">মাসিক সাবস্ক্রিপশন</div><h2 data-bn="আপনার ব্যবসা, আপনার <span class='green'>প্ল্যান</span>" data-en="Your business, your <span class='green'>plan</span>">আপনার ব্যবসা, আপনার <span class="green">প্ল্যান</span></h2><p class="muted" data-bn="নিচের প্ল্যানগুলো প্রস্তাবিত ডেমো মূল্য।" data-en="The plans below are proposed demo pricing.">নিচের প্ল্যানগুলো প্রস্তাবিত ডেমো মূল্য।</p></div>
-  <div class="pricing">
-   <article class="plan"><h3 data-bn="Starter" data-en="Starter">Starter</h3><p data-bn="ছোট ব্যবসার জন্য শুরু করার প্ল্যান।" data-en="A starting plan for small businesses.">ছোট ব্যবসার জন্য শুরু করার প্ল্যান।</p><div class="planPrice">৳549 <span data-bn="/ মাস" data-en="/ month">/ মাস</span></div><ul><li data-bn="রেডিমেড টেমপ্লেট অ্যাক্সেস" data-en="Ready-made template access">রেডিমেড টেমপ্লেট অ্যাক্সেস</li><li data-bn="মৌলিক কাস্টমাইজেশন" data-en="Basic customization">মৌলিক কাস্টমাইজেশন</li><li data-bn="ইমেইল সাপোর্ট" data-en="Email support">ইমেইল সাপোর্ট</li></ul><button class="btn secondary planOrder" data-plan="Starter — ৳549/month" data-bn="প্ল্যান সম্পর্কে জানুন" data-en="Enquire about plan">প্ল্যান সম্পর্কে জানুন</button></article>
-   <article class="plan featured"><span class="popular" data-bn="জনপ্রিয়" data-en="POPULAR">জনপ্রিয়</span><h3>Growth</h3><p data-bn="বাড়তে থাকা ব্যবসার জন্য।" data-en="For growing businesses.">বাড়তে থাকা ব্যবসার জন্য।</p><div class="planPrice">৳999 <span data-bn="/ মাস" data-en="/ month">/ মাস</span></div><ul><li data-bn="প্রিমিয়াম টেমপ্লেট অ্যাক্সেস" data-en="Premium template access">প্রিমিয়াম টেমপ্লেট অ্যাক্সেস</li><li data-bn="অতিরিক্ত কাস্টমাইজেশন" data-en="Extra customization">অতিরিক্ত কাস্টমাইজেশন</li><li data-bn="প্রায়োরিটি সাপোর্ট" data-en="Priority support">প্রায়োরিটি সাপোর্ট</li></ul><button class="btn planOrder" data-plan="Growth — ৳999/month" data-bn="প্ল্যান সম্পর্কে জানুন ↗" data-en="Enquire about plan ↗">প্ল্যান সম্পর্কে জানুন ↗</button></article>
-   <article class="plan"><h3>Business Pro</h3><p data-bn="বৃহত্তর ব্যবসা ও টিমের জন্য।" data-en="For larger businesses and teams.">বৃহত্তর ব্যবসা ও টিমের জন্য।</p><div class="planPrice">৳1,999 <span data-bn="/ মাস" data-en="/ month">/ মাস</span></div><ul><li data-bn="প্রিমিয়াম ওয়েবসাইট অপশন" data-en="Premium website options">প্রিমিয়াম ওয়েবসাইট অপশন</li><li data-bn="অগ্রাধিকার সহায়তা" data-en="Priority assistance">অগ্রাধিকার সহায়তা</li><li data-bn="ব্যবসা উপযোগী কাস্টমাইজেশন" data-en="Business customization">ব্যবসা উপযোগী কাস্টমাইজেশন</li></ul><button class="btn secondary planOrder" data-plan="Business Pro — ৳1999/month" data-bn="প্ল্যান সম্পর্কে জানুন" data-en="Enquire about plan">প্ল্যান সম্পর্কে জানুন</button></article>
-  </div>
-  <p class="small muted center" style="margin-top:20px" data-bn="সাবস্ক্রিপশন চালুর আগে প্ল্যানের শর্ত, মেয়াদ ও কী কী অন্তর্ভুক্ত তা স্পষ্টভাবে নির্ধারণ করুন।" data-en="Define subscription terms, duration, and inclusions clearly before launching plans.">সাবস্ক্রিপশন চালুর আগে প্ল্যানের শর্ত, মেয়াদ ও কী কী অন্তর্ভুক্ত তা স্পষ্টভাবে নির্ধারণ করুন।</p>
- </div>
-</section>
-
-<section id="how" style="background:var(--panel);border-block:1px solid var(--border)">
- <div class="container reveal">
-  <div class="center"><div class="kicker" data-bn="সহজ তিনটি ধাপ" data-en="Three Simple Steps">সহজ তিনটি ধাপ</div><h2 data-bn="আপনার ওয়েবসাইট, <span class='green'>আরও সহজে</span>" data-en="Your website, <span class='green'>made simple</span>">আপনার ওয়েবসাইট, <span class="green">আরও সহজে</span></h2></div>
-  <div class="processGrid">
-   <article class="process"><div class="processNum">01</div><h3 data-bn="ওয়েবসাইট বেছে নিন" data-en="Choose a Website">ওয়েবসাইট বেছে নিন</h3><p data-bn="ক্যাটাগরি, ডিজাইন ও মূল্য দেখে আপনার পছন্দের ওয়েবসাইট খুঁজুন।" data-en="Find a website by category, design, and price.">ক্যাটাগরি, ডিজাইন ও মূল্য দেখে আপনার পছন্দের ওয়েবসাইট খুঁজুন।</p></article>
-   <article class="process"><div class="processNum">02</div><h3 data-bn="অর্ডারের অনুরোধ পাঠান" data-en="Send an Order Request">অর্ডারের অনুরোধ পাঠান</h3><p data-bn="WhatsApp-এর মাধ্যমে ওয়েবসাইটের নাম ও মূল্যসহ আপনার অনুরোধ পাঠান।" data-en="Send your request with the website name and price through WhatsApp.">WhatsApp-এর মাধ্যমে ওয়েবসাইটের নাম ও মূল্যসহ আপনার অনুরোধ পাঠান।</p></article>
-   <article class="process"><div class="processNum">03</div><h3 data-bn="পরবর্তী ধাপ নিশ্চিত করুন" data-en="Confirm Next Steps">পরবর্তী ধাপ নিশ্চিত করুন</h3><p data-bn="আমাদের সঙ্গে প্রয়োজনীয় ফিচার, শর্ত ও ডেলিভারি নিয়ে আলোচনা করুন।" data-en="Discuss features, terms, and delivery with us.">আমাদের সঙ্গে প্রয়োজনীয় ফিচার, শর্ত ও ডেলিভারি নিয়ে আলোচনা করুন।</p></article>
-  </div>
- </div>
-</section>
-
-<section class="cta" id="contact">
- <div class="container reveal"><div class="ctaBox"><div><div class="kicker" data-bn="আপনার আইডিয়া প্রস্তুত?" data-en="Have an idea?">আপনার আইডিয়া প্রস্তুত?</div><h2 data-bn="আপনার পরবর্তী ব্যবসা <span class='green'>শুরু হোক আজই।</span>" data-en="Start your next business <span class='green'>today.</span>">আপনার পরবর্তী ব্যবসা <span class="green">শুরু হোক আজই।</span></h2><p data-bn="ওয়েবসাইট বাছাই, কাস্টমাইজেশন বা সাবস্ক্রিপশন সম্পর্কে কথা বলতে আমাদের সঙ্গে যোগাযোগ করুন।" data-en="Contact us about website selection, customization, or subscriptions.">ওয়েবসাইট বাছাই, কাস্টমাইজেশন বা সাবস্ক্রিপশন সম্পর্কে কথা বলতে আমাদের সঙ্গে যোগাযোগ করুন।</p></div><a class="btn" id="contactBtn" href="#" data-bn="WhatsApp-এ যোগাযোগ ↗" data-en="Contact on WhatsApp ↗">WhatsApp-এ যোগাযোগ ↗</a></div></div>
+<section class="container">
+ <div class="cta"><div><h2 data-bn="আপনার আইডিয়াকে অনলাইনে আনুন" data-en="Bring Your Idea Online">আপনার আইডিয়াকে অনলাইনে আনুন</h2><p data-bn="সঠিক ওয়েবসাইট খুঁজতে সাহায্য প্রয়োজন?" data-en="Need help finding the right website?">সঠিক ওয়েবসাইট খুঁজতে সাহায্য প্রয়োজন?</p></div><a class="primary" href="https://wa.me/8801705633700" target="_blank" rel="noopener">WhatsApp ↗</a></div>
 </section>
 </main>
 
-<footer>
- <div class="container">
-  <div class="footerTop">
-   <div class="footerBrand"><a class="brand" href="#home"><span class="logo">W</span><span>Websites<span>Deal</span></span></a><p data-bn="বাংলাদেশের জন্য রেডিমেড ওয়েবসাইট মার্কেটপ্লেস। আপনার পরবর্তী অনলাইন ব্যবসা শুরু করুন আত্মবিশ্বাসের সঙ্গে।" data-en="A ready-made website marketplace for Bangladesh. Launch your next online business with confidence.">বাংলাদেশের জন্য রেডিমেড ওয়েবসাইট মার্কেটপ্লেস। আপনার পরবর্তী অনলাইন ব্যবসা শুরু করুন আত্মবিশ্বাসের সঙ্গে।</p></div>
-   <div class="footerLinks">
-    <div><h4 data-bn="এক্সপ্লোর" data-en="Explore">এক্সপ্লোর</h4><a href="#market" data-bn="সব ওয়েবসাইট" data-en="All Websites">সব ওয়েবসাইট</a><a href="#categories" data-bn="ক্যাটাগরি" data-en="Categories">ক্যাটাগরি</a><a href="#pricing" data-bn="সাবস্ক্রিপশন" data-en="Subscriptions">সাবস্ক্রিপশন</a></div>
-    <div><h4 data-bn="সাপোর্ট" data-en="Support">সাপোর্ট</h4><a href="#contact" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a><a href="#how" data-bn="কীভাবে কাজ করে" data-en="How It Works">কীভাবে কাজ করে</a></div>
-   </div>
-  </div>
-  <div class="copyright"><span>© <span id="year"></span> WebsitesDeal Bangladesh. <span data-bn="সর্বস্বত্ব সংরক্ষিত।" data-en="All rights reserved.">সর্বস্বত্ব সংরক্ষিত।</span></span><span data-bn="একটি প্রিমিয়াম ডিজিটাল মার্কেটপ্লেস" data-en="A premium digital marketplace">একটি প্রিমিয়াম ডিজিটাল মার্কেটপ্লেস</span></div>
- </div>
-</footer>
-
-<a class="waFloat" id="waFloat" href="#" aria-label="Contact us on WhatsApp" title="WhatsApp">✆</a>
-
-<div class="modal" id="detailsModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
- <div class="modalBox">
-  <div class="modalHeader"><h3 id="modalTitle">Website Details</h3><button class="close" data-close aria-label="Close">×</button></div>
-  <div class="modalContent" id="modalContent"></div>
- </div>
-</div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<footer><div class="container footer-row"><a class="logo" href="#"><span class="logo-icon">W</span><span>Websites<span>Deal</span></span></a><span>© <span id="year"></span> WebsitesDeal. All rights reserved.</span><span>Made for your next big idea.</span></div></footer>
+<a class="wa-float" href="https://wa.me/8801705633700" target="_blank" rel="noopener">☏ WhatsApp</a>
+<div id="toast" class="toast" role="status"></div>
 
 <script>
-(() => {
- "use strict";
+const WHATSAPP = "8801705633700";
+const DEMO_ORDERS = {
+  "WD-1001": {
+    product:"Business Website Template",
+    status:"Confirmed", current:1,
+    note:"Demo order: আপনার অর্ডার নিশ্চিত হয়েছে।",
+    dates:["অর্ডার গ্রহণ","অর্ডার নিশ্চিত","কাজ শুরু","ডেলিভারি সম্পন্ন"]
+  },
+  "WD-1002": {
+    product:"Ecommerce Website Template",
+    status:"In Progress", current:2,
+    note:"Demo order: ওয়েবসাইট প্রস্তুতের কাজ চলছে।",
+    dates:["অর্ডার গ্রহণ","অর্ডার নিশ্চিত","কাজ শুরু","ডেলিভারি সম্পন্ন"]
+  },
+  "WD-1003": {
+    product:"Restaurant Website Template",
+    status:"Delivered", current:3,
+    note:"Demo order: ওয়েবসাইট ডেলিভারি সম্পন্ন হয়েছে।",
+    dates:["অর্ডার গ্রহণ","অর্ডার নিশ্চিত","কাজ শুরু","ডেলিভারি সম্পন্ন"]
+  }
+};
 
- // SETTINGS — Update the WhatsApp number here if needed.
- const WHATSAPP_NUMBER = "8801705633700";
- const CONTACT_EMAIL = "hello@websitesdeal.com";
+const products = [
+ {id:1,name:"Business Pro",category:"Business",price:2499,art:"art1",emoji:"🏢",desc:"আধুনিক কোম্পানি ও সার্ভিস ওয়েবসাইট।"},
+ {id:2,name:"ShopNova Ecommerce",category:"Ecommerce",price:3499,art:"art2",emoji:"🛍️",desc:"অনলাইন স্টোরের জন্য স্টাইলিশ ডিজাইন।"},
+ {id:3,name:"FoodCraft Restaurant",category:"Restaurant",price:1999,art:"art3",emoji:"🍽️",desc:"রেস্টুরেন্ট ও ফুড ব্র্যান্ডের ওয়েবসাইট।"},
+ {id:4,name:"Creative Portfolio",category:"Portfolio",price:1499,art:"art4",emoji:"✦",desc:"ডিজাইনার ও ক্রিয়েটিভ পেশাজীবীদের জন্য।"},
+ {id:5,name:"AgencyFlow",category:"Business",price:2999,art:"art5",emoji:"◈",desc:"ডিজিটাল এজেন্সির জন্য প্রফেশনাল লেআউট।"},
+ {id:6,name:"FreshCart Store",category:"Ecommerce",price:2799,art:"art6",emoji:"🛒",desc:"পণ্য প্রদর্শনের জন্য পরিচ্ছন্ন অনলাইন স্টোর।"}
+];
 
- // Demo catalogue: replace titles, prices, and images with real products.
- const products = [
-  {id:1,title:"NovaCart — Ecommerce",bn:"NovaCart — ই-কমার্স",category:"Ecommerce",price:4999,badge:"BESTSELLER",image:"https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=85",desc:"A modern online store layout for products, collections, and shopping.",bnDesc:"পণ্য, কালেকশন ও অনলাইন কেনাকাটার জন্য আধুনিক স্টোর ডিজাইন।",features:["Responsive layout","Product collection design","Modern shopping experience"],preview:"https://example.com"},
-  {id:2,title:"GreenLeaf — Business",bn:"GreenLeaf — বিজনেস",category:"Business",price:5999,badge:"POPULAR",image:"https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=85",desc:"A polished business website for a company, consultancy, or service provider.",bnDesc:"কোম্পানি, কনসালটেন্সি ও সার্ভিস ব্যবসার জন্য পরিপাটি ওয়েবসাইট।",features:["Company introduction","Services section","Contact layout"],preview:"https://example.com"},
-  {id:3,title:"Bistro — Restaurant",bn:"Bistro — রেস্টুরেন্ট",category:"Restaurant",price:4499,badge:"NEW",image:"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=85",desc:"An inviting restaurant website concept for menus, dining, and food brands.",bnDesc:"মেনু, ডাইনিং ও ফুড ব্র্যান্ডের জন্য আকর্ষণীয় রেস্টুরেন্ট ডিজাইন।",features:["Menu presentation","Restaurant information","Mobile-friendly layout"],preview:"https://example.com"},
-  {id:4,title:"Folio — Creative Portfolio",bn:"Folio — ক্রিয়েটিভ পোর্টফোলিও",category:"Portfolio",price:3499,badge:"CREATIVE",image:"https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=900&q=85",desc:"A clean portfolio concept for designers, developers, and creative professionals.",bnDesc:"ডিজাইনার, ডেভেলপার ও ক্রিয়েটিভ পেশাজীবীদের জন্য পরিষ্কার পোর্টফোলিও।",features:["Project gallery","About section","Personal branding"],preview:"https://example.com"},
-  {id:5,title:"ScaleUp — Agency",bn:"ScaleUp — এজেন্সি",category:"Agency",price:6999,badge:"PREMIUM",image:"https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=900&q=85",desc:"A bold digital agency website concept for showcasing services and case studies.",bnDesc:"ডিজিটাল এজেন্সির সার্ভিস ও কাজ উপস্থাপনের জন্য আধুনিক ডিজাইন।",features:["Service pages","Team presentation","Case study layout"],preview:"https://example.com"},
-  {id:6,title:"EstatePro — Real Estate",bn:"EstatePro — রিয়েল এস্টেট",category:"Real Estate",price:7999,badge:"FEATURED",image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85",desc:"A property website concept for presenting homes, listings, and enquiries.",bnDesc:"বাড়ি, প্রপার্টি লিস্টিং ও গ্রাহকের অনুসন্ধানের জন্য রিয়েল এস্টেট ডিজাইন।",features:["Property cards","Listing presentation","Enquiry layout"],preview:"https://example.com"}
- ];
+let currentLang = "bn";
+let activeFilter = "All";
+let lastOrder = null;
 
- const $ = (s,root=document) => root.querySelector(s);
- const $$ = (s,root=document) => [...root.querySelectorAll(s)];
- let lang = "bn", category = "All", wishlistOnly = false;
- let favorites = [];
- try { favorites = JSON.parse(localStorage.getItem("wdWishlist") || "[]"); if(!Array.isArray(favorites)) favorites=[]; } catch(e) { favorites=[]; }
- const savedTheme = (()=>{try{return localStorage.getItem("wdTheme")}catch(e){return null}})();
- if(savedTheme === "light") document.body.classList.add("light");
+const $ = id => document.getElementById(id);
+const money = n => "৳" + n.toLocaleString("en-US");
 
- const t = (bn,en) => lang === "bn" ? bn : en;
- const money = n => "৳" + Number(n).toLocaleString("en-BD");
- const waUrl = message => "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
- const toast = message => {
-  const el=$("#toast"); el.textContent=message; el.classList.add("show");
-  clearTimeout(toast.timer); toast.timer=setTimeout(()=>el.classList.remove("show"),2500);
- };
- const productName = p => lang==="bn" ? p.bn : p.title;
- const productDesc = p => lang==="bn" ? p.bnDesc : p.desc;
+function showToast(message){
+  $("toast").textContent = message;
+  $("toast").classList.add("show");
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(()=>$("toast").classList.remove("show"),2400);
+}
 
- function applyLanguage(){
-  document.documentElement.lang=lang;
-  $$("[data-bn][data-en]").forEach(el=>{
-   const val=el.getAttribute("data-"+lang);
-   if(val!==null) el.innerHTML=val;
+function renderProducts(){
+  const q = $("searchInput").value.trim().toLowerCase();
+  const filtered = products.filter(p=>{
+    const matchesCategory = activeFilter==="All" || p.category===activeFilter;
+    const matchesSearch = (p.name+" "+p.category+" "+p.desc).toLowerCase().includes(q);
+    return matchesCategory && matchesSearch;
   });
-  $("#langBtn").textContent=lang==="bn"?"EN":"বাং";
-  $("#searchInput").placeholder=t("ওয়েবসাইট খুঁজুন...","Search websites...");
-  $("#sortSelect").options[0].textContent=t("প্রস্তাবিত","Featured");
-  $("#sortSelect").options[1].textContent=t("কম মূল্য আগে","Price: Low to High");
-  $("#sortSelect").options[2].textContent=t("বেশি মূল্য আগে","Price: High to Low");
-  renderProducts();
- }
-
- function renderProducts(){
-  const query=$("#searchInput").value.trim().toLowerCase();
-  let list=products.filter(p=>{
-   const searchable=[p.title,p.bn,p.category,p.desc,p.bnDesc].join(" ").toLowerCase();
-   return (category==="All"||p.category===category) &&
-    (!query||searchable.includes(query)) &&
-    (!wishlistOnly||favorites.includes(p.id));
-  });
-  const sort=$("#sortSelect").value;
-  if(sort==="low") list.sort((a,b)=>a.price-b.price);
-  if(sort==="high") list.sort((a,b)=>b.price-a.price);
-  $("#productGrid").innerHTML=list.map((p,i)=>`
-   <article class="product" style="animation-delay:${Math.min(i*60,300)}ms">
-    <div class="productImage">
-     <img src="${p.image}" alt="${escapeHtml(productName(p))}" loading="lazy">
-     <span class="productBadge">${escapeHtml(p.badge)}</span>
-     <button class="heart ${favorites.includes(p.id)?"saved":""}" data-heart="${p.id}" aria-label="Toggle wishlist" title="${t("পছন্দে রাখুন","Add to wishlist")}">${favorites.includes(p.id)?"♥":"♡"}</button>
-    </div>
-    <div class="productBody">
-     <div class="productMeta"><span>${escapeHtml(p.category)}</span><span>✦ Premium</span></div>
-     <h3>${escapeHtml(productName(p))}</h3>
-     <p>${escapeHtml(productDesc(p))}</p>
-     <div class="productBottom">
-      <div class="price">${money(p.price)}<small>${t("এককালীন ডেমো মূল্য","Demo one-time price")}</small></div>
-      <div class="cardActions">
-       <button class="btn secondary" data-details="${p.id}">${t("বিস্তারিত","Details")}</button>
-       <button class="btn" data-order="${p.id}">${t("অর্ডার ↗","Order ↗")}</button>
+  $("productGrid").innerHTML = filtered.length ? filtered.map(p=>`
+    <article class="product">
+      <div class="product-art ${p.art}">
+        <div class="mock-browser"><strong>${p.emoji} ${p.name}</strong>
+          <div class="mock-lines"></div><div class="mock-block"></div>
+        </div>
       </div>
-     </div>
-    </div>
-   </article>`).join("");
-  $("#emptyState").style.display=list.length?"none":"block";
-  $("#wishCount").textContent=favorites.length;
- }
-
- function escapeHtml(value){
-  return String(value).replace(/[&<>"']/g, ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
- }
-
- function showDetails(id){
-  const p=products.find(x=>x.id===Number(id)); if(!p)return;
-  $("#modalTitle").textContent=productName(p);
-  $("#modalContent").innerHTML=`
-   <img src="${p.image}" alt="${escapeHtml(productName(p))}">
-   <div class="productMeta"><span>${escapeHtml(p.category)}</span><span>✦ Premium</span></div>
-   <div class="modalPrice">${money(p.price)}</div>
-   <p>${escapeHtml(productDesc(p))}</p>
-   <h4>${t("মূল ফিচার","Key Features")}</h4>
-   <ul>${p.features.map(f=>`<li style="margin:9px 0">${escapeHtml(f)}</li>`).join("")}</ul>
-   <p class="small">${t("ডেমো নোট: প্রকৃত লাইভ প্রিভিউ লিংক সেট না করা পর্যন্ত নিচের Preview বাটনটি নমুনা লিংক খুলবে না।","Demo note: until a real preview URL is configured, the preview button will not open a live demo.")}</p>
-   <div class="modalButtons">
-    <button class="btn" data-order="${p.id}">${t("WhatsApp অর্ডার ↗","Order on WhatsApp ↗")}</button>
-    <button class="btn secondary" data-share="${p.id}">${t("শেয়ার করুন ↗","Share ↗")}</button>
-    <button class="btn secondary" data-preview="${p.id}">${t("Live Preview ↗","Live Preview ↗")}</button>
-   </div>`;
-  $("#detailsModal").classList.add("open");
-  document.body.style.overflow="hidden";
- }
- function closeModal(){ $("#detailsModal").classList.remove("open");document.body.style.overflow=""; }
-
- function orderProduct(id){
-  const p=products.find(x=>x.id===Number(id));if(!p)return;
-  const message=t(
-   "আসসালামু আলাইকুম, WebsitesDeal থেকে একটি ওয়েবসাইট অর্ডার সম্পর্কে জানতে চাই।\n\nওয়েবসাইট: "+p.bn+"\nক্যাটাগরি: "+p.category+"\nডেমো মূল্য: "+money(p.price)+"\nProduct ID: WD-"+String(p.id).padStart(3,"0")+"\n\nদয়া করে বিস্তারিত ও পরবর্তী ধাপ জানাবেন।",
-   "Hello WebsitesDeal, I would like to enquire about ordering a website.\n\nWebsite: "+p.title+"\nCategory: "+p.category+"\nDemo price: "+money(p.price)+"\nProduct ID: WD-"+String(p.id).padStart(3,"0")+"\n\nPlease share details and next steps."
-  );
-  window.open(waUrl(message),"_blank","noopener,noreferrer");
- }
- async function shareProduct(id){
-  const p=products.find(x=>x.id===Number(id));if(!p)return;
-  const url=location.href.split("#")[0]+"#market";
-  const data={title:productName(p),text:productDesc(p)+" — "+money(p.price),url};
-  if(navigator.share){try{await navigator.share(data);return}catch(e){if(e.name==="AbortError")return}}
-  try{await navigator.clipboard.writeText(data.title+" | "+data.text+" | "+url);toast(t("শেয়ারের তথ্য কপি হয়েছে","Share details copied"))}
-  catch(e){window.prompt(t("এই লিংকটি কপি করুন","Copy this link"),url)}
- }
- function previewProduct(id){
-  const p=products.find(x=>x.id===Number(id));if(!p)return;
-  if(!p.preview||p.preview==="https://example.com"){toast(t("এই পণ্যের আসল Preview URL এখনো যোগ করা হয়নি।","A real preview URL has not been configured for this item."));return}
-  window.open(p.preview,"_blank","noopener,noreferrer");
- }
-
- document.addEventListener("click",e=>{
-  const heart=e.target.closest("[data-heart]");
-  if(heart){
-   const id=Number(heart.dataset.heart);
-   favorites=favorites.includes(id)?favorites.filter(x=>x!==id):[...favorites,id];
-   try{localStorage.setItem("wdWishlist",JSON.stringify(favorites))}catch(err){}
-   renderProducts();toast(favorites.includes(id)?t("Wishlist-এ যোগ হয়েছে","Added to wishlist"):t("Wishlist থেকে সরানো হয়েছে","Removed from wishlist"));return;
+      <div class="product-body">
+        <div class="product-meta"><span class="pill">${p.category}</span><span style="color:var(--green2)">★ Premium</span></div>
+        <h3>${p.name}</h3><p>${p.desc}</p>
+        <div class="product-meta"><div class="price">${money(p.price)} <small>one-time*</small></div></div>
+        <div class="product-actions">
+          <button class="secondary" onclick="previewProduct(${p.id})">Preview</button>
+          <button class="primary" onclick="orderProduct(${p.id})">অর্ডার ↗</button>
+        </div>
+      </div>
+    </article>`).join("") : `<div class="empty">কোনো ওয়েবসাইট পাওয়া যায়নি। অন্য শব্দ দিয়ে খুঁজুন।</div>`;
+}
+function previewProduct(id){
+  const p=products.find(x=>x.id===id);
+  showToast("Demo preview: "+p.name+" — আসল Preview URL পরে যুক্ত করুন।");
+}
+function orderProduct(id){
+  const p=products.find(x=>x.id===id);
+  const msg=`Hello WebsitesDeal, I want to order: ${p.name}. Displayed demo price: ${money(p.price)}. Please confirm availability and final price.`;
+  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank","noopener");
+}
+function trackOrder(e){
+  e.preventDefault();
+  const id=$("orderId").value.trim().toUpperCase();
+  const order=DEMO_ORDERS[id];
+  $("trackError").classList.remove("show");
+  $("trackResult").classList.remove("show");
+  if(!order){
+    $("trackError").classList.add("show");
+    return;
   }
-  const detail=e.target.closest("[data-details]");if(detail){showDetails(detail.dataset.details);return}
-  const order=e.target.closest("[data-order]");if(order){orderProduct(order.dataset.order);return}
-  const share=e.target.closest("[data-share]");if(share){shareProduct(share.dataset.share);return}
-  const preview=e.target.closest("[data-preview]");if(preview){previewProduct(preview.dataset.preview);return}
-  const chip=e.target.closest("[data-category]");
-  if(chip){
-   category=chip.dataset.category;wishlistOnly=false;
-   $$(".chip").forEach(x=>x.classList.toggle("active",x.dataset.category===category));
-   $$(".category").forEach(x=>x.classList.toggle("active",x.dataset.category===category));
-   $("#wishlistFilter").classList.remove("active");renderProducts();
-   if(chip.classList.contains("category"))$("#market").scrollIntoView({behavior:"smooth"});return;
-  }
-  const plan=e.target.closest(".planOrder");
-  if(plan){
-   const message=t("আসসালামু আলাইকুম, WebsitesDeal-এর এই মাসিক সাবস্ক্রিপশন প্ল্যান সম্পর্কে জানতে চাই: ","Hello WebsitesDeal, I would like to enquire about this monthly subscription plan: ")+plan.dataset.plan;
-   window.open(waUrl(message),"_blank","noopener,noreferrer");return;
-  }
-  if(e.target.closest("[data-close]"))closeModal();
- });
- $("#detailsModal").addEventListener("click",e=>{if(e.target.id==="detailsModal")closeModal()});
- document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
- $("#searchInput").addEventListener("input",renderProducts);
- $("#sortSelect").addEventListener("change",renderProducts);
- $("#wishlistFilter").addEventListener("click",()=>{
-  wishlistOnly=!wishlistOnly;category="All";
-  $$(".chip").forEach(x=>x.classList.toggle("active",x.dataset.category==="All"));
-  $$(".category").forEach(x=>x.classList.remove("active"));
-  $("#wishlistFilter").classList.toggle("active",wishlistOnly);renderProducts();
-  $("#market").scrollIntoView({behavior:"smooth"});
- });
- $("#langBtn").addEventListener("click",()=>{lang=lang==="bn"?"en":"bn";applyLanguage()});
- $("#themeBtn").addEventListener("click",()=>{
+  lastOrder={id,...order};
+  $("resultId").textContent=id;
+  $("resultProduct").textContent=order.product;
+  $("resultStatus").textContent=order.status;
+  $("resultNote").textContent=order.note;
+  $("timeline").innerHTML=order.dates.map((label,i)=>`
+    <div class="step ${i<=order.current?"done":""}">
+      <div class="step-icon">${i<=order.current?"✓":i+1}</div>
+      <div><strong>${label}</strong><small>${i<order.current?"সম্পন্ন":i===order.current?"বর্তমান ধাপ":"অপেক্ষমাণ"}</small></div>
+    </div>`).join("");
+  $("trackResult").classList.add("show");
+}
+$("trackForm").addEventListener("submit",trackOrder);
+$("trackWhatsApp").addEventListener("click",()=>{
+  if(!lastOrder)return;
+  const msg=`Hello WebsitesDeal, I need help with order ${lastOrder.id} (${lastOrder.product}).`;
+  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank","noopener");
+});
+$("searchBtn").addEventListener("click",()=>{renderProducts();$("market").scrollIntoView({behavior:"smooth"});});
+$("searchInput").addEventListener("input",renderProducts);
+document.querySelectorAll(".filter").forEach(btn=>btn.addEventListener("click",()=>{
+  activeFilter=btn.dataset.filter;
+  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b===btn));
+  renderProducts();
+}));
+document.querySelectorAll(".category").forEach(card=>card.addEventListener("click",()=>{
+  activeFilter=card.dataset.category;
+  document.querySelectorAll(".filter").forEach(b=>b.classList.toggle("active",b.dataset.filter===activeFilter));
+  renderProducts();
+}));
+$("themeBtn").addEventListener("click",()=>{
   document.body.classList.toggle("light");
-  const theme=document.body.classList.contains("light")?"light":"dark";
-  try{localStorage.setItem("wdTheme",theme)}catch(e){}
-  $("#themeBtn").textContent=theme==="light"?"☾":"☼";
- });
- $("#themeBtn").textContent=document.body.classList.contains("light")?"☾":"☼";
- $("#menuBtn").addEventListener("click",()=>$("#navlinks").classList.toggle("open"));
- $$("#navlinks a").forEach(a=>a.addEventListener("click",()=>$("#navlinks").classList.remove("open")));
-
- const contactMessage="Hello WebsitesDeal, I would like to know more about your websites and services.";
- $("#contactBtn").href=waUrl(contactMessage);
- $("#waFloat").href=waUrl(contactMessage);
- $("#waFloat").target="_blank";$("#waFloat").rel="noopener noreferrer";
- $("#year").textContent=new Date().getFullYear();
-
- // Reveal sections as they enter the viewport.
- if("IntersectionObserver" in window){
-  const observer=new IntersectionObserver(entries=>{
-   entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}});
-  },{threshold:.12});
-  $$(".reveal").forEach(el=>observer.observe(el));
- }else{$$(".reveal").forEach(el=>el.classList.add("visible"))}
-
- applyLanguage();
-})();
+  $("themeBtn").textContent=document.body.classList.contains("light")?"☾":"☼";
+});
+function applyLanguage(){
+  document.documentElement.lang=currentLang==="bn"?"bn":"en";
+  document.querySelectorAll("[data-bn][data-en]").forEach(el=>{
+    el.innerHTML=el.dataset[currentLang];
+  });
+  $("langBtn").textContent=currentLang==="bn"?"EN":"বাংলা";
+  $("searchInput").placeholder=currentLang==="bn"?"ওয়েবসাইট খুঁজুন...":"Search websites...";
+  $("orderId").placeholder=currentLang==="bn"?"যেমন: WD-1001":"Example: WD-1001";
+  $("searchBtn").textContent=currentLang==="bn"?"খুঁজুন ↗":"Search ↗";
+  renderProducts();
+}
+$("langBtn").addEventListener("click",()=>{
+  currentLang=currentLang==="bn"?"en":"bn";
+  applyLanguage();
+});
+document.querySelectorAll(".planOrder").forEach(btn=>btn.addEventListener("click",()=>{
+  const msg=`Hello WebsitesDeal, I am interested in the ${btn.dataset.plan} subscription. Please confirm the plan details.`;
+  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank","noopener");
+}));
+$("year").textContent=new Date().getFullYear();
+renderProducts();
 </script>
 </body>
 </html>
