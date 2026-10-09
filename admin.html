@@ -1,20 +1,810 @@
-<!DOCTYPE html><html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WebsitesDeal — Admin Studio</title><style>
-:root{--bg:#08110c;--panel:#101d15;--panel2:#17271c;--text:#eef6ef;--muted:#9aada0;--line:#293c2e;--accent:#b8f34a;--danger:#ff7777}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}.side{padding:24px 17px;border-right:1px solid var(--line);background:#0b160f}.brand{display:flex;gap:10px;align-items:center;font-weight:900;font-size:17px;margin:0 0 35px}.logo{width:35px;height:35px;background:var(--accent);color:#102018;border-radius:11px;display:grid;place-items:center}.label{font-size:10px;color:#6f8776;font-weight:900;letter-spacing:1.5px;margin:23px 10px 10px}.nav{display:block;padding:12px 13px;border-radius:10px;color:var(--muted);text-decoration:none;font-size:12px;font-weight:700;margin:3px 0}.nav.active,.nav:hover{background:#1b3020;color:var(--accent)}.sidebottom{position:absolute;bottom:22px;font-size:11px;color:var(--muted)}main{padding:30px clamp(18px,4vw,48px);max-width:1450px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:28px}.eyebrow{color:var(--accent);font-size:10px;letter-spacing:1.5px;font-weight:900;text-transform:uppercase}h1{font-size:29px;letter-spacing:-1px;margin:7px 0}p{color:var(--muted);font-size:12px;line-height:1.6}.btn{border:1px solid var(--line);border-radius:10px;padding:11px 14px;color:var(--text);background:var(--panel2);font-weight:800;font-size:11px;cursor:pointer}.btn.primary{background:var(--accent);color:#102018;border-color:var(--accent)}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-bottom:23px}.stat,.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}.stat small{display:block;color:var(--muted);font-size:11px}.stat strong{font-size:28px;display:block;margin:12px 0 4px}.stat em{font-style:normal;color:var(--accent);font-size:10px}.layout{display:grid;grid-template-columns:1.05fr .95fr;gap:16px}.panel h2{font-size:15px;margin:0 0 5px}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}.field{display:flex;flex-direction:column;gap:7px;margin:13px 0}.field label{font-size:11px;color:var(--muted);font-weight:750}.field input,.field select,.field textarea{background:#09140d;border:1px solid var(--line);border-radius:9px;padding:12px;color:var(--text);outline:none;width:100%;font-size:12px}.field textarea{min-height:75px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.banner-preview{background:linear-gradient(120deg,#14271a,#263f20);border:1px solid #355331;border-radius:14px;padding:24px;min-height:155px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}.banner-preview:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-30px;top:-60px;background:#b8f34a22}.banner-preview small{color:var(--accent);font-size:9px;letter-spacing:1px;font-weight:900}.banner-preview h3{font-size:23px;max-width:340px;margin:10px 0}.banner-preview p{margin:0;max-width:320px}.list{margin-top:22px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:11px}th{text-align:left;color:var(--muted);font-weight:700;padding:12px 9px;border-bottom:1px solid var(--line)}td{padding:13px 9px;border-bottom:1px solid var(--line)}.status{background:#233b22;color:#b8f34a;padding:5px 8px;border-radius:99px;font-size:9px}.actions{display:flex;gap:5px}.actions button{padding:7px 8px;font-size:10px}.note{border:1px dashed #476342;border-radius:12px;padding:13px;color:var(--muted);font-size:11px;line-height:1.7;margin-top:14px}.toast{position:fixed;right:22px;bottom:22px;background:var(--accent);color:#102018;padding:13px 18px;border-radius:12px;font-weight:850;font-size:12px;display:none;box-shadow:0 10px 35px #0004}@media(max-width:950px){.app{grid-template-columns:75px 1fr}.side{padding:20px 10px}.brand{font-size:0;justify-content:center}.label{font-size:0;margin:20px 0}.nav{font-size:0;text-align:center}.nav:before{content:"•";font-size:20px}.sidebottom{display:none}.stats{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}}@media(max-width:560px){.app{display:block}.side{display:flex;align-items:center;gap:5px;padding:9px;position:sticky;top:0;z-index:3;border-right:0;border-bottom:1px solid var(--line)}.brand{margin:0 6px 0 0}.nav{font-size:10px;padding:9px 7px;margin:0}.nav:before{display:none}.label,.sidebottom{display:none}main{padding:22px 14px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:23px}.row{grid-template-columns:1fr}.top{align-items:start;flex-direction:column}}
-</style></head><body><div class="app"><aside class="side"><div class="brand"><span class="logo">W</span> WebsitesDeal</div><div class="label">WORKSPACE</div><a class="nav" href="index.html">↗ View Storefront</a><a class="nav active" href="#overview">▦ Overview</a><a class="nav" href="#banner">▧ Banner Editor</a><a class="nav" href="#websites">◫ Website Editor</a><a class="nav" href="dashboard.html">◈ Dashboard</a><div class="label">SETTINGS</div><a class="nav" href="#language">文 Language & Theme</a><div class="sidebottom">WEBSITESDEAL STUDIO<br>Version 1.0 · Demo build</div></aside><main><div class="top"><div><div class="eyebrow">Control center / 01</div><h1>Admin Studio</h1><p>Manage your marketplace content, banners, and ready-made website listings.</p></div><button class="btn primary" onclick="window.open('index.html','_blank')">↗ Preview storefront</button></div>
-<section id="overview" class="stats"><div class="stat"><small>Total website listings</small><strong id="countSites">06</strong><em>↑ Marketplace inventory</em></div><div class="stat"><small>Featured banners</small><strong>01</strong><em>● Active campaign</em></div><div class="stat"><small>Subscription plans</small><strong>03</strong><em>Starter · Growth · Business+</em></div><div class="stat"><small>Content status</small><strong>Live</strong><em>● Local preview mode</em></div></section>
-<div class="layout"><section class="panel" id="banner"><div class="panelhead"><div><h2>Homepage Banner Editor</h2><p>Edit hero content and publish it to this browser's storefront.</p></div><span class="status">LIVE PREVIEW</span></div><div class="banner-preview"><small>WEBSITESDEAL / FEATURED</small><h3 id="bannerDemoTitle">Launch your next business today.</h3><p id="bannerDemoText">Premium ready-made websites for ambitious founders.</p></div><div class="field"><label>Banner headline (English)</label><input id="bannerTitle" value="Launch your next business today."></div><div class="field"><label>Banner description (English)</label><textarea id="bannerText">Premium ready-made websites for ambitious founders.</textarea></div><div class="field"><label>Banner image URL (optional)</label><input id="bannerImage" placeholder="https://example.com/banner.jpg"></div><button class="btn primary" onclick="saveBanner()">Save banner settings</button><div class="note">এই ভার্সনে ব্যানারের লেখা লোকাল ব্রাউজারে সেভ হবে। URL ফিল্ডটি প্রস্তুত রাখা হয়েছে; আপলোড ও সকল ভিজিটরের কাছে প্রকাশের জন্য পরবর্তীতে backend/storage সংযোগ লাগবে।</div></section>
-<section class="panel" id="websites"><div class="panelhead"><div><h2 id="formTitle">Website Listing Editor</h2><p>Add or edit products in the marketplace.</p></div></div><input type="hidden" id="editId"><div class="field"><label>Website title</label><input id="siteTitle" placeholder="e.g. Nova Business Pro"></div><div class="row"><div class="field"><label>Category</label><select id="siteCategory"><option>Business</option><option>Ecommerce</option><option>Restaurant</option><option>Agency</option><option>Portfolio</option><option>Real Estate</option></select></div><div class="field"><label>Price (BDT)</label><input id="sitePrice" type="number" min="0" value="2490"></div></div><div class="field"><label>Description</label><textarea id="siteDesc" placeholder="Describe this website template"></textarea></div><div class="field"><label>Feature tags (comma separated)</label><input id="siteTags" placeholder="Responsive, SEO Ready, Modern"></div><div class="row"><button class="btn primary" onclick="saveSite()">Save website</button><button class="btn" onclick="resetForm()">Clear form</button></div><div class="note">Changes are saved to localStorage in this browser and appear on index.html in the same browser. For a real live store shared across devices, connect a secure database/API.</div></section></div>
-<section class="panel list"><div class="panelhead"><div><h2>Website Inventory</h2><p>Manage visible listings and their prices.</p></div><button class="btn" onclick="exportData()">Export JSON ↗</button></div><div class="tablewrap"><table><thead><tr><th>WEBSITE</th><th>CATEGORY</th><th>PRICE</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody id="siteRows"></tbody></table></div></section>
-<section class="panel list" id="language"><div class="panelhead"><div><h2>Storefront preferences</h2><p>Default language is Bengali. Visitors can switch to English.</p></div></div><div class="row"><div><strong style="font-size:12px">Default language</strong><p>বাংলা (Bengali) — set in storefront code</p></div><div><strong style="font-size:12px">Theme preference</strong><p>Light / Dark toggle is available in the public header.</p></div></div></section>
-</main></div><div class="toast" id="toast">Saved successfully</div><script>
-const seed=[{id:1,title:"Nexa Business Pro",category:"Business",price:2490,desc:"আধুনিক কোম্পানি, কনসালটেন্সি ও সার্ভিস ব্র্যান্ডের জন্য।",tags:["Responsive","SEO Ready","5 Pages"],art:"",badge:"BESTSELLER"},{id:2,title:"Mori E-commerce",category:"Ecommerce",price:3490,desc:"পণ্য, ক্যাটাগরি ও অনলাইন স্টোরের জন্য পরিচ্ছন্ন ডিজাইন।",tags:["Shop UI","Product Grid","Mobile"],art:"art2",badge:"NEW"},{id:3,title:"Saffron Restaurant",category:"Restaurant",price:1990,desc:"রেস্টুরেন্ট, ক্যাফে ও ফুড ব্র্যান্ডের জন্য আকর্ষণীয় লেআউট।",tags:["Menu","Booking UI","Modern"],art:"art3",badge:"POPULAR"},{id:4,title:"Orbit Creative Agency",category:"Agency",price:2790,desc:"ক্রিয়েটিভ এজেন্সি ও ডিজিটাল সার্ভিসের জন্য শক্তিশালী পোর্টফোলিও।",tags:["Portfolio","Services","Clean"],art:"art4",badge:"FEATURED"},{id:5,title:"Mono Personal Portfolio",category:"Portfolio",price:1490,desc:"ডিজাইনার, ডেভেলপার ও ফ্রিল্যান্সারদের জন্য মিনিমাল টেমপ্লেট।",tags:["Minimal","Case Studies","Fast"],art:"art5",badge:"VALUE"},{id:6,title:"Haven Real Estate",category:"Real Estate",price:2990,desc:"প্রপার্টি লিস্টিং, এজেন্ট ও রিয়েল এস্টেট ব্র্যান্ডের জন্য।",tags:["Listings","Agents","Premium"],art:"art6",badge:"PREMIUM"}];
-function sites(){try{return JSON.parse(localStorage.getItem("wd_sites"))||seed}catch(e){return seed}}function saveAll(a){localStorage.setItem("wd_sites",JSON.stringify(a));renderRows();document.getElementById("countSites").textContent=a.length.toString().padStart(2,"0")}function toast(t){let x=document.getElementById("toast");x.textContent=t;x.style.display="block";setTimeout(()=>x.style.display="none",2200)}
-function renderRows(){document.getElementById("siteRows").innerHTML=sites().map(s=>`<tr><td><strong>${s.title}</strong></td><td>${s.category}</td><td>৳${Number(s.price).toLocaleString("en-US")}</td><td><span class="status">ACTIVE</span></td><td><div class="actions"><button class="btn" onclick="editSite(${s.id})">Edit</button><button class="btn" onclick="deleteSite(${s.id})">Delete</button></div></td></tr>`).join("")}
-function saveSite(){let title=document.getElementById("siteTitle").value.trim();if(!title){toast("Please enter a website title");return}let a=sites(),id=Number(document.getElementById("editId").value)||Date.now();let item={id,title,category:document.getElementById("siteCategory").value,price:Number(document.getElementById("sitePrice").value)||0,desc:document.getElementById("siteDesc").value.trim(),tags:document.getElementById("siteTags").value.split(",").map(x=>x.trim()).filter(Boolean),art:"",badge:"FEATURED"};let i=a.findIndex(x=>x.id===id);if(i>=0)a[i]=item;else a.unshift(item);saveAll(a);resetForm();toast("Website listing saved")}
-function editSite(id){let s=sites().find(x=>x.id===id);if(!s)return;document.getElementById("editId").value=s.id;document.getElementById("siteTitle").value=s.title;document.getElementById("siteCategory").value=s.category;document.getElementById("sitePrice").value=s.price;document.getElementById("siteDesc").value=s.desc;document.getElementById("siteTags").value=(s.tags||[]).join(", ");document.getElementById("formTitle").textContent="Edit Website Listing";document.getElementById("websites").scrollIntoView({behavior:"smooth"})}
-function deleteSite(id){if(!confirm("Delete this website listing?"))return;saveAll(sites().filter(x=>x.id!==id));toast("Listing deleted")}
-function resetForm(){["editId","siteTitle","siteDesc","siteTags"].forEach(id=>document.getElementById(id).value="");document.getElementById("sitePrice").value=2490;document.getElementById("formTitle").textContent="Website Listing Editor"}
-function saveBanner(){let b={title:document.getElementById("bannerTitle").value,text:document.getElementById("bannerText").value,image:document.getElementById("bannerImage").value};localStorage.setItem("wd_banner",JSON.stringify(b));document.getElementById("bannerDemoTitle").textContent=b.title;document.getElementById("bannerDemoText").textContent=b.text;toast("Banner settings saved")}
-function exportData(){let data=JSON.stringify({sites:sites(),banner:JSON.parse(localStorage.getItem("wd_banner")||"{}")},null,2);let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([data],{type:"application/json"}));a.download="websitesdeal-content.json";a.click();URL.revokeObjectURL(a.href)}
-(function(){let b=JSON.parse(localStorage.getItem("wd_banner")||"null");if(b){document.getElementById("bannerTitle").value=b.title||"";document.getElementById("bannerText").value=b.text||"";document.getElementById("bannerImage").value=b.image||"";document.getElementById("bannerDemoTitle").textContent=b.title||"";document.getElementById("bannerDemoText").textContent=b.text||""}renderRows()})();
-</script></body></html>
+<!DOCTYPE html>
+<html lang="bn" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08110c">
+<title>WebsitesDeal — Studio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+ --bg:#08110c;
+ --panel:#101d15;
+ --panel2:#17271c;
+ --text:#eef6ef;
+ --muted:#9aada0;
+ --line:#293c2e;
+ --accent:#b8f34a;
+ --danger:#ff7777;
+ --green:#8bcf37;
+ --shadow:0 12px 35px #0002;
+}
+[data-theme="light"]{
+ --bg:#f3f6f1;
+ --panel:#fff;
+ --panel2:#edf4e9;
+ --text:#16251b;
+ --muted:#738075;
+ --line:#e0e7df;
+ --shadow:0 12px 35px #14281408;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,"Hind Siliguri",sans-serif;transition:background .2s,color .2s}
+button,input,select,textarea{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+.app{display:grid;grid-template-columns:245px minmax(0,1fr);min-height:100vh}
+.side{padding:24px 16px;border-right:1px solid var(--line);background:var(--panel);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;overflow-y:auto}
+.brand{display:flex;gap:10px;align-items:center;font-weight:900;font-size:16px;margin-bottom:28px;overflow-wrap:anywhere}
+.logo{width:38px;height:38px;flex-shrink:0;background:var(--accent);color:#102018;border-radius:12px;display:grid;place-items:center;overflow:hidden;font-weight:900}
+.logo img{width:100%;height:100%;object-fit:contain}
+.brand-text{min-width:0}
+.brand-text small{display:block;color:var(--muted);font-size:9px;margin-top:3px;font-weight:600}
+.label{font-size:10px;color:var(--muted);font-weight:900;letter-spacing:1.5px;margin:20px 10px 9px}
+.nav{display:flex;align-items:center;gap:9px;padding:12px;border-radius:10px;color:var(--muted);text-decoration:none;font-size:12px;font-weight:750;margin:2px 0;transition:.2s}
+.nav:hover,.nav.active{background:var(--panel2);color:var(--green)}
+.sidebottom{margin-top:auto;padding-top:25px;font-size:10px;line-height:1.8;color:var(--muted)}
+main{padding:30px clamp(16px,3.5vw,45px);max-width:1500px;width:100%;margin:0 auto}
+.top{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap;margin-bottom:25px}
+.eyebrow{color:var(--green);font-size:10px;letter-spacing:1.6px;font-weight:900;text-transform:uppercase}
+h1{font-size:clamp(25px,3vw,32px);letter-spacing:-1px;margin:8px 0}
+p{color:var(--muted);font-size:12px;line-height:1.8}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:7px;border:1px solid var(--line);border-radius:10px;padding:11px 14px;color:var(--text);background:var(--panel2);font-weight:800;font-size:11px;cursor:pointer;text-decoration:none;transition:.2s}
+.btn:hover{border-color:var(--green);transform:translateY(-1px)}
+.btn.primary{background:var(--accent);color:#102018;border-color:var(--accent)}
+.btn.danger{color:var(--danger)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin-bottom:20px}
+.stat,.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:19px;box-shadow:var(--shadow)}
+.stat small{display:block;color:var(--muted);font-size:11px}
+.stat strong{font-size:27px;display:block;margin:12px 0 5px;overflow-wrap:anywhere}
+.stat em{font-style:normal;color:var(--green);font-size:10px}
+.layout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.panel{min-width:0;scroll-margin-top:20px}
+.panel h2{font-size:15px;margin:0 0 5px}
+.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:17px;flex-wrap:wrap}
+.panelhead p{margin:4px 0 0}
+.field{display:flex;flex-direction:column;gap:7px;margin:13px 0}
+.field label{font-size:11px;color:var(--muted);font-weight:750}
+.field input,.field select,.field textarea{background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:12px;color:var(--text);outline:none;width:100%;font-size:12px;min-width:0}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green)}
+.field textarea{min-height:80px;resize:vertical}
+.field input[type="color"]{height:43px;padding:5px}
+.field input[type="checkbox"]{width:auto}
+.row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.banner-preview{background:linear-gradient(120deg,#14271a,#263f20);border:1px solid #355331;border-radius:14px;padding:24px;min-height:160px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;color:#f2f8ef}
+.banner-preview:after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;right:-30px;top:-60px;background:#b8f34a22;pointer-events:none}
+.banner-preview>*{position:relative;z-index:1}
+.banner-preview small{color:var(--accent);font-size:9px;letter-spacing:1px;font-weight:900}
+.banner-preview h3{font-size:23px;max-width:390px;margin:10px 0}
+.banner-preview p{margin:0;max-width:360px;color:#c1d0c2}
+.brand-preview{display:flex;align-items:center;gap:12px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px;overflow-wrap:anywhere}
+.brand-preview .logo{width:48px;height:48px}
+.brand-preview strong{font-size:15px}
+.brand-preview small{display:block;color:var(--muted);font-size:10px;margin-top:4px}
+.brand-preview .logo img{display:block}
+.tablewrap{overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:11px;min-width:580px}
+th{text-align:left;color:var(--muted);font-weight:700;padding:12px 9px;border-bottom:1px solid var(--line)}
+td{padding:13px 9px;border-bottom:1px solid var(--line);vertical-align:middle}
+.status{background:#233b22;color:#b8f34a;padding:5px 8px;border-radius:99px;font-size:9px;white-space:nowrap}
+.actions{display:flex;gap:5px}
+.actions .btn{padding:7px 8px;font-size:10px}
+.note{border:1px dashed var(--line);border-radius:12px;padding:13px;color:var(--muted);font-size:11px;line-height:1.8;margin-top:14px}
+.toast{position:fixed;right:22px;bottom:22px;z-index:150;background:var(--accent);color:#102018;padding:13px 18px;border-radius:12px;font-weight:850;font-size:12px;display:none;box-shadow:0 10px 35px #0004;max-width:calc(100% - 44px)}
+.prayer-settings{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.prayer-settings .field{margin:0}
+.checkline{display:flex;gap:9px;align-items:center;color:var(--muted);font-size:11px;margin:12px 0}
+.checkline input{accent-color:var(--green)}
+.bottom-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}
+@media(max-width:1050px){
+ .app{grid-template-columns:205px minmax(0,1fr)}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .layout{grid-template-columns:1fr}
+ .prayer-settings{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:650px){
+ .app{display:block}
+ .side{height:auto;position:sticky;top:0;z-index:20;padding:9px 10px;border-right:0;border-bottom:1px solid var(--line);flex-direction:row;align-items:center;gap:5px;overflow-x:auto}
+ .brand{margin:0 5px 0 0;flex-shrink:0;font-size:12px}
+ .brand .logo{width:31px;height:31px}
+ .brand-text small,.label,.sidebottom{display:none}
+ .nav{font-size:10px;white-space:nowrap;padding:9px 8px;flex-shrink:0}
+ main{padding:20px 13px}
+ .top{align-items:flex-start}
+ .top .btn{padding:10px}
+ .stats{gap:8px}
+ .stat{padding:13px}
+ .stat strong{font-size:22px}
+ .row{grid-template-columns:1fr;gap:0}
+ .prayer-settings{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .panel{padding:15px}
+}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<aside class="side">
+  <div class="brand">
+    <span class="logo" id="sideLogo">W</span>
+    <span class="brand-text">
+      <span id="sideBrandName">WebsitesDeal</span>
+      <small>WEBSITE STUDIO</small>
+    </span>
+  </div>
+
+  <div class="label">WORKSPACE</div>
+  <a class="nav" href="index.html">↗ View Storefront</a>
+  <a class="nav active" href="#overview">▦ Overview</a>
+  <a class="nav" href="#brand">◉ Brand Editor</a>
+  <a class="nav" href="#banner">▧ Banner Editor</a>
+  <a class="nav" href="#websites">◫ Website Listings</a>
+  <a class="nav" href="dashboard.html">⌂ Dashboard Preview</a>
+
+  <div class="label">PREFERENCES</div>
+  <a class="nav" href="#prayer">🕌 Prayer Settings</a>
+  <a class="nav" href="#settings">⚙ Theme & Export</a>
+
+  <div class="sidebottom">
+    WEBSITESDEAL STUDIO<br>
+    Version 2.0 · Front-end build
+  </div>
+</aside>
+
+<main>
+
+<header class="top">
+  <div>
+    <div class="eyebrow">Control Center / 01</div>
+    <h1>Website Studio</h1>
+    <p>আপনার ব্র্যান্ড, ব্যানার ও ওয়েবসাইট লিস্টিং পরিচালনা করুন।</p>
+  </div>
+  <div class="bottom-actions" style="margin:0">
+    <button class="btn" type="button" id="themeBtn">☀ Light Mode</button>
+    <a class="btn primary" href="index.html" target="_blank" rel="noopener">↗ Preview Storefront</a>
+  </div>
+</header>
+
+<section id="overview" class="stats">
+  <div class="stat">
+    <small>Total Website Listings</small>
+    <strong id="countSites">06</strong>
+    <em>Marketplace inventory</em>
+  </div>
+  <div class="stat">
+    <small>Banner Configuration</small>
+    <strong id="bannerStatus">Ready</strong>
+    <em>Local preview</em>
+  </div>
+  <div class="stat">
+    <small>Brand Settings</small>
+    <strong id="brandStatus">Default</strong>
+    <em>Editable identity</em>
+  </div>
+  <div class="stat">
+    <small>Data Mode</small>
+    <strong>Local</strong>
+    <em>Browser storage</em>
+  </div>
+</section>
+
+<div class="layout">
+
+<!-- BRAND EDITOR -->
+<section class="panel" id="brand">
+  <div class="panelhead">
+    <div>
+      <h2>Brand & Logo Editor</h2>
+      <p>ব্র্যান্ডের নাম, লোগো ও logo text পরিবর্তন করুন।</p>
+    </div>
+    <span class="status">BRAND</span>
+  </div>
+
+  <div class="brand-preview">
+    <span class="logo" id="brandPreviewLogo">W</span>
+    <div>
+      <strong id="brandPreviewName">WebsitesDeal</strong>
+      <small>Live local preview</small>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="brandNameInput">Brand name</label>
+    <input id="brandNameInput" maxlength="80" value="WebsitesDeal" placeholder="Your brand name">
+  </div>
+
+  <div class="field">
+    <label for="logoTextInput">Logo text (if no image)</label>
+    <input id="logoTextInput" maxlength="4" value="W" placeholder="W">
+  </div>
+
+  <div class="field">
+    <label for="logoUrlInput">Logo image URL (optional)</label>
+    <input id="logoUrlInput" type="url" placeholder="https://example.com/logo.png">
+  </div>
+
+  <div class="bottom-actions">
+    <button class="btn primary" type="button" onclick="saveBrand()">Save Brand Settings</button>
+    <button class="btn" type="button" onclick="resetBrand()">Reset</button>
+  </div>
+
+  <div class="note">
+    ব্র্যান্ড সেটিংস এই ব্রাউজারে <code>wd_brand</code> নামে সেভ হবে।
+    Dashboard এই সেটিংস পড়তে পারবে। অন্য ডিভাইস বা সব ভিজিটরের জন্য
+    প্রকাশ করতে backend/database integration লাগবে।
+  </div>
+</section>
+
+<!-- BANNER EDITOR -->
+<section class="panel" id="banner">
+  <div class="panelhead">
+    <div>
+      <h2>Homepage Banner Editor</h2>
+      <p>হোমপেজ ব্যানারের লেখা পরিবর্তন করুন।</p>
+    </div>
+    <span class="status">LIVE PREVIEW</span>
+  </div>
+
+  <div class="banner-preview">
+    <small>WEBSITESDEAL / FEATURED</small>
+    <h3 id="bannerDemoTitle">Launch your next business today.</h3>
+    <p id="bannerDemoText">Premium ready-made websites for ambitious founders.</p>
+  </div>
+
+  <div class="field">
+    <label for="bannerTitle">Banner headline</label>
+    <input id="bannerTitle" maxlength="180" value="Launch your next business today.">
+  </div>
+
+  <div class="field">
+    <label for="bannerText">Banner description</label>
+    <textarea id="bannerText" maxlength="600">Premium ready-made websites for ambitious founders.</textarea>
+  </div>
+
+  <div class="field">
+    <label for="bannerImage">Banner image URL (optional)</label>
+    <input id="bannerImage" type="url" placeholder="https://example.com/banner.jpg">
+  </div>
+
+  <button class="btn primary" type="button" onclick="saveBanner()">Save Banner Settings</button>
+
+  <div class="note">
+    এই editor ব্যানারের তথ্য localStorage-এ সেভ করে। আপনার
+    <code>index.html</code> ফাইলকে একই key পড়ার জন্য আলাদাভাবে
+    আপডেট করতে হবে। শুধু এখানে Save করলে সব ভিজিটরের সাইট বদলাবে না।
+  </div>
+</section>
+
+<!-- WEBSITE EDITOR -->
+<section class="panel" id="websites">
+  <div class="panelhead">
+    <div>
+      <h2 id="formTitle">Website Listing Editor</h2>
+      <p>Marketplace-এ website যোগ বা সম্পাদনা করুন।</p>
+    </div>
+  </div>
+
+  <input type="hidden" id="editId">
+
+  <div class="field">
+    <label for="siteTitle">Website title</label>
+    <input id="siteTitle" maxlength="120" placeholder="e.g. Nova Business Pro">
+  </div>
+
+  <div class="row">
+    <div class="field">
+      <label for="siteCategory">Category</label>
+      <select id="siteCategory">
+        <option>Business</option>
+        <option>Ecommerce</option>
+        <option>Restaurant</option>
+        <option>Agency</option>
+        <option>Portfolio</option>
+        <option>Real Estate</option>
+        <option>Education</option>
+        <option>Healthcare</option>
+        <option>Landing Page</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="sitePrice">Price (BDT)</label>
+      <input id="sitePrice" type="number" min="0" max="100000000" value="2490">
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="siteDesc">Description</label>
+    <textarea id="siteDesc" maxlength="1000" placeholder="Describe this website template"></textarea>
+  </div>
+
+  <div class="field">
+    <label for="siteTags">Feature tags (comma separated)</label>
+    <input id="siteTags" maxlength="300" placeholder="Responsive, SEO Ready, Modern">
+  </div>
+
+  <div class="field">
+    <label for="siteImage">Website thumbnail URL (optional)</label>
+    <input id="siteImage" type="url" placeholder="https://example.com/preview.jpg">
+  </div>
+
+  <div class="bottom-actions">
+    <button class="btn primary" type="button" onclick="saveSite()">Save Website</button>
+    <button class="btn" type="button" onclick="resetForm()">Clear Form</button>
+  </div>
+
+  <div class="note">
+    Listing-গুলো এই ব্রাউজারে <code>wd_sites</code> key-তে সেভ হবে।
+    Storefront-এ সঠিকভাবে দেখাতে আপনার <code>index.html</code> একই
+    data format ব্যবহার করতে হবে।
+  </div>
+</section>
+
+<!-- PRAYER SETTINGS -->
+<section class="panel" id="prayer">
+  <div class="panelhead">
+    <div>
+      <h2>🕌 Prayer Time Settings</h2>
+      <p>Dashboard-এ দেখানোর জন্য নমুনা সময় সম্পাদনা করুন।</p>
+    </div>
+    <span class="status">MANUAL</span>
+  </div>
+
+  <div class="prayer-settings">
+    <div class="field">
+      <label for="fajr">ফজর</label>
+      <input type="time" id="fajr" value="04:45">
+    </div>
+    <div class="field">
+      <label for="dhuhr">যোহর</label>
+      <input type="time" id="dhuhr" value="12:00">
+    </div>
+    <div class="field">
+      <label for="asr">আসর</label>
+      <input type="time" id="asr" value="16:15">
+    </div>
+    <div class="field">
+      <label for="maghrib">মাগরিব</label>
+      <input type="time" id="maghrib" value="17:50">
+    </div>
+    <div class="field">
+      <label for="isha">এশা</label>
+      <input type="time" id="isha" value="19:10">
+    </div>
+  </div>
+
+  <label class="checkline">
+    <input type="checkbox" id="prayerEnabled" checked>
+    Dashboard-এ Prayer Times section চালু রাখুন
+  </label>
+
+  <div class="bottom-actions">
+    <button class="btn primary" type="button" onclick="savePrayer()">Save Prayer Settings</button>
+    <a class="btn" href="dashboard.html" target="_blank" rel="noopener">Preview Dashboard ↗</a>
+  </div>
+
+  <div class="note">
+    এগুলো ম্যানুয়াল সময়; যাচাইকৃত লাইভ সময় নয়। Dashboard-এ এই
+    সেটিংস কার্যকর করতে dashboard-এর JavaScript-কে
+    <code>wd_prayer</code> থেকে সময় পড়তে হবে। Browser বন্ধ থাকলে
+    সাধারণ JavaScript alarm চলবে না।
+  </div>
+</section>
+
+<!-- INVENTORY -->
+<section class="panel" style="grid-column:1/-1">
+  <div class="panelhead">
+    <div>
+      <h2>Website Inventory</h2>
+      <p>বর্তমান লিস্টিং পরিচালনা করুন।</p>
+    </div>
+    <button class="btn" type="button" onclick="exportData()">Export JSON ↗</button>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th>WEBSITE</th>
+          <th>CATEGORY</th>
+          <th>PRICE</th>
+          <th>STATUS</th>
+          <th>ACTIONS</th>
+        </tr>
+      </thead>
+      <tbody id="siteRows"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SETTINGS -->
+<section class="panel" id="settings" style="grid-column:1/-1">
+  <div class="panelhead">
+    <div>
+      <h2>Theme & Data Settings</h2>
+      <p>Appearance পরিবর্তন ও আপনার content export করুন।</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <strong style="font-size:12px">Appearance</strong>
+      <p>Dark / Light theme এই browser-এ সেভ হবে।</p>
+      <button class="btn" type="button" onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+    <div>
+      <strong style="font-size:12px">Data backup</strong>
+      <p>Website, brand, banner ও prayer settings JSON হিসেবে export করুন।</p>
+      <button class="btn primary" type="button" onclick="exportData()">Download JSON Backup</button>
+    </div>
+  </div>
+
+  <div class="note">
+    নিরাপত্তা: এই পেজটি demo content editor; secure administrator
+    authentication নেই। বাস্তব সাইটে প্রকাশের আগে authentication,
+    database access rules এবং server-side validation যোগ করুন।
+  </div>
+</section>
+
+</main>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+"use strict";
+
+/* -------------------------------
+   DEFAULT WEBSITE DATA
+-------------------------------- */
+
+const seed = [
+ {id:1,title:"Nexa Business Pro",category:"Business",price:2490,desc:"আধুনিক কোম্পানি ও সার্ভিস ব্র্যান্ডের জন্য।",tags:["Responsive","SEO Ready","5 Pages"],image:"",badge:"BESTSELLER"},
+ {id:2,title:"Mori E-commerce",category:"Ecommerce",price:3490,desc:"পণ্য ও অনলাইন স্টোরের জন্য পরিচ্ছন্ন ডিজাইন।",tags:["Shop UI","Product Grid","Mobile"],image:"",badge:"NEW"},
+ {id:3,title:"Saffron Restaurant",category:"Restaurant",price:1990,desc:"রেস্টুরেন্ট ও ক্যাফের জন্য আকর্ষণীয় লেআউট।",tags:["Menu","Booking UI","Modern"],image:"",badge:"POPULAR"},
+ {id:4,title:"Orbit Creative Agency",category:"Agency",price:2790,desc:"ক্রিয়েটিভ এজেন্সির জন্য আধুনিক পোর্টফোলিও।",tags:["Portfolio","Services","Clean"],image:"",badge:"FEATURED"},
+ {id:5,title:"Mono Personal Portfolio",category:"Portfolio",price:1490,desc:"ডিজাইনার ও ডেভেলপারদের জন্য মিনিমাল টেমপ্লেট।",tags:["Minimal","Case Studies","Fast"],image:"",badge:"VALUE"},
+ {id:6,title:"Haven Real Estate",category:"Real Estate",price:2990,desc:"প্রপার্টি ও রিয়েল এস্টেট ব্র্যান্ডের জন্য।",tags:["Listings","Agents","Premium"],image:"",badge:"PREMIUM"}
+];
+
+function readJSON(key,fallback){
+ try{
+  const value=JSON.parse(localStorage.getItem(key));
+  return value===null ? fallback : value;
+ }catch{
+  return fallback;
+ }
+}
+
+function sites(){
+ const data=readJSON("wd_sites",null);
+ return Array.isArray(data)?data:seed.map(x=>({...x}));
+}
+
+function saveSites(data){
+ localStorage.setItem("wd_sites",JSON.stringify(data));
+ renderRows();
+ updateStats();
+}
+
+function toast(message){
+ const el=document.getElementById("toast");
+ el.textContent=message;
+ el.style.display="block";
+ clearTimeout(toast.timer);
+ toast.timer=setTimeout(()=>el.style.display="none",2600);
+}
+
+function escapeHTML(value){
+ return String(value??"").replace(/[&<>"']/g,c=>({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ })[c]);
+}
+
+function validHttpUrl(value){
+ if(!value)return true;
+ try{
+  const url=new URL(value);
+  return url.protocol==="https:"||url.protocol==="http:";
+ }catch{return false;}
+}
+
+/* -------------------------------
+   BRAND EDITOR
+-------------------------------- */
+
+function renderBrand(){
+ const brand=readJSON("wd_brand",{name:"WebsitesDeal",logoText:"W",logo:""});
+ const name=typeof brand.name==="string"&&brand.name.trim()
+  ?brand.name.trim():"WebsitesDeal";
+ const logoText=typeof brand.logoText==="string"&&brand.logoText.trim()
+  ?brand.logoText.trim().slice(0,4):"W";
+ const logo=typeof brand.logo==="string"?brand.logo:"";
+
+ document.getElementById("brandNameInput").value=name;
+ document.getElementById("logoTextInput").value=logoText;
+ document.getElementById("logoUrlInput").value=logo;
+
+ document.getElementById("sideBrandName").textContent=name;
+ document.getElementById("brandPreviewName").textContent=name;
+ document.getElementById("brandStatus").textContent=
+  name==="WebsitesDeal"&&!logo?"Default":"Custom";
+
+ setLogo(document.getElementById("sideLogo"),logo,logoText);
+ setLogo(document.getElementById("brandPreviewLogo"),logo,logoText);
+}
+
+function setLogo(element,url,logoText){
+ element.replaceChildren();
+ if(url&&validHttpUrl(url)){
+  const img=document.createElement("img");
+  img.src=url;
+  img.alt="Brand logo";
+  img.onerror=()=>{element.replaceChildren();element.textContent=logoText||"W";};
+  element.appendChild(img);
+ }else{
+  element.textContent=logoText||"W";
+ }
+}
+
+function saveBrand(){
+ const name=document.getElementById("brandNameInput").value.trim();
+ const logoText=document.getElementById("logoTextInput").value.trim()||"W";
+ const logo=document.getElementById("logoUrlInput").value.trim();
+
+ if(!name){toast("Brand name লিখুন");return}
+ if(!validHttpUrl(logo)){toast("সঠিক http/https logo URL দিন");return}
+
+ localStorage.setItem("wd_brand",JSON.stringify({name,logoText,logo}));
+ renderBrand();
+ toast("Brand settings saved");
+}
+
+function resetBrand(){
+ localStorage.removeItem("wd_brand");
+ renderBrand();
+ toast("Brand settings reset");
+}
+
+/* -------------------------------
+   BANNER EDITOR
+-------------------------------- */
+
+function loadBanner(){
+ const b=readJSON("wd_banner",null);
+ if(!b)return;
+
+ document.getElementById("bannerTitle").value=b.title||"";
+ document.getElementById("bannerText").value=b.text||"";
+ document.getElementById("bannerImage").value=b.image||"";
+ document.getElementById("bannerDemoTitle").textContent=b.title||"";
+ document.getElementById("bannerDemoText").textContent=b.text||"";
+ document.getElementById("bannerStatus").textContent="Custom";
+}
+
+function saveBanner(){
+ const title=document.getElementById("bannerTitle").value.trim();
+ const text=document.getElementById("bannerText").value.trim();
+ const image=document.getElementById("bannerImage").value.trim();
+
+ if(!title){toast("Banner headline লিখুন");return}
+ if(!validHttpUrl(image)){toast("সঠিক banner image URL দিন");return}
+
+ const data={title,text,image};
+ localStorage.setItem("wd_banner",JSON.stringify(data));
+ document.getElementById("bannerDemoTitle").textContent=title;
+ document.getElementById("bannerDemoText").textContent=text;
+ document.getElementById("bannerStatus").textContent="Custom";
+ toast("Banner settings saved");
+}
+
+/* -------------------------------
+   WEBSITE LISTINGS
+-------------------------------- */
+
+function renderRows(){
+ const list=sites();
+ const tbody=document.getElementById("siteRows");
+
+ tbody.innerHTML=list.map(site=>`
+  <tr>
+   <td><strong>${escapeHTML(site.title||"Untitled")}</strong></td>
+   <td>${escapeHTML(site.category||"Other")}</td>
+   <td>৳${(Number(site.price)||0).toLocaleString("en-US")}</td>
+   <td><span class="status">ACTIVE</span></td>
+   <td>
+    <div class="actions">
+     <button class="btn" type="button" onclick="editSite(${Number(site.id)})">Edit</button>
+     <button class="btn danger" type="button" onclick="deleteSite(${Number(site.id)})">Delete</button>
+    </div>
+   </td>
+  </tr>
+ `).join("");
+
+ if(!list.length){
+  tbody.innerHTML='<tr><td colspan="5">কোনো website listing নেই।</td></tr>';
+ }
+}
+
+function saveSite(){
+ const title=document.getElementById("siteTitle").value.trim();
+ const category=document.getElementById("siteCategory").value;
+ const priceInput=document.getElementById("sitePrice").value;
+ const price=Number(priceInput);
+ const desc=document.getElementById("siteDesc").value.trim();
+ const tags=document.getElementById("siteTags").value.split(",").map(x=>x.trim()).filter(Boolean);
+ const image=document.getElementById("siteImage").value.trim();
+ const editId=Number(document.getElementById("editId").value);
+
+ if(!title){toast("Website title লিখুন");return}
+ if(priceInput===""||!Number.isFinite(price)||price<0||price>100000000){
+  toast("সঠিক website price দিন");return;
+ }
+ if(!validHttpUrl(image)){toast("সঠিক thumbnail URL দিন");return}
+
+ const list=sites();
+ const id=editId||Date.now();
+ const old=list.find(s=>Number(s.id)===id);
+
+ const item={
+  id,title,category,price,desc,tags,image,
+  art:old?.art||"",
+  badge:old?.badge||"FEATURED"
+ };
+
+ const index=list.findIndex(s=>Number(s.id)===id);
+ if(index>=0)list[index]=item;
+ else list.unshift(item);
+
+ saveSites(list);
+ resetForm();
+ toast("Website listing saved");
+}
+
+function editSite(id){
+ const site=sites().find(s=>Number(s.id)===Number(id));
+ if(!site)return;
+
+ document.getElementById("editId").value=site.id;
+ document.getElementById("siteTitle").value=site.title||"";
+ document.getElementById("siteCategory").value=site.category||"Business";
+ document.getElementById("sitePrice").value=Number(site.price)||0;
+ document.getElementById("siteDesc").value=site.desc||"";
+ document.getElementById("siteTags").value=Array.isArray(site.tags)?site.tags.join(", "):"";
+ document.getElementById("siteImage").value=site.image||site.art||"";
+ document.getElementById("formTitle").textContent="Edit Website Listing";
+ document.getElementById("websites").scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function deleteSite(id){
+ if(!confirm("এই website listing মুছে ফেলবেন?"))return;
+ saveSites(sites().filter(s=>Number(s.id)!==Number(id)));
+ toast("Listing deleted");
+}
+
+function resetForm(){
+ ["editId","siteTitle","siteDesc","siteTags","siteImage"].forEach(id=>{
+  document.getElementById(id).value="";
+ });
+ document.getElementById("sitePrice").value="2490";
+ document.getElementById("siteCategory").value="Business";
+ document.getElementById("formTitle").textContent="Website Listing Editor";
+}
+
+/* -------------------------------
+   PRAYER SETTINGS
+-------------------------------- */
+
+const prayerDefaults={
+ fajr:"04:45",
+ dhuhr:"12:00",
+ asr:"16:15",
+ maghrib:"17:50",
+ isha:"19:10",
+ enabled:true
+};
+
+function loadPrayer(){
+ const p={...prayerDefaults,...readJSON("wd_prayer",{})};
+
+ ["fajr","dhuhr","asr","maghrib","isha"].forEach(key=>{
+  document.getElementById(key).value=p[key]||prayerDefaults[key];
+ });
+ document.getElementById("prayerEnabled").checked=p.enabled!==false;
+}
+
+function savePrayer(){
+ const p={enabled:document.getElementById("prayerEnabled").checked};
+
+ for(const key of ["fajr","dhuhr","asr","maghrib","isha"]){
+  const value=document.getElementById(key).value;
+  if(!value){toast("সব সালাতের সময় পূরণ করুন");return}
+  p[key]=value;
+ }
+
+ localStorage.setItem("wd_prayer",JSON.stringify(p));
+ toast("Prayer settings saved");
+}
+
+/* -------------------------------
+   THEME
+-------------------------------- */
+
+let theme=localStorage.getItem("wd_admin_theme")||"dark";
+
+function applyTheme(){
+ document.documentElement.dataset.theme=theme;
+ document.getElementById("themeBtn").textContent=
+  theme==="dark"?"☀ Light Mode":"☾ Dark Mode";
+}
+
+function toggleTheme(){
+ theme=theme==="dark"?"light":"dark";
+ localStorage.setItem("wd_admin_theme",theme);
+ applyTheme();
+}
+
+/* -------------------------------
+   EXPORT DATA
+-------------------------------- */
+
+function exportData(){
+ const data={
+  exportedAt:new Date().toISOString(),
+  brand:readJSON("wd_brand",{name:"WebsitesDeal",logoText:"W",logo:""}),
+  banner:readJSON("wd_banner",{}),
+  sites:sites(),
+  prayer:readJSON("wd_prayer",prayerDefaults),
+  theme:localStorage.getItem("wd_admin_theme")||"dark"
+ };
+
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob);
+ const link=document.createElement("a");
+ link.href=url;
+ link.download="websitesdeal-backup.json";
+ document.body.appendChild(link);
+ link.click();
+ link.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+ toast("JSON backup exported");
+}
+
+/* -------------------------------
+   DASHBOARD STATS
+-------------------------------- */
+
+function updateStats(){
+ document.getElementById("countSites").textContent=
+  String(sites().length).padStart(2,"0");
+}
+
+/* -------------------------------
+   INIT
+-------------------------------- */
+
+applyTheme();
+renderBrand();
+loadBanner();
+loadPrayer();
+renderRows();
+updateStats();
+
+/* Sync changes from another open tab in the same browser */
+window.addEventListener("storage",event=>{
+ if(["wd_brand","wd_banner","wd_sites","wd_prayer"].includes(event.key)){
+  renderBrand();
+  loadBanner();
+  loadPrayer();
+  renderRows();
+  updateStats();
+ }
+});
+</script>
+</body>
+</html>
